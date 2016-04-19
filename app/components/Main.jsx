@@ -7,7 +7,7 @@ var Main = React.createClass({
   render: function () {
     return (
       <div id="body-overlay">
-        {this.props.children onNewInput=this.handleNewInput }
+        {this.props.children}
       </div>
     )
   }

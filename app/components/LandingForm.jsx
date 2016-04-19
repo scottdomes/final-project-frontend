@@ -7,6 +7,7 @@ var LandingForm = React.createClass({
   },
   handleSubmit: function (e) {
     e.preventDefault();
+    this.props.onSubmit();
   },
   render: function () {
     return (
