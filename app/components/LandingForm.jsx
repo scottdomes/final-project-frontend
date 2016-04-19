@@ -1,13 +1,23 @@
 var React = require('react');
 
 var LandingForm = React.createClass({
+  handleInputChange: function(event) {
+    const { value } = event.target;
+    this.props.onNewInput(value);
+  },
+  handleSubmit: function (e) {
+    e.preventDefault();
+  },
   render: function () {
     return (
       <div className="row" id="enter-location">
         <div className="large-6 large-centered columns">
           <form id="form-enter-location">
-            <input type="text" placeholder="Where do you want to go?" />
-            <button className="button success">Let's go!</button>
+            <input onChange={this.handleInputChange} type="text" placeholder="Where do you want to go?" />
+            <button onClick={this.handleSubmit}
+              className="button success">
+              Let's go!
+            </button>
           </form>
         </div> 
       </div>
