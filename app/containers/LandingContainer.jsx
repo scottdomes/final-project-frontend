@@ -19,8 +19,7 @@ var LandingContainer = React.createClass({
     Facebook.initializeSDK();
   },
   handleLogin: function () {
-    console.log("CLICK");
-    FB.getLoginStatus(function(response) {
+    FB.login(function(response) {
       console.log(response);
     });
   },

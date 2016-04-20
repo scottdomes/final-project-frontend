@@ -48,8 +48,14 @@ var Facebook = {
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
-;
     }
+  },
+  testAPI: function () {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me?fields=email,name,gender', function(response) {
+      console.log('Successful login for: ' + response.name);
+      console.log(response);
+    });
   }
 }
 
