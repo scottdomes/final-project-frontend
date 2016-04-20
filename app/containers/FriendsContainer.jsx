@@ -2,6 +2,18 @@ var React = require('react');
 var ProgressIndicator = require('../components/ProgressIndicator.jsx');
 
 var FriendsContainer = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
+  handleClick: function (e) {
+    e.stopPropagation();
+    this.context.router.push({
+      pathname: '/eventconfig',
+      query: {
+        locationInput: this.props.params.location
+      }
+    })
+  },
   render: function () {
     return (
         <div>
