@@ -3,45 +3,53 @@ var classNames = require('classnames');
 
 
 function PackingListItem(props) {
-  const {packingList, onClick} = props;
+  // const {packingList, onClick} = props;
 
+  function handleOnClick(e){
+    console.log('click');
+    // debugger;
+    // console.log(e);
+    // console.log(props);
+    // console.log(arguments);
+    // console.log(props.onClick.__reactBoundArguments[0]);
+    // props.onClick(e, props.item.label, props.onClick.__reactBoundArguments[0]);
+    props.onClick(e, props.item.label);
+
+  }
   return(
-    <div>
-      <ul id="packing-unordered-list">
-      {packingList.map((item, index)=>{ 
-
-        function handleOnClick(e) {
-          onClick(e, item.label, index);
-        }
-        
-        return (
-          <div 
-            className={classNames({ 'item-packed': item.selected }, {"list-item": true})} 
-            onClick={handleOnClick} 
-            key={index}>{'+ ' + item.label}</div>
-        ) 
-      })}
-      </ul>
+    <div 
+      className={classNames({ 'item-packed': props.item.packedBy }, {"list-item": true})} 
+      onClick={handleOnClick}>{'+ ' + props.item.label}
     </div>
   )
+
 };
 
 module.exports = PackingListItem;
 
 
-// { this.props.map((item, index)=>{ return <li key={index}>{item}</li> })}
-
 
 
 // function PackingListItem(props) {
-//   var {packingItem} = this.props;
+//   const {packingList, onClick} = props;
+
 //   return(
 //     <div>
-//       <ul>
-//       { packingItem.map((item, index)=>{ return <li key={index}>{item}</li> })}
+//       <ul id="packing-unordered-list">
+//       {packingList.map((item, index)=>{ 
+
+//         function handleOnClick(e) {
+//           onClick(e, item.label, index);
+//         }
+        
+//         return (
+//           <div 
+//             className={classNames({ 'item-packed': item.packedBy }, {"list-item": true})} 
+//             onClick={handleOnClick} 
+//             key={index}>{'+ ' + item.label}</div>
+//         ) 
+//       })}
 //       </ul>
 //     </div>
 //   )
-// }
-
-// module.exports = PackingListItem;
+// };

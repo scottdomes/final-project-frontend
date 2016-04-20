@@ -1,6 +1,7 @@
 var React = require('react');
 var transparentBg = require('../../styles/index.jsx').transparentBg;
-var PackinglistItems = require('./PackinglistItems.jsx');
+var PackingListItem = require('./PackinglistItems.jsx');
+var classNames = require('classnames');
 
 
 
@@ -8,19 +9,22 @@ var PackinglistItems = require('./PackinglistItems.jsx');
 var PackingListContainer = React.createClass({
   getInitialState() {
       return {
-        packingList: [{label: 'buy milk', selected: false}, {label: 'Clean Room', selected: false}, {label: 'Do stuff', selected: false}],
+        packingList: [{label: 'buy milk', packedBy: null}, {label: 'Clean Room', packedBy: null}, {label: 'Do stuff', packedBy: null}],
         newPackingItem: 'Not Working',
         addMore: false
       }
   },
-  handleOnClick: function (e, itemLabel, itemIndex){
-    e.preventDefault();
+  handleOnClick: function (key, e, itemLabel){
+    // e.preventDefault();
+    console.log(arguments);
+    console.log('click');
     // console.log(this.state);
     var currentState = this.state.packingList
-    var currentItemState = this.state.packingList[itemIndex];
-    currentItemState.selected = !currentItemState.selected;
-    currentState[itemIndex] = currentItemState;
-    // console.log(currentState[itemIndex]);
+    var currentItemState = this.state.packingList[key];
+    //Change this to user id or user info of who is packing it
+    currentItemState.packedBy = !currentItemState.packedBy; 
+    currentState[key] = currentItemState;
+    // console.log(currentState[key]);
     // console.log(currentState);
     // console.log(currentState.packingList);
     this.setState({
@@ -49,16 +53,20 @@ var PackingListContainer = React.createClass({
     //   console.log('yo');
 
     // }
-    console.log(addMore);
+    // console.log(addMore);
+
+    var ItemList = this.state.packingList;
+    var PackingItems = ItemList.map((item, index) => {
+      console.log(item);
+      return <PackingListItem onClick={this.handleOnClick.bind(this, index)} key={index} item={item} />
+    });
 
     return (
       <div className='large-3 columns' id="packing-list-container">
         <div>
           <h2 id="packing-list-header">Packing List</h2>
         </div>
-        <PackinglistItems 
-          packingList={packingList}
-          onClick={this.handleOnClick} />
+        {PackingItems}
         {!addMore && <div id="packing-list-add-more" onClick={this.handleAddMoreClick}> + Add More! ERROR IS HERE </div>}
         <input type="text" name="text" value={newPackingItem} id="packing-list-add-more" onChange={this.handleChangePackingItem}/>
       </div>
@@ -70,3 +78,7 @@ var PackingListContainer = React.createClass({
 module.exports = PackingListContainer;
 
 
+
+// <PackinglistItems 
+//           packingList={packingList}
+//           onClick={this.handleOnClick} />
