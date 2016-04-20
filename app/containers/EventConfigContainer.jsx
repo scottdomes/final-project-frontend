@@ -12,7 +12,11 @@ var EventConfigContainer = React.createClass({
       <div>
         <BackButton prevpage={"/addfriends"}/>
         <ProgressIndicator page={"eventconfig"}/>
-        <h1>Details for your trip to {this.props.locationInput}</h1>
+        <div className="row">
+          <div className="large-6 large-centered large columns text-center">
+            <h4 id="event-details-header">Details for your trip to {this.props.locationInput}</h4>
+          </div>
+        </div>
         <DatePickerWrapper>
           <DatePicker />
         </DatePickerWrapper>
