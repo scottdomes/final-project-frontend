@@ -15,10 +15,10 @@ function PackingListItem(props) {
         }
 
         return (
-          <div id="list-item" 
-            className={classNames({ 'item-packed': item.selected })} 
+          <div 
+            className={classNames({ 'item-packed': item.selected }, {"list-item": true})} 
             onClick={handleOnClick} 
-            key={index}>{item.label}</div>
+            key={index}>{'+ ' + item.label}</div>
         ) 
       })}
       </ul>
