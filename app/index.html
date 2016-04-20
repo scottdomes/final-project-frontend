@@ -7,12 +7,26 @@
 <body>
 <script>
 
+// run on page load
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '238732356487269',
       cookie     : true, 
       xfbml      : true,
       version    : 'v2.6'
+    });
+
+    FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+        var uid = response.authResponse.userID;
+        var accessToken = response.authResponse.accessToken;
+        console.log(response);
+        console.log(uid);
+        console.log(accessToken);
+        testAPI();
+      } else if (response.status === 'not_authorized') {
+        console.log("not connected!");
+      }
     });
   };
 
@@ -26,9 +40,11 @@
    }(document, 'script', 'facebook-jssdk'));
 
   // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
+  // successful. 
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
+
+    // query to api to get logged in user profile
     FB.api('/me?fields=email,name,gender', function(response) {
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
@@ -36,11 +52,11 @@
       console.log(response);
     });
 
+    // query to api to find user's friends data
     FB.api("/me/friends?fields=email,name,gender,picture", function (response) {
       console.log(response);
       document.getElementById('friends').innerHTML = "my friends are " + response.data[0].name;
     });
-
   }
 
   function logIn(){
@@ -58,6 +74,7 @@
      console.log(response);
     });
   }
+
 </script>
 
   <div style="position: absolute; z-index: 10000">
