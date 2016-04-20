@@ -10,7 +10,7 @@ var EventConfigContainer = React.createClass({
     return (
       <div>
         <h1>{this.props.locationInput}</h1>
-        <ProgressIndicator />
+        <ProgressIndicator page={"eventconfig"}/>
         <DatePickerWrapper>
           <DatePicker />
         </DatePickerWrapper>

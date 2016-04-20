@@ -74,7 +74,7 @@ body {
       
     }
 
-    #progress-indicator[data-page="addfriends"] {
+    #progress-indicator[data-page="addfriends"], #progress-indicator[data-page="eventconfig"]  {
       #location-circle, #friends-circle {
         background-color: #3adb76;
       }
