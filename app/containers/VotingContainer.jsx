@@ -33,6 +33,16 @@ var VotingContainer = React.createClass({
             <input type="text" placeholder="Add location..." />
           </div>
         </div>
+        <div id="date-options" className="row">
+          <div className="large-4 large-centered large columns text-{this.props.dateRange.start} to center">
+            <button className="date-option-button button success">April 28 to May 1</button>
+          </div>
+        </div>
+        <div id="add-date" className="row">
+          <div className="large-4 large-centered large columns text-{this.props.dateRange.start} to center">
+            <input type="text" placeholder="Add date..." />
+          </div>
+        </div>
         <h3>Start Date: {this.props.dateRange.start}</h3>
         <h3>End Date: {this.props.dateRange.end}</h3>
       </div>
