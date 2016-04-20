@@ -17,8 +17,8 @@ var VotingContainer = React.createClass({
       <div>
         <BackButton prevpage={"/eventconfig"}/>
         <ProgressIndicator page={"vote"}/>
-        <h3>{this.props.dateRange.start}</h3>
-        <h3>{this.props.dateRange.end}</h3>
+        <h3>Start Date: {this.props.dateRange.start}</h3>
+        <h3>End Date: {this.props.dateRange.end}</h3>
       </div>
     )
   }

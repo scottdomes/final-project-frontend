@@ -1,7 +1,7 @@
 var React = require('react');
-var LandingHeader = require('../components/LandingHeader.jsx');
-var LandingForm = require('../components/LandingForm.jsx');
-var LandingFBLogin = require('../components/LandingFBLogin.jsx');
+var LandingHeader = require('../components/LandingPage/LandingHeader.jsx');
+var LandingForm = require('../components/LandingPage/LandingForm.jsx');
+var LandingFBLogin = require('../components/LandingPage/LandingFBLogin.jsx');
 var Facebook = require('../components/Facebook.jsx');
 
 
