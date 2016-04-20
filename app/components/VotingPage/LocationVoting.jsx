@@ -1,4 +1,5 @@
 var React = require('react');
+var LocationOption = require('./LocationOption.jsx');
 
 var LocationVoting = React.createClass({
   handleInputChange: function (e) {
@@ -10,18 +11,13 @@ var LocationVoting = React.createClass({
     this.props.onSubmit();
   },
   render: function () {
+    var locationList = this.props.locations.map(function (contact) {
+      return <LocationOption name={contact.name} key={contact.id}/>
+    });
     return (
       <div>
         <div id="location-options" className="row">
-          <div className="large-12 large columns text-center">
-            <div className="location-option-wrapper">
-              <img src="//localhost:3000/img/tent3.jpg" />
-              <div className="location-overlay"></div>
-              <h3>Squamish</h3>
-              <h4>Votes: 5</h4>
-            </div>
-            <button className="location-vote-button button success">Vote for Squamish</button>
-          </div>
+          {locationList}
         </div>
         <div id="add-location" className="row">
           <div className="large-4 large-centered large columns text-center">

@@ -10,7 +10,12 @@ var VotingContainer = React.createClass({
   getInitialState: function () {
     return {
       addLocationInput: '',
-      locations: []
+      locations: [
+          {
+            name: "Squamish",
+            id: 0
+          }
+        ]
     }
   },
   handleDone: function (e) {
@@ -21,7 +26,11 @@ var VotingContainer = React.createClass({
   },
   handleNewLocationSubmit: function () {
     this.setState({
-      locations: this.state.locations.concat([this.state.addLocationInput])
+      locations: this.state.locations.concat(
+        [{
+          name: this.state.addLocationInput,
+          id: this.state.locations.length
+        }])
     });
   },
   handleLocationInputChange: function (input) {
@@ -39,7 +48,10 @@ var VotingContainer = React.createClass({
             <h3>Osama created the event Bear</h3>
           </div>
         </div>
-        <LocationVoting onSubmit={this.handleNewLocationSubmit} onChange={this.handleLocationInputChange}/>
+        <LocationVoting 
+          locations={this.state.locations}
+          onSubmit={this.handleNewLocationSubmit} 
+          onChange={this.handleLocationInputChange}/>
         <div id="date-options" className="row">
           <div className="large-4 large-centered large columns text-{this.props.dateRange.start} to center">
             <button className="date-option-button button success">April 28 to May 1</button>
