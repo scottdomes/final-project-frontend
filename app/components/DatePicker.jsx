@@ -27,6 +27,7 @@ const DatePicker = React.createClass({
       value: range,
       states: states,
     });
+    this.props.onNewSelection(range);
   },
 
   render() {

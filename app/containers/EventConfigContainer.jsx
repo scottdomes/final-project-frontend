@@ -10,7 +10,10 @@ var EventConfigContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
-  handleClick: function (e) {
+  handleNewDate: function (range) {
+    this.props.onNewDate(range);
+  },
+  handleDone: function (e) {
     e.stopPropagation();
     this.context.router.push({
       pathname: '/vote'
@@ -27,12 +30,12 @@ var EventConfigContainer = React.createClass({
           </div>
         </div>
         <DatePickerWrapper>
-          <DatePicker />
+          <DatePicker  onNewSelection={this.handleNewDate}/>
         </DatePickerWrapper>
         <VoteActivator />
         <div className="row" id="button-eventconfig-done">
           <div className="large-6 large-centered columns text-center">
-            <button className="button success wide" onClick={this.handleClick}>Done</button>
+            <button className="button success wide" onClick={this.handleDone}>Done</button>
           </div>
         </div>
       </div>
