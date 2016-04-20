@@ -2,7 +2,7 @@ var React = require('react');
 var LandingHeader = require('../components/LandingHeader.jsx');
 var LandingForm = require('../components/LandingForm.jsx');
 var LandingFBLogin = require('../components/LandingFBLogin.jsx');
-var loadFB = require('../components/loadFB.jsx');
+var Facebook = require('../components/Facebook.jsx');
 
 
 var LandingContainer = React.createClass({
@@ -15,12 +15,13 @@ var LandingContainer = React.createClass({
     }
   },
   componentDidMount: function () {
-    loadFB(document, 'script', 'facebook-jssdk');
+    Facebook.load(document, 'script', 'facebook-jssdk');
+    Facebook.initializeSDK();
   },
   handleLogin: function () {
     console.log("CLICK");
     FB.getLoginStatus(function(response) {
-      console.log("HEY");
+      console.log(response);
     });
   },
   handleNewInput: function(newInput) {
