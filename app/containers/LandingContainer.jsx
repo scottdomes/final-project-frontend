@@ -77,7 +77,7 @@ var LandingContainer = React.createClass({
   },
   handleSubmit: function() {
     this.context.router.push({
-      pathname: '/eventconfig',
+      pathname: '/addfriends',
       query: {
         locationInput: this.state.input
       }
