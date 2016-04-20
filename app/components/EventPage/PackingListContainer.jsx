@@ -2,7 +2,7 @@ var React = require('react');
 var transparentBg = require('../../styles/index.jsx').transparentBg;
 var PackingListItem = require('./PackinglistItems.jsx');
 var classNames = require('classnames');
-
+var AddMorePackingItemsForm = require('./AddMorePackingItemsForm.jsx');
 
 
 
@@ -37,27 +37,26 @@ var PackingListContainer = React.createClass({
       addMore: true
     });
   },
-  handleChangePackingItem: function (value){
-    console.log(event.target);
-    // this.setState({
-    //   newPackingItem: value
-    // })
+  handleNewPackingItemChange: function (value){
+    this.setState({
+      newPackingItem: value
+    })
+  },
+  handleEnterNewItem: function (value){
+    console.log(value);
+    var newItem = {label: value, packedBy: null}
+    var currentPackingList = this.state.packingList;
+    var newPackingList = currentPackingList.concat(newItem);
+    this.setState({
+      packingList: newPackingList
+    });
   },
   render: function () {
     const {packingList, newPackingItem, addMore} = this.state
 
-    // if (addMore){
-    //   console.log('nope');
-    //   // var addMoreButton = <div id="packing-list-add-more" onClick={this.handleAddMoreClick}> + Add More! ERROR IS HERE </div>
-    // } else {
-    //   console.log('yo');
-
-    // }
-    // console.log(addMore);
-
     var ItemList = this.state.packingList;
     var PackingItems = ItemList.map((item, index) => {
-      console.log(item);
+      // console.log(item);
       return <PackingListItem onClick={this.handleOnClick.bind(this, index)} key={index} item={item} />
     });
 
@@ -67,8 +66,10 @@ var PackingListContainer = React.createClass({
           <h2 id="packing-list-header">Packing List</h2>
         </div>
         {PackingItems}
-        {!addMore && <div id="packing-list-add-more" onClick={this.handleAddMoreClick}> + Add More! ERROR IS HERE </div>}
-        <input type="text" name="text" value={newPackingItem} id="packing-list-add-more" onChange={this.handleChangePackingItem}/>
+        <AddMorePackingItemsForm 
+          itemDescription={newPackingItem} 
+          onChange={this.handleNewPackingItemChange}
+          onKeyDown={this.handleEnterNewItem}/>
       </div>
     
     )
@@ -79,6 +80,8 @@ module.exports = PackingListContainer;
 
 
 
-// <PackinglistItems 
-//           packingList={packingList}
-//           onClick={this.handleOnClick} />
+
+
+
+//         {!!addMore && <div id="packing-list-add-more" onClick={this.handleAddMoreClick}> + Add More! ERROR IS HERE </div>}
+
