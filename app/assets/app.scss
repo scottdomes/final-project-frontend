@@ -177,6 +177,10 @@ body.page2 {
     border: 1px solid #3adb76;
   }
 
+  .DateRangePicker__Legend {
+    display: none;
+  }
+
   .DateRangePicker__LegendItemColor--selection {
     background-color: #3adb76;
   }

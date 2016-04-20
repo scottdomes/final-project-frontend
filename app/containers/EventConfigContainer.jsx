@@ -7,6 +7,15 @@ var BackButton = require('../components/BackButton.jsx');
 
 
 var EventConfigContainer = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
+  handleClick: function (e) {
+    e.stopPropagation();
+    this.context.router.push({
+      pathname: '/vote'
+    })
+  },
   render: function () {
     return (
       <div>
@@ -21,6 +30,11 @@ var EventConfigContainer = React.createClass({
           <DatePicker />
         </DatePickerWrapper>
         <VoteActivator />
+        <div className="row" id="button-eventconfig-done">
+          <div className="large-6 large-centered columns text-center">
+            <button className="button success wide" onClick={this.handleClick}>Done</button>
+          </div>
+        </div>
       </div>
     )
   }
