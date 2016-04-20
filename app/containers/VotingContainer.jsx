@@ -13,7 +13,8 @@ var VotingContainer = React.createClass({
       locations: [
           {
             name: "Squamish",
-            id: 0
+            id: 0,
+            votes: 0
           }
         ]
     }

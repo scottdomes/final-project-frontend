@@ -12,7 +12,10 @@ var LocationVoting = React.createClass({
   },
   render: function () {
     var locationList = this.props.locations.map(function (contact) {
-      return <LocationOption name={contact.name} key={contact.id}/>
+      return <LocationOption 
+        name={contact.name} 
+        key={contact.id} 
+        votes={contact.votes}/>
     });
     return (
       <div>
