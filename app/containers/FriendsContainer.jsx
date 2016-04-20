@@ -8,10 +8,7 @@ var FriendsContainer = React.createClass({
   handleClick: function (e) {
     e.stopPropagation();
     this.context.router.push({
-      pathname: '/eventconfig',
-      query: {
-        locationInput: this.props.params.location
-      }
+      pathname: '/eventconfig'
     })
   },
   render: function () {
