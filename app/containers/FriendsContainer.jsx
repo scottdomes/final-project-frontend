@@ -1,5 +1,6 @@
 var React = require('react');
 var ProgressIndicator = require('../components/ProgressIndicator.jsx');
+var BackButton = require('../components/BackButton.jsx');
 
 var FriendsContainer = React.createClass({
   contextTypes: {
@@ -14,6 +15,7 @@ var FriendsContainer = React.createClass({
   render: function () {
     return (
         <div>
+          <BackButton page={"addfriends"} />
           <ProgressIndicator page={"addfriends"}/>
           <div className="row" id="button-friends-done">
             <div className="large-6 large-centered columns text-center">
