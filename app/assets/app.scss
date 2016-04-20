@@ -70,7 +70,11 @@ body {
           max-width: 100%;
         }
       }
-      .outline-circle.completed {
+      
+    }
+
+    #progress-indicator[data-page="addfriends"] {
+      #location-circle, #friends-circle {
         background-color: #3adb76;
       }
     }

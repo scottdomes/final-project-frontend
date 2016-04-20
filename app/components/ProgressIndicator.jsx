@@ -3,9 +3,9 @@ var React = require('react');
 var ProgressIndicator = React.createClass({
   render: function () {
     return (
-      <div className="row" id="progress-indicator">
+      <div className="row" id="progress-indicator" data-page={this.props.page}>
         <div className="large-2 custom-offset large columns">
-          <div className="outline-circle completed">
+          <div id="location-circle" className="outline-circle">
             <img src="//localhost:3000/img/location.png" />
           </div>
         </div>
@@ -15,7 +15,7 @@ var ProgressIndicator = React.createClass({
         </div>
 
         <div className="large-2 large columns">
-          <div className="outline-circle completed">
+          <div id="friends-circle" className="outline-circle">
             <img src="//localhost:3000/img/three.png" />
           </div>
         </div>
@@ -24,7 +24,7 @@ var ProgressIndicator = React.createClass({
           <img src="//localhost:3000/img/arrows.png" className="arrow" />
         </div>
 
-        <div className="large-2 large columns">
+        <div id="vote-circle" className="large-2 large columns">
           <div className="outline-circle">
             <img src="//localhost:3000/img/interface.png" />
           </div>
@@ -35,7 +35,7 @@ var ProgressIndicator = React.createClass({
         </div>
 
         <div className="large-2 end large columns">
-          <div className="outline-circle">
+          <div id="list-circle" className="outline-circle">
             <img src="//localhost:3000/img/paper.png" />
           </div>
         </div>
