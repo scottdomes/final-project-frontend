@@ -24,7 +24,12 @@ var VotingContainer = React.createClass({
         </div>
         <div id="location-options" className="row">
           <div className="large-12 large columns text-center">
-            <img src="//localhost:3000/img/tent3.jpg" />
+            <div className="location-option-wrapper">
+              <img src="//localhost:3000/img/tent3.jpg" />
+              <div className="location-overlay"></div>
+              <h3>Squamish</h3>
+              <h4>Votes: 5</h4>
+            </div>
             <button className="location-vote-button button success">Vote for Squamish</button>
           </div>
         </div>
