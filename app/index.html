@@ -43,7 +43,6 @@
   // successful. 
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
-
     // query to api to get logged in user profile
     FB.api('/me?fields=email,name,gender', function(response) {
       console.log('Successful login for: ' + response.name);
@@ -62,6 +61,7 @@
   function logIn(){
     FB.login(function(response) {
       if (response.authResponse) {
+
        testAPI();
       } else {
        console.log('User cancelled login or did not fully authorize.');
@@ -71,7 +71,9 @@
 
   function logOut(){
     FB.logout(function(response) {
-     console.log(response);
+      console.log(response);
+      document.getElementById('status').innerHTML = "you are logged out!";
+      document.getElementById('friends').innerHTML = "";
     });
   }
 
