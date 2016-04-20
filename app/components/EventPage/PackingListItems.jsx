@@ -7,13 +7,13 @@ function PackingListItem(props) {
 
   return(
     <div>
-      <ul>
+      <ul id="packing-unordered-list">
       {packingList.map((item, index)=>{ 
 
         function handleOnClick(e) {
           onClick(e, item.label, index);
         }
-
+        
         return (
           <div 
             className={classNames({ 'item-packed': item.selected }, {"list-item": true})} 

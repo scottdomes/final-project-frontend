@@ -20,6 +20,16 @@ body {
     /*background-color: #FFFFFF;*/
   }
 
+  #packing-list-add-more {
+    background-color: #F9F9F9;
+    padding: 10px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+    border-bottom: 1px solid #eaeaea;
+  }
+
   #packing-list-header {
     background-color: #F9F9F9;
     padding: 10px 0;
@@ -28,7 +38,6 @@ body {
     font-size: 2em;
     margin: 0;
     border-bottom: 1px solid #eaeaea;
-
   }
 
   .list-item {
@@ -40,6 +49,10 @@ body {
     border-bottom: 1px solid #eaeaea;
     font-weight: bold;
     text-indent: 10%;
+  }
+
+  #packing-unordered-list {
+    margin-bottom: 0%;
   }
 
   .list-item.item-packed {
