@@ -8,6 +8,7 @@ var Main = require('../components/Main.jsx');
 var LandingContainer = require('../containers/LandingContainer.jsx');
 var FriendsContainer = require('../containers/FriendsContainer.jsx');
 var EventConfigContainer = require('../containers/EventConfigContainer.jsx');
+var EventDetailsContainer = require('../containers/EventPageContainers/EventDetailsContainer.jsx');
 
 var routes = (
   <Router history={hashHistory}>
@@ -15,6 +16,7 @@ var routes = (
       <IndexRoute component={LandingContainer}/>
       <Route path='friends' component={FriendsContainer}/>
       <Route path='eventconfig' component={EventConfigContainer}/>
+      <Route path='eventdetails' component={EventDetailsContainer} />
     </Route>
   </Router> 
 );

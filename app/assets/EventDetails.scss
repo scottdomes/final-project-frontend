@@ -1,0 +1,35 @@
+body {
+  background-color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0px -100px, center;
+
+  #body-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.3);
+    position: absolute;
+    top: 0;
+  }
+
+  #packing-list-container {
+    display: inline;
+    float: right;
+    margin-top: 20px;
+  }
+
+  #list-item {
+    background-color: white;
+    margin: 2px 2px;
+    padding: 10px 0;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+  }
+
+  #list-item.item-packed {
+    background-color: green;
+  }
+
+}
+
