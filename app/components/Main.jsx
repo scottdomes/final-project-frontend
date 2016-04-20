@@ -14,7 +14,10 @@ var Main = React.createClass({
   render: function () {
     var children = React.cloneElement(
             this.props.children, 
-            {onNewInput: this.handleNewInput}
+            {
+              onNewInput: this.handleNewInput,
+              locationInput: this.state.locationInput
+            }
         );
     return (
       <div id="body-overlay">
