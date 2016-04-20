@@ -5,9 +5,12 @@ var Route = ReactRouter.Route;
 var IndexRoute = ReactRouter.IndexRoute;
 var hashHistory = ReactRouter.hashHistory;
 var Main = require('../components/Main.jsx');
+var HelloWorld = require('../components/HelloWorld.jsx');
 var LandingContainer = require('../containers/LandingContainer.jsx');
 var FriendsContainer = require('../containers/FriendsContainer.jsx');
 var EventConfigContainer = require('../containers/EventConfigContainer.jsx');
+var VotingContainer = require('../containers/VotingContainer.jsx');
+
 
 var routes = (
   <Router history={hashHistory}>
@@ -15,6 +18,7 @@ var routes = (
       <IndexRoute component={LandingContainer}/>
       <Route path='addfriends' component={FriendsContainer}/>
       <Route path='eventconfig' component={EventConfigContainer}/>
+      <Route path='vote' component={VotingContainer}/>
     </Route>
   </Router> 
 );
