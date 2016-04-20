@@ -63,8 +63,11 @@ var LandingContainer = React.createClass({
     });
   },
   handleLogout: function () {
+    var thisComponent = this;
     FB.logout(function(response) {
-      console.log(response);
+      thisComponent.setState({
+        loggedin: false
+      })
     })
   },
   handleNewInput: function(newInput) {
@@ -84,8 +87,10 @@ var LandingContainer = React.createClass({
     return (
       <div>
         <LandingHeader />
-        <LandingFBLogin onLogin={this.handleLogin} />
-        <LandingForm onNewInput={this.handleNewInput} onSubmit={this.handleSubmit} />
+        { this.state.loggedin ? 
+          <LandingForm onNewInput={this.handleNewInput} onSubmit={this.handleSubmit} />
+          : <LandingFBLogin onLogin={this.handleLogin} />
+        }
         <button onClick={this.handleLogout}>Logout</button>
       </div>
     )
