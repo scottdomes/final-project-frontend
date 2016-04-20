@@ -15,7 +15,7 @@ var FriendsContainer = React.createClass({
   render: function () {
     return (
         <div>
-          <BackButton page={"addfriends"} />
+          <BackButton prevpage={"/"} />
           <ProgressIndicator page={"addfriends"}/>
           <div className="row" id="button-friends-done">
             <div className="large-6 large-centered columns text-center">
