@@ -14,6 +14,9 @@ var Facebook = {
       console.log('Successful login for: ' + response.name);
       console.log(response);
     });
+    FB.api("/me/friends?fields=email,name,gender,picture", function (response) {
+      console.log(response);
+    });
   }
 }
 

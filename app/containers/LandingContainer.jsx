@@ -12,6 +12,7 @@ var LandingContainer = React.createClass({
   getInitialState: function () {
     return {
       input: '',
+      loading: true,
       loggedin: false
     }
   },
@@ -33,10 +34,11 @@ var LandingContainer = React.createClass({
   statusChangeCallback: function (response)  {
     console.log('statusChangeCallback');
     console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
+
+    this.setState({
+      loading: false
+    });
+
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       Facebook.testAPI();
@@ -87,9 +89,10 @@ var LandingContainer = React.createClass({
     return (
       <div>
         <LandingHeader />
-        { this.state.loggedin ? 
+        { 
+          this.state.loading ? <p>loading</p> : (this.state.loggedin ? 
           <LandingForm onNewInput={this.handleNewInput} onSubmit={this.handleSubmit} />
-          : <LandingFBLogin onLogin={this.handleLogin} />
+          : <LandingFBLogin onLogin={this.handleLogin} />)
         }
         <button onClick={this.handleLogout}>Logout</button>
       </div>
