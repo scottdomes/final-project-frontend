@@ -6,10 +6,14 @@ var LandingFBLogin = React.createClass({
   },
   render: function () {
     return (
-      <button className="button success"
-        onClick={this.handleClick}>
-        Log in with FB
-      </button>
+      <div className="row" id="fb-login">
+        <div className="large-6 large-centered columns">
+          <button className="button success"
+            onClick={this.handleClick}>
+            Log in with FB
+          </button>
+        </div> 
+      </div>
     )
   }
 });
