@@ -21,11 +21,13 @@
     "url": "https://github.com/scottdomes/final-project/issues"
   },
   "dependencies": {
+    "classnames": "^2.2.3",
     "css-loader": "^0.9.1",
     "foundation-sites": "^6.2.1",
     "jquery": "^2.2.3",
     "jsuri": "^1.3.0",
     "jsx-loader": "^0.12.2",
+    "moment-range": "^2.2.0",
     "react": "~0.14.7",
     "react-daterange-picker": "^1.0.0",
     "react-dom": "~0.14.7",
@@ -37,7 +39,10 @@
   "devDependencies": {
     "html-webpack-plugin": "^2.16.0",
     "webpack": "^1.6.0",
-    "webpack-dev-server": "^1.8.0"
+    "webpack-dev-server": "^1.8.0",
+    "babel-core": "^6.4.5",
+    "babel-loader": "^6.2.1",
+    "babel-preset-react": "^6.3.13"
   },
   "homepage": "https://github.com/scottdomes/final-project#readme"
 }

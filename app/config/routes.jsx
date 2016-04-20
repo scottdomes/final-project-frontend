@@ -10,7 +10,7 @@ var LandingContainer = require('../containers/LandingContainer.jsx');
 var FriendsContainer = require('../containers/FriendsContainer.jsx');
 var EventConfigContainer = require('../containers/EventConfigContainer.jsx');
 var VotingContainer = require('../containers/VotingContainer.jsx');
-
+var EventDetailsContainer = require('../containers/EventPageContainers/EventDetailsContainer.jsx');
 
 var routes = (
   <Router history={hashHistory}>
@@ -19,6 +19,7 @@ var routes = (
       <Route path='addfriends' component={FriendsContainer}/>
       <Route path='eventconfig' component={EventConfigContainer}/>
       <Route path='vote' component={VotingContainer}/>
+      <Route path='eventdetails' component={EventDetailsContainer} />
     </Route>
   </Router> 
 );
