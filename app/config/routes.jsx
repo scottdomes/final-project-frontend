@@ -14,7 +14,7 @@ var routes = (
   <Router history={hashHistory}>
     <Route path='/' component={Main}>
       <IndexRoute component={LandingContainer}/>
-      <Route path='friends' component={FriendsContainer}/>
+      <Route path='addfriends' component={FriendsContainer}/>
       <Route path='eventconfig' component={EventConfigContainer}/>
       <Route path='eventdetails' component={EventDetailsContainer} />
     </Route>

@@ -37,7 +37,7 @@ body {
     }
 
     #enter-location {
-      margin-top: 30px;
+      margin-top: 5px;
       text-align: center;
 
       button {
@@ -49,11 +49,12 @@ body {
     #fb-login {
       margin-top: 30px;
       text-align: center;
-      button {
+    }
+
+    button.wide {
         width: 60%;
         border-radius: 5px;
       }
-    }
 
     #progress-indicator {
       margin-top: 20px;
@@ -70,7 +71,11 @@ body {
           max-width: 100%;
         }
       }
-      .outline-circle.completed {
+      
+    }
+
+    #progress-indicator[data-page="addfriends"], #progress-indicator[data-page="eventconfig"]  {
+      #location-circle, #friends-circle {
         background-color: #3adb76;
       }
     }
@@ -112,6 +117,38 @@ body {
         background-color: #3adb76;
       }
     }
+
+    #event-details-header {
+      color: white;
+      margin: 0;
+      margin-top: 20px;
+    }
+  }
+}
+
+#back-button-container {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 43px;
+  cursor: pointer;
+
+  .back-button.arrow {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+    margin-top: 0;
+    padding: 6px 0;
+    vertical-align: top;
+  }
+
+  h3 {
+    margin: 0;
+    display: inline-block;
+    color: white;
   }
 }
 
@@ -138,6 +175,10 @@ body.page2 {
   .DateRangePicker__CalendarSelection {
     background-color: #3adb76;
     border: 1px solid #3adb76;
+  }
+
+  .DateRangePicker__Legend {
+    display: none;
   }
 
   .DateRangePicker__LegendItemColor--selection {

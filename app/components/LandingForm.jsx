@@ -16,7 +16,7 @@ var LandingForm = React.createClass({
           <form id="form-enter-location">
             <input onChange={this.handleInputChange} type="text" placeholder="Where do you want to go?" />
             <button onClick={this.handleSubmit}
-              className="button success">
+              className="button success wide">
               Let's go!
             </button>
           </form>

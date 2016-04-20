@@ -1,7 +1,7 @@
-require('./assets/app.css');
+require('./assets/stylesheets/foundation.css');
 require('./assets/daterangepicker.css');
 require('./assets/EventDetails.css');
-
+require('./assets/app.css');
 
 var React = require('react');
 var ReactDOM = require('react-dom');
