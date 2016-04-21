@@ -2,6 +2,16 @@ var React = require('react');
 var VoteActivatorButton = require('../EventConfig/VoteActivatorButton.jsx');
 
 var VoteActivator = React.createClass({
+  getInititalState: function () {
+    return {
+      vote_on_date: false,
+      vote_on_location: false
+    }
+  },
+  handleButtonClick: function (selectionStatus, label) {
+    console.log(selectionStatus);
+    console.log(label);
+  },
   render: function () {
     return (
       <div>
@@ -13,11 +23,15 @@ var VoteActivator = React.createClass({
 
         <div id="vote-activator" className="row">
           <div className="large-6 large columns text-center">
-            <VoteActivatorButton label='Date' />
+            <VoteActivatorButton 
+              label='Date'
+              onClick={this.handleButtonClick} />
           </div>
 
           <div className="large-6 large columns text-center">
-            <VoteActivatorButton label='Location' />
+            <VoteActivatorButton 
+              label='Location'
+              onClick={this.handleButtonClick} />
           </div> 
         </div> 
       </div>

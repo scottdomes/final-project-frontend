@@ -9,8 +9,10 @@ var VoteActivatorButton = React.createClass({
   handleClick: function () {
     if (this.state.isSelected) {
       this.setState({isSelected: false});
+      this.props.onClick("unselected", this.props.label);
     } else {
       this.setState({isSelected: true});
+      this.props.onClick("selected", this.props.label);
     }
   },
   render: function () {
@@ -21,7 +23,11 @@ var VoteActivatorButton = React.createClass({
       style = {};
     }
     return (
-      <button className="button vote-activator" style={style} onClick={this.handleClick}>{this.props.label}</button>
+      <button className="button vote-activator" 
+        style={style} 
+        onClick={this.handleClick}>
+          {this.props.label}
+      </button>
     )
   }
 });
