@@ -64,11 +64,6 @@ var Main = React.createClass({
       });
     });
 
-    FB.api('/me/invitable_friends', function(response) {
-      console.log("Taggable friends: ");
-      console.log(response);
-    });
-
   },
   setName: function (name) {
     this.setState({

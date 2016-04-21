@@ -6,7 +6,15 @@ var FriendsContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
-  handleClick: function (e) {
+  handleInviteClick: function (e) {
+    e.stopPropagation();
+    FB.ui({
+      app_id: '238732356487269',
+      method: 'send',
+      link: "http://www.nytimes.com/interactive/2015/04/15/travel/europe-favorite-streets.html"
+    });
+  },
+  handleDoneClick: function (e) {
     e.stopPropagation();
     this.context.router.push({
       pathname: '/eventconfig'
@@ -19,7 +27,12 @@ var FriendsContainer = React.createClass({
           <ProgressIndicator page={"addfriends"}/>
           <div className="row" id="button-friends-done">
             <div className="large-6 large-centered columns text-center">
-              <button className="button success wide" onClick={this.handleClick}>Done</button>
+              <button className="button success wide" onClick={this.handleInviteClick}>Invite Friends</button>
+            </div>
+          </div>
+          <div className="row" id="button-friends-done">
+            <div className="large-6 large-centered columns text-center">
+              <button className="button success wide" onClick={this.handleDoneClick}>Done</button>
             </div>
           </div>
         </div>
