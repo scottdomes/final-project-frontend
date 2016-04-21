@@ -14,6 +14,8 @@ body {
 
     #loggedin-indicator {
       color: white;
+      margin: 0;
+      position: absolute;
     }
 
     #front-page-heading {
@@ -61,7 +63,6 @@ body {
       }
 
     #progress-indicator {
-      margin-top: 20px;
       width: 60%;
 
       .outline-circle {
@@ -168,6 +169,19 @@ body {
         }
       }  
     }
+  }
+}
+
+#process-container {
+  width: 95%;
+  background-color: #e6e6e6;
+  margin: 0 auto;
+
+  #progress-indicator-wrapper {
+    padding: 20px;
+    background-color: black;
+    background-image: url('http://images.summitpost.org/original/771025.jpg');
+    background-size: cover;
   }
 }
 
