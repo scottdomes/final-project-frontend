@@ -1,10 +1,7 @@
 var React = require('react');
-var ProgressIndicator = require('../components/ProgressIndicator.jsx');
 var DatePickerWrapper = require('../components/DatePicker/DatePickerWrapper.jsx');
 var DatePicker = require('../components/DatePicker/DatePicker.jsx');
 var VoteActivator = require('../components/EventConfig/VoteActivator.jsx');
-var BackButton = require('../components/BackButton.jsx');
-
 
 var EventConfigContainer = React.createClass({
   contextTypes: {
@@ -29,7 +26,6 @@ var EventConfigContainer = React.createClass({
   render: function () {
     return (
       <div>
-        <BackButton prevpage={"/"}/>
         <div className="row">
           <div className="large-6 large-centered large columns text-center">
             <h4 id="event-details-header">Details for your trip to {this.props.locationInput}</h4>

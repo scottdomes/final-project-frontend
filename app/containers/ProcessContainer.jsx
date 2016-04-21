@@ -1,7 +1,24 @@
 var React = require('react');
 var ProgressIndicator = require('../components/ProgressIndicator.jsx');
+var BackButton = require('../components/BackButton.jsx');
 
 var ProcessContainer = React.createClass({
+  getInitialState: function () {
+    return {
+      current_page: 1,
+      pages: ['/', 'event/eventconfig', 'event/addfriends', 'event/vote']
+    }
+  },
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
+  handleBackButtonClick: function () {
+    var pageNumber = this.state.current_page - 1
+    var page = this.state.pages[page];
+    this.context.router.push({
+      pathname: page
+    });
+  },
   handleNewInput: function (input) {
     this.props.onNewInput(input)
   },
@@ -39,6 +56,7 @@ var ProcessContainer = React.createClass({
     return (
       <div>
         <ProgressIndicator page={"eventconfig"}/>
+        <BackButton onClick={this.handleBackButtonClick} prevpage={"/addfriends"}/>
         {children}
       </div>
     )

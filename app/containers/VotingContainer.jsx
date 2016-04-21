@@ -1,6 +1,4 @@
 var React = require('react');
-var ProgressIndicator = require('../components/ProgressIndicator.jsx');
-var BackButton = require('../components/BackButton.jsx');
 var LocationVoting = require('../components/VotingPage/LocationVoting.jsx');
 
 var VotingContainer = React.createClass({
@@ -42,7 +40,6 @@ var VotingContainer = React.createClass({
   render: function () {
     return (
       <div>
-        <BackButton prevpage={"/addfriends"}/>
         <div id="voting-page-heading" className="row">
           <div className="large-12 large columns text-center">
             <h3>Osama created the event Bear</h3>
