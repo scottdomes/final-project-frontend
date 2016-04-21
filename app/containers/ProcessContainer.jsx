@@ -55,8 +55,8 @@ var ProcessContainer = React.createClass({
         );
     return (
       <div>
-        <ProgressIndicator page={"eventconfig"}/>
-        <BackButton onClick={this.handleBackButtonClick} prevpage={"/addfriends"}/>
+        <ProgressIndicator page={this.state.pages[this.state.current_page]}/>
+        <BackButton onClick={this.handleBackButtonClick} />
         {children}
       </div>
     )

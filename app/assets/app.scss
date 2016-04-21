@@ -78,13 +78,13 @@ body {
       
     }
 
-    #progress-indicator[data-page="addfriends"]  {
+    #progress-indicator[data-page="event/addfriends"], #progress-indicator[data-page="event/eventconfig"] {
       #location-circle {
         background-color: #3adb76;
       }
     }
 
-    #progress-indicator[data-page="vote"], #progress-indicator[data-page="eventconfig"]  {
+    #progress-indicator[data-page="event/vote"]  {
       #location-circle, #friends-circle {
         background-color: #3adb76;
       }
