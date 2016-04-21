@@ -6,6 +6,7 @@ var Main = React.createClass({
     return { 
       loggedin: false,
       user_name: '',
+      user_id: 0,
       locationInput: '',
       dateRange: {},
       vote_on_date: false,
@@ -15,6 +16,11 @@ var Main = React.createClass({
   setName: function (name) {
     this.setState({
       user_name: name
+    });
+  },
+  setUserID: function (id) {
+    this.setState({
+      user_id: id
     });
   },
   handleLogin: function () {
@@ -60,23 +66,25 @@ var Main = React.createClass({
       name: this.state.locationInput,
       dateRange: this.state.dateRange,
       vote_on_location: this.state.vote_on_location,
-      vote_on_date: this.state.vote_on_date
+      vote_on_date: this.state.vote_on_date,
+      user_id: this.state.user_id
     }
     console.log(event);
-    // $.ajax({
-    //     url: "http://localhost:3000/api/events",
-    //     type: "POST",
-    //     data: event,
-    //     success: function (res) {
-    //       if (res.data.errors.length === 0) {
-    //         // this.context.router.push({
-    //         //   pathname: '/addfriends'
-    //         // })
-    //       } else {
-    //         displayError();
-    //       }
-    //     }
-    // });
+    $.ajax({
+        url: "http://localhost:3000/api/events",
+        type: "POST",
+        data: event,
+        success: function (res) {
+          if (res.data.errors.length === 0) {
+            console.log(res);
+            // this.context.router.push({
+            //   pathname: '/addfriends'
+            // })
+          } else {
+            console.log(res);
+          }
+        }
+    });
 
   },
   render: function () {
