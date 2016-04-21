@@ -6,9 +6,7 @@ var BackButton = React.createClass({
   },
   handleClick: function (e) {
     e.stopPropagation();
-    this.context.router.push({
-      pathname: this.props.prevpage
-    });
+    this.props.onClick();
   },
   render: function () {
     return (

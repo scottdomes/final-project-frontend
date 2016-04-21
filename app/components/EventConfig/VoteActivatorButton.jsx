@@ -18,7 +18,7 @@ var VoteActivatorButton = React.createClass({
   render: function () {
     var style;
     if (this.state.isSelected) {
-      style = { 'backgroundColor': '#3adb76'}
+      style = { 'backgroundColor': '#3adb76', 'color': 'white'}
     } else {
       style = {};
     }

@@ -19,7 +19,7 @@ var LandingContainer = React.createClass({
   },
   handleSubmit: function() {
     this.context.router.push({
-      pathname: '/eventconfig'
+      pathname: '/event/eventconfig'
     })
   },
   handleLogin: function () {
