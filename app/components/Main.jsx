@@ -3,12 +3,15 @@ var Facebook = require('../components/Facebook.jsx');
 var $ = require('jquery');
 
 var Main = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
   getInitialState: function () {
     return { 
       loggedin: false,
       user_name: '',
       user_id: 0,
-      locationInput: '',
+      locationInput: 'Squamish',
       dateRange: {},
       vote_on_date: false,
       vote_on_location: false
@@ -70,13 +73,14 @@ var Main = React.createClass({
       vote_on_date: this.state.vote_on_date,
       user_id: this.state.user_id
     }
+    var thisComponent = this;
     $.ajax({
         url: "http://localhost:3000/api/events",
         type: "POST",
         data: eventDetails,
         success: function (res) {
           console.log(res);
-          this.context.router.push({
+          thisComponent.context.router.push({
             pathname: 'event/addfriends'
           })
         },
