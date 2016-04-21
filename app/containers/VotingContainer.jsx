@@ -42,7 +42,7 @@ var VotingContainer = React.createClass({
   render: function () {
     return (
       <div>
-        <BackButton prevpage={"/eventconfig"}/>
+        <BackButton prevpage={"/addfriends"}/>
         <ProgressIndicator page={"vote"}/>
         <div id="voting-page-heading" className="row">
           <div className="large-12 large columns text-center">

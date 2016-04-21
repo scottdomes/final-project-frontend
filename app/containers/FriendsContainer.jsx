@@ -17,13 +17,13 @@ var FriendsContainer = React.createClass({
   handleDoneClick: function (e) {
     e.stopPropagation();
     this.context.router.push({
-      pathname: '/eventconfig'
+      pathname: '/vote'
     })
   },
   render: function () {
     return (
         <div>
-          <BackButton prevpage={"/"} />
+          <BackButton prevpage={"/eventconfig"} />
           <ProgressIndicator page={"addfriends"}/>
           <div className="row" id="button-friends-done">
             <div className="large-6 large-centered columns text-center">

@@ -16,13 +16,13 @@ var EventConfigContainer = React.createClass({
   handleDone: function (e) {
     e.stopPropagation();
     this.context.router.push({
-      pathname: '/vote'
+      pathname: '/addfriends'
     })
   },
   render: function () {
     return (
       <div>
-        <BackButton prevpage={"/addfriends"}/>
+        <BackButton prevpage={"/"}/>
         <ProgressIndicator page={"eventconfig"}/>
         <div className="row">
           <div className="large-6 large-centered large columns text-center">
