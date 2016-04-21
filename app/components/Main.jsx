@@ -1,5 +1,6 @@
 var React = require('react');
 var Facebook = require('../components/Facebook.jsx');
+var $ = require('jquery');
 
 var Main = React.createClass({
   getInitialState: function () {
@@ -62,27 +63,25 @@ var Main = React.createClass({
     }
   },
   handleSubmitEvent: function () {
-    var event = {
+    var eventDetails = {
       name: this.state.locationInput,
       dateRange: this.state.dateRange,
       vote_on_location: this.state.vote_on_location,
       vote_on_date: this.state.vote_on_date,
       user_id: this.state.user_id
     }
-    console.log(event);
     $.ajax({
         url: "http://localhost:3000/api/events",
         type: "POST",
-        data: event,
+        data: eventDetails,
         success: function (res) {
-          if (res.data.errors.length === 0) {
-            console.log(res);
-            // this.context.router.push({
-            //   pathname: '/addfriends'
-            // })
-          } else {
-            console.log(res);
-          }
+          console.log(res);
+          this.context.router.push({
+            pathname: 'event/addfriends'
+          })
+        },
+        error: function (res) {
+          console.log(res);
         }
     });
 
