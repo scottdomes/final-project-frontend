@@ -62,35 +62,6 @@ body {
         border-radius: 5px;
       }
 
-    #progress-indicator {
-      width: 60%;
-
-      .outline-circle {
-        padding: 15px;
-        border: 3px solid #3adb76;
-        border-radius: 50%;
-        max-width: 70px;
-        margin: 0 auto;
-
-        img {
-          max-width: 100%;
-        }
-      }
-      
-    }
-
-    #progress-indicator[data-page="event/addfriends"], #progress-indicator[data-page="event/eventconfig"] {
-      #location-circle {
-        background-color: #3adb76;
-      }
-    }
-
-    #progress-indicator[data-page="event/vote"]  {
-      #location-circle, #friends-circle {
-        background-color: #3adb76;
-      }
-    }
-
     .arrow {
       margin-top: 15px;
       width: 30px;
@@ -132,7 +103,7 @@ body {
     }
 
     #event-details-header {
-      color: white;
+      color: black;
       margin: 0;
       margin-top: 20px;
     }
@@ -175,9 +146,9 @@ body {
 }
 
 #process-container {
-  width: 95%;
+  width: 70%;
   height: 100%;
-  background-color: white;
+  background-color: #e6e6e6;
   margin: 0 auto;
 
   #progress-indicator-wrapper {
@@ -185,6 +156,38 @@ body {
     background-color: black;
     background-image: url('http://images.summitpost.org/original/771025.jpg');
     background-size: cover;
+
+     #progress-indicator {
+      width: 80%;
+      min-width: 680px;
+
+      .outline-circle {
+        padding: 15px;
+        border: 3px solid #3adb76;
+        border-radius: 50%;
+        max-width: 70px;
+        margin: 0 auto;
+        background-color: #e6e6e6;
+
+        img {
+          max-width: 100%;
+        }
+      }
+      
+    }
+
+    #progress-indicator[data-page="event/addfriends"], #progress-indicator[data-page="event/eventconfig"] {
+      #location-circle {
+        background-color: #3adb76;
+      }
+    }
+
+    #progress-indicator[data-page="event/vote"]  {
+      #location-circle, #friends-circle {
+        background-color: #3adb76;
+      }
+    }
+
   }
 }
 
