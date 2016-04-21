@@ -106,7 +106,7 @@ body {
     }
 
     #vote-activator-heading {
-      color: white;
+      color: black;
       margin-top: 5px;
     }
 
@@ -123,9 +123,11 @@ body {
         width: 100%;
         font-size: 1em;
         font-family: 'Montserrat', sans-serif;
+        color: black;
       }
       button.active {
         background-color: #3adb76;
+        color: white;
       }
     }
 
@@ -174,7 +176,8 @@ body {
 
 #process-container {
   width: 95%;
-  background-color: #e6e6e6;
+  height: 100%;
+  background-color: white;
   margin: 0 auto;
 
   #progress-indicator-wrapper {
@@ -228,7 +231,7 @@ body.page2 {
   }
 
   .DateRangePicker__MonthHeader span {
-    color: white;
+    color: black;
   }
 
   .DateRangePicker__CalendarSelection {
