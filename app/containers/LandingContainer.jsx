@@ -1,4 +1,5 @@
 var React = require('react');
+var $ = require('jquery');
 var LandingHeader = require('../components/LandingPage/LandingHeader.jsx');
 var LandingForm = require('../components/LandingPage/LandingForm.jsx');
 var LandingFBLogin = require('../components/LandingPage/LandingFBLogin.jsx');
@@ -12,7 +13,8 @@ var LandingContainer = React.createClass({
   getInitialState: function () {
     return {
       input: '',
-      loggedin: false
+      loggedin: false,
+      user_name: ''
     }
   },
   initializeFB_SDK: function () {
@@ -39,7 +41,7 @@ var LandingContainer = React.createClass({
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
-      Facebook.testAPI();
+      this.testAPI();
       this.setState({
         loggedin: true
       });
@@ -51,6 +53,27 @@ var LandingContainer = React.createClass({
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
     }
+  },
+  testAPI: function () {
+    var thisComponent = this;
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me?fields=email,name,gender', function(response) {
+      console.log('Successful login for: ' + response.name);
+      console.log(response.id);
+      $.ajax({
+        url: "http://localhost:3000/api/users",
+        type: "POST",
+        data: { fb_id: response.id },
+        success: function (res) {
+          thisComponent.setName(response.name);
+        }
+      });
+    });
+  },
+  setName: function (name) {
+    this.setState({
+      user_name: name
+    });
   },
   componentDidMount: function () {
     Facebook.load(document, 'script', 'facebook-jssdk');
@@ -83,7 +106,11 @@ var LandingContainer = React.createClass({
       <div>
         <LandingHeader />
         { this.state.loggedin ? 
-          <LandingForm onNewInput={this.handleNewInput} onSubmit={this.handleSubmit} />
+          <LandingForm 
+            onNewInput={this.handleNewInput} 
+            onSubmit={this.handleSubmit} 
+            userName={this.state.user_name}
+          />
           : <LandingFBLogin onLogin={this.handleLogin} />
         }
         <button onClick={this.handleLogout}>Logout</button>
