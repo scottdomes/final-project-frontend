@@ -55,6 +55,30 @@ var Main = React.createClass({
       this.setState({ vote_on_location: false });
     }
   },
+  handleSubmitEvent: function () {
+    var event = {
+      name: this.state.locationInput,
+      dateRange: this.state.dateRange,
+      vote_on_location: this.state.vote_on_location,
+      vote_on_date: this.state.vote_on_date
+    }
+    console.log(event);
+    // $.ajax({
+    //     url: "http://localhost:3000/api/events",
+    //     type: "POST",
+    //     data: event,
+    //     success: function (res) {
+    //       if (res.data.errors.length === 0) {
+    //         // this.context.router.push({
+    //         //   pathname: '/addfriends'
+    //         // })
+    //       } else {
+    //         displayError();
+    //       }
+    //     }
+      });
+
+  },
   render: function () {
     var children = React.cloneElement(
             this.props.children, 
@@ -67,7 +91,8 @@ var Main = React.createClass({
               userName: this.state.user_name,
               onLogin: this.handleLogin,
               onLogout: this.handleLogout,
-              onVoteActivatorChange: this.handleVoteActivatorChange
+              onVoteActivatorChange: this.handleVoteActivatorChange,
+              onSubmitEvent: this.handleSubmitEvent
             }
         );
     return (

@@ -21,9 +21,7 @@ var EventConfigContainer = React.createClass({
   },
   handleDone: function (e) {
     e.stopPropagation();
-    this.context.router.push({
-      pathname: '/addfriends'
-    })
+    this.props.onSubmitEvent();
   },
   handleVoteActivatorChange: function (selectionStatus, label) {
     this.props.onVoteActivatorChange(selectionStatus, label);
