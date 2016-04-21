@@ -12,6 +12,16 @@ body {
     top: 0;
   }
 
+  .user-profile-info {
+    display: block;    
+  }
+
+  .user-profile-image{
+    max-height: 50px;
+    max-width: 50px;
+    border-radius: 50%;
+  }
+
   #packing-list-container {
     display: inline;
     float: right;
