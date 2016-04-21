@@ -28,6 +28,7 @@ var LandingContainer = React.createClass({
 
       FB.getLoginStatus(function(response) {
           thisComponent.statusChangeCallback(response);
+
       });
     }
   },
@@ -41,7 +42,29 @@ var LandingContainer = React.createClass({
 
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
-      Facebook.testAPI();
+
+      var accessToken = response.authResponse.accessToken;
+      var userID = response.authResponse.userID;
+      console.log(accessToken);
+
+      // var APP_ID = 238732356487269;
+      // var APP_SECRET = f821de7d3077b607f84df531eaa36b42;
+    FB.api('/me?fields=email,name,gender', function(response) {
+      console.log('Successful login for: ' + response.name);
+      console.log(response);
+      var name = response.name;
+
+      FB.api("/me/friends?fields=email,name,gender,picture", function (response) {
+
+        var user_id = console.log(response.data[0].id);
+          FB.api(user_id + "/notifications?access_token=238732356487269|f821de7d3077b607f84df531eaa36b42" ,"post", {href: "http://localhost:3000", template:"hello world! by " + name + "!"}, function(response){
+            console.log(response);
+        });
+      });
+
+    });
+
+      // Facebook.testAPI();
       this.setState({
         loggedin: true
       });

@@ -1,3 +1,4 @@
+var request = require('superagent');
 
 var Facebook = {
   load: function (d, s, id) {
@@ -9,14 +10,19 @@ var Facebook = {
     fjs.parentNode.insertBefore(js, fjs);
   },
   testAPI: function () {
+    // var APP_ID = 238732356487269;
+    // var APP_SECRET = f821de7d3077b607f84df531eaa36b42;
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me?fields=email,name,gender', function(response) {
       console.log('Successful login for: ' + response.name);
       console.log(response);
     });
     FB.api("/me/friends?fields=email,name,gender,picture", function (response) {
-      console.log(response);
+      var user_id = console.log(response.data[0].id);
     });
+
+
+
   }
 }
 
