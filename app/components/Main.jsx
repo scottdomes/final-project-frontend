@@ -63,11 +63,31 @@ var Main = React.createClass({
         }
       });
     });
+
+    FB.api('/me/invitable_friends', function(response) {
+      console.log("Taggable friends: ");
+      console.log(response);
+    });
+
   },
   setName: function (name) {
     this.setState({
       user_name: name
     });
+  },
+  handleLogin: function () {
+    var thisComponent = this;
+    FB.login(function(response) {
+      thisComponent.statusChangeCallback(response);
+    }, {perms:'user_friends'});
+  },
+  handleLogout: function () {
+    var thisComponent = this;
+    FB.logout(function(response) {
+      thisComponent.setState({
+        loggedin: false
+      })
+    })
   },
   componentDidMount: function () {
     Facebook.load(document, 'script', 'facebook-jssdk');
@@ -97,7 +117,9 @@ var Main = React.createClass({
               locationInput: this.state.locationInput,
               dateRange: this.state.dateRange,
               loggedin: this.state.loggedin,
-              userName: this.state.user_name
+              userName: this.state.user_name,
+              onLogin: this.handleLogin,
+              onLogout: this.handleLogout
             }
         );
     return (

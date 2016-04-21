@@ -14,20 +14,6 @@ var LandingContainer = React.createClass({
       input: ''
     }
   },
-  handleLogin: function () {
-    var thisComponent = this;
-    FB.login(function(response) {
-      thisComponent.statusChangeCallback(response);
-    });
-  },
-  handleLogout: function () {
-    var thisComponent = this;
-    FB.logout(function(response) {
-      thisComponent.setState({
-        loggedin: false
-      })
-    })
-  },
   handleNewInput: function(newInput) {
     this.props.onNewInput(newInput);
   },
@@ -35,6 +21,12 @@ var LandingContainer = React.createClass({
     this.context.router.push({
       pathname: '/addfriends'
     })
+  },
+  handleLogin: function () {
+    this.props.onLogin();
+  },
+  handleLogout: function () {
+    this.props.onLogout();
   },
   render: function () {
     return (
