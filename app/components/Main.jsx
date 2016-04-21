@@ -7,7 +7,9 @@ var Main = React.createClass({
       loggedin: false,
       user_name: '',
       locationInput: '',
-      dateRange: {}
+      dateRange: {},
+      vote_on_date: false,
+      vote_on_location: false
     }
   },
   setName: function (name) {
@@ -40,6 +42,19 @@ var Main = React.createClass({
     });
     console.log(this.state.dateRange);
   },
+  handleVoteActivatorChange: function (selectionStatus, label) {
+    if (label === "Date" && selectionStatus === "selected"){
+      this.setState({ vote_on_date: true });
+    }
+    else if (label === "Date" && selectionStatus === "deselected") {
+      this.setState({ vote_on_date: false });
+    } else if (label === "Location" && selectionStatus === "selected"){
+      this.setState({ vote_on_location: true });
+    }
+    else if (label === "Location" && selectionStatus === "deselected") {
+      this.setState({ vote_on_location: false });
+    }
+  },
   render: function () {
     var children = React.cloneElement(
             this.props.children, 
@@ -51,7 +66,8 @@ var Main = React.createClass({
               loggedin: this.state.loggedin,
               userName: this.state.user_name,
               onLogin: this.handleLogin,
-              onLogout: this.handleLogout
+              onLogout: this.handleLogout,
+              onVoteActivatorChange: this.handleVoteActivatorChange
             }
         );
     return (

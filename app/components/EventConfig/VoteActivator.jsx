@@ -2,15 +2,8 @@ var React = require('react');
 var VoteActivatorButton = require('../EventConfig/VoteActivatorButton.jsx');
 
 var VoteActivator = React.createClass({
-  getInititalState: function () {
-    return {
-      vote_on_date: false,
-      vote_on_location: false
-    }
-  },
   handleButtonClick: function (selectionStatus, label) {
-    console.log(selectionStatus);
-    console.log(label);
+    this.props.onClick(selectionStatus, label);
   },
   render: function () {
     return (
