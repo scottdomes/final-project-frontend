@@ -76,7 +76,7 @@ var Main = React.createClass({
     //         displayError();
     //       }
     //     }
-      });
+    // });
 
   },
   render: function () {
