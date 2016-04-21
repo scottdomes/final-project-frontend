@@ -43,7 +43,6 @@ var VotingContainer = React.createClass({
     return (
       <div>
         <BackButton prevpage={"/addfriends"}/>
-        <ProgressIndicator page={"vote"}/>
         <div id="voting-page-heading" className="row">
           <div className="large-12 large columns text-center">
             <h3>Osama created the event Bear</h3>
