@@ -30,7 +30,6 @@ var EventConfigContainer = React.createClass({
     return (
       <div>
         <BackButton prevpage={"/"}/>
-        <ProgressIndicator page={"eventconfig"}/>
         <div className="row">
           <div className="large-6 large-centered large columns text-center">
             <h4 id="event-details-header">Details for your trip to {this.props.locationInput}</h4>
