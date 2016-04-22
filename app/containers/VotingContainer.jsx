@@ -51,7 +51,6 @@ var VotingContainer = React.createClass({
     });
   },
   handleNewDateSubmit: function (range) {
-    console.log(range);
     dateRanges.push({
       start_date: range.start_date,
       end_date: range.end_date,
@@ -93,6 +92,11 @@ var VotingContainer = React.createClass({
           onChange={this.handleLocationInputChange}
           onVote={this.handleLocationVote}
           votingAllowed={this.props.locationVotingAllowed}/>
+        <div className="row">
+          <div className="large-12 large columns text-center">
+            <h5>{ this.props.dateVotingAllowed ? "Potential Dates:" : "Date:" }</h5>
+          </div>
+        </div>
         <DateVoting
           dateRanges={dateRanges}
           onSubmit={this.handleNewDateSubmit}
