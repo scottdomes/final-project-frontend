@@ -125,6 +125,24 @@ var Main = React.createClass({
     //!!! Edit to provide Item info, user_id of who packing
     console.log('Main handleUserPacksItem')
   },
+  handleAddVote: function (target, type) {
+    // Type is a string, either "campsite" or "date"
+    var vote = {
+      user_id: this.state.user_id
+    };
+    var thisComponent = this;
+    $.ajax({
+        url: "http://localhost:3000/api/votes",
+        type: "POST",
+        data: vote,
+        success: function (res) {
+          console.log(res);
+        },
+        error: function (res) {
+          console.log(res);
+        }
+    });
+  },
   render: function () {
     var children = React.cloneElement(
             this.props.children, 
@@ -146,7 +164,8 @@ var Main = React.createClass({
               dateVotingAllowed: this.state.vote_on_date,
               locationVotingAllowed: this.state.vote_on_location,
               onEnterNewItem: this.handleEnterNewItem,
-              onUserPacksItem: this.handleUserPacksItem
+              onUserPacksItem: this.handleUserPacksItem,
+              onAddVote: this.handleAddVote
             }
         );
     return (

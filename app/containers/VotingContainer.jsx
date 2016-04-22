@@ -71,6 +71,7 @@ var VotingContainer = React.createClass({
     this.setState({
       locations: locations
     });
+    this.props.onAddVote(locations[key], "campsite");
   },
   handleDateVote: function (key) {
     dateRanges[key].votes += 1;
