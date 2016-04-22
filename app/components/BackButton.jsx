@@ -11,7 +11,7 @@ var BackButton = React.createClass({
   render: function () {
     return (
       <div id="back-button-container" onClick={this.handleClick}>
-        <img src="//localhost:3000/img/arrows.png" className="arrow back-button" />
+        <i className="fa fa-chevron-left" aria-hidden="true"></i>
         <h3>Back</h3>
       </div>
     )
