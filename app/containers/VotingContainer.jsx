@@ -78,6 +78,7 @@ var VotingContainer = React.createClass({
     this.setState({
       dateRanges: dateRanges
     });
+    this.props.onAddVote(dateRanges[key], "date");
   },
   render: function () {
     return (
