@@ -10,12 +10,18 @@ var LocationVoting = React.createClass({
     e.preventDefault();
     this.props.onSubmit();
   },
+  handleVote: function (key) {
+    this.props.onVote(key);
+  },
   render: function () {
-    var locationList = this.props.locations.map(function (contact) {
+    var thisComponent = this;
+    var locationList = this.props.locations.map(function (location) {
       return <LocationOption 
-        name={contact.name} 
-        key={contact.id} 
-        votes={contact.votes}/>
+        name={location.name} 
+        key={location.id}
+        id={location.id} 
+        votes={location.votes}
+        onVote={thisComponent.handleVote}/>
     });
     return (
       <div>

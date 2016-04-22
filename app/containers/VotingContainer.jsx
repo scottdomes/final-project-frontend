@@ -1,21 +1,26 @@
 var React = require('react');
 var LocationVoting = require('../components/VotingPage/LocationVoting.jsx');
+var locations = [];
 
 var VotingContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
   getInitialState: function () {
-    return {
-      addLocationInput: '',
-      locations: [
+    locations.push(
           {
             name: this.props.locationInput,
             id: 0,
             votes: 0
           }
-        ]
+        );
+    return {
+      addLocationInput: '',
+      locations: locations
     }
+  },
+  componentWillMount: function () {
+    
   },
   handleDone: function (e) {
     e.stopPropagation();
@@ -37,6 +42,12 @@ var VotingContainer = React.createClass({
       addLocationInput: input
     });
   },
+  handleVote: function (key) {
+    locations[key].votes += 1;
+    this.setState({
+      locations: locations
+    });
+  },
   render: function () {
     return (
       <div>
@@ -46,9 +57,10 @@ var VotingContainer = React.createClass({
           </div>
         </div>
         <LocationVoting 
-          locations={this.state.locations}
+          locations={locations}
           onSubmit={this.handleNewLocationSubmit} 
-          onChange={this.handleLocationInputChange}/>
+          onChange={this.handleLocationInputChange}
+          onVote={this.handleVote}/>
         <div id="date-options" className="row">
           <div className="large-4 large-centered large columns text-{this.props.dateRange.start} to center">
             <button className="date-option-button button success">April 28 to May 1</button>
