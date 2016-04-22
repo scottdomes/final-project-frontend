@@ -3,7 +3,7 @@ var React = require('react');
 var LocationOption = React.createClass({
   render: function () {
     return (
-      <div className="large-2 columns end">
+      <div className="large-4 columns end">
         <div className="location-option-wrapper card">
           <div className="location-image"></div>
           <div className="location-info card-section">
