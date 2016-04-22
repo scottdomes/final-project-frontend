@@ -119,7 +119,12 @@ var Main = React.createClass({
     })
   },
   handleEnterNewItem: function (){
-    console.log('we made it to the top');
+    //!!! Edit to provide Item info, name, quantity, event_id
+    console.log('Main handleEnterNewItem');
+  },
+  handleUserPacksItem: function (){
+    //!!! Edit to provide Item info, user_id of who packing
+    console.log('Main handleUserPacksItem')
   },
   render: function () {
     var children = React.cloneElement(
@@ -141,7 +146,8 @@ var Main = React.createClass({
               loadEvent: this.loadEvent,
               dateVotingAllowed: this.state.vote_on_date,
               locationVotingAllowed: this.state.vote_on_location,
-              onEnterNewItem: this.handleEnterNewItem
+              onEnterNewItem: this.handleEnterNewItem,
+              onUserPacksItem: this.handleUserPacksItem
             }
         );
     return (
