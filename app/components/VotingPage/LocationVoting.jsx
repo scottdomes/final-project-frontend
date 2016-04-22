@@ -15,6 +15,7 @@ var LocationVoting = React.createClass({
   },
   generateLocations: function () {
     var locationList = [];
+    var thisComponent = this;
     if (this.props.votingAllowed) {
       locationList = this.props.locations.map(function (location, index) {
         return <LocationOption 
@@ -22,7 +23,7 @@ var LocationVoting = React.createClass({
           key={index}
           id={location.id} 
           votes={location.votes}
-          onVote={this.handleVote}/>
+          onVote={thisComponent.handleVote}/>
       });
     } else {
       locationList = this.props.locations.map(function (location, index) {
