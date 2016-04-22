@@ -10,7 +10,7 @@ var VotingContainer = React.createClass({
   getInitialState: function () {
     locations.push(
           {
-            name: this.props.locationInput,
+            name: this.props.eventName,
             id: 0,
             votes: 0
           }

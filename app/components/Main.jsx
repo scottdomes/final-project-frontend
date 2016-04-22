@@ -87,7 +87,8 @@ var Main = React.createClass({
         data: eventDetails,
         success: function (res) {
           thisComponent.setState({
-            event_id: res.id
+            event_id: res.id,
+            eventName: eventDetails.name
           });
           thisComponent.context.router.push({
             pathname: 'event/addfriends'
