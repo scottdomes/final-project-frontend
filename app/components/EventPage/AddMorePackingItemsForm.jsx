@@ -7,7 +7,9 @@ var AddMorePackingItemsForm = React.createClass({
   },
   handleEnterNewItem (event) {
     if(event.keyCode == 13){
-      this.props.onKeyDown(event.target.value);        
+      this.props.onKeyDown(event.target.value);  
+      event.target.value = ''
+      event.target.placeholder = 'Add More'
     }
   },
   render: function(){
@@ -16,8 +18,7 @@ var AddMorePackingItemsForm = React.createClass({
         id='packing-list-add-more-form' 
         type="text" 
         name="text" 
-        value={this.props.itemDescription} 
-        id="packing-list-add-more" 
+        placeholder={this.props.itemDescription} 
         onChange={this.handleChange}
         onKeyDown={this.handleEnterNewItem}/>
       )

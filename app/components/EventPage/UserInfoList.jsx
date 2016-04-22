@@ -12,7 +12,7 @@ var UserInfoList = React.createClass({
   },
   render: function (){
     console.log('UserInfoList')
-    console.log(this.state.users);
+    // console.log(this.state.users);
 
 
     var records = [];
