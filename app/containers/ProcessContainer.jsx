@@ -57,7 +57,9 @@ var ProcessContainer = React.createClass({
       <div id="process-container">
         <ProgressIndicator page={this.state.pages[this.state.current_page]}/>
         <BackButton onClick={this.handleBackButtonClick} />
-        {children}
+        <div id="process-body-container">
+          {children}
+        </div>
       </div>
     )
   }

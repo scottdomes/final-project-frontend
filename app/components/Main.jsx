@@ -107,9 +107,11 @@ var Main = React.createClass({
             }
         );
     return (
-      <div id="body-overlay">
-        <p id="loggedin-indicator">Logged in as {this.state.user_name}</p>
-        {children}
+      <div id="background">
+        <div id="background-overlay">
+          <p id="loggedin-indicator">Logged in as {this.state.user_name}</p>
+          {children}
+        </div>
       </div>
     )
   }
