@@ -14,14 +14,18 @@
   #background-overlay {
     width: 100%;
     height: 100%;
-    background-color: white;
+    background-color: rgba(0,0,0,.3);
     position: absolute;
     top: 0;
 
     #loggedin-indicator {
       color: white;
-      margin: 0;
-      position: absolute;
+      float: right;
+      padding-right: 30px;
+      padding-top: 15px;
+      span:last-child{
+        font-weight: 600;
+      }
     }
 
     #front-page-heading {
@@ -116,16 +120,43 @@
 
     #location-options {
 
+      padding: 20px;
+      background-color: white;
+      border-radius: 3px;
+      
+      .location-vote-button{
+        margin-top: 15px;
+        border-radius: 3px;
+      }
+      
+      h3{
+        font-size: 19px;
+      }
+
+      h4{
+        font-size: 18px;
+      }
+
+      .columns{
+        margin-left: 20px;
+      }
+
       .location-option-wrapper {
-        width: 200px;
+        width: auto;
         height: 100%;
         display: block;
         margin: 0 auto;
         position :relative;
 
-        h3, h4, .location-overlay {
+        .location-info, .location-overlay {
           position: absolute;
           color: white;
+        }
+
+        .location-info{
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
         }
 
         .location-overlay {
@@ -133,14 +164,6 @@
           width: 100%;
           height: 100%;
           top: 0;
-        }
-
-        h3 {
-          top: 10px;
-        }
-
-        h4 {
-          top: 70px;
         }
 
         img {
@@ -209,25 +232,19 @@
 
 #back-button-container {
   position: absolute;
-  left: 0;
-  top: 50%;
+  left: 20px;
+  top: 35px;
   height: 43px;
   cursor: pointer;
 
-  .back-button.arrow {
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    filter: FlipH;
-    -ms-filter: "FlipH";
-    margin-top: 0;
-    padding: 6px 0;
-    vertical-align: top;
+  .fa-chevron-left{
+    padding-right: 8px;
+    color: white;
   }
 
   h3 {
     margin: 0;
+    font-size: 22px;
     display: inline-block;
     color: white;
   }
@@ -273,4 +290,19 @@ body.page2 {
   .DateRangePicker__LegendItemLabel {
     color: white;
   }
+}
+
+#voting-page-heading h3{
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+#add-location{
+  background-color: white;
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 3px;
 }

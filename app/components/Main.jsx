@@ -27,6 +27,11 @@ var Main = React.createClass({
       user_id: id
     });
   },
+  setLoginStatus: function(boolean){
+    this.setState({
+      loggedin: boolean
+    });
+  },
   handleLogin: function () {
     Facebook.login(this);
   },
@@ -109,7 +114,7 @@ var Main = React.createClass({
     return (
       <div id="background">
         <div id="background-overlay">
-          <p id="loggedin-indicator">Logged in as {this.state.user_name}</p>
+          { this.state.loggedin ? <p id="loggedin-indicator" className="right">Welcome back, {this.state.user_name}</p> : <p></p> }
           {children}
         </div>
       </div>
