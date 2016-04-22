@@ -7,8 +7,6 @@ var EventTitle = React.createClass({
       };
   },
   render: function (){
-    console.log('here')
-    console.log(this.state.eventInfo);
     return (
       <div>
         <h1>{this.state.eventInfo.title}</h1>

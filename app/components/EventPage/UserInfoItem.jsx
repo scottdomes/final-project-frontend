@@ -10,9 +10,6 @@ function UserInfoItem(props) {
     console.log('click');
 
   }
-
-  console.log('hurrr');
-  console.log(props);
   return(
     <div className={classNames({"user-profile-info": true})}
     onClick={handleOnClick}>

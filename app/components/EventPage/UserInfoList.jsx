@@ -8,12 +8,9 @@ var UserInfoList = React.createClass({
       };
   },
   handleOnClick: function (){
-    console.log('click mother fucker');
+    console.log('click');
   },
   render: function (){
-    console.log('here')
-    console.log(this.state.users);
-
     var userList = this.state.users;
     var users = userList.map((user, index) => {
       // console.log(item);
