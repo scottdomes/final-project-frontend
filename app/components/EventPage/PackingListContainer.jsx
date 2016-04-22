@@ -4,8 +4,6 @@ var PackingListItem = require('./PackingListItems.jsx');
 var classNames = require('classnames');
 var AddMorePackingItemsForm = require('./AddMorePackingItemsForm.jsx');
 
-
-
 var PackingListContainer = React.createClass({
   getInitialState() {
       return {
@@ -15,26 +13,13 @@ var PackingListContainer = React.createClass({
       }
   },
   handleOnClick: function (key, e, itemLabel){
-    // e.preventDefault();
-    // console.log(arguments);
-    // console.log('click');
-    // console.log(this.state);
     var currentState = this.state.packingList
     var currentItemState = this.state.packingList[key];
     //Change this to user id or user info of who is packing it
     currentItemState.packedBy = !currentItemState.packedBy; 
     currentState[key] = currentItemState;
-    // console.log(currentState[key]);
-    // console.log(currentState);
-    // console.log(currentState.packingList);
     this.setState({
       packingList: currentState
-    });
-  },
-  handleAddMoreClick: function (e) {
-    // console.log('click');
-    this.setState({
-      addMore: true
     });
   },
   handleNewPackingItemChange: function (value){
@@ -43,12 +28,21 @@ var PackingListContainer = React.createClass({
     })
   },
   handleEnterNewItem: function (value){
+
+    console.log('LOOK AT ME')
+    console.log(this.props)
+
     var newItem = {label: value, packedBy: null}
     var currentPackingList = this.state.packingList;
     var newPackingList = currentPackingList.concat(newItem);
+    //!!! remove this state
     this.setState({
       packingList: newPackingList
     });
+    //call props over here
+    this.props.onEnterNewItem(value);
+
+
   },
   render: function () {
     const {packingList, newPackingItem, addMore} = this.state
@@ -82,5 +76,4 @@ module.exports = PackingListContainer;
 
 
 
-//         {!!addMore && <div id="packing-list-add-more" onClick={this.handleAddMoreClick}> + Add More! ERROR IS HERE </div>}
 

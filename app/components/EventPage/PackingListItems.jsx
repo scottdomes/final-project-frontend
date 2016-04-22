@@ -3,8 +3,6 @@ var classNames = require('classnames');
 
 
 function PackingListItem(props) {
-  // const {packingList, onClick} = props;
-
   function handleOnClick(e){
     console.log('click');
     // debugger;
@@ -26,30 +24,3 @@ function PackingListItem(props) {
 };
 
 module.exports = PackingListItem;
-
-
-
-
-// function PackingListItem(props) {
-//   const {packingList, onClick} = props;
-
-//   return(
-//     <div>
-//       <ul id="packing-unordered-list">
-//       {packingList.map((item, index)=>{ 
-
-//         function handleOnClick(e) {
-//           onClick(e, item.label, index);
-//         }
-        
-//         return (
-//           <div 
-//             className={classNames({ 'item-packed': item.packedBy }, {"list-item": true})} 
-//             onClick={handleOnClick} 
-//             key={index}>{'+ ' + item.label}</div>
-//         ) 
-//       })}
-//       </ul>
-//     </div>
-//   )
-// };

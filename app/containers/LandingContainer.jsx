@@ -26,7 +26,6 @@ var LandingContainer = React.createClass({
     this.props.onLogin();
   },
   render: function () {
-    // debugger;
     return (
       <div>
         <LandingHeader />

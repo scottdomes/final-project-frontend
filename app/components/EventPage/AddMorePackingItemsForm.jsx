@@ -13,6 +13,8 @@ var AddMorePackingItemsForm = React.createClass({
     }
   },
   render: function(){
+    console.log('wtf')
+    console.log(this.props)
     return (
         <input 
         id='packing-list-add-more-form' 

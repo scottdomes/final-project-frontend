@@ -118,6 +118,9 @@ var Main = React.createClass({
       });
     })
   },
+  handleEnterNewItem: function (){
+    console.log('we made it to the top');
+  },
   render: function () {
     var children = React.cloneElement(
             this.props.children, 
@@ -137,7 +140,8 @@ var Main = React.createClass({
               onDoneFriends: this.handleDoneFriends,
               loadEvent: this.loadEvent,
               dateVotingAllowed: this.state.vote_on_date,
-              locationVotingAllowed: this.state.vote_on_location
+              locationVotingAllowed: this.state.vote_on_location,
+              onEnterNewItem: this.handleEnterNewItem
             }
         );
     return (
