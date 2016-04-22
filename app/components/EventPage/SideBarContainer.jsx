@@ -3,8 +3,8 @@ var React = require('react');
 var SideBarContainer = React.createClass({
   render: function (){
     return (
-      <div>
-       
+      <div id="side-bar-container">
+        hey
       </div>
     )
   }

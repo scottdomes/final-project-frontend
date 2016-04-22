@@ -8,8 +8,8 @@ var SideBarButton = React.createClass({
   },
   render: function (){
     return (
-      <div>
-        <img id="sidebar-button" src="//localhost:3000/img/signs-1.png" />
+      <div id="side-bar-button">
+        <img src="//localhost:3000/img/signs-1.png" />
       </div>
 
     )
