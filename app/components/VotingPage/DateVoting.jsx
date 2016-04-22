@@ -6,7 +6,9 @@ var DatePicker = require('../DatePicker/DatePicker.jsx');
 var DateVoting = React.createClass({
   getInitialState: function () {
     return {
-      dateSelection: {}
+      dateSelection: {},
+      displayAddDateButton: true,
+      displayCalendar: false
     }
   },
   handleSubmit: function (e) {
@@ -56,6 +58,8 @@ var DateVoting = React.createClass({
   render: function () {
     var dateRangeList = this.generateDateRanges();
     var hiddenIfDateVotingDisallowed = this.props.dateVotingAllowed ? {} : {"display": "none"};
+    var displayCalendar = this.state.displayCalendar ? {"display": "block"} : {"display": "none"};
+    var displayAddDateButton = this.state.displayAddDateButton ? {"display": "inline-block"} : {"display": "none"};
     return (
       <div>
         <div id="date-options" className="row">
@@ -63,12 +67,20 @@ var DateVoting = React.createClass({
         </div>
         <div id="add-date" className="row">
           <div className="large-10 large-centered large columns text-center">
-            <DatePicker  onNewSelection={this.handleNewDate}/>
             <button 
-              className="button success"
-              onClick={this.handleNewDateSubmission}>
-                Add
+              className="button success expand-calendar wide"
+              style={displayAddDateButton}>
+                Add Date
             </button>
+            <div style={displayCalendar}>
+              <DatePicker  
+                onNewSelection={this.handleNewDate}/>
+              <button 
+                className="button success"
+                onClick={this.handleNewDateSubmission}>
+                  Add
+              </button>
+            </div>
           </div>
         </div>
       </div>
