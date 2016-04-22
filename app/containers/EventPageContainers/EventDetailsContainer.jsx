@@ -3,7 +3,6 @@ var PackingListContainer = require('../../components/EventPage/PackingListContai
 var EventInfoContainer = require('../../components/EventPage/EventInfoContainer.jsx');
 var UserInfoList = require('../../components/EventPage/UserInfoList.jsx');
 
-
 var EventDetails = React.createClass({
   render: function (){
     return (
