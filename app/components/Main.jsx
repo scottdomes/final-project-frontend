@@ -9,9 +9,9 @@ var Main = React.createClass({
   getInitialState: function () {
     return { 
       loggedin: false,
-      user_name: '',
+      user_name: 'Test User',
       user_id: 0,
-      locationInput: 'Squamish',
+      locationInput: 'Test Location',
       dateRange: {},
       vote_on_date: false,
       vote_on_location: false

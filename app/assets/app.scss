@@ -20,7 +20,9 @@
 
     #loggedin-indicator {
       color: white;
-      float: right;
+      position: absolute;
+      top: 0;
+      right: 0;
       padding-right: 30px;
       padding-top: 15px;
       span:last-child{
@@ -119,7 +121,6 @@
     }
 
     #location-options {
-
       padding: 20px;
       background-color: white;
       border-radius: 3px;
@@ -293,7 +294,7 @@ body.page2 {
 }
 
 #voting-page-heading h3{
-  color: white;
+  color: black;
   margin-top: 20px;
   margin-bottom: 20px;
 }
