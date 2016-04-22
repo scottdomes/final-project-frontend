@@ -25,22 +25,19 @@ var LandingContainer = React.createClass({
   handleLogin: function () {
     this.props.onLogin();
   },
-  handleLogout: function () {
-    this.props.onLogout();
-  },
   render: function () {
+    // debugger;
     return (
       <div>
         <LandingHeader />
-        { this.props.loggedin ? 
+        { this.props.loading ? <p></p> : (this.props.loggedin ? 
           <LandingForm 
             onNewInput={this.handleNewInput} 
             onSubmit={this.handleSubmit} 
             userName={this.props.userName}
           />
           : <LandingFBLogin onLogin={this.handleLogin} />
-        }
-        <button onClick={this.handleLogout}>Logout</button>
+        )}
       </div>
     )
   }

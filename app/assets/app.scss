@@ -20,11 +20,9 @@
 
     #loggedin-indicator {
       color: white;
-      position: absolute;
-      top: 0;
-      right: 0;
       padding-right: 30px;
       padding-top: 15px;
+      float: left;
       span:last-child{
         font-weight: 600;
       }
@@ -315,4 +313,14 @@ body.page2 {
   padding-top: 20px;
   padding-bottom: 20px;
   border-radius: 3px;
+}
+
+.loggedin-container{
+  float: right;
+  button{
+    margin-right: 23px;
+    margin-top: 13px;
+    border-radius: 3px;
+    border: 0.5px solid white;
+  }
 }

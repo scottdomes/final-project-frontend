@@ -27,6 +27,7 @@ var Facebook = {
   },
 
   statusChangeCallback: function (response, component)  {
+    component.setState({loading: false});
     console.log('statusChangeCallback');
     console.log(response);
     if (response.status === 'connected') {

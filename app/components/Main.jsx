@@ -7,7 +7,8 @@ var Main = React.createClass({
     router: React.PropTypes.object.isRequired
   },
   getInitialState: function () {
-    return { 
+    return {
+      loading: true,
       loggedin: false,
       user_name: 'Test User',
       user_id: 0,
@@ -101,6 +102,7 @@ var Main = React.createClass({
             {
               onNewInput: this.handleNewInput,
               onNewDate: this.handleNewDate,
+              loading: this.state.loading,
               locationInput: this.state.locationInput,
               dateRange: this.state.dateRange,
               loggedin: this.state.loggedin,
@@ -114,7 +116,9 @@ var Main = React.createClass({
     return (
       <div id="background">
         <div id="background-overlay">
-          { this.state.loggedin ? <p id="loggedin-indicator" className="right">Welcome back, {this.state.user_name}</p> : <p></p> }
+          { this.state.loggedin ? 
+          <div className="loggedin-container"><p id="loggedin-indicator" className="right">Welcome back, {this.state.user_name}</p>
+          <button className="button tiny secondary" onClick={this.handleLogout}>Logout</button></div> : <span></span> }
           {children}
         </div>
       </div>
