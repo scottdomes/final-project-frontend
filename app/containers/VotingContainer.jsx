@@ -1,6 +1,7 @@
 var React = require('react');
 var LocationVoting = require('../components/VotingPage/LocationVoting.jsx');
 var locations = [];
+var $ = require('jquery');
 
 var VotingContainer = React.createClass({
   contextTypes: {
@@ -16,11 +17,15 @@ var VotingContainer = React.createClass({
         );
     return {
       addLocationInput: '',
-      locations: locations
+      locations: locations,
+      name: ''
     }
   },
   componentWillMount: function () {
-    
+    if (this.props.eventName === '') {
+      console.log("Calling load event in votingContainer");
+      this.props.loadEvent();
+    }
   },
   handleDone: function (e) {
     e.stopPropagation();
@@ -54,7 +59,7 @@ var VotingContainer = React.createClass({
       <div>
         <div id="voting-page-heading" className="row">
           <div className="large-12 large columns text-center">
-            <h3>{this.props.userName} created the event {this.props.locationInput}</h3>
+            <h3>{this.props.userName} created the event {this.props.eventName}</h3>
           </div>
         </div>
         <LocationVoting 

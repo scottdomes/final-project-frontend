@@ -12,6 +12,7 @@ var Main = React.createClass({
       user_name: 'Test User',
       user_id: 0,
       locationInput: 'Test Location',
+      eventName: '',
       dateRange: {},
       vote_on_date: false,
       vote_on_location: false,
@@ -104,6 +105,15 @@ var Main = React.createClass({
       pathname: path
     })
   },
+  loadEvent: function () {
+    var thisComponent = this;
+    var path = 'http://localhost:3000/api/events/' + this.props.params.id;
+    $.getJSON(path, function (data) {
+      thisComponent.setState({
+        eventName: data.name
+      });
+    })
+  },
   render: function () {
     var children = React.cloneElement(
             this.props.children, 
@@ -111,6 +121,7 @@ var Main = React.createClass({
               onNewInput: this.handleNewInput,
               onNewDate: this.handleNewDate,
               locationInput: this.state.locationInput,
+              eventName: this.state.eventName,
               dateRange: this.state.dateRange,
               loggedin: this.state.loggedin,
               userName: this.state.user_name,
@@ -118,7 +129,8 @@ var Main = React.createClass({
               onLogout: this.handleLogout,
               onVoteActivatorChange: this.handleVoteActivatorChange,
               onSubmitEvent: this.handleSubmitEvent,
-              onDoneFriends: this.handleDoneFriends
+              onDoneFriends: this.handleDoneFriends,
+              loadEvent: this.loadEvent
             }
         );
     return (

@@ -40,6 +40,9 @@ var ProcessContainer = React.createClass({
   handleDoneFriends: function () {
     this.props.onDoneFriends();
   },
+  callEventLoad: function () {
+    this.props.loadEvent();
+  },
   render: function () {
     var children = React.cloneElement(
             this.props.children, 
@@ -47,6 +50,7 @@ var ProcessContainer = React.createClass({
               onNewInput: this.handleNewInput,
               onNewDate: this.handleNewDate,
               locationInput: this.props.locationInput,
+              eventName: this.props.eventName,
               dateRange: this.props.dateRange,
               loggedin: this.props.loggedin,
               userName: this.props.userName,
@@ -54,7 +58,8 @@ var ProcessContainer = React.createClass({
               onLogout: this.handleLogout,
               onVoteActivatorChange: this.handleVoteActivatorChange,
               onSubmitEvent: this.handleSubmitEvent,
-              onDoneFriends: this.handleDoneFriends
+              onDoneFriends: this.handleDoneFriends,
+              loadEvent: this.callEventLoad
             }
         );
     return (
