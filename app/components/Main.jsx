@@ -14,7 +14,8 @@ var Main = React.createClass({
       locationInput: 'Test Location',
       dateRange: {},
       vote_on_date: false,
-      vote_on_location: false
+      vote_on_location: false,
+      event_id: 0
     }
   },
   setName: function (name) {
@@ -84,7 +85,9 @@ var Main = React.createClass({
         type: "POST",
         data: eventDetails,
         success: function (res) {
-          console.log(res);
+          thisComponent.setState({
+            event_id: res.id
+          });
           thisComponent.context.router.push({
             pathname: 'event/addfriends'
           })
@@ -94,6 +97,12 @@ var Main = React.createClass({
         }
     });
 
+  },
+  handleDoneFriends: function () {
+    var path = 'event/' + this.state.event_id + '/vote';
+    this.context.router.push({
+      pathname: path
+    })
   },
   render: function () {
     var children = React.cloneElement(
@@ -108,7 +117,8 @@ var Main = React.createClass({
               onLogin: this.handleLogin,
               onLogout: this.handleLogout,
               onVoteActivatorChange: this.handleVoteActivatorChange,
-              onSubmitEvent: this.handleSubmitEvent
+              onSubmitEvent: this.handleSubmitEvent,
+              onDoneFriends: this.handleDoneFriends
             }
         );
     return (

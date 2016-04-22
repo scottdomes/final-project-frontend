@@ -37,6 +37,9 @@ var ProcessContainer = React.createClass({
   handleSubmitEvent: function () {
     this.props.onSubmitEvent();
   },
+  handleDoneFriends: function () {
+    this.props.onDoneFriends();
+  },
   render: function () {
     var children = React.cloneElement(
             this.props.children, 
@@ -50,7 +53,8 @@ var ProcessContainer = React.createClass({
               onLogin: this.handleLogin,
               onLogout: this.handleLogout,
               onVoteActivatorChange: this.handleVoteActivatorChange,
-              onSubmitEvent: this.handleSubmitEvent
+              onSubmitEvent: this.handleSubmitEvent,
+              onDoneFriends: this.handleDoneFriends
             }
         );
     return (
