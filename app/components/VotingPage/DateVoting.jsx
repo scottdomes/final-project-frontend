@@ -61,10 +61,8 @@ var DateVoting = React.createClass({
           {dateRangeList}
         </div>
         <div id="add-date" className="row">
-          <div className="large-4 large-centered large columns text-center">
-            <DatePickerWrapper>
-              <DatePicker  onNewSelection={this.handleNewDate}/>
-            </DatePickerWrapper>
+          <div className="large-10 large-centered large columns text-center">
+            <DatePicker  onNewSelection={this.handleNewDate}/>
             <button 
               className="button success"
               onClick={this.handleNewDateSubmission}>
