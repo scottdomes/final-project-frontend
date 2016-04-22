@@ -51,9 +51,11 @@ var VotingContainer = React.createClass({
     });
   },
   handleNewDateSubmit: function (range) {
+    console.log(range);
     dateRanges.push({
       start_date: range.start_date,
       end_date: range.end_date,
+      id: this.state.locations.length,
       votes: 0
     });
     this.setState({

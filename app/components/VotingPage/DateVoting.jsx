@@ -22,8 +22,8 @@ var DateVoting = React.createClass({
     if (this.props.votingAllowed) {
       dateRangeList = this.props.dateRanges.map(function (range, index) {
         return <DateOption 
-          start={range.start_date} 
-          end={range.end_date}
+          start_date={range.start_date} 
+          end_date={range.end_date}
           key={index}
           id={range.id} 
           votes={range.votes}
