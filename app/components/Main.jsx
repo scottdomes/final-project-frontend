@@ -131,8 +131,15 @@ var Main = React.createClass({
       user_id: this.state.user_id
     };
     var thisComponent = this;
+    var url;
+    
+    if (type === "campsite") {
+      url = "http://localhost:3000/api/campsite_votes/";
+    } else {
+      url = "http://localhost:3000/api/date_votes/";
+    }
     $.ajax({
-        url: "http://localhost:3000/api/votes",
+        url: url,
         type: "POST",
         data: vote,
         success: function (res) {
