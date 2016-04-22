@@ -10,7 +10,7 @@ var VotingContainer = React.createClass({
       addLocationInput: '',
       locations: [
           {
-            name: "Squamish",
+            name: this.props.locationInput,
             id: 0,
             votes: 0
           }
