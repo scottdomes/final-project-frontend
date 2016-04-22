@@ -16,8 +16,8 @@ var VotingContainer = React.createClass({
       votes: 0
     });
     dateRanges.push({
-      start: this.props.dateRange.start,
-      end: this.props.dateRange.end
+      start_date: this.props.dateRange.start_date,
+      end_date: this.props.dateRange.end_date
     })
     return {
       addLocationInput: '',

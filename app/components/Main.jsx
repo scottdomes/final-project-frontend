@@ -56,7 +56,6 @@ var Main = React.createClass({
         end_date: range.end._d.toString()
       }
     });
-    console.log(this.state.dateRange);
   },
   handleVoteActivatorChange: function (selectionStatus, label) {
     if (label === "Date" && selectionStatus === "selected"){
