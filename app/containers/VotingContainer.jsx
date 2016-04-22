@@ -17,7 +17,7 @@ var VotingContainer = React.createClass({
     });
     dateRanges.push({
       start: this.props.dateRange.start,
-      end: this.props.dateRange.start
+      end: this.props.dateRange.end
     })
     return {
       addLocationInput: '',
@@ -75,8 +75,8 @@ var VotingContainer = React.createClass({
           votingAllowed={this.props.locationVotingAllowed}/>
         <DateVoting
           dateRanges={dateRanges} />
-        <h3>Start Date: {this.props.dateRange.start}</h3>
-        <h3>End Date: {this.props.dateRange.end}</h3>
+        <h3>Start Date: {this.props.dateRange.start_date}</h3>
+        <h3>End Date: {this.props.dateRange.end_date}</h3>
       </div>
     )
   }

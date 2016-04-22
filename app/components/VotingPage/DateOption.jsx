@@ -12,7 +12,7 @@ var DateOption = React.createClass({
       <div className={centeredEventIfOnly}>
         <div className="date-option-wrapper card">
           <div className="date-info card-section">
-            <h3>{this.props.start} to {this.props.end}</h3>
+            <h3>{this.props.start_date} to {this.props.end_date}</h3>
             <div className="vote-container" style={voteDisplayStyle}>
               <h4>Votes: {this.props.votes}</h4>
               <button 

@@ -50,11 +50,10 @@ var Main = React.createClass({
     });
   },
   handleNewDate: function(range) {
-    console.log(range);
     this.setState({
       dateRange: {
-        start: range.start._d.toString(),
-        end: range.end._d.toString()
+        start_date: range.start._d.toString(),
+        end_date: range.end._d.toString()
       }
     });
     console.log(this.state.dateRange);
@@ -112,6 +111,7 @@ var Main = React.createClass({
     $.getJSON(path, function (data) {
       thisComponent.setState({
         eventName: data.name,
+        dateRange: data.dateRange,
         vote_on_location: data.vote_on_location,
         vote_on_date: data.vote_on_date
       });
