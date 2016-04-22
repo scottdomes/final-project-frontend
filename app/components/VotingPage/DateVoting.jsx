@@ -9,10 +9,6 @@ var DateVoting = React.createClass({
       dateSelection: {}
     }
   },
-  handleInputChange: function (e) {
-    e.stopPropagation();
-    this.props.onChange(e.target.value);
-  },
   handleSubmit: function (e) {
     e.preventDefault();
     this.props.onSubmit();
@@ -52,6 +48,10 @@ var DateVoting = React.createClass({
       }
     });
   },
+  handleNewDateSubmission: function (e) {
+    e.stopPropagation();
+    this.props.onSubmit(this.state.dateSelection);
+  },
   render: function () {
     var dateRangeList = this.generateDateRanges();
     var hiddenIfDateVotingDisallowed = this.props.dateVotingAllowed ? {} : {"display": "none"};
@@ -62,13 +62,14 @@ var DateVoting = React.createClass({
         </div>
         <div id="add-date" className="row">
           <div className="large-4 large-centered large columns text-center">
-            <form onSubmit={this.handleSubmit}>
-              <input type="text" placeholder="Add date..." onChange={this.handleInputChange} />
-              <button className="button success">Add</button>
-              <DatePickerWrapper>
-                <DatePicker  onNewSelection={this.handleNewDate}/>
-              </DatePickerWrapper>
-            </form>
+            <DatePickerWrapper>
+              <DatePicker  onNewSelection={this.handleNewDate}/>
+            </DatePickerWrapper>
+            <button 
+              className="button success"
+              onClick={this.handleNewDateSubmission}>
+                Add
+            </button>
           </div>
         </div>
       </div>
