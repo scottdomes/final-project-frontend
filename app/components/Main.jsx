@@ -7,7 +7,8 @@ var Main = React.createClass({
     router: React.PropTypes.object.isRequired
   },
   getInitialState: function () {
-    return { 
+    return {
+      loading: true,
       loggedin: false,
       user_name: 'Test User',
       user_id: 0,
@@ -116,12 +117,21 @@ var Main = React.createClass({
       });
     })
   },
+  handleEnterNewItem: function (){
+    //!!! Edit to provide Item info, name, quantity, event_id
+    console.log('Main handleEnterNewItem');
+  },
+  handleUserPacksItem: function (){
+    //!!! Edit to provide Item info, user_id of who packing
+    console.log('Main handleUserPacksItem')
+  },
   render: function () {
     var children = React.cloneElement(
             this.props.children, 
             {
               onNewInput: this.handleNewInput,
               onNewDate: this.handleNewDate,
+              loading: this.state.loading,
               locationInput: this.state.locationInput,
               eventName: this.state.eventName,
               dateRange: this.state.dateRange,
@@ -134,13 +144,17 @@ var Main = React.createClass({
               onDoneFriends: this.handleDoneFriends,
               loadEvent: this.loadEvent,
               dateVotingAllowed: this.state.vote_on_date,
-              locationVotingAllowed: this.state.vote_on_location
+              locationVotingAllowed: this.state.vote_on_location,
+              onEnterNewItem: this.handleEnterNewItem,
+              onUserPacksItem: this.handleUserPacksItem
             }
         );
     return (
       <div id="background">
         <div id="background-overlay">
-          { this.state.loggedin ? <p id="loggedin-indicator" className="right">Welcome back, {this.state.user_name}</p> : <p></p> }
+          { this.state.loggedin ? 
+          <div className="loggedin-container"><p id="loggedin-indicator" className="right">Welcome back, {this.state.user_name}</p>
+          <button className="button tiny secondary" onClick={this.handleLogout}>Logout</button></div> : <span></span> }
           {children}
         </div>
       </div>

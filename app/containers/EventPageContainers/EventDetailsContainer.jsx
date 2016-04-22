@@ -4,6 +4,12 @@ var EventInfoContainer = require('../../components/EventPage/EventInfoContainer.
 var UserInfoList = require('../../components/EventPage/UserInfoList.jsx');
 
 var EventDetails = React.createClass({
+  handleEnterNewItem: function (value){
+    this.props.onEnterNewItem(value);
+  },
+  handleEnterNewItem: function (){
+    this.props.onUserPacksItem();
+  },
   render: function (){
     return (
       <div className='row'>
@@ -14,7 +20,9 @@ var EventDetails = React.createClass({
 
         </div>
         <div className='large-6 columns' id="event-right-column">
-          <PackingListContainer />
+          <PackingListContainer 
+            onUserPacksItem={this.handleEnterNewItem}
+            onEnterNewItem={this.handleEnterNewItem} />
         </div>
       </div>
     )

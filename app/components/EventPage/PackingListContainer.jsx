@@ -4,38 +4,26 @@ var PackingListItem = require('./PackingListItems.jsx');
 var classNames = require('classnames');
 var AddMorePackingItemsForm = require('./AddMorePackingItemsForm.jsx');
 
-
-
 var PackingListContainer = React.createClass({
   getInitialState() {
       return {
         packingList: [{label: 'buy milk', packedBy: null}, {label: 'Clean Room', packedBy: null}, {label: 'Do stuff', packedBy: null}],
-        newPackingItem: 'Add More',
-        addMore: false
+        newPackingItem: 'Add More'
       }
   },
-  handleOnClick: function (key, e, itemLabel){
-    // e.preventDefault();
-    // console.log(arguments);
-    // console.log('click');
-    // console.log(this.state);
+  handleUserPacksItem: function (key, e, itemLabel){
+    console.log(arguments)
     var currentState = this.state.packingList
     var currentItemState = this.state.packingList[key];
-    //Change this to user id or user info of who is packing it
+    //!!! Change this to user id or user info of who is packing it
     currentItemState.packedBy = !currentItemState.packedBy; 
     currentState[key] = currentItemState;
-    // console.log(currentState[key]);
-    // console.log(currentState);
-    // console.log(currentState.packingList);
+    //!!! Remove State
     this.setState({
       packingList: currentState
     });
-  },
-  handleAddMoreClick: function (e) {
-    // console.log('click');
-    this.setState({
-      addMore: true
-    });
+    this.props.onUserPacksItem();
+
   },
   handleNewPackingItemChange: function (value){
     this.setState({
@@ -46,17 +34,18 @@ var PackingListContainer = React.createClass({
     var newItem = {label: value, packedBy: null}
     var currentPackingList = this.state.packingList;
     var newPackingList = currentPackingList.concat(newItem);
+    //!!! remove this state
     this.setState({
       packingList: newPackingList
     });
+    this.props.onEnterNewItem(value);
   },
   render: function () {
-    const {packingList, newPackingItem, addMore} = this.state
+    const {packingList, newPackingItem} = this.state
 
     var ItemList = this.state.packingList;
     var PackingItems = ItemList.map((item, index) => {
-      // console.log(item);
-      return <PackingListItem onClick={this.handleOnClick.bind(this, index)} key={index} item={item} />
+      return <PackingListItem onUserPacksItem={this.handleUserPacksItem.bind(this, index)} key={index} item={item} />
     });
 
     return (
@@ -82,5 +71,4 @@ module.exports = PackingListContainer;
 
 
 
-//         {!!addMore && <div id="packing-list-add-more" onClick={this.handleAddMoreClick}> + Add More! ERROR IS HERE </div>}
 
