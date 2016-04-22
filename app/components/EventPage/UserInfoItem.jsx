@@ -16,9 +16,15 @@ function UserInfoItem(props) {
   return(
     <div className={classNames({"user-profile-info": true})}
     onClick={handleOnClick}>
-    {props.userInfo.profile_image || <img className='user-profile-image' src='https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/user-male-circle-blue-128.png' />}
-    {props.userInfo.name}
-    {props.userInfo.carpool && <a href="#" className="button">Join Carpool</a>}
+      <div className='user-profile-image'>
+        {props.userInfo.profile_image || <img className='user-profile-image' src='https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/user-male-circle-blue-128.png' />}
+      </div>
+      <div className='user-profile-name'>
+          {props.userInfo.name}
+      </div>
+      <div>
+          {props.userInfo.carpool && <a href="#" className="button tiny carpool-button"><b>Carpool</b></a>}
+      </div>
     <hr />
     </div>
   )

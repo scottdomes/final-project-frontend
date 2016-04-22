@@ -5,6 +5,7 @@ body {
   background-position: 0px -100px, center;
 
   #body-overlay {
+    background-color: white;
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,.3);
@@ -16,17 +17,32 @@ body {
     display: block;    
   }
 
+  .carpool-button {
+    border-radius: 10%;
+    float: right;
+    display: inline-block;
+  }
+
+  .user-profile-name {
+    display: inline-block;
+  }
+
   .user-profile-image{
     max-height: 50px;
     max-width: 50px;
     border-radius: 50%;
+    margin: 0;
+    display: inline;
+  }
+
+  .left-column-event {
+    background-color: #F9F9F9;
   }
 
   #packing-list-container {
     display: inline;
     float: right;
     margin-top: 20px;
-    width: 20%;
     /*background-color: #FFFFFF;*/
   }
 

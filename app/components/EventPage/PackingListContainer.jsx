@@ -61,7 +61,7 @@ var PackingListContainer = React.createClass({
     });
 
     return (
-      <div className='large-3 columns' id="packing-list-container">
+      <div id="packing-list-container">
         <div>
           <h2 id="packing-list-header">Packing List</h2>
         </div>

@@ -8,7 +8,7 @@ var EventDetails = React.createClass({
   render: function (){
     return (
       <div className='row'>
-        <div className='large-6 columns' >
+        <div className='large-6 columns left-column-event' >
           <EventInfoContainer />
           <hr />
           <UserInfoList />
