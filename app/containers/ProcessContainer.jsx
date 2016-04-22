@@ -59,7 +59,9 @@ var ProcessContainer = React.createClass({
               onVoteActivatorChange: this.handleVoteActivatorChange,
               onSubmitEvent: this.handleSubmitEvent,
               onDoneFriends: this.handleDoneFriends,
-              loadEvent: this.callEventLoad
+              loadEvent: this.callEventLoad,
+              dateVotingAllowed: this.props.dateVotingAllowed,
+              locationVotingAllowed: this.props.locationVotingAllowed
             }
         );
     return (

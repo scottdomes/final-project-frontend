@@ -111,7 +111,9 @@ var Main = React.createClass({
     var path = 'http://localhost:3000/api/events/' + this.props.params.id;
     $.getJSON(path, function (data) {
       thisComponent.setState({
-        eventName: data.name
+        eventName: data.name,
+        vote_on_location: data.vote_on_location,
+        vote_on_date: data.vote_on_date
       });
     })
   },
@@ -131,7 +133,9 @@ var Main = React.createClass({
               onVoteActivatorChange: this.handleVoteActivatorChange,
               onSubmitEvent: this.handleSubmitEvent,
               onDoneFriends: this.handleDoneFriends,
-              loadEvent: this.loadEvent
+              loadEvent: this.loadEvent,
+              dateVotingAllowed: this.state.vote_on_date,
+              locationVotingAllowed: this.state.vote_on_location
             }
         );
     return (

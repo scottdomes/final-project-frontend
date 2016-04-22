@@ -66,7 +66,8 @@ var VotingContainer = React.createClass({
           locations={locations}
           onSubmit={this.handleNewLocationSubmit} 
           onChange={this.handleLocationInputChange}
-          onVote={this.handleVote}/>
+          onVote={this.handleVote}
+          votingAllowed={this.props.locationVotingAllowed}/>
         <div id="date-options" className="row">
           <div className="large-4 large-centered large columns text-{this.props.dateRange.start} to center">
             <button className="date-option-button button success">April 28 to May 1</button>

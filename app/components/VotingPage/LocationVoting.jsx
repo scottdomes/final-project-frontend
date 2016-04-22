@@ -13,16 +13,30 @@ var LocationVoting = React.createClass({
   handleVote: function (key) {
     this.props.onVote(key);
   },
+  generateLocations: function () {
+    var locationList = [];
+    if (this.props.votingAllowed) {
+      locationList = this.props.locations.map(function (location, index) {
+        return <LocationOption 
+          name={location.name} 
+          key={index}
+          id={location.id} 
+          votes={location.votes}
+          onVote={this.handleVote}/>
+      });
+    } else {
+      locationList = this.props.locations.map(function (location, index) {
+        return <LocationOption 
+          name={location.name} 
+          key={index}
+          id={location.id} 
+          votingDisallowed={true}/>
+      });
+    }
+    return locationList;
+  },
   render: function () {
-    var thisComponent = this;
-    var locationList = this.props.locations.map(function (location, index) {
-      return <LocationOption 
-        name={location.name} 
-        key={index}
-        id={location.id} 
-        votes={location.votes}
-        onVote={thisComponent.handleVote}/>
-    });
+    var locationList = this.generateLocations();
     return (
       <div>
         <div id="location-options" className="row">
