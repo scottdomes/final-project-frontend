@@ -38,12 +38,13 @@ var LocationVoting = React.createClass({
   },
   render: function () {
     var locationList = this.generateLocations();
+    var hiddenIfLocationVotingDisallowed = this.props.locationVotingAllowed ? {} : {"display": "none"};
     return (
       <div>
         <div id="location-options" className="row">
           {locationList}
         </div>
-        <div id="add-location" className="row">
+        <div id="add-location" className="row" style={hiddenIfLocationVotingDisallowed}>
           <div className="large-4 large-centered large columns text-center">
             <form onSubmit={this.handleSubmit}>
               <input type="text" placeholder="Add location..." onChange={this.handleInputChange} />

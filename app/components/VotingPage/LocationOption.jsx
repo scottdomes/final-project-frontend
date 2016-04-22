@@ -7,8 +7,9 @@ var LocationOption = React.createClass({
   },
   render: function () {
     var voteDisplayStyle = this.props.votingDisallowed ? {'display': 'none'} : {'display': 'block'};
+    var centeredEventIfOnly = this.props.votingDisallowed ? "large-4 large-centered columns" : "large-4 columns end"; 
     return (
-      <div className="large-4 columns end">
+      <div className={centeredEventIfOnly}>
         <div className="location-option-wrapper card">
           <div className="location-image"></div>
           <div className="location-info card-section">
