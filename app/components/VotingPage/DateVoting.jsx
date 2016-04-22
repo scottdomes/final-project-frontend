@@ -54,6 +54,16 @@ var DateVoting = React.createClass({
   handleNewDateSubmission: function (e) {
     e.stopPropagation();
     this.props.onSubmit(this.state.dateSelection);
+    this.setState({
+      displayCalendar: false
+    })
+  },
+  handleDisplayCalendarClick: function (e) {
+    e.stopPropagation();
+    this.setState({
+      displayAddDateButton: false,
+      displayCalendar: true
+    })
   },
   render: function () {
     var dateRangeList = this.generateDateRanges();
@@ -69,7 +79,8 @@ var DateVoting = React.createClass({
           <div className="large-10 large-centered large columns text-center">
             <button 
               className="button success expand-calendar wide"
-              style={displayAddDateButton}>
+              style={displayAddDateButton}
+              onClick={this.handleDisplayCalendarClick}>
                 Add Date
             </button>
             <div style={displayCalendar}>
