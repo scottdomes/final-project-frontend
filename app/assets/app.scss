@@ -120,7 +120,7 @@
       margin-top: 20px;
     }
 
-    #location-options {
+    #location-options, #date-options {
       padding: 20px;
       background-color: white;
       border-radius: 3px;
@@ -138,7 +138,7 @@
         font-size: 18px;
       }
 
-      .location-option-wrapper {
+      .location-option-wrapper, .date-option-wrapper {
         width: 100%;
         height: 100%;
         display: block;

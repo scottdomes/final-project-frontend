@@ -110,7 +110,7 @@ var Main = React.createClass({
     $.getJSON(path, function (data) {
       thisComponent.setState({
         eventName: data.name,
-        dateRange: data.dateRange,
+        // dateRange: data.dateRange,
         vote_on_location: data.vote_on_location,
         vote_on_date: data.vote_on_date
       });

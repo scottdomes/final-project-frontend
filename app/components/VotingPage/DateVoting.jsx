@@ -26,6 +26,7 @@ var DateVoting = React.createClass({
           end={range.end_date}
           key={index}
           id={range.id} 
+          votes={range.votes}
           onVote={thisComponent.handleVote}/>
       });
     } else {
