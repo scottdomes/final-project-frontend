@@ -1,10 +1,17 @@
-body {
+#app {
+  height: 100%;
+}
+
+#background {
+  width: 100%;
+  height: 100%;
+  background-image: url('//localhost:3000/img/tent1.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   // This causes issues on smaller screens:
   background-position: 0px -100px, center;
 
-  #body-overlay {
+  #background-overlay {
     width: 100%;
     height: 100%;
     background-color: white;
@@ -13,6 +20,8 @@ body {
 
     #loggedin-indicator {
       color: white;
+      margin: 0;
+      position: absolute;
     }
 
     #front-page-heading {
@@ -59,36 +68,6 @@ body {
         border-radius: 5px;
       }
 
-    #progress-indicator {
-      margin-top: 20px;
-      width: 60%;
-
-      .outline-circle {
-        padding: 15px;
-        border: 3px solid #3adb76;
-        border-radius: 50%;
-        max-width: 70px;
-        margin: 0 auto;
-
-        img {
-          max-width: 100%;
-        }
-      }
-      
-    }
-
-    #progress-indicator[data-page="addfriends"]  {
-      #location-circle {
-        background-color: #3adb76;
-      }
-    }
-
-    #progress-indicator[data-page="vote"], #progress-indicator[data-page="eventconfig"]  {
-      #location-circle, #friends-circle {
-        background-color: #3adb76;
-      }
-    }
-
     .arrow {
       margin-top: 15px;
       width: 30px;
@@ -104,7 +83,7 @@ body {
     }
 
     #vote-activator-heading {
-      color: white;
+      color: black;
       margin-top: 5px;
     }
 
@@ -121,14 +100,16 @@ body {
         width: 100%;
         font-size: 1em;
         font-family: 'Montserrat', sans-serif;
+        color: black;
       }
       button.active {
         background-color: #3adb76;
+        color: white;
       }
     }
 
     #event-details-header {
-      color: white;
+      color: black;
       margin: 0;
       margin-top: 20px;
     }
@@ -167,6 +148,62 @@ body {
         }
       }  
     }
+  }
+}
+
+#process-container {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  margin: 0 auto;
+
+  #progress-indicator-wrapper {
+    padding-top: 20px;
+    padding-bottom: 120px;
+    background-color: black;
+    background-image: none;
+    background-image: url('http://localhost:3000/img/tent1.jpg');
+    background-size: cover;
+
+     #progress-indicator {
+      width: 80%;
+      min-width: 680px;
+
+      .outline-circle {
+        padding: 15px;
+        border: 3px solid #3adb76;
+        border-radius: 50%;
+        max-width: 70px;
+        margin: 0 auto;
+        background-color: #e6e6e6;
+
+        img {
+          max-width: 100%;
+        }
+      }
+      
+    }
+
+    #progress-indicator[data-page="event/addfriends"], #progress-indicator[data-page="event/eventconfig"] {
+      #location-circle {
+        background-color: #3adb76;
+      }
+    }
+
+    #progress-indicator[data-page="event/vote"]  {
+      #location-circle, #friends-circle {
+        background-color: #3adb76;
+      }
+    }
+  }
+
+  #process-body-container {
+    width: 80%;
+    margin: 0 auto;
+    background-color: white;
+    margin-top: -100px;
+    border: 1px solid #e5e5e5;
+    border-radius: 2px;
   }
 }
 
@@ -213,7 +250,7 @@ body.page2 {
   }
 
   .DateRangePicker__MonthHeader span {
-    color: white;
+    color: black;
   }
 
   .DateRangePicker__CalendarSelection {

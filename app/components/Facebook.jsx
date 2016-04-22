@@ -58,6 +58,7 @@ var Facebook = {
         data: { fb_id: response.id },
         success: function (res) {
           component.setName(response.name);
+          component.setUserID(res.id);
         }
       });
     });
