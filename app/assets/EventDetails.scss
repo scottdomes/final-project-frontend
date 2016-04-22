@@ -13,6 +13,20 @@ body {
     top: 0;
   }
 
+  #event-left-column {
+    margin-top: 50px;
+  }
+
+  #event-right-column {
+    margin-top: 50px;
+  }
+
+  #user-scroll-section{
+    max-height: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
   .user-profile-info {
     display: block;    
   }
@@ -40,18 +54,17 @@ body {
   }
 
   #packing-list-container {
-    display: inline;
     float: right;
-    margin-top: 20px;
+    width: 50%;
     /*background-color: #FFFFFF;*/
   }
 
-  #packing-list-add-more-form {
+  #packing-list-add-more-form{
     background-color: #F9F9F9;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    margin: 0;
     text-align: center;  
+    border: 1px none #cacaca;
   }
 
   #packing-list-header {

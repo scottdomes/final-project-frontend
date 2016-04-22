@@ -10,14 +10,14 @@ var PackingListContainer = React.createClass({
   getInitialState() {
       return {
         packingList: [{label: 'buy milk', packedBy: null}, {label: 'Clean Room', packedBy: null}, {label: 'Do stuff', packedBy: null}],
-        newPackingItem: 'Not Working',
+        newPackingItem: 'Add More',
         addMore: false
       }
   },
   handleOnClick: function (key, e, itemLabel){
     // e.preventDefault();
-    console.log(arguments);
-    console.log('click');
+    // console.log(arguments);
+    // console.log('click');
     // console.log(this.state);
     var currentState = this.state.packingList
     var currentItemState = this.state.packingList[key];
@@ -32,7 +32,7 @@ var PackingListContainer = React.createClass({
     });
   },
   handleAddMoreClick: function (e) {
-    console.log('click');
+    // console.log('click');
     this.setState({
       addMore: true
     });
@@ -43,7 +43,6 @@ var PackingListContainer = React.createClass({
     })
   },
   handleEnterNewItem: function (value){
-    console.log(value);
     var newItem = {label: value, packedBy: null}
     var currentPackingList = this.state.packingList;
     var newPackingList = currentPackingList.concat(newItem);

@@ -8,20 +8,25 @@ var UserInfoList = React.createClass({
       };
   },
   handleOnClick: function (){
-    console.log('click mother fucker');
+    console.log('User Info List click');
   },
   render: function (){
-    console.log('here')
-    console.log(this.state.users);
+    console.log('UserInfoList')
+    // console.log(this.state.users);
 
-    var userList = this.state.users;
+
+    var records = [];
+    for (var i = 0; i < 100; i++){
+      records.push({name: 'jordan hung lo', profile_image: null, carpool: true});
+    }
+
+    var userList = records; //this.state.users;
     var users = userList.map((user, index) => {
-      // console.log(item);
       return <UserInfoItem onClick={this.handleOnClick.bind(this, index)} key={index} userInfo={user} />
     });
 
     return (
-      <div>
+      <div id="user-scroll-section" style={{'overflowX': 'hidden', 'overflowY': 'auto'}}>
         {users}
       </div>
     )
