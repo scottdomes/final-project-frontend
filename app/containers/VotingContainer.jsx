@@ -29,12 +29,13 @@ var VotingContainer = React.createClass({
     })
   },
   handleNewLocationSubmit: function () {
-    this.setState({
-      locations: this.state.locations.concat(
-        [{
+    locations.push({
           name: this.state.addLocationInput,
-          id: this.state.locations.length
-        }])
+          id: this.state.locations.length,
+          votes: 0
+        });
+    this.setState({
+      locations: locations
     });
   },
   handleLocationInputChange: function (input) {
