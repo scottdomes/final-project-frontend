@@ -42,7 +42,7 @@ var VotingContainer = React.createClass({
       <div>
         <div id="voting-page-heading" className="row">
           <div className="large-12 large columns text-center">
-            <h3>Osama created the event Bear</h3>
+            <h3>{this.props.userName} created the event {this.props.locationInput}</h3>
           </div>
         </div>
         <LocationVoting 
