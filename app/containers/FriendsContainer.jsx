@@ -14,9 +14,7 @@ var FriendsContainer = React.createClass({
   },
   handleDoneClick: function (e) {
     e.stopPropagation();
-    this.context.router.push({
-      pathname: 'event/vote'
-    })
+    this.props.onDoneFriends();
   },
   render: function () {
     return (

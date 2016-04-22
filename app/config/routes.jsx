@@ -21,7 +21,7 @@ var routes = (
       <Route path='event' component={ProcessContainer}>
         <Route path='addfriends' component={FriendsContainer}/>
         <Route path='eventconfig' component={EventConfigContainer}/>
-        <Route path='vote' component={VotingContainer}/>
+        <Route path=':id/vote' component={VotingContainer}/>
       </Route>
       <Route path='eventdetails' component={EventDetailsContainer} />
     </Route>

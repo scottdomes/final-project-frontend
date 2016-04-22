@@ -13,9 +13,11 @@ var Main = React.createClass({
       user_name: 'Test User',
       user_id: 0,
       locationInput: 'Test Location',
+      eventName: '',
       dateRange: {},
       vote_on_date: false,
-      vote_on_location: false
+      vote_on_location: false,
+      event_id: 0
     }
   },
   setName: function (name) {
@@ -85,7 +87,10 @@ var Main = React.createClass({
         type: "POST",
         data: eventDetails,
         success: function (res) {
-          console.log(res);
+          thisComponent.setState({
+            event_id: res.id,
+            eventName: eventDetails.name
+          });
           thisComponent.context.router.push({
             pathname: 'event/addfriends'
           })
@@ -96,6 +101,23 @@ var Main = React.createClass({
     });
 
   },
+  handleDoneFriends: function () {
+    var path = 'event/' + this.state.event_id + '/vote';
+    this.context.router.push({
+      pathname: path
+    })
+  },
+  loadEvent: function () {
+    var thisComponent = this;
+    var path = 'http://localhost:3000/api/events/' + this.props.params.id;
+    $.getJSON(path, function (data) {
+      thisComponent.setState({
+        eventName: data.name,
+        vote_on_location: data.vote_on_location,
+        vote_on_date: data.vote_on_date
+      });
+    })
+  },
   render: function () {
     var children = React.cloneElement(
             this.props.children, 
@@ -104,13 +126,18 @@ var Main = React.createClass({
               onNewDate: this.handleNewDate,
               loading: this.state.loading,
               locationInput: this.state.locationInput,
+              eventName: this.state.eventName,
               dateRange: this.state.dateRange,
               loggedin: this.state.loggedin,
               userName: this.state.user_name,
               onLogin: this.handleLogin,
               onLogout: this.handleLogout,
               onVoteActivatorChange: this.handleVoteActivatorChange,
-              onSubmitEvent: this.handleSubmitEvent
+              onSubmitEvent: this.handleSubmitEvent,
+              onDoneFriends: this.handleDoneFriends,
+              loadEvent: this.loadEvent,
+              dateVotingAllowed: this.state.vote_on_date,
+              locationVotingAllowed: this.state.vote_on_location
             }
         );
     return (

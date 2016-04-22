@@ -1,6 +1,7 @@
 var React = require('react');
 var LocationVoting = require('../components/VotingPage/LocationVoting.jsx');
 var locations = [];
+var $ = require('jquery');
 
 var VotingContainer = React.createClass({
   contextTypes: {
@@ -9,18 +10,22 @@ var VotingContainer = React.createClass({
   getInitialState: function () {
     locations.push(
           {
-            name: this.props.locationInput,
+            name: this.props.eventName,
             id: 0,
             votes: 0
           }
         );
     return {
       addLocationInput: '',
-      locations: locations
+      locations: locations,
+      name: ''
     }
   },
   componentWillMount: function () {
-    
+    if (this.props.eventName === '') {
+      console.log("Calling load event in votingContainer");
+      this.props.loadEvent();
+    }
   },
   handleDone: function (e) {
     e.stopPropagation();
@@ -54,14 +59,15 @@ var VotingContainer = React.createClass({
       <div>
         <div id="voting-page-heading" className="row">
           <div className="large-12 large columns text-center">
-            <h3>{this.props.userName} created the event {this.props.locationInput}</h3>
+            <h3>{this.props.userName} created the event {this.props.eventName}</h3>
           </div>
         </div>
         <LocationVoting 
           locations={locations}
           onSubmit={this.handleNewLocationSubmit} 
           onChange={this.handleLocationInputChange}
-          onVote={this.handleVote}/>
+          onVote={this.handleVote}
+          votingAllowed={this.props.locationVotingAllowed}/>
         <div id="date-options" className="row">
           <div className="large-4 large-centered large columns text-{this.props.dateRange.start} to center">
             <button className="date-option-button button success">April 28 to May 1</button>
