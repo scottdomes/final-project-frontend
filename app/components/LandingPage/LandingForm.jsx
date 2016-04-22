@@ -19,7 +19,6 @@ var LandingForm = React.createClass({
               className="button success wide">
               Let's go!
             </button>
-            <p>Logged in as {this.props.userName}</p>
           </form>
         </div> 
       </div>
