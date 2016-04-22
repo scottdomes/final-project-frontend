@@ -52,8 +52,8 @@ var Main = React.createClass({
   handleNewDate: function(range) {
     this.setState({
       dateRange: {
-        start_date: range.start._d.toString(),
-        end_date: range.end._d.toString()
+        start_date: range.start.format('MMMM do YYYY'),
+        end_date: range.end.format('MMMM do YYYY')
       }
     });
   },
