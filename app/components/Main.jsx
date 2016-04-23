@@ -141,6 +141,7 @@ var Main = React.createClass({
         type: action,
         data: vote,
         success: function (res) {
+          console.log(res);
           thisComponent.setVoteID(res.id, category);
         },
         error: function (res) {

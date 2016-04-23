@@ -10,8 +10,8 @@ var LocationVoting = React.createClass({
     e.preventDefault();
     this.props.onSubmit();
   },
-  handleVote: function (key) {
-    this.props.onVote(key);
+  handleAddOrRemoveVote: function (optionID, action) {
+    this.props.onAddOrRemoveVote(optionID, action, "campsite");
   },
   generateLocations: function () {
     var locationList = [];
@@ -24,7 +24,7 @@ var LocationVoting = React.createClass({
           id={location.id} 
           votes={location.votes}
           hideVoteButton={thisComponent.props.hideVoteButton}
-          onVote={thisComponent.handleVote}/>
+          onAddOrRemoveVote={thisComponent.handleAddOrRemoveVote}/>
       });
     } else {
       locationList = this.props.locations.map(function (location, index) {

@@ -85,14 +85,14 @@ var VotingContainer = React.createClass({
     locations[optionID].votes += 1;
     this.setState({
       locations: locations,
-      currentUserVotedDate: true
+      currentUserVotedLocation: true
     });
   },
   removeLocationVote: function (optionID) {
     locations[optionID].votes -= 1;
     this.setState({
       locations: locations,
-      currentUserVotedDate: false
+      currentUserVotedLocation: false
     });
   },
   addDateVote: function (optionID) {
@@ -121,7 +121,7 @@ var VotingContainer = React.createClass({
           locations={locations}
           onSubmit={this.handleNewLocationSubmit} 
           onChange={this.handleLocationInputChange}
-          onVote={this.handleLocationVote}
+          onAddOrRemoveVote={this.handleAddOrRemoveVote}
           hideVoteButton={this.state.currentUserVotedLocation}
           votingAllowed={this.props.locationVotingAllowed}/>
         <div className="row">
