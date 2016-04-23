@@ -20,7 +20,8 @@ var Main = React.createClass({
       event_id: 0,
       currentUserVotedDate: false,
       currentUserVotedLocation: false,
-      locationVoteID: null
+      locationVoteID: null,
+      dateVoteID: null
     }
   },
   setName: function (name) {
@@ -113,8 +114,6 @@ var Main = React.createClass({
     var thisComponent = this;
     var path = 'http://localhost:3000/api/events/' + this.props.params.id;
     $.getJSON(path, function (data) {
-      console.log(thisComponent.checkIfVoted(data.dates));
-      console.log(thisComponent.checkIfVoted(data.campsites));
       thisComponent.setState({
         eventName: data.event.name,
         dateRanges: data.dates,
@@ -164,6 +163,7 @@ var Main = React.createClass({
         data: vote,
         success: function (res) {
           console.log(res);
+          thisComponent.setVoteID(res.id, category);
           thisComponent.loadEvent();
         },
         error: function (res) {
@@ -178,7 +178,7 @@ var Main = React.createClass({
       return "http://localhost:3000/api/date_votes/";
     } else if (category === "campsite" && !action.add) {
       return "http://localhost:3000/api/campsite_votes/" + this.state.locationVoteID;
-    } else if (category === "add" && !action.add) {
+    } else if (category === "date" && !action.add) {
       return "http://localhost:3000/api/date_votes/" + this.state.dateVoteID;
     }
   },
