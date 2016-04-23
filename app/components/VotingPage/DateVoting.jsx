@@ -30,6 +30,7 @@ var DateVoting = React.createClass({
           id={range.id} 
           votes={range.votes}
           hideVoteButton={thisComponent.props.hideVoteButton}
+          onVoteChange={thisComponent.handleVoteChange}
           onVote={thisComponent.handleVote}/>
       });
     } else {
@@ -65,6 +66,9 @@ var DateVoting = React.createClass({
       displayAddDateButton: false,
       displayCalendar: true
     })
+  },
+  handleVoteChange: function (type, key) {
+    this.props.onVoteChange(type, key);
   },
   render: function () {
     var dateRangeList = this.generateDateRanges();

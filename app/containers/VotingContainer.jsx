@@ -84,6 +84,15 @@ var VotingContainer = React.createClass({
     });
     this.props.onAddVote(dateRanges[key], "date");
   },
+  handleVoteChange: function (type, key) {
+    if (type === "date") {
+      dateRanges[key].votes -= 1;
+      this.setState({
+        currentUserVotedDate: false,
+        dateRanges: dateRanges
+      });
+    }
+  },
   render: function () {
     return (
       <div>
@@ -109,7 +118,8 @@ var VotingContainer = React.createClass({
           onSubmit={this.handleNewDateSubmit}
           votingAllowed={this.props.dateVotingAllowed}
           hideVoteButton={this.state.currentUserVotedDate}
-          onVote={this.handleDateVote} />
+          onVote={this.handleDateVote}
+          onVoteChange={this.handleVoteChange} />
         <h3>Start Date: {this.props.dateRange.start_date}</h3>
         <h3>End Date: {this.props.dateRange.end_date}</h3>
       </div>

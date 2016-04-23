@@ -1,14 +1,19 @@
 var React = require('react');
 
 var DateOption = React.createClass({
-  handleClick: function (e) {
+  handleVote: function (e) {
     e.stopPropagation();
     this.props.onVote(this.props.id);
+  },
+  handleVoteChange: function (e) {
+    e.stopPropagation();
+    this.props.onVoteChange("date", this.props.id)
   },
   render: function () {
     var voteDisplayStyle = this.props.votingDisallowed ? {'display': 'none'} : {'display': 'block'};
     var centeredEventIfOnly = this.props.votingDisallowed ? "large-4 large-centered columns" : "large-4 columns end"; 
     var hiddenVoteButton = this.props.hideVoteButton ? {'display': 'none'} : {'display': 'inline-block'};
+    var showChangeVoteButton = !this.props.hideVoteButton ? {'display': 'none'} : {'display': 'inline-block'};
     return (
       <div className={centeredEventIfOnly}>
         <div className="date-option-wrapper card">
@@ -19,9 +24,15 @@ var DateOption = React.createClass({
               <h4>Votes: {this.props.votes}</h4>
               <button 
                 className="date-vote-button button success wide"
-                onClick={this.handleClick}
+                onClick={this.handleVote}
                 style={hiddenVoteButton}>
                   Vote
+              </button>
+              <button 
+                className="date-vote-button button success wide"
+                onClick={this.handleVoteChange}
+                style={showChangeVoteButton}>
+                  Change Vote
               </button>
             </div>
           </div>
