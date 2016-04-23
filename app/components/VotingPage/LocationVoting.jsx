@@ -39,7 +39,7 @@ var LocationVoting = React.createClass({
   },
   render: function () {
     var locationList = this.generateLocations();
-    var hiddenIfLocationVotingDisallowed = this.props.locationVotingAllowed ? {} : {"display": "none"};
+    var hiddenIfLocationVotingDisallowed = this.props.votingAllowed ? {} : {"display": "none"};
     return (
       <div>
         <div id="location-options" className="row">

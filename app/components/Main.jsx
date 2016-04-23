@@ -116,6 +116,7 @@ var Main = React.createClass({
     $.getJSON(path, function (data) {
       thisComponent.setState({
         eventName: data.event.name,
+        event_id: data.event.id,
         dateRanges: data.dates,
         locations: data.campsites,
         vote_on_location: data.event.vote_on_location,
@@ -217,6 +218,23 @@ var Main = React.createClass({
       });
     }
   },
+  handleNewLocation: function (name) {
+    var thisComponent = this;
+    $.ajax({
+        url: "http://localhost:3000/api/camp_sites",
+        type: "POST",
+        data: {
+          name: name,
+          event_id: thisComponent.state.event_id
+        },
+        success: function (res) {
+          thisComponent.loadEvent();
+        },
+        error: function (res) {
+          console.log(res);
+        }
+    });
+  },
   render: function () {
     var children = React.cloneElement(
             this.props.children, 
@@ -242,7 +260,8 @@ var Main = React.createClass({
               onUserPacksItem: this.handleUserPacksItem,
               onAddOrRemoveVote: this.handleAddOrRemoveVote,
               currentUserVotedDate: this.state.currentUserVotedDate,
-              currentUserVotedLocation: this.state.currentUserVotedLocation
+              currentUserVotedLocation: this.state.currentUserVotedLocation,
+              onNewLocation: this.handleNewLocation
             }
         );
     return (
