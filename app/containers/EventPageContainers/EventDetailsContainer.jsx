@@ -10,7 +10,18 @@ var EventDetails = React.createClass({
   handleUserPacksItem: function (value){
     this.props.onUserPacksItem(value);
   },
+  componentWillMount: function() {
+    // if (this.props.eventName === '') {
+      console.log("Calling load event in Event Details Container");
+      this.props.loadEvent();
+    // }
+  },
   render: function (){
+    // packingList={this.state.packingList} 
+    console.log('Event Details Called Props')
+    console.log(this.props);
+    console.log(this.props.packingList);
+
     return (
       <div className='row'>
         <div className='large-6 columns left-column-event' id="event-left-column">
@@ -20,7 +31,8 @@ var EventDetails = React.createClass({
 
         </div>
         <div className='large-6 columns' id="event-right-column">
-          <PackingListContainer 
+          <PackingListContainer
+            packingList={this.props.packingList} 
             onUserPacksItem={this.handleEnterNewItem}
             onEnterNewItem={this.handleEnterNewItem} />
         </div>

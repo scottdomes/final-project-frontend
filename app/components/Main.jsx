@@ -109,7 +109,7 @@ var Main = React.createClass({
     })
   },
   loadEvent: function () {
-    var thisComponent = this;
+    var thisComponent = this; //Scott this is hacky, do .bind(this) at end instead
     var path = 'http://localhost:3000/api/events/' + this.props.params.id;
     $.getJSON(path, function (data) {
       thisComponent.setState({
@@ -119,15 +119,24 @@ var Main = React.createClass({
         vote_on_date: data.vote_on_date
       });
     })
+    $.getJSON('http://localhost:3000/api/items', function (data) {
+      console.log('Main Showing Data and State')
+      console.log(data)
+      this.setState({
+        packingList: data.items,
+      });
+    }.bind(this));
+    console.log(this.state);
   },
   handleEnterNewItem: function (value){
     //!!! Edit to provide Item info, name, quantity, event_id
     console.log('Main handleEnterNewItem');
+    console.log(value);
     $.ajax({
       url: 'http://localhost:3000/api/items',
       method: 'POST',
       data: {
-        name: value,
+        label: value,
         user_id: this.state.user_id,
         event_id: this.state.event_id
       },
@@ -191,6 +200,7 @@ var Main = React.createClass({
   },
   render: function () {
     var children = React.cloneElement(
+      //refactor to put all states uptop and function references below
             this.props.children, 
             {
               onNewInput: this.handleNewInput,
@@ -201,6 +211,7 @@ var Main = React.createClass({
               dateRange: this.state.dateRange,
               loggedin: this.state.loggedin,
               userName: this.state.user_name,
+              packingList: this.state.packingList,
               onLogin: this.handleLogin,
               onLogout: this.handleLogout,
               onVoteActivatorChange: this.handleVoteActivatorChange,

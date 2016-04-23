@@ -6,17 +6,30 @@ var AddMorePackingItemsForm = require('./AddMorePackingItemsForm.jsx');
 
 var PackingListContainer = React.createClass({
   getInitialState() {
+    console.log("Packing List Container Called Props")
+    console.log(this.props);
       return {
-        packingList: [{label: 'buy milk', packedBy: null}, {label: 'Clean Room', packedBy: null}, {label: 'Do stuff', packedBy: null}],
+        // packingList: [{label: 'buy milk', user_id: null}, {label: 'Clean Room', user_id: null}, {label: 'Do stuff', user_id: null}],
+        packingList: [],
         newPackingItem: 'Add More'
       }
   },
+  componentWillReceiveProps: function() {
+    console.log('Props UPdate is called');
+    if (this.props.packingList){  
+      this.setState({
+      packingList: this.props.packingList
+    })}
+  
+    console.log(this.props);
+  },
   handleUserPacksItem: function (key, e, itemLabel){
+    console.log("here motherfucker")
     console.log(arguments)
     var currentState = this.state.packingList
     var currentItemState = this.state.packingList[key];
     //!!! Change this to user id or user info of who is packing it
-    currentItemState.packedBy = !currentItemState.packedBy; 
+    currentItemState.user_id = !currentItemState.user_id; 
     currentState[key] = currentItemState;
     //!!! Remove State
     this.setState({
@@ -31,7 +44,7 @@ var PackingListContainer = React.createClass({
     })
   },
   handleEnterNewItem: function (value){
-    var newItem = {label: value, packedBy: null}
+    var newItem = {label: value, user_id: null}
     var currentPackingList = this.state.packingList;
     var newPackingList = currentPackingList.concat(newItem);
     //!!! remove this state
