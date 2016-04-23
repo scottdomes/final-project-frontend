@@ -34,8 +34,8 @@ var ProcessContainer = React.createClass({
   handleVoteActivatorChange: function (selectionStatus, label) {
     this.props.onVoteActivatorChange(selectionStatus, label);
   },
-  handleSubmitEvent: function () {
-    this.props.onSubmitEvent();
+  handleSubmitEvent: function (eventName) {
+    this.props.onSubmitEvent(eventName);
   },
   handleDoneFriends: function () {
     this.props.onDoneFriends();

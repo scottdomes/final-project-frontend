@@ -73,7 +73,7 @@ var Main = React.createClass({
       this.setState({ vote_on_location: false });
     }
   },
-  handleSubmitEvent: function () {
+  handleSubmitEvent: function (eventName) {
     var eventDetails = {
       name: this.state.locationInput,
       dateRange: this.state.dateRange,
