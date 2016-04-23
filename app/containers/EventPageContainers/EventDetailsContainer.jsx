@@ -7,8 +7,8 @@ var EventDetails = React.createClass({
   handleEnterNewItem: function (value){
     this.props.onEnterNewItem(value);
   },
-  handleUserPacksItem: function (value){
-    this.props.onUserPacksItem(value);
+  handleUserPacksItem: function (item, key){
+    this.props.onUserPacksItem(item, key);
   },
   componentWillMount: function() {
     // if (this.props.eventName === '') {
@@ -33,7 +33,7 @@ var EventDetails = React.createClass({
         <div className='large-6 columns' id="event-right-column">
           <PackingListContainer
             packingList={this.props.packingList} 
-            onUserPacksItem={this.handleEnterNewItem}
+            onUserPacksItem={this.handleUserPacksItem}
             onEnterNewItem={this.handleEnterNewItem} />
         </div>
       </div>

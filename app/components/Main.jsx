@@ -158,9 +158,30 @@ var Main = React.createClass({
       }
     });
   },
-  handleUserPacksItem: function (value){
+  handleUserPacksItem: function (item, key){
     //!!! Edit to provide Item info, user_id of who packing
-    console.log('Main handleUserPacksItem')
+    console.log('Main handleUserPacksItem');
+    var packedBy = item.user_id ? null : this.state.user_id;
+    $.ajax({
+      url: 'http://localhost:3000/api/items/' + item.id,
+      method: 'PUT',
+      data: {
+        user_id: packedBy
+      },
+      success: function (res) {
+        console.log('Item successfully packed!');
+        console.log(res);
+        var newItem = res;
+        var currentPackingList = this.state.packingList;
+        currentPackingList[key] = newItem;
+        this.setState({
+          packingList: currentPackingList
+        });
+      }.bind(this),
+      error: function (res) {
+        console.log('Failure To Pack Item');
+      }
+    })
   },
   handleAddOrRemoveVote: function (action, category) {
     // Category is a string, either "campsite" or "date"
