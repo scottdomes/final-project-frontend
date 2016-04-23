@@ -7,8 +7,8 @@ var EventDetails = React.createClass({
   handleEnterNewItem: function (value){
     this.props.onEnterNewItem(value);
   },
-  handleEnterNewItem: function (){
-    this.props.onUserPacksItem();
+  handleUserPacksItem: function (value){
+    this.props.onUserPacksItem(value);
   },
   render: function (){
     return (
