@@ -18,6 +18,8 @@ var Main = React.createClass({
       vote_on_date: false,
       vote_on_location: false,
       event_id: 0,
+      currentUserVotedDate: false,
+      currentUserVotedLocation: false,
       locationVoteID: null
     }
   },
@@ -115,9 +117,22 @@ var Main = React.createClass({
         eventName: data.event.name,
         dateRanges: data.dates,
         vote_on_location: data.event.vote_on_location,
-        vote_on_date: data.event.vote_on_date
+        vote_on_date: data.event.vote_on_date,
+        currentUserVotedDate: thisComponent.checkIfVoted(data.dates),
+        currentUserVotedLocation: thisComponent.checkIfVoted(data.campsites)
       });
     })
+  },
+  checkIfVoted: function (array) {
+    var thisComponent = this;
+    for (var i = 0; i < array.length; i++) {
+      var voted = array[i].votes.filter(function (vote) {
+        return vote.user_id === thisComponent.state.user_id
+      });
+      if (voted !== undefined) {
+        return true
+      }
+    }
   },
   handleEnterNewItem: function (){
     //!!! Edit to provide Item info, name, quantity, event_id
