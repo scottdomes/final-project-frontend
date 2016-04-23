@@ -23,7 +23,6 @@ var DateVoting = React.createClass({
     var thisComponent = this;
     if (this.props.votingAllowed) {
       dateRangeList = this.props.dateRanges.map(function (range, index) {
-        console.log(range);
         return <DateOption 
           start_date={range.dateRange.start_date} 
           end_date={range.dateRange.end_date}

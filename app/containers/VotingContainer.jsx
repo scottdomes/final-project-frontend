@@ -95,16 +95,12 @@ var VotingContainer = React.createClass({
     });
   },
   addDateVote: function (optionID) {
-    dateRanges[optionID].votes += 1;
     this.setState({
-      dateRanges: dateRanges,
       currentUserVotedDate: true
     });
   },
   removeDateVote: function (optionID) {
-    dateRanges[optionID].votes -= 1;
     this.setState({
-      dateRanges: dateRanges,
       currentUserVotedDate: false
     });
   },

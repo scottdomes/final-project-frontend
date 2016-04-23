@@ -18,8 +18,7 @@ var Main = React.createClass({
       vote_on_date: false,
       vote_on_location: false,
       event_id: 0,
-      locationVoteID: null,
-      dateVoteID: null
+      locationVoteID: null
     }
   },
   setName: function (name) {
@@ -144,7 +143,7 @@ var Main = React.createClass({
         data: vote,
         success: function (res) {
           console.log(res);
-          thisComponent.setVoteID(res.id, category);
+          thisComponent.loadEvent();
         },
         error: function (res) {
           console.log(res);
