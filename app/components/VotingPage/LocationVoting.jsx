@@ -19,19 +19,19 @@ var LocationVoting = React.createClass({
     if (this.props.votingAllowed) {
       locationList = this.props.locations.map(function (location, index) {
         return <LocationOption 
-          name={location.name} 
+          name={location.campsite.name} 
           key={index}
-          id={location.id} 
-          votes={location.votes}
+          id={location.campsite.id} 
+          votes={location.votes.length}
           hideVoteButton={thisComponent.props.hideVoteButton}
           onAddOrRemoveVote={thisComponent.handleAddOrRemoveVote}/>
       });
     } else {
       locationList = this.props.locations.map(function (location, index) {
         return <LocationOption 
-          name={location.name} 
+          name={location.campsite.name} 
           key={index}
-          id={location.id} 
+          id={location.campsite.id} 
           votingDisallowed={true}/>
       });
     }

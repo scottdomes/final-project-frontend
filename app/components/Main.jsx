@@ -18,7 +18,7 @@ var Main = React.createClass({
       vote_on_date: false,
       vote_on_location: false,
       event_id: 0,
-      eventCampsites: [],
+      locations: [],
       currentUserVotedDate: false,
       currentUserVotedLocation: false,
       locationVoteID: null
@@ -117,9 +117,9 @@ var Main = React.createClass({
       thisComponent.setState({
         eventName: data.event.name,
         dateRanges: data.dates,
+        locations: data.campsites,
         vote_on_location: data.event.vote_on_location,
         vote_on_date: data.event.vote_on_date,
-        // userDateVoteID: data.user_date_vote,
         currentUserVotedDate: thisComponent.checkIfVoted(data.dates, "date"),
         currentUserVotedLocation: thisComponent.checkIfVoted(data.campsites, "campsite")
       });
@@ -128,7 +128,7 @@ var Main = React.createClass({
   loadUserData: function () {
     this.setState({
       currentUserVotedDate: this.checkIfVoted(this.state.dateRanges, "date"),
-      currentUserVotedLocation: this.checkIfVoted(this.state.eventCampsites, "campsite")
+      currentUserVotedLocation: this.checkIfVoted(this.state.locations, "campsite")
     });
   },
   checkIfVoted: function (array, category) {
@@ -176,7 +176,7 @@ var Main = React.createClass({
     // Category is a string, either "campsite" or "date"
     var vote = {
       user_id: this.state.user_id,
-      event_date_id: id
+      id: id
     };
     var thisComponent = this;
     var url = this.constructVoteURL(action, category);
@@ -227,6 +227,7 @@ var Main = React.createClass({
               locationInput: this.state.locationInput,
               eventName: this.state.eventName,
               dateRanges: this.state.dateRanges,
+              locations: this.state.locations,
               loggedin: this.state.loggedin,
               userName: this.state.user_name,
               onLogin: this.handleLogin,

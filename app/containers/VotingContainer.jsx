@@ -1,7 +1,6 @@
 var React = require('react');
 var LocationVoting = require('../components/VotingPage/LocationVoting.jsx');
 var DateVoting = require('../components/VotingPage/DateVoting.jsx');
-var locations = [];
 var $ = require('jquery');
 
 var VotingContainer = React.createClass({
@@ -9,20 +8,9 @@ var VotingContainer = React.createClass({
     router: React.PropTypes.object.isRequired
   },
   getInitialState: function () {
-    locations.push({
-      name: this.props.eventName,
-      id: 0,
-      votes: 0
-    });
-    // dateRanges.push({
-    //   start_date: this.props.dateRange.start_date,
-    //   end_date: this.props.dateRange.end_date,
-    //   id: 0,
-    //   votes: 0
-    // })
     return {
       addLocationInput: '',
-      locations: locations,
+      locations: this.props.locations,
       name: '',
       dateRanges: this.props.dateRanges
     }
@@ -79,16 +67,12 @@ var VotingContainer = React.createClass({
     this.props.onAddOrRemoveVote(action, category, optionID);
   },
   addLocationVote: function (optionID) {
-    locations[optionID].votes += 1;
     this.setState({
-      locations: locations,
       currentUserVotedLocation: true
     });
   },
   removeLocationVote: function (optionID) {
-    locations[optionID].votes -= 1;
     this.setState({
-      locations: locations,
       currentUserVotedLocation: false
     });
   },
@@ -111,7 +95,7 @@ var VotingContainer = React.createClass({
           </div>
         </div>
         <LocationVoting 
-          locations={locations}
+          locations={this.props.locations}
           onSubmit={this.handleNewLocationSubmit} 
           onChange={this.handleLocationInputChange}
           onAddOrRemoveVote={this.handleAddOrRemoveVote}

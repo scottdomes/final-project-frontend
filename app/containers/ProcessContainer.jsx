@@ -55,6 +55,7 @@ var ProcessContainer = React.createClass({
               locationInput: this.props.locationInput,
               eventName: this.props.eventName,
               dateRanges: this.props.dateRanges,
+              locations: this.props.locations,
               loggedin: this.props.loggedin,
               userName: this.props.userName,
               onLogin: this.handleLogin,
