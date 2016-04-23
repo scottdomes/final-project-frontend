@@ -24,21 +24,21 @@ var DateVoting = React.createClass({
     if (this.props.votingAllowed) {
       dateRangeList = this.props.dateRanges.map(function (range, index) {
         return <DateOption 
-          start_date={range.start_date} 
-          end_date={range.end_date}
+          start_date={range.dateRange.start_date} 
+          end_date={range.dateRange.end_date}
           key={index}
-          id={range.id} 
-          votes={range.votes}
+          id={range.dateRange.id} 
+          votes={range.votes.length}
           hideVoteButton={thisComponent.props.hideVoteButton}
           onAddOrRemoveVote={thisComponent.handleAddOrRemoveVote}/>
       });
     } else {
       dateRangeList = this.props.dateRanges.map(function (range, index) {
         return <DateOption 
-          start_date = {range.start_date} 
-          end_date = {range.end_date}
+          start_date = {range.dateRange.start_date} 
+          end_date = {range.dateRange.end_date}
           key={index}
-          id={range.id} 
+          id={range.dateRange.id} 
           votingDisallowed={true}/>
       });
     }

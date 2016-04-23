@@ -14,13 +14,16 @@ var Main = React.createClass({
       user_id: 0,
       locationInput: 'Test Location',
       eventName: '',
-      dateRange: {},
+      dateRanges: [],
       vote_on_date: false,
       vote_on_location: false,
       event_id: 0,
       locationVoteID: null,
       dateVoteID: null,
       packingList: []
+      currentUserVotedDate: false,
+      currentUserVotedLocation: false,
+      locationVoteID: null
     }
   },
   setName: function (name) {
@@ -114,10 +117,12 @@ var Main = React.createClass({
     var path = 'http://localhost:3000/api/events/' + this.props.params.id;
     $.getJSON(path, function (data) {
       thisComponent.setState({
-        eventName: data.name,
-        // dateRange: data.dateRange,
-        vote_on_location: data.vote_on_location,
-        vote_on_date: data.vote_on_date
+        eventName: data.event.name,
+        dateRanges: data.dates,
+        vote_on_location: data.event.vote_on_location,
+        vote_on_date: data.event.vote_on_date,
+        currentUserVotedDate: thisComponent.checkIfVoted(data.dates),
+        currentUserVotedLocation: thisComponent.checkIfVoted(data.campsites)
       });
     })
     $.getJSON('http://localhost:3000/api/items', function (data) {
@@ -129,6 +134,18 @@ var Main = React.createClass({
     }.bind(this));
     console.log(this.state);
   },
+  checkIfVoted: function (array) {
+    var thisComponent = this;
+    for (var i = 0; i < array.length; i++) {
+      var voted = array[i].votes.filter(function (vote) {
+        return vote.user_id === thisComponent.state.user_id
+      });
+      if (voted !== undefined) {
+        return true
+      }
+    }
+  },
+
   handleEnterNewItem: function (value){
     //!!! Edit to provide Item info, name, quantity, event_id
     console.log('Main handleEnterNewItem');
@@ -183,10 +200,11 @@ var Main = React.createClass({
       }
     })
   },
-  handleAddOrRemoveVote: function (action, category) {
+  handleAddOrRemoveVote: function (action, category, id) {
     // Category is a string, either "campsite" or "date"
     var vote = {
-      user_id: this.state.user_id
+      user_id: this.state.user_id,
+      event_date_id: id
     };
     var thisComponent = this;
     var url = this.constructVoteURL(action, category);
@@ -198,7 +216,7 @@ var Main = React.createClass({
         data: vote,
         success: function (res) {
           console.log(res);
-          thisComponent.setVoteID(res.id, category);
+          thisComponent.loadEvent();
         },
         error: function (res) {
           console.log(res);
@@ -237,7 +255,7 @@ var Main = React.createClass({
               loading: this.state.loading,
               locationInput: this.state.locationInput,
               eventName: this.state.eventName,
-              dateRange: this.state.dateRange,
+              dateRanges: this.state.dateRanges,
               loggedin: this.state.loggedin,
               userName: this.state.user_name,
               packingList: this.state.packingList,
@@ -251,7 +269,9 @@ var Main = React.createClass({
               locationVotingAllowed: this.state.vote_on_location,
               onEnterNewItem: this.handleEnterNewItem,
               onUserPacksItem: this.handleUserPacksItem,
-              onAddOrRemoveVote: this.handleAddOrRemoveVote
+              onAddOrRemoveVote: this.handleAddOrRemoveVote,
+              currentUserVotedDate: this.state.currentUserVotedDate,
+              currentUserVotedLocation: this.state.currentUserVotedLocation
             }
         );
     return (
