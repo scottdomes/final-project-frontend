@@ -17,7 +17,9 @@ var Main = React.createClass({
       dateRange: {},
       vote_on_date: false,
       vote_on_location: false,
-      event_id: 0
+      event_id: 0,
+      locationVoteID: null,
+      dateVoteID: null
     }
   },
   setName: function (name) {
@@ -125,30 +127,48 @@ var Main = React.createClass({
     //!!! Edit to provide Item info, user_id of who packing
     console.log('Main handleUserPacksItem')
   },
-  handleAddVote: function (target, type) {
-    // Type is a string, either "campsite" or "date"
+  handleAddOrRemoveVote: function (action, category) {
+    // Category is a string, either "campsite" or "date"
     var vote = {
       user_id: this.state.user_id
     };
     var thisComponent = this;
-    var url;
-    
-    if (type === "campsite") {
-      url = "http://localhost:3000/api/campsite_votes/";
-    } else {
-      url = "http://localhost:3000/api/date_votes/";
-    }
+    var url = this.constructVoteURL(action, category);
+    var action = action.add ? "POST" : "DELETE";
+
     $.ajax({
         url: url,
-        type: "POST",
+        type: action,
         data: vote,
         success: function (res) {
-          console.log(res);
+          thisComponent.setVoteID(res.id, category);
         },
         error: function (res) {
           console.log(res);
         }
     });
+  },
+  constructVoteURL: function (action, category) {
+    if (category === "campsite" && action.add) {
+      return "http://localhost:3000/api/campsite_votes/";
+    } else if (category === "date" && action.add) {
+      return "http://localhost:3000/api/date_votes/";
+    } else if (category === "campsite" && !action.add) {
+      return "http://localhost:3000/api/campsite_votes/" + this.state.locationVoteID;
+    } else if (category === "add" && !action.add) {
+      return "http://localhost:3000/api/date_votes/" + this.state.dateVoteID;
+    }
+  },
+  setVoteID: function (id, category) {
+    if (category === "date") {
+      this.setState({
+        dateVoteID: id
+      });
+    } else if (category === "campsite") {
+      this.setState({
+        locationVoteID: id
+      });
+    }
   },
   render: function () {
     var children = React.cloneElement(
@@ -172,7 +192,7 @@ var Main = React.createClass({
               locationVotingAllowed: this.state.vote_on_location,
               onEnterNewItem: this.handleEnterNewItem,
               onUserPacksItem: this.handleUserPacksItem,
-              onAddVote: this.handleAddVote
+              onAddOrRemoveVote: this.handleAddOrRemoveVote
             }
         );
     return (

@@ -1,13 +1,13 @@
 var React = require('react');
 
 var DateOption = React.createClass({
-  handleVote: function (e) {
+  handleAddVote: function (e) {
     e.stopPropagation();
-    this.props.onVote(this.props.id);
+    this.props.onAddOrRemoveVote(this.props.id, {add: true});
   },
-  handleVoteChange: function (e) {
+  handleRemoveVote: function (e) {
     e.stopPropagation();
-    this.props.onVoteChange("date", this.props.id)
+    this.props.onAddOrRemoveVote(this.props.id, {add: false})
   },
   render: function () {
     var voteDisplayStyle = this.props.votingDisallowed ? {'display': 'none'} : {'display': 'block'};
@@ -24,13 +24,13 @@ var DateOption = React.createClass({
               <h4>Votes: {this.props.votes}</h4>
               <button 
                 className="date-vote-button button success wide"
-                onClick={this.handleVote}
+                onClick={this.handleAddVote}
                 style={hiddenVoteButton}>
                   Vote
               </button>
               <button 
                 className="date-vote-button button success wide"
-                onClick={this.handleVoteChange}
+                onClick={this.handleRemoveVote}
                 style={showChangeVoteButton}>
                   Change Vote
               </button>

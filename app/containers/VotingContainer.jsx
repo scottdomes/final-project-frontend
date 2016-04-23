@@ -68,30 +68,46 @@ var VotingContainer = React.createClass({
       addLocationInput: input
     });
   },
-  handleLocationVote: function (key) {
-    locations[key].votes += 1;
+  handleAddOrRemoveVote: function (optionID, action, type) {
+    if (action.add && type === "date") {
+      this.addDateVote(optionID);
+    } else if (!action.add && type === "date") {
+      this.removeDateVote(optionID);
+    } else if (action.add && type === "campsite") {
+      this.addLocationVote(optionID);
+    } else if (!action.add && type === "campsite") {
+      this.removeLocationVote(optionID);
+    }
+
+    this.props.onAddOrRemoveVote(action, type);
+  },
+  addLocationVote: function (optionID) {
+    locations[optionID].votes += 1;
     this.setState({
       locations: locations,
-      currentUserVotedLocation: true
+      currentUserVotedDate: true
     });
-    this.props.onAddVote(locations[key], "campsite");
   },
-  handleDateVote: function (key) {
-    dateRanges[key].votes += 1;
+  removeLocationVote: function (optionID) {
+    locations[optionID].votes -= 1;
+    this.setState({
+      locations: locations,
+      currentUserVotedDate: false
+    });
+  },
+  addDateVote: function (optionID) {
+    dateRanges[optionID].votes += 1;
     this.setState({
       dateRanges: dateRanges,
       currentUserVotedDate: true
     });
-    this.props.onAddVote(dateRanges[key], "date");
   },
-  handleVoteChange: function (type, key) {
-    if (type === "date") {
-      dateRanges[key].votes -= 1;
-      this.setState({
-        currentUserVotedDate: false,
-        dateRanges: dateRanges
-      });
-    }
+  removeDateVote: function (optionID) {
+    dateRanges[optionID].votes -= 1;
+    this.setState({
+      dateRanges: dateRanges,
+      currentUserVotedDate: false
+    });
   },
   render: function () {
     return (
@@ -118,8 +134,7 @@ var VotingContainer = React.createClass({
           onSubmit={this.handleNewDateSubmit}
           votingAllowed={this.props.dateVotingAllowed}
           hideVoteButton={this.state.currentUserVotedDate}
-          onVote={this.handleDateVote}
-          onVoteChange={this.handleVoteChange} />
+          onAddOrRemoveVote={this.handleAddOrRemoveVote} />
         <h3>Start Date: {this.props.dateRange.start_date}</h3>
         <h3>End Date: {this.props.dateRange.end_date}</h3>
       </div>

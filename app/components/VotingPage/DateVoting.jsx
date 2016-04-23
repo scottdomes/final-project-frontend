@@ -15,8 +15,8 @@ var DateVoting = React.createClass({
     e.preventDefault();
     this.props.onSubmit();
   },
-  handleVote: function (key) {
-    this.props.onVote(key);
+  handleAddOrRemoveVote: function (optionID, action) {
+    this.props.onAddOrRemoveVote(optionID, action, "date");
   },
   generateDateRanges: function () {
     var dateRangeList = [];
@@ -30,8 +30,7 @@ var DateVoting = React.createClass({
           id={range.id} 
           votes={range.votes}
           hideVoteButton={thisComponent.props.hideVoteButton}
-          onVoteChange={thisComponent.handleVoteChange}
-          onVote={thisComponent.handleVote}/>
+          onAddOrRemoveVote={thisComponent.handleAddOrRemoveVote}/>
       });
     } else {
       dateRangeList = this.props.dateRanges.map(function (range, index) {
@@ -66,9 +65,6 @@ var DateVoting = React.createClass({
       displayAddDateButton: false,
       displayCalendar: true
     })
-  },
-  handleVoteChange: function (type, key) {
-    this.props.onVoteChange(type, key);
   },
   render: function () {
     var dateRangeList = this.generateDateRanges();

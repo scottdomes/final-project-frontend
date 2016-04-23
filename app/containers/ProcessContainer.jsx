@@ -43,8 +43,8 @@ var ProcessContainer = React.createClass({
   callEventLoad: function () {
     this.props.loadEvent();
   },
-  handleAddVote: function (target, type) {
-    this.props.onAddVote(target, type);
+  handleAddOrRemoveVote: function (target, category, add) {
+    this.props.onAddOrRemoveVote(target, category, add);
   },
   render: function () {
     var children = React.cloneElement(
@@ -65,7 +65,7 @@ var ProcessContainer = React.createClass({
               loadEvent: this.callEventLoad,
               dateVotingAllowed: this.props.dateVotingAllowed,
               locationVotingAllowed: this.props.locationVotingAllowed,
-              onAddVote: this.handleAddVote
+              onAddOrRemoveVote: this.handleAddOrRemoveVote
             }
         );
     return (
