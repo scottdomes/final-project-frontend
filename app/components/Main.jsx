@@ -19,6 +19,9 @@ var Main = React.createClass({
       vote_on_location: false,
       event_id: 0,
       locations: [],
+      locationVoteID: null,
+      dateVoteID: null,
+      packingList: [],
       currentUserVotedDate: false,
       currentUserVotedLocation: false,
       locationVoteID: null
@@ -111,7 +114,7 @@ var Main = React.createClass({
     })
   },
   loadEvent: function () {
-    var thisComponent = this;
+    var thisComponent = this; //Scott this is hacky, do .bind(this) at end instead
     var path = 'http://localhost:3000/api/events/' + this.props.params.id;
     $.getJSON(path, function (data) {
       thisComponent.setState({
@@ -125,6 +128,14 @@ var Main = React.createClass({
         currentUserVotedLocation: thisComponent.checkIfVoted(data.campsites, "campsite")
       });
     })
+    $.getJSON('http://localhost:3000/api/items', function (data) {
+      console.log('Main Showing Data and State')
+      console.log(data)
+      this.setState({
+        packingList: data.items,
+      });
+    }.bind(this));
+    console.log(this.state);
   },
   loadUserData: function () {
     this.setState({
@@ -151,27 +162,56 @@ var Main = React.createClass({
   handleEnterNewItem: function (value){
     //!!! Edit to provide Item info, name, quantity, event_id
     console.log('Main handleEnterNewItem');
+    console.log(value);
     $.ajax({
       url: 'http://localhost:3000/api/items',
       method: 'POST',
       data: {
-        name: value,
-        user_id: this.state.user_id,
+        label: value,
         event_id: this.state.event_id
       },
       success: function (res) {
         console.log('Successfully created an Item');
         console.log(res);
-      },
+
+         // var newItem = {label: value, user_id: this.state.user_id}
+         var newItem = res;
+         var currentPackingList = this.state.packingList;
+         var newPackingList = currentPackingList.concat(newItem);
+        this.setState({
+           packingList: newPackingList
+        });
+      }.bind(this),
       error: function (res) {
         console.log('Failure no Item Created');
         console.log(res);
       }
     });
   },
-  handleUserPacksItem: function (value){
+  handleUserPacksItem: function (item, key){
     //!!! Edit to provide Item info, user_id of who packing
-    console.log('Main handleUserPacksItem')
+    console.log('Main handleUserPacksItem');
+    var packedBy = item.user_id ? null : this.state.user_id;
+    $.ajax({
+      url: 'http://localhost:3000/api/items/' + item.id,
+      method: 'PUT',
+      data: {
+        user_id: packedBy
+      },
+      success: function (res) {
+        console.log('Item successfully packed!');
+        console.log(res);
+        var newItem = res;
+        var currentPackingList = this.state.packingList;
+        currentPackingList[key] = newItem;
+        this.setState({
+          packingList: currentPackingList
+        });
+      }.bind(this),
+      error: function (res) {
+        console.log('Failure To Pack Item');
+      }
+    })
   },
   handleAddOrRemoveVote: function (action, category, id) {
     // Category is a string, either "campsite" or "date"
@@ -237,6 +277,7 @@ var Main = React.createClass({
   },
   render: function () {
     var children = React.cloneElement(
+      //refactor to put all states uptop and function references below
             this.props.children, 
             {
               onNewInput: this.handleNewInput,
@@ -248,6 +289,7 @@ var Main = React.createClass({
               locations: this.state.locations,
               loggedin: this.state.loggedin,
               userName: this.state.user_name,
+              packingList: this.state.packingList,
               onLogin: this.handleLogin,
               onLogout: this.handleLogout,
               onVoteActivatorChange: this.handleVoteActivatorChange,
