@@ -113,6 +113,8 @@ var Main = React.createClass({
     var thisComponent = this;
     var path = 'http://localhost:3000/api/events/' + this.props.params.id;
     $.getJSON(path, function (data) {
+      console.log(thisComponent.checkIfVoted(data.dates));
+      console.log(thisComponent.checkIfVoted(data.campsites));
       thisComponent.setState({
         eventName: data.event.name,
         dateRanges: data.dates,
@@ -121,18 +123,22 @@ var Main = React.createClass({
         currentUserVotedDate: thisComponent.checkIfVoted(data.dates),
         currentUserVotedLocation: thisComponent.checkIfVoted(data.campsites)
       });
-    })
+    });
   },
   checkIfVoted: function (array) {
     var thisComponent = this;
+    var userVoted;
     for (var i = 0; i < array.length; i++) {
-      var voted = array[i].votes.filter(function (vote) {
+      var userVotes = array[i].votes.filter(function (vote) {
         return vote.user_id === thisComponent.state.user_id
       });
-      if (voted !== undefined) {
-        return true
+      if (userVotes.length === 0) {
+        userVoted = false;
+      } else {
+        userVoted = true;
       }
     }
+    return userVoted;
   },
   handleEnterNewItem: function (){
     //!!! Edit to provide Item info, name, quantity, event_id

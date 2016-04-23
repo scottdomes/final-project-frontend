@@ -14,17 +14,10 @@ var VotingContainer = React.createClass({
       id: 0,
       votes: 0
     });
-    // dateRanges.push({
-    //   start_date: this.props.dateRange.start_date,
-    //   end_date: this.props.dateRange.end_date,
-    //   id: 0,
-    //   votes: 0
-    // })
     return {
       addLocationInput: '',
       locations: locations,
-      name: '',
-      dateRanges: this.props.dateRanges
+      name: ''
     }
   },
   componentWillMount: function () {
