@@ -20,7 +20,7 @@ var Main = React.createClass({
       event_id: 0,
       locationVoteID: null,
       dateVoteID: null,
-      packingList: []
+      packingList: [],
       currentUserVotedDate: false,
       currentUserVotedLocation: false,
       locationVoteID: null
