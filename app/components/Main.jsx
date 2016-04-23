@@ -75,7 +75,8 @@ var Main = React.createClass({
   },
   handleSubmitEvent: function (eventName) {
     var eventDetails = {
-      name: this.state.locationInput,
+      name: eventName,
+      campsite_name: this.state.locationInput,
       dateRange: this.state.dateRange,
       vote_on_location: this.state.vote_on_location,
       vote_on_date: this.state.vote_on_date,

@@ -8,13 +8,9 @@ var EventNameInput = React.createClass({
   },
   render: function () {
     return (
-      <div className="row">
-        <div className="large-6 large columns large-centered">
-          <form onSubmit={this.handleSubmit}>
-            <input id="event-name-input" type="text" placeholder="Enter a name for your trip..."/>
-          </form>
-        </div>
-      </div>
+      <form onSubmit={this.handleSubmit}>
+        <input id="event-name-input" type="text" placeholder="Enter a name for your trip..."/>
+      </form>
     )
   }
 });
