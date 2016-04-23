@@ -108,6 +108,7 @@ var VotingContainer = React.createClass({
           dateRanges={dateRanges}
           onSubmit={this.handleNewDateSubmit}
           votingAllowed={this.props.dateVotingAllowed}
+          hideVoteButton={this.state.currentUserVotedDate}
           onVote={this.handleDateVote} />
         <h3>Start Date: {this.props.dateRange.start_date}</h3>
         <h3>End Date: {this.props.dateRange.end_date}</h3>

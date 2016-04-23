@@ -29,6 +29,7 @@ var DateVoting = React.createClass({
           key={index}
           id={range.id} 
           votes={range.votes}
+          hideVoteButton={thisComponent.props.hideVoteButton}
           onVote={thisComponent.handleVote}/>
       });
     } else {
