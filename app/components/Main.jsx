@@ -18,6 +18,7 @@ var Main = React.createClass({
       vote_on_date: false,
       vote_on_location: false,
       event_id: 0,
+      eventCampsites: [],
       currentUserVotedDate: false,
       currentUserVotedLocation: false,
       locationVoteID: null
@@ -118,23 +119,34 @@ var Main = React.createClass({
         dateRanges: data.dates,
         vote_on_location: data.event.vote_on_location,
         vote_on_date: data.event.vote_on_date,
-        currentUserVotedDate: thisComponent.checkIfVoted(data.dates),
-        currentUserVotedLocation: thisComponent.checkIfVoted(data.campsites)
+        // userDateVoteID: data.user_date_vote,
+        currentUserVotedDate: thisComponent.checkIfVoted(data.dates, "date"),
+        currentUserVotedLocation: thisComponent.checkIfVoted(data.campsites, "campsite")
       });
     })
   },
-  checkIfVoted: function (array) {
+  loadUserData: function () {
+    this.setState({
+      currentUserVotedDate: this.checkIfVoted(this.state.dateRanges, "date"),
+      currentUserVotedLocation: this.checkIfVoted(this.state.eventCampsites, "campsite")
+    });
+  },
+  checkIfVoted: function (array, category) {
     var thisComponent = this;
+    var userVote;
     for (var i = 0; i < array.length; i++) {
-      var voted = array[i].votes.filter(function (vote) {
-        return vote.user_id === thisComponent.state.user_id
-      });
-      if (voted !== undefined) {
+      for (var j = 0; j < array[i].votes.length; j++) {
+        vote = array[i].votes[j];
+        if (vote.user_id === thisComponent.state.user_id) {
+          thisComponent.setVoteID(vote.id, category);
+          userVote = vote
+        }
+      }
+      if (userVote !== undefined) {
         return true
       }
     }
   },
-
   handleEnterNewItem: function (value){
     //!!! Edit to provide Item info, name, quantity, event_id
     console.log('Main handleEnterNewItem');
@@ -190,7 +202,7 @@ var Main = React.createClass({
       return "http://localhost:3000/api/date_votes/";
     } else if (category === "campsite" && !action.add) {
       return "http://localhost:3000/api/campsite_votes/" + this.state.locationVoteID;
-    } else if (category === "add" && !action.add) {
+    } else if (category === "date" && !action.add) {
       return "http://localhost:3000/api/date_votes/" + this.state.dateVoteID;
     }
   },

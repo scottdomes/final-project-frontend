@@ -51,6 +51,7 @@ var Facebook = {
         success: function (res) {
           component.setName(response.name);
           component.setUserID(res.id);
+          component.loadUserData();
         }
       });
     });
