@@ -15,7 +15,7 @@ function PackingListItem(props) {
   }
   return(
     <div 
-      className={classNames({ 'item-packed': props.item.user_id }, {"list-item": true})} 
+      className={classNames({ 'item-packed': props.item.user_id ? true: false }, {"list-item": true})} 
       onClick={handleUserPacksItem}>{'+ ' + props.item.label}
     </div>
   )

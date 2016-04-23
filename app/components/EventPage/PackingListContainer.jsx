@@ -10,22 +10,23 @@ var PackingListContainer = React.createClass({
     console.log(this.props);
       return {
         // packingList: [{label: 'buy milk', user_id: null}, {label: 'Clean Room', user_id: null}, {label: 'Do stuff', user_id: null}],
-        packingList: [],
+        // packingList: [],
         newPackingItem: 'Add More'
       }
   },
-  componentWillReceiveProps: function() {
-    console.log('Props UPdate is called');
-    if (this.props.packingList){  
-      this.setState({
-      packingList: this.props.packingList
-    })}
-  
-    console.log(this.props);
-  },
+  // componentWillReceiveProps: function() {
+  //   console.log('Props Update is called');
+  //   if (this.props.packingList){  
+  //     console.log('hehrehr')
+  //     this.setState({
+  //     packingList: this.props.packingList
+  //   })}
+  //   console.log(this.props);
+  // },
   handleUserPacksItem: function (key, e, itemLabel){
     console.log("here motherfucker")
     console.log(arguments)
+    console.log(this.props)
     var currentState = this.state.packingList
     var currentItemState = this.state.packingList[key];
     //!!! Change this to user id or user info of who is packing it
@@ -35,7 +36,7 @@ var PackingListContainer = React.createClass({
     this.setState({
       packingList: currentState
     });
-    this.props.onUserPacksItem();
+    // this.props.onUserPacksItem();
 
   },
   handleNewPackingItemChange: function (value){
@@ -44,19 +45,24 @@ var PackingListContainer = React.createClass({
     })
   },
   handleEnterNewItem: function (value){
-    var newItem = {label: value, user_id: null}
-    var currentPackingList = this.state.packingList;
-    var newPackingList = currentPackingList.concat(newItem);
+    // var newItem = {label: value, user_id: null}
+    // var currentPackingList = this.state.packingList;
+    // var newPackingList = currentPackingList.concat(newItem);
     //!!! remove this state
-    this.setState({
-      packingList: newPackingList
-    });
+    // this.setState({
+    //   packingList: newPackingList
+    // });
     this.props.onEnterNewItem(value);
   },
   render: function () {
+    console.log('PackingListContainer')
+    console.log(this.props)
+
     const {packingList, newPackingItem} = this.state
 
-    var ItemList = this.state.packingList;
+    // var ItemList = this.state.packingList;
+    var ItemList = this.props.packingList;
+
     var PackingItems = ItemList.map((item, index) => {
       return <PackingListItem onUserPacksItem={this.handleUserPacksItem.bind(this, index)} key={index} item={item} />
     });

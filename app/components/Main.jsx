@@ -19,7 +19,8 @@ var Main = React.createClass({
       vote_on_location: false,
       event_id: 0,
       locationVoteID: null,
-      dateVoteID: null
+      dateVoteID: null,
+      packingList: []
     }
   },
   setName: function (name) {
@@ -137,13 +138,20 @@ var Main = React.createClass({
       method: 'POST',
       data: {
         label: value,
-        user_id: this.state.user_id,
         event_id: this.state.event_id
       },
       success: function (res) {
         console.log('Successfully created an Item');
         console.log(res);
-      },
+
+         // var newItem = {label: value, user_id: this.state.user_id}
+         var newItem = res;
+         var currentPackingList = this.state.packingList;
+         var newPackingList = currentPackingList.concat(newItem);
+        this.setState({
+           packingList: newPackingList
+        });
+      }.bind(this),
       error: function (res) {
         console.log('Failure no Item Created');
         console.log(res);
