@@ -49,6 +49,9 @@ var ProcessContainer = React.createClass({
   handleNewLocation: function (name) {
     this.props.onNewLocation(name);
   },
+  handleNewDateRange: function (range) {
+    this.props.onNewDateRange(range);
+  },
   render: function () {
     var children = React.cloneElement(
             this.props.children, 
@@ -72,7 +75,8 @@ var ProcessContainer = React.createClass({
               onAddOrRemoveVote: this.handleAddOrRemoveVote,
               currentUserVotedDate: this.props.currentUserVotedDate,
               currentUserVotedLocation: this.props.currentUserVotedLocation,
-              onNewLocation: this.handleNewLocation
+              onNewLocation: this.handleNewLocation,
+              onNewDateRange: this.handleNewDateRange
             }
         );
     return (

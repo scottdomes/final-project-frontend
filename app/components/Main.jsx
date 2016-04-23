@@ -114,28 +114,24 @@ var Main = React.createClass({
     })
   },
   loadEvent: function () {
-    var thisComponent = this; //Scott this is hacky, do .bind(this) at end instead
     var path = 'http://localhost:3000/api/events/' + this.props.params.id;
     $.getJSON(path, function (data) {
-      thisComponent.setState({
+      this.setState({
         eventName: data.event.name,
         event_id: data.event.id,
         dateRanges: data.dates,
         locations: data.campsites,
         vote_on_location: data.event.vote_on_location,
         vote_on_date: data.event.vote_on_date,
-        currentUserVotedDate: thisComponent.checkIfVoted(data.dates, "date"),
-        currentUserVotedLocation: thisComponent.checkIfVoted(data.campsites, "campsite")
+        currentUserVotedDate: this.checkIfVoted(data.dates, "date"),
+        currentUserVotedLocation: this.checkIfVoted(data.campsites, "campsite")
       });
-    })
+    }.bind(this))
     $.getJSON('http://localhost:3000/api/items', function (data) {
-      console.log('Main Showing Data and State')
-      console.log(data)
       this.setState({
         packingList: data.items,
       });
     }.bind(this));
-    console.log(this.state);
   },
   loadUserData: function () {
     this.setState({
@@ -275,6 +271,25 @@ var Main = React.createClass({
         }
     });
   },
+  handleNewDateRange: function (range) {
+    var thisComponent = this;
+    $.ajax({
+        url: "http://localhost:3000/api/event_dates",
+        type: "POST",
+        data: {
+          start_date: range.start_date,
+          end_date: range.end_date,
+          event_id: thisComponent.state.event_id
+        },
+        success: function (res) {
+          console.log(res);
+          thisComponent.loadEvent();
+        },
+        error: function (res) {
+          console.log(res);
+        }
+    });
+  },
   render: function () {
     var children = React.cloneElement(
       //refactor to put all states uptop and function references below
@@ -303,7 +318,8 @@ var Main = React.createClass({
               onAddOrRemoveVote: this.handleAddOrRemoveVote,
               currentUserVotedDate: this.state.currentUserVotedDate,
               currentUserVotedLocation: this.state.currentUserVotedLocation,
-              onNewLocation: this.handleNewLocation
+              onNewLocation: this.handleNewLocation,
+              onNewDateRange: this.handleNewDateRange
             }
         );
     return (
