@@ -120,11 +120,28 @@ var Main = React.createClass({
       });
     })
   },
-  handleEnterNewItem: function (){
+  handleEnterNewItem: function (value){
     //!!! Edit to provide Item info, name, quantity, event_id
     console.log('Main handleEnterNewItem');
+    $.ajax({
+      url: 'http://localhost:3000/api/items',
+      method: 'POST',
+      data: {
+        name: value,
+        user_id: this.state.user_id,
+        event_id: this.state.event_id
+      },
+      success: function (res) {
+        console.log('Successfully created an Item');
+        console.log(res);
+      },
+      error: function (res) {
+        console.log('Failure no Item Created');
+        console.log(res);
+      }
+    });
   },
-  handleUserPacksItem: function (){
+  handleUserPacksItem: function (value){
     //!!! Edit to provide Item info, user_id of who packing
     console.log('Main handleUserPacksItem')
   },
