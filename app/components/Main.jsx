@@ -14,7 +14,7 @@ var Main = React.createClass({
       user_id: 0,
       locationInput: 'Test Location',
       eventName: '',
-      dateRange: {},
+      dateRanges: [],
       vote_on_date: false,
       vote_on_location: false,
       event_id: 0,
@@ -113,10 +113,10 @@ var Main = React.createClass({
     var path = 'http://localhost:3000/api/events/' + this.props.params.id;
     $.getJSON(path, function (data) {
       thisComponent.setState({
-        eventName: data.name,
-        // dateRange: data.dateRange,
-        vote_on_location: data.vote_on_location,
-        vote_on_date: data.vote_on_date
+        eventName: data.event.name,
+        dateRanges: data.dates,
+        vote_on_location: data.event.vote_on_location,
+        vote_on_date: data.event.vote_on_date
       });
     })
   },
@@ -128,10 +128,11 @@ var Main = React.createClass({
     //!!! Edit to provide Item info, user_id of who packing
     console.log('Main handleUserPacksItem')
   },
-  handleAddOrRemoveVote: function (action, category) {
+  handleAddOrRemoveVote: function (action, category, id) {
     // Category is a string, either "campsite" or "date"
     var vote = {
-      user_id: this.state.user_id
+      user_id: this.state.user_id,
+      event_date_id: id
     };
     var thisComponent = this;
     var url = this.constructVoteURL(action, category);
@@ -181,7 +182,7 @@ var Main = React.createClass({
               loading: this.state.loading,
               locationInput: this.state.locationInput,
               eventName: this.state.eventName,
-              dateRange: this.state.dateRange,
+              dateRanges: this.state.dateRanges,
               loggedin: this.state.loggedin,
               userName: this.state.user_name,
               onLogin: this.handleLogin,

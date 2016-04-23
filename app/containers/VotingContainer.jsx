@@ -2,7 +2,6 @@ var React = require('react');
 var LocationVoting = require('../components/VotingPage/LocationVoting.jsx');
 var DateVoting = require('../components/VotingPage/DateVoting.jsx');
 var locations = [];
-var dateRanges = [];
 var $ = require('jquery');
 
 var VotingContainer = React.createClass({
@@ -15,17 +14,17 @@ var VotingContainer = React.createClass({
       id: 0,
       votes: 0
     });
-    dateRanges.push({
-      start_date: this.props.dateRange.start_date,
-      end_date: this.props.dateRange.end_date,
-      id: 0,
-      votes: 0
-    })
+    // dateRanges.push({
+    //   start_date: this.props.dateRange.start_date,
+    //   end_date: this.props.dateRange.end_date,
+    //   id: 0,
+    //   votes: 0
+    // })
     return {
       addLocationInput: '',
       locations: locations,
       name: '',
-      dateRanges: dateRanges,
+      dateRanges: this.props.dateRanges,
       currentUserVotedLocation: false,
       currentUserVotedDate: false
     }
@@ -68,18 +67,18 @@ var VotingContainer = React.createClass({
       addLocationInput: input
     });
   },
-  handleAddOrRemoveVote: function (optionID, action, type) {
-    if (action.add && type === "date") {
+  handleAddOrRemoveVote: function (optionID, action, category) {
+    if (action.add && category === "date") {
       this.addDateVote(optionID);
-    } else if (!action.add && type === "date") {
+    } else if (!action.add && category === "date") {
       this.removeDateVote(optionID);
-    } else if (action.add && type === "campsite") {
+    } else if (action.add && category === "campsite") {
       this.addLocationVote(optionID);
-    } else if (!action.add && type === "campsite") {
+    } else if (!action.add && category === "campsite") {
       this.removeLocationVote(optionID);
     }
 
-    this.props.onAddOrRemoveVote(action, type);
+    this.props.onAddOrRemoveVote(action, category, optionID);
   },
   addLocationVote: function (optionID) {
     locations[optionID].votes += 1;
@@ -130,13 +129,11 @@ var VotingContainer = React.createClass({
           </div>
         </div>
         <DateVoting
-          dateRanges={dateRanges}
+          dateRanges={this.props.dateRanges}
           onSubmit={this.handleNewDateSubmit}
           votingAllowed={this.props.dateVotingAllowed}
           hideVoteButton={this.state.currentUserVotedDate}
           onAddOrRemoveVote={this.handleAddOrRemoveVote} />
-        <h3>Start Date: {this.props.dateRange.start_date}</h3>
-        <h3>End Date: {this.props.dateRange.end_date}</h3>
       </div>
     )
   }
