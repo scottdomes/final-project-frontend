@@ -209,7 +209,9 @@ var Main = React.createClass({
               locationVotingAllowed: this.state.vote_on_location,
               onEnterNewItem: this.handleEnterNewItem,
               onUserPacksItem: this.handleUserPacksItem,
-              onAddOrRemoveVote: this.handleAddOrRemoveVote
+              onAddOrRemoveVote: this.handleAddOrRemoveVote,
+              currentUserVotedDate: this.state.currentUserVotedDate,
+              currentUserVotedLocation: this.state.currentUserVotedLocation
             }
         );
     return (

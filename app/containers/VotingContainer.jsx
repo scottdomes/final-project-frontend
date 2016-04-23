@@ -24,9 +24,7 @@ var VotingContainer = React.createClass({
       addLocationInput: '',
       locations: locations,
       name: '',
-      dateRanges: this.props.dateRanges,
-      currentUserVotedLocation: false,
-      currentUserVotedDate: false
+      dateRanges: this.props.dateRanges
     }
   },
   componentWillMount: function () {
@@ -117,7 +115,7 @@ var VotingContainer = React.createClass({
           onSubmit={this.handleNewLocationSubmit} 
           onChange={this.handleLocationInputChange}
           onAddOrRemoveVote={this.handleAddOrRemoveVote}
-          hideVoteButton={this.state.currentUserVotedLocation}
+          hideVoteButton={this.props.currentUserVotedLocation}
           votingAllowed={this.props.locationVotingAllowed}/>
         <div className="row">
           <div className="large-12 large columns text-center">
@@ -128,7 +126,7 @@ var VotingContainer = React.createClass({
           dateRanges={this.props.dateRanges}
           onSubmit={this.handleNewDateSubmit}
           votingAllowed={this.props.dateVotingAllowed}
-          hideVoteButton={this.state.currentUserVotedDate}
+          hideVoteButton={this.props.currentUserVotedDate}
           onAddOrRemoveVote={this.handleAddOrRemoveVote} />
       </div>
     )
