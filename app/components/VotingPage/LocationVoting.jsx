@@ -23,6 +23,7 @@ var LocationVoting = React.createClass({
           key={index}
           id={location.id} 
           votes={location.votes}
+          hideVoteButton={thisComponent.props.hideVoteButton}
           onVote={thisComponent.handleVote}/>
       });
     } else {
