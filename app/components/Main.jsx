@@ -35,6 +35,7 @@ var Main = React.createClass({
       eventCreatorID: 0,
       userIsCreator: false,
       eventParticipants: [],
+      currentEventCreator: {name: 'Loading', picture_path: ''},
 
       userCreatedEvents: [],
       userAttendedEvents: [],
@@ -150,6 +151,7 @@ var Main = React.createClass({
     $.getJSON(path, function (data) {
       this.setState({
         currentEventDetails: data.details,
+        currentEventCreator: data.creator,
         eventName: data.details.name,
         event_id: data.details.id,
         dateRanges: data.dates,
@@ -457,6 +459,7 @@ var Main = React.createClass({
 
               currentUserAddedDate: this.state.currentUserAddedDate,
               userIsCreator: this.state.userIsCreator,
+              currentEventCreator: this.state.currentEventCreator,
 
               onNewLocation: this.handleNewLocation,
               onNewDateRange: this.handleNewDateRange,

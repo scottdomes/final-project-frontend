@@ -26,8 +26,6 @@ var EventDetails = React.createClass({
     // console.log(this.props.packingList);
     // console.log('kamikaze');
     // console.log(this.props)
-    var creatorPicture = this.props.userIsCreator ? this.props.picturePath : '';
-    var creatorName = this.props.userIsCreator ? this.props.userName : 'No creator found!';
     return (
       <div className='row'>
         <div className='large-6 columns left-column-event' id="event-left-column">
@@ -35,8 +33,7 @@ var EventDetails = React.createClass({
             currentEventDetails={this.props.currentEventDetails}
             finalLocation={this.props.finalLocation}
             finalDate={this.props.finalDate}
-            creatorPicture={creatorPicture}
-            creatorName={creatorName}/>
+            creator={this.props.currentEventCreator}/>
           <hr />
           <UserInfoList userList={this.props.eventParticipants}/>
 
