@@ -24,6 +24,7 @@ var Main = React.createClass({
       event_id: 0,
       eventCreatorID: 0,
       userIsCreator: false,
+      eventParticipants: [],
 
       final_location_id: 0,
       final_date_id: 0,
@@ -138,6 +139,7 @@ var Main = React.createClass({
         event_id: data.event.id,
         dateRanges: data.dates,
         locations: data.campsites,
+        eventParticipants: data.users,
         eventCreatorID: data.event.user_id,
         vote_on_location: data.event.vote_on_location,
         vote_on_date: data.event.vote_on_date,
@@ -153,14 +155,14 @@ var Main = React.createClass({
         packingList: data.items,
       });
     }.bind(this));
-    $.getJSON('http://localhost:3000/api/users', function (data){
-      var allUserInfo = data.users.map(function (user){
-        return user.fb_id;
-      });
-      this.setState({
-        allUsers: allUserInfo
-      });
-    }.bind(this));
+    // $.getJSON('http://localhost:3000/api/users', function (data){
+    //   var allUserInfo = data.users.map(function (user){
+    //     return user.fb_id;
+    //   });
+    //   this.setState({
+    //     allUsers: allUserInfo
+    //   });
+    // }.bind(this));
   },
   loadUserData: function () {
     this.setState({
@@ -417,8 +419,11 @@ var Main = React.createClass({
               onNewDate: this.handleNewDate,
               loading: this.state.loading,
               locationInput: this.state.locationInput,
+
               eventName: this.state.eventName,
               dateRanges: this.state.dateRanges,
+              eventParticipants: this.state.eventParticipants,
+
               locations: this.state.locations,
               loggedin: this.state.loggedin,
 
@@ -440,7 +445,6 @@ var Main = React.createClass({
               currentUserVotedDate: this.state.currentUserVotedDate,
               currentUserVotedLocation: this.state.currentUserVotedLocation,
               onNewLocation: this.handleNewLocation,
-              allUsers: this.state.allUsers,
 
               currentUserAddedDate: this.state.currentUserAddedDate,
               userIsCreator: this.state.userIsCreator,

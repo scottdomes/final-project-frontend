@@ -38,7 +38,7 @@ var EventDetails = React.createClass({
             creatorPicture={creatorPicture}
             creatorName={creatorName}/>
           <hr />
-          <UserInfoList allUsers={this.props.allUsers}/>
+          <UserInfoList userList={this.props.eventParticipants}/>
 
         </div>
         <div className='large-6 columns' id="event-right-column">

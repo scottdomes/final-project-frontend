@@ -15,14 +15,13 @@ var UserInfoList = React.createClass({
     // console.log(this.state.users);
     // console.log("WOAHHHHHH")
     // console.log(this.props.allUsers)
-    var records =[];
-    for (var i = 0; i < 100; i++){
-      records.push({name: 'jordan hung lo', profile_image: null, carpool: true});
-    }
-
-    var userList = records; //this.state.users;
-    var users = userList.map((user, index) => {
-      return <UserInfoItem onClick={this.handleOnClick.bind(this, index)} key={index} userInfo={user} />
+    // var records =[];
+    // for (var i = 0; i < 100; i++){
+    //   records.push({name: 'jordan hung lo', profile_image: null, carpool: true});
+    // }
+    // var userList = records; //this.state.users;
+    var users = this.props.userList.map((user, index) => {
+      return <UserInfoItem onClick={this.handleOnClick.bind(this, index)} key={index} userInfo={user} carpool={true}/>
     });
 
     return (
