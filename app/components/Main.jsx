@@ -298,13 +298,50 @@ var Main = React.createClass({
   checkIfAddedDate: function (dates) {
     for (var i = 0; i < dates.length; i++) {
       if (dates[i].dateRange.user_id === this.state.user_id) {
-        console.log("User date");
         this.setState({
           currentUserAddedDate: true
         });
-        console.log(this.state.currentUserAddedDate);
       }
     }
+  },
+  handleVoteEnd: function () {
+    var thisComponent = this;
+    $.ajax({
+        url: "http://localhost:3000/api/events/" + this.state.event_id,
+        type: "PATCH",
+        data: {
+          final_location_id: thisComponent.findMostVotes("campsite"),
+          final_date_id: thisComponent.findMostVotes("dateRange")
+        },
+        success: function (res) {
+          // thisComponent.context.router.push({
+          //   pathname: 'event/addfriends'
+          // })
+        },
+        error: function (res) {
+          console.log(res);
+        }
+    });
+  },
+  findMostVotes: function (category) {
+    var mostVotes = 0;
+    var mostVotesID;
+    var array;
+
+    if (category === "dateRange") {
+      var array = this.state.dateRanges;
+    } else {
+      var array = this.state.locations;
+    }
+
+    for (var i = 0; i < array.length; i++) {
+      if (array[i].votes.length > mostVotes) {
+        mostVotes = array[i].votes.length;
+        mostVotesID = array[i][category].id;
+      }
+    }
+
+    return mostVotesID;
   },
   render: function () {
     var children = React.cloneElement(
@@ -338,7 +375,9 @@ var Main = React.createClass({
               currentUserAddedDate: this.state.currentUserAddedDate,
 
               onNewLocation: this.handleNewLocation,
-              onNewDateRange: this.handleNewDateRange
+              onNewDateRange: this.handleNewDateRange,
+
+              onVoteEnd: this.handleVoteEnd
             }
         );
     return (

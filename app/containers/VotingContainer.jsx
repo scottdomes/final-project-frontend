@@ -68,12 +68,21 @@ var VotingContainer = React.createClass({
       currentUserVotedDate: false
     });
   },
+  handleVoteEnd: function (e) {
+    e.stopPropagation();
+    this.props.onVoteEnd();
+  },
   render: function () {
     return (
       <div>
         <div id="voting-page-heading" className="row">
           <div className="large-12 large columns text-center">
             <h3>{this.props.userName} created the event {this.props.eventName}</h3>
+            <button 
+              className="button alert"
+              onClick={this.handleVoteEnd}>
+                End Voting
+            </button>
           </div>
         </div>
         <LocationVoting 
