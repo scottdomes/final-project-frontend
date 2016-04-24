@@ -35,7 +35,9 @@ var Main = React.createClass({
       eventCreatorID: 0,
       userIsCreator: false,
       eventParticipants: [],
+
       userCreatedEvents: [],
+      userAttendedEvents: [],
 
       final_location_id: 0,
       final_date_id: 0,
@@ -52,12 +54,13 @@ var Main = React.createClass({
       locationVoteID: null
     }
   },
-  setUserDetails: function (name, id, picture_path, events) {
+  setUserDetails: function (name, id, picture_path, events, attendances) {
     this.setState({
       user_name: name,
       user_id: id,
       picturePath: picture_path,
-      userCreatedEvents: events
+      userCreatedEvents: events,
+      userAttendedEvents: attendances
     });
   },
   setName: function (name) {
@@ -143,7 +146,6 @@ var Main = React.createClass({
   },
   loadEvent: function (event_id) {
     var eventID = event_id ? event_id : this.props.params.id;
-    console.log("calling loadEvent in Main for URL" + this.props.params.id);
     var path = 'http://localhost:3000/api/events/' + eventID;
     $.getJSON(path, function (data) {
       this.setState({
@@ -170,14 +172,6 @@ var Main = React.createClass({
         packingList: data.items,
       });
     }.bind(this));
-    // $.getJSON('http://localhost:3000/api/users', function (data){
-    //   var allUserInfo = data.users.map(function (user){
-    //     return user.fb_id;
-    //   });
-    //   this.setState({
-    //     allUsers: allUserInfo
-    //   });
-    // }.bind(this));
   },
   loadUserData: function () {
     this.setState({
@@ -478,6 +472,12 @@ var Main = React.createClass({
                 key={index}
                 onClick={this.loadEvent}/>
     });
+    var eventsAttended = this.state.userAttendedEvents.map((event, index) => {
+      return <EventLink 
+                eventDetails={event} 
+                key={index}
+                onClick={this.loadEvent}/>
+    });
     return (
       <div id="background">
         <div id="background-overlay">
@@ -488,6 +488,7 @@ var Main = React.createClass({
             <p>Events Created</p>
             {eventsCreated}
             <p>Events Attending</p>
+            {eventsAttended}
           </div>
           {children}
         </div>
