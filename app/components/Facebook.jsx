@@ -1,6 +1,5 @@
 var $ = require('jquery');
 
-
 var Facebook = {
   load: function (d, s, id) {
     // initializeSDK();
@@ -56,7 +55,11 @@ var Facebook = {
       });
     });
   },
-
+  // fetchAllUserNames: function (usersArray){
+  //  FB.api('/me?fields=email,name,gender', function(response) {
+  //     console.log('FIL YOU ARE HERE')
+  //   });
+  // },
   login: function (component) {
     FB.login(function(response) {
       Facebook.statusChangeCallback(response, component);
