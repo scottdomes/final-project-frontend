@@ -141,11 +141,11 @@ var Main = React.createClass({
       pathname: path
     })
   },
-  loadEvent: function () {
-    console.log("calling loadEvent in Main");
-    var path = 'http://localhost:3000/api/events/' + this.props.params.id;
+  loadEvent: function (event_id) {
+    var eventID = event_id ? event_id : this.props.params.id;
+    console.log("calling loadEvent in Main for URL" + this.props.params.id);
+    var path = 'http://localhost:3000/api/events/' + eventID;
     $.getJSON(path, function (data) {
-      console.log(data);
       this.setState({
         currentEventDetails: data.details,
         eventName: data.details.name,
@@ -476,7 +476,7 @@ var Main = React.createClass({
       return <EventLink 
                 eventDetails={event} 
                 key={index}
-                onEventChange={this.loadEvent}/>
+                onClick={this.loadEvent}/>
     });
     return (
       <div id="background">
