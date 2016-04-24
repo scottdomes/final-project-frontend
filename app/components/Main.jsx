@@ -341,18 +341,13 @@ var Main = React.createClass({
               onEnterNewItem: this.handleEnterNewItem,
               onUserPacksItem: this.handleUserPacksItem,
               onAddOrRemoveVote: this.handleAddOrRemoveVote,
-
               currentUserVotedDate: this.state.currentUserVotedDate,
               currentUserVotedLocation: this.state.currentUserVotedLocation,
-<<<<<<< HEAD
               onNewLocation: this.handleNewLocation,
-              allUsers: this.state.allUsers
-=======
+              allUsers: this.state.allUsers,
               currentUserAddedDate: this.state.currentUserAddedDate,
-
               onNewLocation: this.handleNewLocation,
               onNewDateRange: this.handleNewDateRange
->>>>>>> eccc8e667320aa0aacbfa4532f93670217642080
             }
         );
     return (
