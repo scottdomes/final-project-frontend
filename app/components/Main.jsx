@@ -12,13 +12,21 @@ var Main = React.createClass({
     return {
       loading: true,
       loggedin: false,
+      currentEventDetails: {
+        name: 'Loading...',
+        final_date_id: 0,
+        final_location_id: 0,
+        id: 0
+      },
+      final_location: {campsite: {id: 0, name:'Test Campsite Name'}},
+      final_date: {dateRange: {id: 0, start_date: 'Test Start Date', end_date: 'Test End Date'}},
+
 
       user_name: 'Test User',
       user_id: 0,
       picturePath: '',
 
       locationInput: 'Test Location',
-      eventName: 'Test Event Name',
       dateRanges: [],
       vote_on_date: false,
       vote_on_location: false,
@@ -31,8 +39,6 @@ var Main = React.createClass({
 
       final_location_id: 0,
       final_date_id: 0,
-      final_location: {campsite: {id: 0, name:'Test Campsite Name'}},
-      final_date: {dateRange: {id: 0, start_date: 'Test Start Date', end_date: 'Test End Date'}},
 
       locations: [],
       locationVoteID: null,
@@ -139,17 +145,19 @@ var Main = React.createClass({
     console.log("calling loadEvent in Main");
     var path = 'http://localhost:3000/api/events/' + this.props.params.id;
     $.getJSON(path, function (data) {
+      console.log(data);
       this.setState({
-        eventName: data.event.name,
-        event_id: data.event.id,
+        currentEventDetails: data.details,
+        eventName: data.details.name,
+        event_id: data.details.id,
         dateRanges: data.dates,
         locations: data.campsites,
         eventParticipants: data.users,
-        eventCreatorID: data.event.user_id,
-        vote_on_location: data.event.vote_on_location,
-        vote_on_date: data.event.vote_on_date,
-        final_location_id: data.event.final_location_id,
-        final_date_id: data.event.final_date_id,
+        eventCreatorID: data.details.user_id,
+        vote_on_location: data.details.vote_on_location,
+        vote_on_date: data.details.vote_on_date,
+        final_location_id: data.details.final_location_id,
+        final_date_id: data.details.final_date_id,
         currentUserVotedDate: this.checkIfVoted(data.dates, "date"),
         currentUserVotedLocation: this.checkIfVoted(data.campsites, "campsite"),
         currentUserAddedDate: this.checkIfAddedDate(data.dates)
@@ -427,7 +435,7 @@ var Main = React.createClass({
               loading: this.state.loading,
               locationInput: this.state.locationInput,
 
-              eventName: this.state.eventName,
+              currentEventDetails: this.state.currentEventDetails,
               dateRanges: this.state.dateRanges,
               eventParticipants: this.state.eventParticipants,
 
@@ -465,7 +473,10 @@ var Main = React.createClass({
             }
         );
     var eventsCreated = this.state.userCreatedEvents.map((event, index) => {
-      return <EventLink eventDetails={event} key={index}/>
+      return <EventLink 
+                eventDetails={event} 
+                key={index}
+                onEventChange={this.loadEvent}/>
     });
     return (
       <div id="background">

@@ -63,7 +63,7 @@ var ProcessContainer = React.createClass({
               onNewDate: this.handleNewDate,
               locationInput: this.props.locationInput,
 
-              eventName: this.props.eventName,
+              currentEventDetails: this.props.currentEventDetails,
               dateRanges: this.props.dateRanges,
               locations: this.props.locations,
               eventParticipants: this.props.eventParticipants,

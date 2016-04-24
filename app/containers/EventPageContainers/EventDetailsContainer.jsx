@@ -32,7 +32,7 @@ var EventDetails = React.createClass({
       <div className='row'>
         <div className='large-6 columns left-column-event' id="event-left-column">
           <EventInfoContainer 
-            eventName={this.props.eventName}
+            currentEventDetails={this.props.currentEventDetails}
             finalLocation={this.props.finalLocation}
             finalDate={this.props.finalDate}
             creatorPicture={creatorPicture}
