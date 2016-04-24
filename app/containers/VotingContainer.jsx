@@ -73,6 +73,7 @@ var VotingContainer = React.createClass({
     this.props.onVoteEnd();
   },
   render: function () {
+    var showEndVote = this.props.userIsCreator ? {"display": "inline-block"} : {"display": "none"};
     return (
       <div>
         <div id="voting-page-heading" className="row">
@@ -80,7 +81,8 @@ var VotingContainer = React.createClass({
             <h3>{this.props.userName} created the event {this.props.eventName}</h3>
             <button 
               className="button alert"
-              onClick={this.handleVoteEnd}>
+              onClick={this.handleVoteEnd}
+              style={showEndVote}>
                 End Voting
             </button>
           </div>

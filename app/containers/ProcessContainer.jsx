@@ -80,6 +80,7 @@ var ProcessContainer = React.createClass({
               currentUserVotedDate: this.props.currentUserVotedDate,
               currentUserVotedLocation: this.props.currentUserVotedLocation,
               currentUserAddedDate: this.props.currentUserAddedDate,
+              userIsCreator: this.props.userIsCreator,
 
               onNewLocation: this.handleNewLocation,
               onNewDateRange: this.handleNewDateRange,

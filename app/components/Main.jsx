@@ -17,7 +17,11 @@ var Main = React.createClass({
       dateRanges: [],
       vote_on_date: false,
       vote_on_location: false,
+
       event_id: 0,
+      eventCreatorID: 0,
+      userIsCreator: false,
+
       locations: [],
       locationVoteID: null,
       dateVoteID: null,
@@ -124,6 +128,7 @@ var Main = React.createClass({
         event_id: data.event.id,
         dateRanges: data.dates,
         locations: data.campsites,
+        eventCreatorID: data.event.user_id,
         vote_on_location: data.event.vote_on_location,
         vote_on_date: data.event.vote_on_date,
         currentUserVotedDate: this.checkIfVoted(data.dates, "date"),
@@ -143,6 +148,7 @@ var Main = React.createClass({
       currentUserVotedLocation: this.checkIfVoted(this.state.locations, "campsite"),
     });
     this.checkIfAddedDate(this.state.dateRanges);
+    this.isUserCreator();
   },
   checkIfVoted: function (array, category) {
     var thisComponent = this;
@@ -343,6 +349,14 @@ var Main = React.createClass({
 
     return mostVotesID;
   },
+  isUserCreator: function () {
+    console.log("HI");
+    if (this.state.user_id === this.state.eventCreatorID) {
+      this.setState({
+        userIsCreator: true
+      });
+    }
+  },
   render: function () {
     var children = React.cloneElement(
       //refactor to put all states uptop and function references below
@@ -373,6 +387,7 @@ var Main = React.createClass({
               currentUserVotedDate: this.state.currentUserVotedDate,
               currentUserVotedLocation: this.state.currentUserVotedLocation,
               currentUserAddedDate: this.state.currentUserAddedDate,
+              userIsCreator: this.state.userIsCreator,
 
               onNewLocation: this.handleNewLocation,
               onNewDateRange: this.handleNewDateRange,
