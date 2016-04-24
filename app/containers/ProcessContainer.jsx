@@ -73,8 +73,11 @@ var ProcessContainer = React.createClass({
               dateVotingAllowed: this.props.dateVotingAllowed,
               locationVotingAllowed: this.props.locationVotingAllowed,
               onAddOrRemoveVote: this.handleAddOrRemoveVote,
+              
               currentUserVotedDate: this.props.currentUserVotedDate,
               currentUserVotedLocation: this.props.currentUserVotedLocation,
+              currentUserAddedDate: this.props.currentUserAddedDate,
+
               onNewLocation: this.handleNewLocation,
               onNewDateRange: this.handleNewDateRange
             }

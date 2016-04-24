@@ -16,10 +16,7 @@ var VotingContainer = React.createClass({
     }
   },
   componentWillMount: function () {
-    if (this.props.eventName === '') {
-      console.log("Calling load event in votingContainer");
-      this.props.loadEvent();
-    }
+    this.props.loadEvent();
   },
   handleDone: function (e) {
     e.stopPropagation();
@@ -96,7 +93,8 @@ var VotingContainer = React.createClass({
           onSubmit={this.handleNewDateSubmit}
           votingAllowed={this.props.dateVotingAllowed}
           hideVoteButton={this.props.currentUserVotedDate}
-          onAddOrRemoveVote={this.handleAddOrRemoveVote} />
+          onAddOrRemoveVote={this.handleAddOrRemoveVote}
+          currentUserAddedDate={this.props.currentUserAddedDate} />
       </div>
     )
   }

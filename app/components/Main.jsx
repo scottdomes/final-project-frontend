@@ -22,8 +22,11 @@ var Main = React.createClass({
       locationVoteID: null,
       dateVoteID: null,
       packingList: [],
+
       currentUserVotedDate: false,
       currentUserVotedLocation: false,
+      currentUserAddedDate: false,
+
       locationVoteID: null
     }
   },
@@ -124,7 +127,8 @@ var Main = React.createClass({
         vote_on_location: data.event.vote_on_location,
         vote_on_date: data.event.vote_on_date,
         currentUserVotedDate: this.checkIfVoted(data.dates, "date"),
-        currentUserVotedLocation: this.checkIfVoted(data.campsites, "campsite")
+        currentUserVotedLocation: this.checkIfVoted(data.campsites, "campsite"),
+        currentUserAddedDate: this.checkIfAddedDate(data.dates)
       });
     }.bind(this))
     $.getJSON('http://localhost:3000/api/items', function (data) {
@@ -136,8 +140,9 @@ var Main = React.createClass({
   loadUserData: function () {
     this.setState({
       currentUserVotedDate: this.checkIfVoted(this.state.dateRanges, "date"),
-      currentUserVotedLocation: this.checkIfVoted(this.state.locations, "campsite")
+      currentUserVotedLocation: this.checkIfVoted(this.state.locations, "campsite"),
     });
+    this.checkIfAddedDate(this.state.dateRanges);
   },
   checkIfVoted: function (array, category) {
     var thisComponent = this;
@@ -290,6 +295,17 @@ var Main = React.createClass({
         }
     });
   },
+  checkIfAddedDate: function (dates) {
+    for (var i = 0; i < dates.length; i++) {
+      if (dates[i].dateRange.user_id === this.state.user_id) {
+        console.log("User date");
+        this.setState({
+          currentUserAddedDate: true
+        });
+        console.log(this.state.currentUserAddedDate);
+      }
+    }
+  },
   render: function () {
     var children = React.cloneElement(
       //refactor to put all states uptop and function references below
@@ -316,8 +332,11 @@ var Main = React.createClass({
               onEnterNewItem: this.handleEnterNewItem,
               onUserPacksItem: this.handleUserPacksItem,
               onAddOrRemoveVote: this.handleAddOrRemoveVote,
+
               currentUserVotedDate: this.state.currentUserVotedDate,
               currentUserVotedLocation: this.state.currentUserVotedLocation,
+              currentUserAddedDate: this.state.currentUserAddedDate,
+
               onNewLocation: this.handleNewLocation,
               onNewDateRange: this.handleNewDateRange
             }
