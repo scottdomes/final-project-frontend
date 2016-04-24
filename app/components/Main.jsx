@@ -10,8 +10,11 @@ var Main = React.createClass({
     return {
       loading: true,
       loggedin: false,
+
       user_name: 'Test User',
       user_id: 0,
+      picturePath: '',
+
       locationInput: 'Test Location',
       eventName: 'Test Event Name',
       dateRanges: [],
@@ -418,7 +421,10 @@ var Main = React.createClass({
               dateRanges: this.state.dateRanges,
               locations: this.state.locations,
               loggedin: this.state.loggedin,
+
               userName: this.state.user_name,
+              picturePath: this.state.picturePath,
+
               packingList: this.state.packingList,
               onLogin: this.handleLogin,
               onLogout: this.handleLogout,

@@ -13,6 +13,13 @@ body {
     top: 0;
   }
 
+  #event-creator-pic {
+    width: 80px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+  }
+
   #event-left-column {
     margin-top: 50px;
   }
@@ -102,5 +109,9 @@ body {
     margin-left: 0%;
   }
 
+}
+
+.inline-text {
+  display: inline-block;
 }
 

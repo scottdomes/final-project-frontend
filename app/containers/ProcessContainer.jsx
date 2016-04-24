@@ -68,7 +68,10 @@ var ProcessContainer = React.createClass({
               locations: this.props.locations,
               
               loggedin: this.props.loggedin,
+
               userName: this.props.userName,
+              picturePath: this.props.picturePath,
+
               onLogin: this.handleLogin,
               onLogout: this.handleLogout,
               onVoteActivatorChange: this.handleVoteActivatorChange,
