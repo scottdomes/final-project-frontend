@@ -16,18 +16,23 @@ var EventDetails = React.createClass({
       this.props.loadEvent();
     // }
   },
+  handleGetAllUsers: function (){
+    this.props.onGetAllUsers();
+  },
   render: function (){
     // packingList={this.state.packingList} 
     console.log('Event Details Called Props')
     console.log(this.props);
     console.log(this.props.packingList);
+    console.log('kamikaze');
+    console.log(this.props)
 
     return (
       <div className='row'>
         <div className='large-6 columns left-column-event' id="event-left-column">
           <EventInfoContainer />
           <hr />
-          <UserInfoList />
+          <UserInfoList allUsers={this.props.allUsers}/>
 
         </div>
         <div className='large-6 columns' id="event-right-column">

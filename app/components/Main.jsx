@@ -141,6 +141,16 @@ var Main = React.createClass({
         packingList: data.items,
       });
     }.bind(this));
+    $.getJSON('http://localhost:3000/api/users', function (data){
+      var allUserInfo = data.users.map(function (user){
+        return user.fb_id;
+      });
+      this.setState({
+        allUsers: allUserInfo
+      });
+      console.log("Tamagachi");
+      console.log(this.state)
+    }.bind(this));
   },
   loadUserData: function () {
     this.setState({
@@ -196,7 +206,6 @@ var Main = React.createClass({
     });
   },
   handleUserPacksItem: function (item, key){
-    //!!! Edit to provide Item info, user_id of who packing
     console.log('Main handleUserPacksItem');
     var packedBy = item.user_id ? null : this.state.user_id;
     $.ajax({
@@ -350,7 +359,6 @@ var Main = React.createClass({
     return mostVotesID;
   },
   isUserCreator: function () {
-    console.log("HI");
     if (this.state.user_id === this.state.eventCreatorID) {
       this.setState({
         userIsCreator: true
@@ -383,9 +391,11 @@ var Main = React.createClass({
               onEnterNewItem: this.handleEnterNewItem,
               onUserPacksItem: this.handleUserPacksItem,
               onAddOrRemoveVote: this.handleAddOrRemoveVote,
-
               currentUserVotedDate: this.state.currentUserVotedDate,
               currentUserVotedLocation: this.state.currentUserVotedLocation,
+              onNewLocation: this.handleNewLocation,
+              allUsers: this.state.allUsers,
+
               currentUserAddedDate: this.state.currentUserAddedDate,
               userIsCreator: this.state.userIsCreator,
 
