@@ -1,3 +1,4 @@
+
 var React = require('react');
 var Facebook = require('../components/Facebook.jsx');
 var $ = require('jquery');
@@ -135,6 +136,7 @@ var Main = React.createClass({
     })
   },
   loadEvent: function () {
+    console.log("calling loadEvent in Main");
     var path = 'http://localhost:3000/api/events/' + this.props.params.id;
     $.getJSON(path, function (data) {
       this.setState({
@@ -152,6 +154,8 @@ var Main = React.createClass({
         currentUserVotedLocation: this.checkIfVoted(data.campsites, "campsite"),
         currentUserAddedDate: this.checkIfAddedDate(data.dates)
       });
+      this.isUserCreator();
+      this.setFinalLocationAndDate(this.state.final_date_id, this.state.final_location_id)
     }.bind(this))
     $.getJSON('http://localhost:3000/api/items', function (data) {
       this.setState({

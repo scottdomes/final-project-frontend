@@ -18,11 +18,15 @@
     position: absolute;
     top: 0;
 
-    #events-sidebar {
+    .events-sidebar {
       position: absolute;
       top: 0;
       left: 0;
       color: white;
+
+      p, a {
+        display: inline-block;
+      }
     }
 
     #loggedin-indicator {

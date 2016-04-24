@@ -12,7 +12,7 @@ var EventDetails = React.createClass({
   },
   componentWillMount: function() {
     // if (this.props.eventName === '') {
-      // console.log("Calling load event in Event Details Container");
+      console.log("Calling load event in Event Details Container");
       this.props.loadEvent();
     // }
   },
