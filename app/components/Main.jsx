@@ -1,6 +1,7 @@
 var React = require('react');
 var Facebook = require('../components/Facebook.jsx');
 var $ = require('jquery');
+var EventLink = require('../components/EventLink.jsx');
 
 var Main = React.createClass({
   contextTypes: {
@@ -25,11 +26,12 @@ var Main = React.createClass({
       eventCreatorID: 0,
       userIsCreator: false,
       eventParticipants: [],
+      userCreatedEvents: [],
 
       final_location_id: 0,
       final_date_id: 0,
-      final_location: {campsite: {name:'Test Campsite Name'}},
-      final_date: {dateRange: {start_date: 'Test Start Date', end_date: 'Test End Date'}},
+      final_location: {campsite: {id: 0, name:'Test Campsite Name'}},
+      final_date: {dateRange: {id: 0, start_date: 'Test Start Date', end_date: 'Test End Date'}},
 
       locations: [],
       locationVoteID: null,
@@ -43,11 +45,12 @@ var Main = React.createClass({
       locationVoteID: null
     }
   },
-  setUserDetails: function (name, id, picture_path) {
+  setUserDetails: function (name, id, picture_path, events) {
     this.setState({
       user_name: name,
       user_id: id,
-      picturePath: picture_path
+      picturePath: picture_path,
+      userCreatedEvents: events
     });
   },
   setName: function (name) {
@@ -389,7 +392,7 @@ var Main = React.createClass({
     });
   },
   getFinalLocation: function (location_id) {
-    var final_location;
+    var final_location = {campsite: {id: 0, name:'Test Campsite Name'}};
 
     for (var i = 0; i < this.state.locations.length; i++) {
        if (this.state.locations[i].campsite.id === location_id) {
@@ -400,7 +403,7 @@ var Main = React.createClass({
     return final_location;
   },
   getFinalDate: function (date_id) {
-    var final_date;
+    var final_date = {dateRange: {id: 0, start_date: 'Test Start Date', end_date: 'Test End Date'}};
 
     for (var i = 0; i < this.state.dateRanges.length; i++) {
        if (this.state.dateRanges[i].dateRange.id === date_id) {
@@ -457,12 +460,20 @@ var Main = React.createClass({
               finalLocation: this.state.final_location
             }
         );
+    var eventsCreated = this.state.userCreatedEvents.map((event, index) => {
+      return <EventLink eventDetails={event} key={index}/>
+    });
     return (
       <div id="background">
         <div id="background-overlay">
           { this.state.loggedin ? 
           <div className="loggedin-container"><p id="loggedin-indicator" className="right">Welcome back, {this.state.user_name}</p>
           <button className="button tiny secondary" onClick={this.handleLogout}>Logout</button></div> : <span></span> }
+          <div className="events-sidebar">
+            <p>Events Created</p>
+            {eventsCreated}
+            <p>Events Attending</p>
+          </div>
           {children}
         </div>
       </div>

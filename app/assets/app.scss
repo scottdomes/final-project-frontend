@@ -18,6 +18,13 @@
     position: absolute;
     top: 0;
 
+    #events-sidebar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: white;
+    }
+
     #loggedin-indicator {
       color: white;
       padding-right: 30px;

@@ -49,7 +49,7 @@ var Facebook = {
         // data: { fb_id: response.id },
         data: { fb_id: 123 },  // For working with seed file!
         success: function (res) {
-          component.setUserDetails(res.name, res.id, res.picture_path);
+          component.setUserDetails(res.user.name, res.user.id, res.user.picture_path, res.events);
           component.loadUserData();
         }
       });
