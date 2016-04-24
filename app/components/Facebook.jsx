@@ -46,7 +46,8 @@ var Facebook = {
       $.ajax({
         url: "http://localhost:3000/api/users",
         type: "POST",
-        data: { fb_id: response.id },
+        // data: { fb_id: response.id },
+        data: { fb_id: 123 },  // For working with seed file!
         success: function (res) {
           component.setName(response.name);
           component.setUserID(res.id);

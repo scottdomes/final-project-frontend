@@ -12,7 +12,7 @@ var EventDetails = React.createClass({
   },
   componentWillMount: function() {
     // if (this.props.eventName === '') {
-      console.log("Calling load event in Event Details Container");
+      // console.log("Calling load event in Event Details Container");
       this.props.loadEvent();
     // }
   },
@@ -21,11 +21,11 @@ var EventDetails = React.createClass({
   },
   render: function (){
     // packingList={this.state.packingList} 
-    console.log('Event Details Called Props')
-    console.log(this.props);
-    console.log(this.props.packingList);
-    console.log('kamikaze');
-    console.log(this.props)
+    // console.log('Event Details Called Props')
+    // console.log(this.props);
+    // console.log(this.props.packingList);
+    // console.log('kamikaze');
+    // console.log(this.props)
 
     return (
       <div className='row'>

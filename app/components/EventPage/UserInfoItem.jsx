@@ -7,7 +7,7 @@ function UserInfoItem(props) {
   // const {packingList, onClick} = props;
 
   function handleOnClick(e){
-    console.log('click');
+    // console.log('click');
 
   }
   // console.log('hurrr');

@@ -11,10 +11,10 @@ var UserInfoList = React.createClass({
     console.log('User Info List click');
   },
   render: function (){
-    console.log('UserInfoList')
+    // console.log('UserInfoList')
     // console.log(this.state.users);
-    console.log("WOAHHHHHH")
-    console.log(this.props.allUsers)
+    // console.log("WOAHHHHHH")
+    // console.log(this.props.allUsers)
     var records =[];
     for (var i = 0; i < 100; i++){
       records.push({name: 'jordan hung lo', profile_image: null, carpool: true});

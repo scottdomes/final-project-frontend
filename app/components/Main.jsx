@@ -376,7 +376,6 @@ var Main = React.createClass({
     }
   },
   setFinalLocationAndDate: function (date_id, location_id) {
-    console.log("called");
     this.setState({
       final_location: this.getFinalLocation(location_id),
       final_date: this.getFinalDate(date_id)
