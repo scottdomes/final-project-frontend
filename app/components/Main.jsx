@@ -13,7 +13,7 @@ var Main = React.createClass({
       user_name: 'Test User',
       user_id: 0,
       locationInput: 'Test Location',
-      eventName: '',
+      eventName: 'Test Event Name',
       dateRanges: [],
       vote_on_date: false,
       vote_on_location: false,
@@ -24,6 +24,8 @@ var Main = React.createClass({
 
       final_location_id: 0,
       final_date_id: 0,
+      final_location: {campsite: {name:'Test Campsite Name'}},
+      final_date: {dateRange: {start_date: 'Test Start Date', end_date: 'Test End Date'}},
 
       locations: [],
       locationVoteID: null,
@@ -162,6 +164,7 @@ var Main = React.createClass({
     });
     this.checkIfAddedDate(this.state.dateRanges);
     this.isUserCreator();
+    this.setFinalLocationAndDate(this.state.final_date_id, this.state.final_location_id)
   },
   checkIfVoted: function (array, category) {
     var thisComponent = this;
@@ -373,9 +376,11 @@ var Main = React.createClass({
     }
   },
   setFinalLocationAndDate: function (date_id, location_id) {
-    var final_location = this.getFinalLocation(location_id);
-    var final_date = this.getFinalDate(date_id);
-    console.log(final_date)
+    console.log("called");
+    this.setState({
+      final_location: this.getFinalLocation(location_id),
+      final_date: this.getFinalDate(date_id)
+    });
   },
   getFinalLocation: function (location_id) {
     var final_location;
@@ -436,7 +441,9 @@ var Main = React.createClass({
               onNewLocation: this.handleNewLocation,
               onNewDateRange: this.handleNewDateRange,
 
-              onVoteEnd: this.handleVoteEnd
+              onVoteEnd: this.handleVoteEnd,
+              finalDate: this.state.final_date,
+              finalLocation: this.state.final_location
             }
         );
     return (

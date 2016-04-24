@@ -5,7 +5,10 @@ var EventInfoContainer = React.createClass({
   render: function (){
     return (
       <div>
-       <EventTitle eventName={this.props.eventName} />
+       <EventTitle 
+        eventName={this.props.eventName}
+        finalDate={this.props.finalDate}
+        finalLocation={this.props.finalLocation} />
       </div>
     )
   }

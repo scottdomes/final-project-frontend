@@ -31,7 +31,9 @@ var EventDetails = React.createClass({
       <div className='row'>
         <div className='large-6 columns left-column-event' id="event-left-column">
           <EventInfoContainer 
-            eventName={this.props.eventName}/>
+            eventName={this.props.eventName}
+            finalLocation={this.props.finalLocation}
+            finalDate={this.props.finalDate}/>
           <hr />
           <UserInfoList allUsers={this.props.allUsers}/>
 
