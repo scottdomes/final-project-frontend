@@ -22,6 +22,9 @@ var Main = React.createClass({
       eventCreatorID: 0,
       userIsCreator: false,
 
+      final_location_id: 0,
+      final_date_id: 0,
+
       locations: [],
       locationVoteID: null,
       dateVoteID: null,
@@ -131,6 +134,8 @@ var Main = React.createClass({
         eventCreatorID: data.event.user_id,
         vote_on_location: data.event.vote_on_location,
         vote_on_date: data.event.vote_on_date,
+        final_location_id: data.event.final_location_id,
+        final_date_id: data.event.final_date_id,
         currentUserVotedDate: this.checkIfVoted(data.dates, "date"),
         currentUserVotedLocation: this.checkIfVoted(data.campsites, "campsite"),
         currentUserAddedDate: this.checkIfAddedDate(data.dates)
@@ -148,8 +153,6 @@ var Main = React.createClass({
       this.setState({
         allUsers: allUserInfo
       });
-      console.log("Tamagachi");
-      console.log(this.state)
     }.bind(this));
   },
   loadUserData: function () {
@@ -320,17 +323,21 @@ var Main = React.createClass({
     }
   },
   handleVoteEnd: function () {
+    var final_location_id = this.findMostVotes("campsite"); 
+    var final_date_id = this.findMostVotes("dateRange"); 
+
     var thisComponent = this;
     $.ajax({
         url: "http://localhost:3000/api/events/" + this.state.event_id,
         type: "PATCH",
         data: {
-          final_location_id: thisComponent.findMostVotes("campsite"),
-          final_date_id: thisComponent.findMostVotes("dateRange")
+          final_location_id: final_location_id,
+          final_date_id: final_date_id
         },
         success: function (res) {
+          thisComponent.setFinalLocationAndDate(final_date_id, final_location_id);
           // thisComponent.context.router.push({
-          //   pathname: 'event/addfriends'
+          //   pathname: 'eventDetails'
           // })
         },
         error: function (res) {
@@ -364,6 +371,33 @@ var Main = React.createClass({
         userIsCreator: true
       });
     }
+  },
+  setFinalLocationAndDate: function (date_id, location_id) {
+    var final_location = this.getFinalLocation(location_id);
+    var final_date = this.getFinalDate(date_id);
+    console.log(final_date)
+  },
+  getFinalLocation: function (location_id) {
+    var final_location;
+
+    for (var i = 0; i < this.state.locations.length; i++) {
+       if (this.state.locations[i].campsite.id === location_id) {
+        final_location = this.state.locations[i];
+       }
+    }
+
+    return final_location;
+  },
+  getFinalDate: function (date_id) {
+    var final_date;
+
+    for (var i = 0; i < this.state.dateRanges.length; i++) {
+       if (this.state.dateRanges[i].dateRange.id === date_id) {
+        final_date = this.state.dateRanges[i];
+       }
+    }
+
+    return final_date;
   },
   render: function () {
     var children = React.cloneElement(

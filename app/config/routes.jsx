@@ -23,7 +23,7 @@ var routes = (
         <Route path='eventconfig' component={EventConfigContainer}/>
         <Route path=':id/vote' component={VotingContainer}/>
       </Route>
-      <Route path='eventdetails' component={EventDetailsContainer} />
+      <Route path='eventdetails/:id' component={EventDetailsContainer} />
     </Route>
   </Router> 
 );

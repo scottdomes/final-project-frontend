@@ -11,8 +11,8 @@ var EventTitle = React.createClass({
     // console.log(this.state.eventInfo);
     return (
       <div>
-        <h1>{this.state.eventInfo.title}</h1>
-        <span>{this.state.eventInfo.startDate} - {this.state.eventInfo.endDate}</span>
+        <h1>{this.props.eventName}</h1>
+        <span>{this.props.dateRanges.start_date} - {this.props.dateRanges.end_date}</span>
         <h5>{this.state.eventInfo.location}</h5>
         <p> We are going camping here </p>
       </div>

@@ -5,7 +5,7 @@ var EventInfoContainer = React.createClass({
   render: function (){
     return (
       <div>
-       <EventTitle />
+       <EventTitle eventName={this.props.eventName} />
       </div>
     )
   }
