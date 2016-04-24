@@ -42,15 +42,13 @@ var Facebook = {
   fetchUserName: function (component) {
     FB.api('/me?fields=email,name,gender', function(response) {
       component.setName(response.name);
-      console.log(response.id);
       $.ajax({
         url: "http://localhost:3000/api/users",
         type: "POST",
         // data: { fb_id: response.id },
         data: { fb_id: 123 },  // For working with seed file!
         success: function (res) {
-          component.setName(response.name);
-          component.setUserID(res.id);
+          component.setUserDetails(res.name, res.id, res.picture_path);
           component.loadUserData();
         }
       });

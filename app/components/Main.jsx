@@ -39,14 +39,16 @@ var Main = React.createClass({
       locationVoteID: null
     }
   },
+  setUserDetails: function (name, id, picture_path) {
+    this.setState({
+      user_name: name,
+      user_id: id,
+      picturePath: picture_path
+    });
+  },
   setName: function (name) {
     this.setState({
       user_name: name
-    });
-  },
-  setUserID: function (id) {
-    this.setState({
-      user_id: id
     });
   },
   setLoginStatus: function(boolean){
