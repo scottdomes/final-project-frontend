@@ -6,6 +6,9 @@ var EventLink = require('../components/EventLink.jsx');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var TransitionContainer = require('react-page-transitions');
 
+var ReactRouter = require('react-router');
+var browserHistory = ReactRouter.browserHistory;
+
 
 
 var Main = React.createClass({
@@ -114,27 +117,48 @@ var Main = React.createClass({
       this.setState({ vote_on_location: false });
     }
   },
-  handleSubmitEvent: function (eventName) {
+  handleSubmitEvent: function (eventDetails) {
+    //change eventname to event details and pull name
+    //then fix up
+    console.log('Main Props')
+    console.log(eventDetails);
+    var votingPhase = eventDetails.vote_on_location || eventDetails.vote_on_date
+    console.log('setting up votePhase');
+    console.log(votingPhase)
+   
     var eventDetails = {
-      name: eventName,
+      name: eventDetails.eventName,
       campsite_name: this.state.locationInput,
       dateRange: this.state.dateRange,
-      vote_on_location: this.state.vote_on_location,
-      vote_on_date: this.state.vote_on_date,
+      vote_on_location: eventDetails.vote_on_location,
+      vote_on_date: eventDetails.vote_on_date,
+      voting_phase: votingPhase,
       user_id: this.state.user_id
     }
+    console.log(eventDetails);
+    // var current_event_details = {
+    //   name: eventDetails.name,
+    //   vote_on_location: eventDetails.vote_on_location,
+    //   vote_on_date: eventDetails.vote_on_date,
+    //   voting_phase: votingPhase
+    // }
     var thisComponent = this;
     $.ajax({
         url: "http://localhost:3000/api/events",
         type: "POST",
         data: eventDetails,
         success: function (res) {
+          console.log('posting voting shit here');
+          console.log(res);
           thisComponent.setState({
             event_id: res.id,
-            eventName: eventDetails.name
+            eventName: eventDetails.name,
+            vote_on_location: eventDetails.vote_on_location,
+            vote_on_date: eventDetails.vote_on_date,
+            currentEventDetails: eventDetails
           });
-          thisComponent.context.router.push({
-            pathname: 'event/addfriends'
+          browserHistory.replace({
+            pathname: '/event/addfriends'
           })
         },
         error: function (res) {
@@ -144,13 +168,14 @@ var Main = React.createClass({
 
   },
   handleDoneFriends: function () {
-    if (this.state.vote_on_location || this.state.vote_on_date) {
-      var path = 'event/' + this.state.event_id + '/vote';
-    } else {
-      var path = 'eventdetails/' + this.state.event_id;
-      this.loadEvent(this.state.event_id)
-    }
-    this.context.router.push({
+    // if (this.state.vote_on_location || this.state.vote_on_date) {
+    //   var path = 'event/' + this.state.event_id + '/vote';
+    // } else {
+    //   var path = 'eventdetails/' + this.state.event_id;
+    //   this.loadEvent(this.state.event_id)
+    // }
+    var path = '/event/' + this.state.event_id
+    browserHistory.replace({
       pathname: path
     })
   },
@@ -158,6 +183,8 @@ var Main = React.createClass({
     var eventID = event_id ? event_id : this.props.params.id;
     var path = 'http://localhost:3000/api/events/' + eventID;
     $.getJSON(path, function (data) {
+      console.log('load event called');
+      console.log(data);
       this.setState({
         currentEventDetails: data.details,
         currentEventCreator: data.creator,
