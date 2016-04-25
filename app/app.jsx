@@ -9,6 +9,7 @@ require('./assets/landing.css');
 require('./assets/event-config.css');
 require('./assets/friends-invite.css');
 require('./assets/vote.css');
+require('./assets/sidebar.css');
 require('./assets/EventDetails.css')
 
 

@@ -30,10 +30,18 @@ p, span{
   color: white;
 }
 
-.login-header .events-sidebar{
-  margin-top: 13px;
+.login-header {
+  max-width: 300px;
+  text-align: center;
 }
 
+.events-sidebar {
+
+  a {
+    display: block;
+    width: 100%;
+  }
+}
 .landing-page .row{
   position: relative;
 }

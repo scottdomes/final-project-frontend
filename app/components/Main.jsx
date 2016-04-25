@@ -9,8 +9,7 @@ var TransitionContainer = require('react-page-transitions');
 
 var ReactRouter = require('react-router');
 var browserHistory = ReactRouter.browserHistory;
-
-
+var Sidebar = require('react-sidebar').default;
 
 var Main = React.createClass({
   contextTypes: {
@@ -61,6 +60,7 @@ var Main = React.createClass({
       currentUserAddedDate: false,
 
       locationVoteID: null,
+      sidebarOpen: false
     }
   },
   setUserDetails: function (name, id, picture_path, events, attendances) {
@@ -472,6 +472,13 @@ var Main = React.createClass({
 
     return final_date;
   },
+  handleExpandSidebar: function () {
+    console.log("OPEN SIDEBAR");
+    sidebarIsOpen = this.state.sidebarOpen ? false : true;
+    this.setState({
+      sidebarOpen: sidebarIsOpen
+    });
+  },
   render: function () {
     var children = React.cloneElement(
       //refactor to put all states uptop and function references below
@@ -536,22 +543,32 @@ var Main = React.createClass({
                 key={index}
                 onClick={this.loadEvent}/>
     });
+     var sidebarContent = <Navbar 
+              loggedin={this.state.loggedin}
+              eventsCreated={eventsCreated}
+              eventsAttended={eventsAttended}
+              userName={this.state.user_name}
+              onLogout={this.handleLogout}/>;
     return (
       <div id="background">
         <div id="background-overlay">
-          <Navbar 
-            loggedin={this.state.loggedin}
-            eventsCreated={eventsCreated}
-            eventsAttended={eventsAttended}
-            userName={this.state.user_name}
-            onLogout={this.handleLogout}/>
-          <ReactCSSTransitionGroup
-          transitionName="appear"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={500}>
-            {children}
-        </ReactCSSTransitionGroup>
-          
+          <Sidebar sidebar={sidebarContent}
+             open={this.state.sidebarOpen}
+             docked={this.state.sidebarDocked}
+              onSetOpen={this.handleExpandSidebar}>
+             <button id="open-sidebar-button" 
+            className="button success" 
+            onClick={this.handleExpandSidebar}>
+              Open Sidebar
+          </button>
+            
+            <ReactCSSTransitionGroup
+            transitionName="appear"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={500}>
+              {children}
+            </ReactCSSTransitionGroup>
+          </Sidebar>
         </div>
       </div>
     )
