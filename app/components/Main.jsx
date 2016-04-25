@@ -3,6 +3,7 @@ var React = require('react');
 var Facebook = require('../components/Facebook.jsx');
 var $ = require('jquery');
 var EventLink = require('../components/EventLink.jsx');
+var Navbar = require('../components/Navbar.jsx');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var TransitionContainer = require('react-page-transitions');
 
@@ -185,6 +186,8 @@ var Main = React.createClass({
     $.getJSON(path, function (data) {
       console.log('load event called');
       console.log(data);
+      console.log('event id is')
+      console.log(event_id);
       this.setState({
         currentEventDetails: data.details,
         currentEventCreator: data.creator,
@@ -204,12 +207,25 @@ var Main = React.createClass({
       });
       this.isUserCreator();
       this.setFinalLocationAndDate(this.state.final_date_id, this.state.final_location_id)
-    }.bind(this))
-    $.getJSON('http://localhost:3000/api/items', function (data) {
+    }.bind(this));
+
+    $.getJSON('http://localhost:3000/api/items/' + event_id, function (data) {
+      console.log('in api item call')
+      console.log('event id is')
+      console.log(event_id);
+      console.log('data is ')
+      console.log(data)
       this.setState({
         packingList: data.items,
       });
     }.bind(this));
+
+    //KEEP THIS HERE, MAY NEED TO REIMPLEMENT
+    // $.getJSON('http://localhost:3000/api/items', function (data) {
+    //   this.setState({
+    //     packingList: data.items,
+    //   });
+    // }.bind(this));
   },
   loadUserData: function () {
     this.setState({
@@ -543,6 +559,13 @@ var Main = React.createClass({
               </div> 
             </div>
           </div>
+          <Navbar 
+            loggedin={this.state.loggedin}
+            eventsCreated={eventsCreated}
+            eventsAttended={eventsAttended}
+            userName={this.state.user_name}
+            onLogout={this.handleLogout}/>
+            
           <ReactCSSTransitionGroup
           transitionName="appear"
           transitionEnterTimeout={500}

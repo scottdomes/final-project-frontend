@@ -5,7 +5,7 @@ var classNames = require('classnames');
 var AddMorePackingItemsForm = require('./AddMorePackingItemsForm.jsx');
 
 var PackingListContainer = React.createClass({
-  getInitialState() {
+  getInitialState: function() {
       return {
         newPackingItem: 'Add More'
       }
@@ -25,8 +25,10 @@ var PackingListContainer = React.createClass({
   render: function () {
     // console.log('PackingListContainer')
     const {newPackingItem} = this.state
-    var ItemList = this.props.packingList;
-    var PackingItems = ItemList.map((item, index) => {
+    var PackingList = [];
+    if (this.props.packingList){
+      var ItemList = this.props.packingList;
+      var PackingItems = ItemList.map((item, index) => {
       
       if (item.user_id){
         var packer = this.props.userList.filter(function(user){
@@ -35,6 +37,8 @@ var PackingListContainer = React.createClass({
       }
       return <PackingListItem packer={packer} onUserPacksItem={this.handleUserPacksItem.bind(this, index)} key={index} item={item} />
     });
+    }
+  
 
     return (
       <div id="packing-list-container">
