@@ -4,6 +4,9 @@ var LandingForm = require('../components/LandingPage/LandingForm.jsx');
 var LandingFBLogin = require('../components/LandingPage/LandingFBLogin.jsx');
 var Facebook = require('../components/Facebook.jsx');
 
+var ReactRouter = require('react-router');
+var browserHistory = ReactRouter.browserHistory;
+
 
 var LandingContainer = React.createClass({
   contextTypes: {
@@ -18,7 +21,7 @@ var LandingContainer = React.createClass({
     this.props.onNewInput(newInput);
   },
   handleSubmit: function() {
-    this.context.router.push({
+    browserHistory.push({
       pathname: '/event/eventconfig'
     })
   },
@@ -27,7 +30,7 @@ var LandingContainer = React.createClass({
   },
   render: function () {
     return (
-      <div>
+      <div className="landing-page text-center">
         <LandingHeader />
         { this.props.loading ? <p></p> : (this.props.loggedin ? 
           <LandingForm 

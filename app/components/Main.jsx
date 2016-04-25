@@ -6,6 +6,9 @@ var EventLink = require('../components/EventLink.jsx');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var TransitionContainer = require('react-page-transitions');
 
+var ReactRouter = require('react-router');
+var browserHistory = ReactRouter.browserHistory;
+
 
 
 var Main = React.createClass({
@@ -154,8 +157,8 @@ var Main = React.createClass({
             vote_on_date: eventDetails.vote_on_date,
             currentEventDetails: eventDetails
           });
-          thisComponent.context.router.push({
-            pathname: 'event/addfriends'
+          browserHistory.replace({
+            pathname: '/event/addfriends'
           })
         },
         error: function (res) {
@@ -171,8 +174,8 @@ var Main = React.createClass({
     //   var path = 'eventdetails/' + this.state.event_id;
     //   this.loadEvent(this.state.event_id)
     // }
-    var path = 'event/' + this.state.event_id
-    this.context.router.push({
+    var path = '/event/' + this.state.event_id
+    browserHistory.replace({
       pathname: path
     })
   },
@@ -535,14 +538,22 @@ var Main = React.createClass({
     return (
       <div id="background">
         <div id="background-overlay">
-          { this.state.loggedin ?
-          <div className="loggedin-container"><p id="loggedin-indicator" className="right">Welcome back, {this.state.user_name}</p>
-          <button className="button tiny secondary" onClick={this.handleLogout}>Logout</button></div> : <span></span> }
-          <div className="events-sidebar">
-            <p>Events Created</p>
-            {eventsCreated}
-            <p>Events Attending</p>
-            {eventsAttended}
+          <div className="login-header">
+            <div className="row">
+              <div className="column large-4">
+                <div className="events-sidebar">
+                  <span>Events Created</span>
+                  {eventsCreated}
+                  <span>Events Attending</span>
+                  {eventsAttended}
+                </div>
+              </div>
+              <div className="column large-4 large-offset-4 text-right">
+                { this.state.loggedin ?
+                <div className="loggedin-container"><p id="loggedin-indicator">Welcome back, <span>{this.state.user_name}</span></p>
+                <button className="button tiny secondary" onClick={this.handleLogout}>Logout</button></div> : <span></span> }
+              </div> 
+            </div>
           </div>
           <ReactCSSTransitionGroup
           transitionName="appear"

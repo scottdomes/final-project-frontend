@@ -3,7 +3,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/app/index.html',
   filename: 'index.html',
-  inject: 'body'
+  inject: 'true'
 })
 
 
@@ -13,8 +13,8 @@ module.exports = {
     'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
     './app/app.jsx'],
   output: {
-    path: __dirname + '/public',
-    filename: 'bundle.js'
+    path: __dirname + '/',
+    filename: '/bundle.js'
   },
   module: {
     loaders: [

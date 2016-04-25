@@ -12,7 +12,7 @@ var LandingForm = React.createClass({
   render: function () {
     return (
       <div className="row" id="enter-location">
-        <div className="large-6 large-centered columns">
+      <div className="column large-4 small-10 small-centered text-center">
           <form 
             id="form-enter-location" 
             onSubmit={this.handleSubmit}>
@@ -22,7 +22,7 @@ var LandingForm = React.createClass({
               placeholder="Where do you want to go?"
               required/>
             <button
-              className="button success wide">
+              className="button medium radius expanded">
               Let's go!
             </button>
           </form>

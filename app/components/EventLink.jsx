@@ -7,7 +7,7 @@ var EventLink = React.createClass({
     this.props.onClick(this.props.eventDetails.id);
   },
   render: function () {
-    var path = "event/" + this.props.eventDetails.id;
+    var path = "/event/" + this.props.eventDetails.id;
     return (
       <Link to={path} onClick={this.handleClick} >
         {this.props.eventDetails.name}
