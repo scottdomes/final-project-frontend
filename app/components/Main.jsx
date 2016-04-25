@@ -52,7 +52,7 @@ var Main = React.createClass({
       currentUserVotedLocation: false,
       currentUserAddedDate: false,
 
-      locationVoteID: null
+      locationVoteID: null,
     }
   },
   setUserDetails: function (name, id, picture_path, events, attendances) {
@@ -140,7 +140,12 @@ var Main = React.createClass({
 
   },
   handleDoneFriends: function () {
-    var path = 'event/' + this.state.event_id + '/vote';
+    if (this.state.vote_on_location || this.state.vote_on_date) {
+      var path = 'event/' + this.state.event_id + '/vote';
+    } else {
+      var path = 'eventdetails/' + this.state.event_id;
+      this.loadEvent(this.state.event_id)
+    }
     this.context.router.push({
       pathname: path
     })
@@ -378,7 +383,7 @@ var Main = React.createClass({
     }
 
     for (var i = 0; i < array.length; i++) {
-      if (array[i].votes.length > mostVotes) {
+      if (array[i].votes.length >= mostVotes) {
         mostVotes = array[i].votes.length;
         mostVotesID = array[i][category].id;
       }
