@@ -464,6 +464,7 @@ var Main = React.createClass({
 
               currentUserAddedDate: this.state.currentUserAddedDate,
               userIsCreator: this.state.userIsCreator,
+              eventCreatorID: this.state.eventCreatorID,
               currentEventCreator: this.state.currentEventCreator,
 
               event_id: this.state.event_id,
