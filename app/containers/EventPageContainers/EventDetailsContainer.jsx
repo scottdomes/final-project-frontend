@@ -28,6 +28,10 @@ var EventDetails = React.createClass({
     // console.log(this.props)
     var creatorPicture = this.props.userIsCreator ? this.props.picturePath : '';
     var creatorName = this.props.userIsCreator ? this.props.userName : 'No creator found!';
+    var allParticipants = this.props.eventParticipants;
+    var allEventUsers = allParticipants.concat({id: this.props.eventCreatorID, name: creatorName, picture_path: creatorPicture});
+    console.log("LOOK OVER HERE");
+    console.log(allEventUsers)
     return (
       <div className='row'>
         <div className='large-6 columns left-column-event' id="event-left-column">
@@ -45,7 +49,8 @@ var EventDetails = React.createClass({
           <PackingListContainer
             packingList={this.props.packingList} 
             onUserPacksItem={this.handleUserPacksItem}
-            onEnterNewItem={this.handleEnterNewItem} />
+            onEnterNewItem={this.handleEnterNewItem}
+            userList={allParticipants} />
         </div>
       </div>
     )
