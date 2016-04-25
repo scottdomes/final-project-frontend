@@ -1,6 +1,8 @@
 var React = require('react');
 var LocationVoting = require('../components/VotingPage/LocationVoting.jsx');
 var DateVoting = require('../components/VotingPage/DateVoting.jsx');
+var EventHeader = require('../components/VotingPage/EventHeader.jsx');
+
 var $ = require('jquery');
 
 var VotingContainer = React.createClass({
@@ -68,25 +70,23 @@ var VotingContainer = React.createClass({
       currentUserVotedDate: false
     });
   },
-  handleVoteEnd: function (e) {
-    e.stopPropagation();
+  handleVoteEnd: function () {
     this.props.onVoteEnd();
   },
   render: function () {
-    var showEndVote = this.props.userIsCreator ? {"display": "inline-block"} : {"display": "none"};
     return (
       <div>
         <div id="voting-page-heading" className="row">
           <div className="large-12 large columns text-center">
-            <h3>{this.props.userName} created the event {this.props.currentEventDetails.name}</h3>
-            <button 
-              className="button alert"
-              onClick={this.handleVoteEnd}
-              style={showEndVote}>
-                End Voting
-            </button>
+            <h3>Choose Your Destination</h3>
           </div>
         </div>
+        <EventHeader
+          userName={this.props.userName}
+          currentEventCreator={this.props.currentEventCreator}
+          currentEventDetails={this.props.currentEventDetails}
+          userIsCreator={this.props.userIsCreator}
+          onVoteEnd={this.handleVoteEnd}/>
         <LocationVoting 
           locations={this.props.locations}
           onSubmit={this.handleNewLocationSubmit} 
