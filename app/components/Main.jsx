@@ -349,8 +349,8 @@ var Main = React.createClass({
     }
   },
   handleVoteEnd: function () {
-    var final_location_id = this.findMostVotes("campsite"); 
-    var final_date_id = this.findMostVotes("dateRange"); 
+    var final_location_id = this.findMostVotes("campsite");
+    var final_date_id = this.findMostVotes("dateRange");
 
     var thisComponent = this;
     $.ajax({
@@ -431,7 +431,7 @@ var Main = React.createClass({
   render: function () {
     var children = React.cloneElement(
       //refactor to put all states uptop and function references below
-            this.props.children, 
+            this.props.children,
             {
               onNewInput: this.handleNewInput,
               onNewDate: this.handleNewDate,
@@ -466,7 +466,10 @@ var Main = React.createClass({
 
               currentUserAddedDate: this.state.currentUserAddedDate,
               userIsCreator: this.state.userIsCreator,
+              eventCreatorID: this.state.eventCreatorID,
               currentEventCreator: this.state.currentEventCreator,
+
+              event_id: this.state.event_id,
 
               onNewLocation: this.handleNewLocation,
               onNewDateRange: this.handleNewDateRange,
@@ -477,21 +480,21 @@ var Main = React.createClass({
             }
         );
     var eventsCreated = this.state.userCreatedEvents.map((event, index) => {
-      return <EventLink 
-                eventDetails={event} 
+      return <EventLink
+                eventDetails={event}
                 key={index}
                 onClick={this.loadEvent}/>
     });
     var eventsAttended = this.state.userAttendedEvents.map((event, index) => {
-      return <EventLink 
-                eventDetails={event} 
+      return <EventLink
+                eventDetails={event}
                 key={index}
                 onClick={this.loadEvent}/>
     });
     return (
       <div id="background">
         <div id="background-overlay">
-          { this.state.loggedin ? 
+          { this.state.loggedin ?
           <div className="loggedin-container"><p id="loggedin-indicator" className="right">Welcome back, {this.state.user_name}</p>
           <button className="button tiny secondary" onClick={this.handleLogout}>Logout</button></div> : <span></span> }
           <div className="events-sidebar">

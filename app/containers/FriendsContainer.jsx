@@ -9,7 +9,7 @@ var FriendsContainer = React.createClass({
     FB.ui({
       app_id: '238732356487269',
       method: 'send',
-      link: "http://www.nytimes.com/interactive/2015/04/15/travel/europe-favorite-streets.html"
+      link: "http://camplight.herokuapp.com/event/"+this.props.event_id
     });
   },
   handleDoneClick: function (e) {
