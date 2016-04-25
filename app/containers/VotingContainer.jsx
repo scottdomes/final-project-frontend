@@ -1,6 +1,11 @@
 var React = require('react');
 var LocationVoting = require('../components/VotingPage/LocationVoting.jsx');
 var DateVoting = require('../components/VotingPage/DateVoting.jsx');
+var EventHeader = require('../components/VotingPage/EventHeader.jsx');
+var AddDateOrLocation = require('../components/VotingPage/AddDateOrLocation.jsx');
+
+
+
 var $ = require('jquery');
 
 var VotingContainer = React.createClass({
@@ -68,44 +73,46 @@ var VotingContainer = React.createClass({
       currentUserVotedDate: false
     });
   },
-  handleVoteEnd: function (e) {
-    e.stopPropagation();
+  handleVoteEnd: function () {
     this.props.onVoteEnd();
   },
   render: function () {
-    var showEndVote = this.props.userIsCreator ? {"display": "inline-block"} : {"display": "none"};
     return (
       <div>
         <div id="voting-page-heading" className="row">
           <div className="large-12 large columns text-center">
-            <h3>{this.props.userName} created the event {this.props.currentEventDetails.name}</h3>
-            <button 
-              className="button alert"
-              onClick={this.handleVoteEnd}
-              style={showEndVote}>
-                End Voting
-            </button>
+            <h3>Choose Your Destination</h3>
           </div>
         </div>
-        <LocationVoting 
-          locations={this.props.locations}
-          onSubmit={this.handleNewLocationSubmit} 
-          onChange={this.handleLocationInputChange}
-          onAddOrRemoveVote={this.handleAddOrRemoveVote}
-          hideVoteButton={this.props.currentUserVotedLocation}
-          votingAllowed={this.props.locationVotingAllowed}/>
-        <div className="row">
-          <div className="large-12 large columns text-center">
-            <h5>{ this.props.dateVotingAllowed ? "Potential Dates:" : "Date:" }</h5>
+        <div id="voting-page-wrapper">
+          <EventHeader
+            userName={this.props.userName}
+            currentEventCreator={this.props.currentEventCreator}
+            currentEventDetails={this.props.currentEventDetails}
+            userIsCreator={this.props.userIsCreator}
+            onVoteEnd={this.handleVoteEnd}/>
+          <LocationVoting 
+            locations={this.props.locations}
+            onAddOrRemoveVote={this.handleAddOrRemoveVote}
+            hideVoteButton={this.props.currentUserVotedLocation}
+            votingAllowed={this.props.locationVotingAllowed}/>
+          <div className="row">
+            <div className="large-12 large columns text-center">
+              <h5>{ this.props.dateVotingAllowed ? "Potential Dates:" : "Date:" }</h5>
+            </div>
           </div>
+          <DateVoting
+            dateRanges={this.props.dateRanges}
+            votingAllowed={this.props.dateVotingAllowed}
+            hideVoteButton={this.props.currentUserVotedDate}
+            onAddOrRemoveVote={this.handleAddOrRemoveVote}
+            currentUserAddedDate={this.props.currentUserAddedDate} />
+          <AddDateOrLocation
+            onLocationSubmit={this.handleNewLocationSubmit} 
+            onChange={this.handleLocationInputChange}
+            onDateSubmit={this.handleNewDateSubmit}
+            dateVotingAllowed={this.props.dateVotingAllowed}/>
         </div>
-        <DateVoting
-          dateRanges={this.props.dateRanges}
-          onSubmit={this.handleNewDateSubmit}
-          votingAllowed={this.props.dateVotingAllowed}
-          hideVoteButton={this.props.currentUserVotedDate}
-          onAddOrRemoveVote={this.handleAddOrRemoveVote}
-          currentUserAddedDate={this.props.currentUserAddedDate} />
       </div>
     )
   }

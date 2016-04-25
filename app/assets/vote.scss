@@ -1,0 +1,49 @@
+// #background {
+//   background-image: none;
+//   height: auto;
+
+//   #background-overlay {
+//     background-color: white;
+//     height: auto;
+//   }
+// }
+.login-header {
+  display: none;
+}
+
+#voting-page-heading h3 {
+  color: white;
+}
+
+#event-header-vote-page {
+  background-color: white;
+
+  #event-header-left, #event-header-right {
+    padding: 10px;
+    width: 50%;
+    display: inline-block;
+    border: 1px solid #e5e5e5;
+    box-sizing: border-box;
+    text-align: center;
+    height: 100px;
+    vertical-align: top;
+
+    p {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    h3 {
+      margin-top: 20px;
+    }
+
+    .date-info {
+      padding-top: 14px;
+    }
+  }
+
+}
+
+#voting-page-wrapper {
+  background-color: white;
+}

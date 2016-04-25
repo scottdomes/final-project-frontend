@@ -2,14 +2,6 @@ var React = require('react');
 var LocationOption = require('./LocationOption.jsx');
 
 var LocationVoting = React.createClass({
-  handleInputChange: function (e) {
-    e.stopPropagation();
-    this.props.onChange(e.target.value);
-  },
-  handleSubmit: function (e) {
-    e.preventDefault();
-    this.props.onSubmit();
-  },
   handleAddOrRemoveVote: function (optionID, action) {
     this.props.onAddOrRemoveVote(optionID, action, "campsite");
   },
@@ -39,19 +31,10 @@ var LocationVoting = React.createClass({
   },
   render: function () {
     var locationList = this.generateLocations();
-    var hiddenIfLocationVotingDisallowed = this.props.votingAllowed ? {} : {"display": "none"};
     return (
       <div>
         <div id="location-options" className="row">
           {locationList}
-        </div>
-        <div id="add-location" className="row" style={hiddenIfLocationVotingDisallowed}>
-          <div className="large-4 large-centered large columns text-center">
-            <form onSubmit={this.handleSubmit}>
-              <input type="text" placeholder="Add location..." onChange={this.handleInputChange} />
-              <button className="button success">Add</button>
-            </form>
-          </div>
         </div>
       </div>
     )

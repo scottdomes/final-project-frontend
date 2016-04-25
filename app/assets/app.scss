@@ -117,20 +117,21 @@
         border-radius: 5px;
         margin-bottom: 20px;
 
-        .location-info {
+        .location-info, .date-info {
           color: black;
-          padding: 14px;
+          padding-top: 14px;
+          text-align: center;
 
           h3, h4 {
             display: inline-block;
           }
 
           h4 {
-            float: right;
+            margin-left: 40px;
           }
 
           button {
-            width: 80%;
+            width: 100%;
             margin: 0 auto;
             display: block;
           }

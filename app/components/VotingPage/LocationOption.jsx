@@ -20,8 +20,8 @@ var LocationOption = React.createClass({
           <div className="location-image"></div>
           <div className="location-info card-section">
             <h3>{this.props.name}</h3>
+            <h4>Votes: {this.props.votes}</h4>
             <div className="vote-container" style={voteDisplay}>
-              <h4>Votes: {this.props.votes}</h4>
               <button 
                 className="location-vote-button button success"
                 onClick={this.handleAddVote}
