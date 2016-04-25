@@ -69,7 +69,7 @@ var DateVoting = React.createClass({
   },
   render: function () {
     var dateRangeList = this.generateDateRanges();
-    var hiddenIfDateVotingDisallowed = this.props.dateVotingAllowed ? {} : {"display": "none"};
+    var hiddenIfDateVotingDisallowed = this.props.votingAllowed ? {} : {"display": "none"};
     var displayCalendar = this.state.displayCalendar ? {"display": "block"} : {"display": "none"};
     var hideAddDateButton = this.state.hideAddDateButton ? {"display": "none"} : {"display": "inline-block"} ;
     return (
@@ -81,7 +81,7 @@ var DateVoting = React.createClass({
           <div className="large-10 large-centered large columns text-center">
             <button 
               className="button success expand-calendar wide"
-              style={hideAddDateButton}
+              style={hiddenIfDateVotingDisallowed}
               onClick={this.handleDisplayCalendarClick}>
                 Add Date
             </button>
