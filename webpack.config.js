@@ -3,7 +3,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/app/index.html',
   filename: 'index.html',
-  inject: 'false'
+  inject: 'true'
 })
 
 
@@ -14,7 +14,7 @@ module.exports = {
     './app/app.jsx'],
   output: {
     path: __dirname + '/',
-    filename: 'bundle.js'
+    filename: '/bundle.js'
   },
   module: {
     loaders: [
