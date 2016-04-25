@@ -10,9 +10,8 @@ var HelloWorld = require('../components/HelloWorld.jsx');
 var LandingContainer = require('../containers/LandingContainer.jsx');
 var FriendsContainer = require('../containers/FriendsContainer.jsx');
 var EventConfigContainer = require('../containers/EventConfigContainer.jsx');
-var VotingContainer = require('../containers/VotingContainer.jsx');
-var EventDetailsContainer = require('../containers/EventPageContainers/EventDetailsContainer.jsx');
 var ProcessContainer = require('../containers/ProcessContainer.jsx');
+var VotingPhaseSplitter = require('../containers/VotingPhaseSplitter.jsx');
 
 var routes = (
   <Router history={hashHistory}>
@@ -21,9 +20,8 @@ var routes = (
       <Route path='event' component={ProcessContainer}>
         <Route path='addfriends' component={FriendsContainer}/>
         <Route path='eventconfig' component={EventConfigContainer}/>
-        <Route path=':id/vote' component={VotingContainer}/>
       </Route>
-      <Route path='eventdetails/:id' component={EventDetailsContainer} />
+      <Route path='event/:id' component={VotingPhaseSplitter}/>
     </Route>
   </Router> 
 );
