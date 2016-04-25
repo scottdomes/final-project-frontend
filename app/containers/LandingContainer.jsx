@@ -27,7 +27,7 @@ var LandingContainer = React.createClass({
   },
   render: function () {
     return (
-      <div className="landing-page">
+      <div className="landing-page text-center">
         <LandingHeader />
         { this.props.loading ? <p></p> : (this.props.loggedin ? 
           <LandingForm 
