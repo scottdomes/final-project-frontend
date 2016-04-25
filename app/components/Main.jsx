@@ -363,6 +363,7 @@ var Main = React.createClass({
         },
         success: function (res) {
           thisComponent.setFinalLocationAndDate(final_date_id, final_location_id);
+          thisComponent.loadEvent();
           // thisComponent.context.router.push({
           //   pathname: 'eventDetails'
           // })
