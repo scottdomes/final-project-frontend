@@ -13,6 +13,26 @@ body {
     top: 0;
   }
 
+  .packer-image {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    float: right;
+    margin-right: 5%;
+    display: inline-block;
+  }
+
+  .packer-left-div {
+    width: 80%;
+    display: inline-block;
+  }
+
+  .packer-name {
+    display: block;
+    clear: both;
+    font-size: 0.75em;
+  }
+
   #event-creator-pic {
     width: 80px;
     border-radius: 50%;
@@ -94,7 +114,7 @@ body {
     border-color: black;
     border-bottom: 1px solid #eaeaea;
     font-weight: bold;
-    text-indent: 10%;
+    text-indent: 2%;
   }
 
   #packing-unordered-list {
