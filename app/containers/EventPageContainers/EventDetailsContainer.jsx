@@ -24,6 +24,8 @@ var EventDetails = React.createClass({
     var creatorPicture = this.props.userIsCreator ? this.props.picturePath : '';
     var creatorName = this.props.userIsCreator ? this.props.userName : 'No creator found!';
     var allEventUsers = this.props.eventParticipants.concat(this.props.currentEventCreator);
+    console.log("Rendering new events details");
+    console.log(this.props);
     return (
       <div className='row'>
         <div className='large-6 columns left-column-event' id="event-left-column">

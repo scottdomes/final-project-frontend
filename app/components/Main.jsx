@@ -186,6 +186,8 @@ var Main = React.createClass({
     $.getJSON(path, function (data) {
       console.log('load event called');
       console.log(data);
+      console.log('event id is')
+      console.log(event_id);
       this.setState({
         currentEventDetails: data.details,
         currentEventCreator: data.creator,
@@ -208,8 +210,9 @@ var Main = React.createClass({
     }.bind(this));
 
     $.getJSON('http://localhost:3000/api/items/' + event_id, function (data) {
-         console.log('event id is')
-    console.log(event_id);
+      console.log('in api item call')
+      console.log('event id is')
+      console.log(event_id);
       console.log('data is ')
       console.log(data)
       this.setState({
