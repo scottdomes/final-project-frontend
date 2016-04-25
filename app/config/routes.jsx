@@ -14,7 +14,7 @@ var ProcessContainer = require('../containers/ProcessContainer.jsx');
 var VotingPhaseSplitter = require('../containers/VotingPhaseSplitter.jsx');
 
 var routes = (
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Route path='/' component={Main}>
       <IndexRoute component={LandingContainer}/>
       <Route path='event' component={ProcessContainer}>
