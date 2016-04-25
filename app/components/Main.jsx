@@ -9,8 +9,7 @@ var TransitionContainer = require('react-page-transitions');
 
 var ReactRouter = require('react-router');
 var browserHistory = ReactRouter.browserHistory;
-
-
+var Menu = require('react-burger-menu').slide;
 
 var Main = React.createClass({
   contextTypes: {
@@ -61,6 +60,7 @@ var Main = React.createClass({
       currentUserAddedDate: false,
 
       locationVoteID: null,
+      isOpen: false
     }
   },
   setUserDetails: function (name, id, picture_path, events, attendances) {
@@ -475,6 +475,13 @@ var Main = React.createClass({
 
     return final_date;
   },
+  handleExpandSidebar: function () {
+    console.log("OPEN SIDEBAR");
+    isOpen = this.state.isOpen ? false : true;
+    this.setState({
+      isOpen: isOpen
+    });
+  },
   render: function () {
     var children = React.cloneElement(
       //refactor to put all states uptop and function references below
@@ -539,22 +546,38 @@ var Main = React.createClass({
                 key={index}
                 onClick={this.loadEvent}/>
     });
+     var sidebarContent = <Navbar 
+              loggedin={this.state.loggedin}
+              eventsCreated={eventsCreated}
+              eventsAttended={eventsAttended}
+              userName={this.state.user_name}
+              onLogout={this.handleLogout}/>;
     return (
       <div id="background">
         <div id="background-overlay">
-          <Navbar 
-            loggedin={this.state.loggedin}
-            eventsCreated={eventsCreated}
-            eventsAttended={eventsAttended}
-            userName={this.state.user_name}
-            onLogout={this.handleLogout}/>
-          <ReactCSSTransitionGroup
-          transitionName="appear"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={500}>
-            {children}
-        </ReactCSSTransitionGroup>
-          
+          <Menu 
+            isOpen={this.state.isOpen}
+            width={300}
+            noOverlay>
+            <Navbar 
+              loggedin={this.state.loggedin}
+              eventsCreated={eventsCreated}
+              eventsAttended={eventsAttended}
+              userName={this.state.user_name}
+              onLogout={this.handleLogout}/>
+          </Menu>
+           <button id="open-sidebar-button" 
+              className="button success" 
+              onClick={this.handleExpandSidebar}>
+                Open Sidebar
+          </button>
+            
+            <ReactCSSTransitionGroup
+            transitionName="appear"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={500}>
+              {children}
+            </ReactCSSTransitionGroup>
         </div>
       </div>
     )
