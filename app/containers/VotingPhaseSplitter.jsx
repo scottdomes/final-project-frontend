@@ -8,8 +8,8 @@ var VotingPhaseSplitter = React.createClass({
     this.props.loadEvent();
   },
   render: function () {
-    console.log('Voting Phase Splitter Rendering');
-    console.log(this.props.currentEventDetails.voting_phase)
+    // console.log('Voting Phase Splitter Rendering');
+    // console.log(this.props.currentEventDetails.voting_phase)
     var component = this.props.currentEventDetails.voting_phase 
                     ? <VotingContainer/>
                     : <EventDetailsContainer/>;
