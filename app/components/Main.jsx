@@ -6,6 +6,9 @@ var EventLink = require('../components/EventLink.jsx');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var TransitionContainer = require('react-page-transitions');
 
+var ReactRouter = require('react-router');
+var browserHistory = ReactRouter.browserHistory;
+
 
 
 var Main = React.createClass({
@@ -133,8 +136,8 @@ var Main = React.createClass({
             event_id: res.id,
             eventName: eventDetails.name
           });
-          thisComponent.context.router.push({
-            pathname: 'event/addfriends'
+          browserHistory.replace({
+            pathname: '/event/addfriends'
           })
         },
         error: function (res) {
@@ -144,13 +147,14 @@ var Main = React.createClass({
 
   },
   handleDoneFriends: function () {
-    if (this.state.vote_on_location || this.state.vote_on_date) {
-      var path = 'event/' + this.state.event_id + '/vote';
-    } else {
-      var path = 'eventdetails/' + this.state.event_id;
-      this.loadEvent(this.state.event_id)
-    }
-    this.context.router.push({
+    // if (this.state.vote_on_location || this.state.vote_on_date) {
+    //   var path = 'event/' + this.state.event_id + '/vote';
+    // } else {
+    //   var path = 'eventdetails/' + this.state.event_id;
+    //   this.loadEvent(this.state.event_id)
+    // }
+    var path = '/event/' + this.state.event_id
+    browserHistory.replace({
       pathname: path
     })
   },
