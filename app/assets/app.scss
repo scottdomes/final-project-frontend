@@ -335,3 +335,21 @@ body.page2 {
     border: 0.5px solid white;
   }
 }
+
+.appear-enter {
+  opacity: 0.01;
+}
+
+.appear-enter.appear-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+
+.appear-leave {
+  opacity: 1;
+}
+
+.appear-leave.appear-leave-active {
+  opacity: 0.01;
+  transition: opacity 200ms ease-in;
+}

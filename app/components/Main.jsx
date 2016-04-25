@@ -3,6 +3,10 @@ var React = require('react');
 var Facebook = require('../components/Facebook.jsx');
 var $ = require('jquery');
 var EventLink = require('../components/EventLink.jsx');
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+var TransitionContainer = require('react-page-transitions');
+
+
 
 var Main = React.createClass({
   contextTypes: {
@@ -500,7 +504,8 @@ var Main = React.createClass({
 
               onVoteEnd: this.handleVoteEnd,
               finalDate: this.state.final_date,
-              finalLocation: this.state.final_location
+              finalLocation: this.state.final_location,
+              key: this.props.location.pathname
             }
         );
     var eventsCreated = this.state.userCreatedEvents.map((event, index) => {
@@ -527,7 +532,13 @@ var Main = React.createClass({
             <p>Events Attending</p>
             {eventsAttended}
           </div>
-          {children}
+          <ReactCSSTransitionGroup
+          transitionName="appear"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={500}>
+            {children}
+        </ReactCSSTransitionGroup>
+          
         </div>
       </div>
     )
