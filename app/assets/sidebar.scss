@@ -16,12 +16,26 @@
     width: 100%;
     font-size: .8em;
   }
+
+  span {
+    font-size: 1.2em;
+    margin: 5px 0;
+    margin-top: 10px;
+  }
+
+  i {
+    margin-right: 5px;
+  }
 }
 
 .bm-menu {
   background: #373a47;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
+}
+
+.bm-cross {
+  background: #bdc3c7;
 }
 
 .loggedin-container{
