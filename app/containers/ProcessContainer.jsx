@@ -1,6 +1,8 @@
 var React = require('react');
 var ProgressIndicator = require('../components/ProgressIndicator.jsx');
 var BackButton = require('../components/BackButton.jsx');
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+
 
 var ProcessContainer = React.createClass({
   getInitialState: function () {
@@ -102,7 +104,12 @@ var ProcessContainer = React.createClass({
         <ProgressIndicator page={this.state.pages[this.state.current_page]}/>
         <BackButton onClick={this.handleBackButtonClick} />
         <div id="process-body-container">
-          {children}
+          <ReactCSSTransitionGroup
+          transitionName="appear"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={500}>
+            {children}
+        </ReactCSSTransitionGroup>
         </div>
       </div>
     )
