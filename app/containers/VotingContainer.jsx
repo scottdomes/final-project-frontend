@@ -78,7 +78,7 @@ var VotingContainer = React.createClass({
       <div>
         <div id="voting-page-heading" className="row">
           <div className="large-12 large columns text-center">
-            <h3>{this.props.userName} created the event {this.props.eventName}</h3>
+            <h3>{this.props.userName} created the event {this.props.currentEventDetails.name}</h3>
             <button 
               className="button alert"
               onClick={this.handleVoteEnd}

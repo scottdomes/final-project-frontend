@@ -25,11 +25,15 @@ var PackingListContainer = React.createClass({
   render: function () {
     // console.log('PackingListContainer')
     const {newPackingItem} = this.state
-    // var ItemList = this.state.packingList;
     var ItemList = this.props.packingList;
-
     var PackingItems = ItemList.map((item, index) => {
-      return <PackingListItem userList={this.props.userList} onUserPacksItem={this.handleUserPacksItem.bind(this, index)} key={index} item={item} />
+      
+      if (item.user_id){
+        var packer = this.props.userList.filter(function(user){
+          return item.user_id == user.id ? true : false;
+        });
+      }
+      return <PackingListItem packer={packer} onUserPacksItem={this.handleUserPacksItem.bind(this, index)} key={index} item={item} />
     });
 
     return (

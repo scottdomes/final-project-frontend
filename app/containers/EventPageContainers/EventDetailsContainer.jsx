@@ -12,7 +12,7 @@ var EventDetails = React.createClass({
   },
   componentWillMount: function() {
     // if (this.props.eventName === '') {
-      // console.log("Calling load event in Event Details Container");
+      console.log("Calling load event in Event Details Container");
       this.props.loadEvent();
     // }
   },
@@ -20,27 +20,17 @@ var EventDetails = React.createClass({
     this.props.onGetAllUsers();
   },
   render: function (){
-    // packingList={this.state.packingList} 
-    // console.log('Event Details Called Props')
-    // console.log(this.props);
-    // console.log(this.props.packingList);
-    // console.log('kamikaze');
-    // console.log(this.props)
     var creatorPicture = this.props.userIsCreator ? this.props.picturePath : '';
     var creatorName = this.props.userIsCreator ? this.props.userName : 'No creator found!';
-    var allParticipants = this.props.eventParticipants;
-    var allEventUsers = allParticipants.concat({id: this.props.eventCreatorID, name: creatorName, picture_path: creatorPicture});
-    console.log("LOOK OVER HERE");
-    console.log(allEventUsers)
+    var allEventUsers = this.props.eventParticipants.concat(this.props.currentEventCreator);
     return (
       <div className='row'>
         <div className='large-6 columns left-column-event' id="event-left-column">
           <EventInfoContainer 
-            eventName={this.props.eventName}
+            currentEventDetails={this.props.currentEventDetails}
             finalLocation={this.props.finalLocation}
             finalDate={this.props.finalDate}
-            creatorPicture={creatorPicture}
-            creatorName={creatorName}/>
+            creator={this.props.currentEventCreator}/>
           <hr />
           <UserInfoList userList={this.props.eventParticipants}/>
 
@@ -50,7 +40,7 @@ var EventDetails = React.createClass({
             packingList={this.props.packingList} 
             onUserPacksItem={this.handleUserPacksItem}
             onEnterNewItem={this.handleEnterNewItem}
-            userList={allParticipants} />
+            userList={allEventUsers} />
         </div>
       </div>
     )

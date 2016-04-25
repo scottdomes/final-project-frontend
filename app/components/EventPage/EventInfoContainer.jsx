@@ -6,11 +6,10 @@ var EventInfoContainer = React.createClass({
     return (
       <div>
        <EventTitle 
-        eventName={this.props.eventName}
+        eventName={this.props.currentEventDetails.name}
         finalDate={this.props.finalDate}
         finalLocation={this.props.finalLocation}
-        creatorPicture={this.props.creatorPicture}
-        creatorName={this.props.creatorName} />
+        creator={this.props.creator} />
       </div>
     )
   }

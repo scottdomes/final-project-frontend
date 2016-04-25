@@ -1,6 +1,8 @@
+
 var React = require('react');
 var Facebook = require('../components/Facebook.jsx');
 var $ = require('jquery');
+var EventLink = require('../components/EventLink.jsx');
 
 var Main = React.createClass({
   contextTypes: {
@@ -10,13 +12,21 @@ var Main = React.createClass({
     return {
       loading: true,
       loggedin: false,
+      currentEventDetails: {
+        name: 'Loading...',
+        final_date_id: 0,
+        final_location_id: 0,
+        id: 0
+      },
+      final_location: {campsite: {id: 0, name:'Test Campsite Name'}},
+      final_date: {dateRange: {id: 0, start_date: 'Test Start Date', end_date: 'Test End Date'}},
+
 
       user_name: 'Test User',
       user_id: 0,
       picturePath: '',
 
       locationInput: 'Test Location',
-      eventName: 'Test Event Name',
       dateRanges: [],
       vote_on_date: false,
       vote_on_location: false,
@@ -25,11 +35,13 @@ var Main = React.createClass({
       eventCreatorID: 0,
       userIsCreator: false,
       eventParticipants: [],
+      currentEventCreator: {name: 'Loading', picture_path: ''},
+
+      userCreatedEvents: [],
+      userAttendedEvents: [],
 
       final_location_id: 0,
       final_date_id: 0,
-      final_location: {campsite: {name:'Test Campsite Name'}},
-      final_date: {dateRange: {start_date: 'Test Start Date', end_date: 'Test End Date'}},
 
       locations: [],
       locationVoteID: null,
@@ -43,11 +55,13 @@ var Main = React.createClass({
       locationVoteID: null
     }
   },
-  setUserDetails: function (name, id, picture_path) {
+  setUserDetails: function (name, id, picture_path, events, attendances) {
     this.setState({
       user_name: name,
       user_id: id,
-      picturePath: picture_path
+      picturePath: picture_path,
+      userCreatedEvents: events,
+      userAttendedEvents: attendances
     });
   },
   setName: function (name) {
@@ -131,38 +145,35 @@ var Main = React.createClass({
       pathname: path
     })
   },
-  loadEvent: function () {
-    var path = 'http://localhost:3000/api/events/' + this.props.params.id;
+  loadEvent: function (event_id) {
+    var eventID = event_id ? event_id : this.props.params.id;
+    var path = 'http://localhost:3000/api/events/' + eventID;
     $.getJSON(path, function (data) {
       this.setState({
-        eventName: data.event.name,
-        event_id: data.event.id,
+        currentEventDetails: data.details,
+        currentEventCreator: data.creator,
+        eventName: data.details.name,
+        event_id: data.details.id,
         dateRanges: data.dates,
         locations: data.campsites,
         eventParticipants: data.users,
-        eventCreatorID: data.event.user_id,
-        vote_on_location: data.event.vote_on_location,
-        vote_on_date: data.event.vote_on_date,
-        final_location_id: data.event.final_location_id,
-        final_date_id: data.event.final_date_id,
+        eventCreatorID: data.details.user_id,
+        vote_on_location: data.details.vote_on_location,
+        vote_on_date: data.details.vote_on_date,
+        final_location_id: data.details.final_location_id,
+        final_date_id: data.details.final_date_id,
         currentUserVotedDate: this.checkIfVoted(data.dates, "date"),
         currentUserVotedLocation: this.checkIfVoted(data.campsites, "campsite"),
         currentUserAddedDate: this.checkIfAddedDate(data.dates)
       });
+      this.isUserCreator();
+      this.setFinalLocationAndDate(this.state.final_date_id, this.state.final_location_id)
     }.bind(this))
     $.getJSON('http://localhost:3000/api/items', function (data) {
       this.setState({
         packingList: data.items,
       });
     }.bind(this));
-    // $.getJSON('http://localhost:3000/api/users', function (data){
-    //   var allUserInfo = data.users.map(function (user){
-    //     return user.fb_id;
-    //   });
-    //   this.setState({
-    //     allUsers: allUserInfo
-    //   });
-    // }.bind(this));
   },
   loadUserData: function () {
     this.setState({
@@ -389,7 +400,7 @@ var Main = React.createClass({
     });
   },
   getFinalLocation: function (location_id) {
-    var final_location;
+    var final_location = {campsite: {id: 0, name:'Test Campsite Name'}};
 
     for (var i = 0; i < this.state.locations.length; i++) {
        if (this.state.locations[i].campsite.id === location_id) {
@@ -400,7 +411,7 @@ var Main = React.createClass({
     return final_location;
   },
   getFinalDate: function (date_id) {
-    var final_date;
+    var final_date = {dateRange: {id: 0, start_date: 'Test Start Date', end_date: 'Test End Date'}};
 
     for (var i = 0; i < this.state.dateRanges.length; i++) {
        if (this.state.dateRanges[i].dateRange.id === date_id) {
@@ -420,7 +431,7 @@ var Main = React.createClass({
               loading: this.state.loading,
               locationInput: this.state.locationInput,
 
-              eventName: this.state.eventName,
+              currentEventDetails: this.state.currentEventDetails,
               dateRanges: this.state.dateRanges,
               eventParticipants: this.state.eventParticipants,
 
@@ -449,6 +460,7 @@ var Main = React.createClass({
               currentUserAddedDate: this.state.currentUserAddedDate,
               userIsCreator: this.state.userIsCreator,
               eventCreatorID: this.state.eventCreatorID,
+              currentEventCreator: this.state.currentEventCreator,
 
               onNewLocation: this.handleNewLocation,
               onNewDateRange: this.handleNewDateRange,
@@ -458,12 +470,30 @@ var Main = React.createClass({
               finalLocation: this.state.final_location
             }
         );
+    var eventsCreated = this.state.userCreatedEvents.map((event, index) => {
+      return <EventLink 
+                eventDetails={event} 
+                key={index}
+                onClick={this.loadEvent}/>
+    });
+    var eventsAttended = this.state.userAttendedEvents.map((event, index) => {
+      return <EventLink 
+                eventDetails={event} 
+                key={index}
+                onClick={this.loadEvent}/>
+    });
     return (
       <div id="background">
         <div id="background-overlay">
           { this.state.loggedin ? 
           <div className="loggedin-container"><p id="loggedin-indicator" className="right">Welcome back, {this.state.user_name}</p>
           <button className="button tiny secondary" onClick={this.handleLogout}>Logout</button></div> : <span></span> }
+          <div className="events-sidebar">
+            <p>Events Created</p>
+            {eventsCreated}
+            <p>Events Attending</p>
+            {eventsAttended}
+          </div>
           {children}
         </div>
       </div>

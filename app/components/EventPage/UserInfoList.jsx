@@ -6,8 +6,6 @@ var UserInfoList = React.createClass({
     console.log('User Info List click');
   },
   render: function (){
-    console.log(this.props.userList);
-    console.log("WOAHHHHHH");
 
     var users = this.props.userList.map((user, index) => {
       return <UserInfoItem onClick={this.handleOnClick.bind(this, index)} key={index} userInfo={user} carpool={true}/>
