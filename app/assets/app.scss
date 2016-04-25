@@ -342,7 +342,7 @@ body.page2 {
 
 .appear-enter.appear-enter-active {
   opacity: 1;
-  transition: opacity 500ms ease-in;
+  transition: opacity 200ms ease-in;
 }
 
 .appear-leave {
@@ -351,5 +351,5 @@ body.page2 {
 
 .appear-leave.appear-leave-active {
   opacity: 0.01;
-  transition: opacity 300ms ease-in;
+  transition: opacity 200ms ease-in;
 }

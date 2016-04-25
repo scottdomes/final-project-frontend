@@ -4,6 +4,8 @@ var Facebook = require('../components/Facebook.jsx');
 var $ = require('jquery');
 var EventLink = require('../components/EventLink.jsx');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+var TransitionContainer = require('react-page-transitions');
+
 
 
 var Main = React.createClass({
