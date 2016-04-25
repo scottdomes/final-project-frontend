@@ -205,12 +205,24 @@ var Main = React.createClass({
       });
       this.isUserCreator();
       this.setFinalLocationAndDate(this.state.final_date_id, this.state.final_location_id)
-    }.bind(this))
-    $.getJSON('http://localhost:3000/api/items', function (data) {
+    }.bind(this));
+
+    $.getJSON('http://localhost:3000/api/items/' + event_id, function (data) {
+         console.log('event id is')
+    console.log(event_id);
+      console.log('data is ')
+      console.log(data)
       this.setState({
         packingList: data.items,
       });
     }.bind(this));
+
+    //KEEP THIS HERE, MAY NEED TO REIMPLEMENT
+    // $.getJSON('http://localhost:3000/api/items', function (data) {
+    //   this.setState({
+    //     packingList: data.items,
+    //   });
+    // }.bind(this));
   },
   loadUserData: function () {
     this.setState({

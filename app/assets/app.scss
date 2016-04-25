@@ -18,15 +18,6 @@
     position: absolute;
     top: 0;
 
-    #front-page-heading {
-      margin-top: 80px;
-      text-align: center;
-
-      h1, h4 {
-        color: white;
-      }
-    }
-
     #process-explanation {
       margin-top: 40px;
       width: 60%;
@@ -41,11 +32,6 @@
     #enter-location {
       margin-top: 5px;
       text-align: center;
-
-      button {
-        width: 60%;
-        border-radius: 5px;
-      }
     }
 
     #fb-login {
