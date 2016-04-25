@@ -57,7 +57,7 @@ var ProcessContainer = React.createClass({
   },
   render: function () {
     var children = React.cloneElement(
-            this.props.children, 
+            this.props.children,
             {
               onNewInput: this.handleNewInput,
               onNewDate: this.handleNewDate,
@@ -67,7 +67,7 @@ var ProcessContainer = React.createClass({
               dateRanges: this.props.dateRanges,
               locations: this.props.locations,
               eventParticipants: this.props.eventParticipants,
-              
+
               loggedin: this.props.loggedin,
 
               userName: this.props.userName,
@@ -82,12 +82,14 @@ var ProcessContainer = React.createClass({
               dateVotingAllowed: this.props.dateVotingAllowed,
               locationVotingAllowed: this.props.locationVotingAllowed,
               onAddOrRemoveVote: this.handleAddOrRemoveVote,
-              
+
               currentUserVotedDate: this.props.currentUserVotedDate,
               currentUserVotedLocation: this.props.currentUserVotedLocation,
               currentUserAddedDate: this.props.currentUserAddedDate,
               userIsCreator: this.props.userIsCreator,
               currentEventCreator: this.props.currentEventCreator,
+
+              event_id: this.props.event_id,
 
               onNewLocation: this.handleNewLocation,
               onNewDateRange: this.handleNewDateRange,
