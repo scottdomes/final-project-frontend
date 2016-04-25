@@ -9,7 +9,7 @@ var TransitionContainer = require('react-page-transitions');
 
 var ReactRouter = require('react-router');
 var browserHistory = ReactRouter.browserHistory;
-var Sidebar = require('react-sidebar').default;
+var Menu = require('react-burger-menu').slide;
 
 var Main = React.createClass({
   contextTypes: {
@@ -60,7 +60,7 @@ var Main = React.createClass({
       currentUserAddedDate: false,
 
       locationVoteID: null,
-      sidebarOpen: false
+      isOpen: false
     }
   },
   setUserDetails: function (name, id, picture_path, events, attendances) {
@@ -474,9 +474,9 @@ var Main = React.createClass({
   },
   handleExpandSidebar: function () {
     console.log("OPEN SIDEBAR");
-    sidebarIsOpen = this.state.sidebarOpen ? false : true;
+    isOpen = this.state.isOpen ? false : true;
     this.setState({
-      sidebarOpen: sidebarIsOpen
+      isOpen: isOpen
     });
   },
   render: function () {
@@ -552,14 +552,21 @@ var Main = React.createClass({
     return (
       <div id="background">
         <div id="background-overlay">
-          <Sidebar sidebar={sidebarContent}
-             open={this.state.sidebarOpen}
-             docked={this.state.sidebarDocked}
-              onSetOpen={this.handleExpandSidebar}>
-             <button id="open-sidebar-button" 
-            className="button success" 
-            onClick={this.handleExpandSidebar}>
-              Open Sidebar
+          <Menu 
+            isOpen={this.state.isOpen}
+            width={300}
+            noOverlay>
+            <Navbar 
+              loggedin={this.state.loggedin}
+              eventsCreated={eventsCreated}
+              eventsAttended={eventsAttended}
+              userName={this.state.user_name}
+              onLogout={this.handleLogout}/>
+          </Menu>
+           <button id="open-sidebar-button" 
+              className="button success" 
+              onClick={this.handleExpandSidebar}>
+                Open Sidebar
           </button>
             
             <ReactCSSTransitionGroup
@@ -568,7 +575,6 @@ var Main = React.createClass({
             transitionLeaveTimeout={500}>
               {children}
             </ReactCSSTransitionGroup>
-          </Sidebar>
         </div>
       </div>
     )

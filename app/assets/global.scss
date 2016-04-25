@@ -30,18 +30,7 @@ p, span{
   color: white;
 }
 
-.login-header {
-  max-width: 300px;
-  text-align: center;
-}
 
-.events-sidebar {
-
-  a {
-    display: block;
-    width: 100%;
-  }
-}
 .landing-page .row{
   position: relative;
 }
@@ -58,11 +47,5 @@ header img{
   margin-bottom: 12px;
 }
 
-#loggedin-indicator{
-  display: inline-block;
-  padding-right: 30px;
-  span{
-    font-weight: 600;
-  }
-}
+
 

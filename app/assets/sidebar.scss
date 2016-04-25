@@ -3,3 +3,39 @@
   right: 0;
   top: 200px;
 }
+
+.login-header {
+  max-width: 300px;
+  text-align: center;
+}
+
+.events-sidebar {
+
+  a {
+    display: block;
+    width: 100%;
+    font-size: .8em;
+  }
+}
+
+.bm-menu {
+  background: #373a47;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+.loggedin-container{
+  button{
+    margin-top: 5px;
+    border-radius: 3px;
+    border: 0.5px solid white;
+  }
+}
+
+#loggedin-indicator{
+  display: inline-block;
+  margin: 0;
+  span{
+    font-weight: 600;
+  }
+}

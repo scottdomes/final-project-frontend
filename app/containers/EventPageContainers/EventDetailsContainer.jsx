@@ -14,7 +14,7 @@ var EventDetails = React.createClass({
     // if (this.props.eventName === '') {
       console.log("Calling load event in Event Details Container");
       
-      this.props.loadEvent(this.props.event_id);
+      // this.props.loadEvent();
     // }
   },
   handleGetAllUsers: function (){

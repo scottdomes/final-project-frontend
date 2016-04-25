@@ -31,6 +31,7 @@
     "react": "^15.0.1",
     "react-addons-css-transition-group": "^15.0.1",
     "react-addons-pure-render-mixin": "^15.0.1",
+    "react-burger-menu": "^1.7.0",
     "react-daterange-picker": "^1.0.0",
     "react-dom": "^15.0.1",
     "react-page-transitions": "^1.2.0",
