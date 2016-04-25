@@ -1,6 +1,6 @@
-#app {
-  height: 100%;
-}
+// #app {
+//   height: 100%;
+// }
 
 #background {
   width: 100%;
@@ -18,34 +18,12 @@
     position: absolute;
     top: 0;
 
-    .events-sidebar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      color: white;
-
-      p, a {
-        display: inline-block;
-      }
-    }
-
-    #loggedin-indicator {
-      color: white;
-      padding-right: 30px;
-      padding-top: 15px;
-      float: left;
-      span:last-child{
-        font-weight: 600;
-      }
-    }
-
     #front-page-heading {
       margin-top: 80px;
       text-align: center;
 
       h1, h4 {
         color: white;
-        font-family: 'Montserrat', sans-serif;
       }
     }
 
@@ -57,9 +35,6 @@
 
       img {
         width: 40px;
-      }
-      p {
-        font-family: 'Montserrat', sans-serif;
       }
     }
 
@@ -114,7 +89,6 @@
         border: 2px solid #3adb76;
         width: 100%;
         font-size: 1em;
-        font-family: 'Montserrat', sans-serif;
         color: black;
       }
       button.active {
