@@ -1,4 +1,3 @@
-
 var React = require('react');
 var Facebook = require('../components/Facebook.jsx');
 var $ = require('jquery');
