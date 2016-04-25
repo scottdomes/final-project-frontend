@@ -5,7 +5,7 @@ var classNames = require('classnames');
 var AddMorePackingItemsForm = require('./AddMorePackingItemsForm.jsx');
 
 var PackingListContainer = React.createClass({
-  getInitialState() {
+  getInitialState: function() {
       return {
         newPackingItem: 'Add More'
       }

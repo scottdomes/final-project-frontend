@@ -5,6 +5,8 @@ var EventDetailsContainer = require('./EventPageContainers/EventDetailsContainer
 
 var VotingPhaseSplitter = React.createClass({
   componentWillMount: function () {
+    console.log('vote phase splitter');
+    console.log(this.props);
     this.props.loadEvent();
   },
   render: function () {
