@@ -20,7 +20,7 @@ function PackingListItem(props) {
         onClick={handleUserPacksItem}>
         <div className="packer-left-div">
         {'+ ' + props.item.label}
-        {props.packer && <span className="packer-name">{props.packer[0].name}</span>}
+        {props.packer && <span className="packer-name">Packed By: {props.packer[0].name.split(' ')[0]}</span>}
         </div>
         {props.packer && <img className='packer-image' src={props.packer[0].picture_path} />}
 
