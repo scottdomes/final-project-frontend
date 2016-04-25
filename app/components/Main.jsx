@@ -358,7 +358,8 @@ var Main = React.createClass({
         type: "PATCH",
         data: {
           final_location_id: final_location_id,
-          final_date_id: final_date_id
+          final_date_id: final_date_id,
+          voting_phase: false
         },
         success: function (res) {
           thisComponent.setFinalLocationAndDate(final_date_id, final_location_id);
