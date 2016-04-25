@@ -110,13 +110,17 @@ var Main = React.createClass({
       this.setState({ vote_on_location: false });
     }
   },
-  handleSubmitEvent: function (eventName) {
+  handleSubmitEvent: function (eventDetails) {
+    //change eventname to event details and pull name
+    //then fix up
+    console.log('Main Props')
+    console.log(eventDetails);
     var eventDetails = {
-      name: eventName,
+      name: eventDetails.eventName,
       campsite_name: this.state.locationInput,
       dateRange: this.state.dateRange,
-      vote_on_location: this.state.vote_on_location,
-      vote_on_date: this.state.vote_on_date,
+      vote_on_location: eventDetails.vote_on_location,
+      vote_on_date: eventDetails.vote_on_date,
       user_id: this.state.user_id
     }
     var thisComponent = this;

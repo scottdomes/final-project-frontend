@@ -20,9 +20,18 @@ var EventConfigContainer = React.createClass({
   },
   handleDone: function (e) {
     e.stopPropagation();
-    this.props.onSubmitEvent(this.state.eventName);
+    e.preventDefault();
+    console.log('Event Config Props')
+    console.log(this.props)
+    eventDetails = {
+      eventName: this.state.eventName,
+      vote_on_date: this.props.dateVotingAllowed,
+      vote_on_location: this.props.locationVotingAllowed
+    }
+    this.props.onSubmitEvent(eventDetails);
   },
   handleVoteActivatorChange: function (selectionStatus, label) {
+    console.log('clicked a selection');
     this.props.onVoteActivatorChange(selectionStatus, label);
   },
   handleEventNameSubmit: function (input) {
