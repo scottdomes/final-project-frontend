@@ -12,8 +12,10 @@ var EventDetails = React.createClass({
   },
   componentWillMount: function() {
     // if (this.props.eventName === '') {
-      console.log("Calling load event in Event Details Container");
-      
+      console.log("Component Will Mount Event Details");
+      // console.log("WAHT THE FUCKING HELL")
+      console.log(this.props);
+      console.log(this.props.event_id);
       this.props.loadEvent(this.props.event_id);
     // }
   },
@@ -24,6 +26,8 @@ var EventDetails = React.createClass({
     var creatorPicture = this.props.userIsCreator ? this.props.picturePath : '';
     var creatorName = this.props.userIsCreator ? this.props.userName : 'No creator found!';
     var allEventUsers = this.props.eventParticipants.concat(this.props.currentEventCreator);
+    console.log("Rendering new events details");
+    console.log(this.props);
     return (
       <div className='row'>
         <div className='large-6 columns left-column-event' id="event-left-column">
