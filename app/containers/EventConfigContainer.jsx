@@ -13,7 +13,6 @@ var EventConfigContainer = React.createClass({
       vote_on_date: false,
       vote_on_location: false,
       eventName: '',
-      showEventInput: true
     }
   },
   handleNewDate: function (range) {
@@ -28,8 +27,7 @@ var EventConfigContainer = React.createClass({
   },
   handleEventNameSubmit: function (input) {
     this.setState({
-      eventName: input,
-      showEventInput: false
+      eventName: input
     });
   },
   render: function () {
@@ -42,10 +40,7 @@ var EventConfigContainer = React.createClass({
         </div>
         <div className="row">
           <div className="large-6 large columns large-centered text-center">
-            { this.state.showEventInput
-                ? <EventNameInput onEventNameSubmit={this.handleEventNameSubmit} />
-                : <h4>Codename: {this.state.eventName}</h4>
-            }
+            <EventNameInput onEventNameSubmit={this.handleEventNameSubmit} />
           </div>
         </div>
         <DatePickerWrapper>
