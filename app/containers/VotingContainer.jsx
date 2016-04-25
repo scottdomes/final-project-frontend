@@ -2,8 +2,8 @@ var React = require('react');
 var LocationVoting = require('../components/VotingPage/LocationVoting.jsx');
 var DateVoting = require('../components/VotingPage/DateVoting.jsx');
 var EventHeader = require('../components/VotingPage/EventHeader.jsx');
-var AddLocation = require('../components/VotingPage/AddLocation.jsx');
-var AddDate = require('../components/VotingPage/AddDate.jsx');
+var AddDateOrLocation = require('../components/VotingPage/AddDateOrLocation.jsx');
+
 
 
 var $ = require('jquery');
@@ -107,12 +107,11 @@ var VotingContainer = React.createClass({
             hideVoteButton={this.props.currentUserVotedDate}
             onAddOrRemoveVote={this.handleAddOrRemoveVote}
             currentUserAddedDate={this.props.currentUserAddedDate} />
-            <AddLocation 
-              onSubmit={this.handleNewLocationSubmit} 
-              onChange={this.handleLocationInputChange}/>
-            <AddDate
-              onSubmit={this.handleNewDateSubmit}
-              votingAllowed={this.props.dateVotingAllowed}/>
+          <AddDateOrLocation
+            onLocationSubmit={this.handleNewLocationSubmit} 
+            onChange={this.handleLocationInputChange}
+            onDateSubmit={this.handleNewDateSubmit}
+            dateVotingAllowed={this.props.dateVotingAllowed}/>
         </div>
       </div>
     )
