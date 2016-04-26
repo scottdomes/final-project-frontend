@@ -35,41 +35,6 @@ var PackingListContainer = React.createClass({
   handleEnterNewItem: function (value, listType){
     this.props.onEnterNewItem(value, listType);
   },
-  getPackingListType: function (listType, indexStart){
-
-    //Do an initial filter for public or private
-    //then map to create a packingListItem array
-    //have a filter if public to check get the users
-
-    //OLD IMPLEMENTATION OF GETTING LIST ITEMS
-
-    if (this.props.packingList){
-
-      var filteredPackingList = this.props.packingList.filter(function (item){
-        return item.list_type === listType ? true : false;
-      });
-
-      //creates an array of components to display
-      var PackingItems = filteredPackingList.map((item, index) => {
-      
-        //if the item has a user id, goes through user list and gets the packer which is a user item (public only)
-        var packer = null;
-        if (listType === 'public'){
-          if (item.user_id){
-            packer = this.props.userList.filter(function(user){
-              return item.user_id == user.id ? true : false;
-            });
-          }
-        }
-        var keyValue = index + indexStart;
-        console.log(item.label + ' ' + keyValue)
-        return <PackingListItem packer={packer} onUserPacksItem={this.handleUserPacksItem.bind(this, keyValue)} key={keyValue} item={item} />
-      });
-    }
-
-    return PackingItems;
-  
-  },
   getPackingListItems: function (packingList, listType){
 
     if (packingList){ 
@@ -83,7 +48,7 @@ var PackingListContainer = React.createClass({
             });
           }
         }
-        return <PackingListItem packer={packer} listType={listType} onUserPacksItem={this.handleUserPacksItem.bind(this, index)} key={index} item={item} />
+        return <PackingListItem packer={packer} listType={listType} onUserPacksItem={this.handleUserPacksItem.bind(this, index)} key={item.id} item={item} />
       });
     }
 
@@ -102,20 +67,6 @@ var PackingListContainer = React.createClass({
   },
   render: function () {
     const {newPublicPackingItem, newPrivatePackingItem} = this.state
-
-    ///OLD IMPLEMENATION
-    // publicPackingItems = this.getPackingListType('public', 0);
-    // // console.log('public length is ')
-    // // console.log(this.props.packingList.length);
-    // var privateIndexStart = 0;
-    //  this.props.packingList.forEach(function(listItem){
-    //   listItem.list_type === 'public' ? privateIndexStart++ : false;
-    // });
-    // console.log('private index start is : ' + privateIndexStart);
-    // //this does not work, woooh!
-    // privatePackingItems = this.getPackingListType('private', privateIndexStart);
-
-    //NEW IMPLEMENATION
 
     publicPackingItems = this.getPackingListItems(this.props.packingList.publicPackingList, 'public');
     privatePackingItems = this.getPackingListItems(this.props.packingList.privatePackingList, 'private');
@@ -155,12 +106,7 @@ var PackingListContainer = React.createClass({
             onChange={this.handleNewPackingItemChange}
             onKeyDown={this.handleEnterNewItem}/>
         </div>
-
-
       </div>
-
-
-    
     )
   }
 });
