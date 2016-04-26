@@ -16,7 +16,7 @@ var Main = React.createClass({
   },
   getInitialState: function () {
     return {
-      loading: true,
+      loading: false,
       loggedin: false,
       currentEventDetails: {
         name: 'Loading...',
@@ -167,6 +167,7 @@ var Main = React.createClass({
     //   var path = 'eventdetails/' + this.state.event_id;
     //   this.loadEvent(this.state.event_id)
     // }
+
     var path = '/event/' + this.state.event_id
     browserHistory.replace({
       pathname: path
@@ -194,7 +195,7 @@ var Main = React.createClass({
         final_date_id: data.details.final_date_id,
         currentUserVotedDate: this.checkIfVoted(data.dates, "date"),
         currentUserVotedLocation: this.checkIfVoted(data.campsites, "campsite"),
-        currentUserAddedDate: this.checkIfAddedDate(data.dates)
+        currentUserAddedDate: this.checkIfAddedDate(data.dates),
       });
       this.isUserCreator();
       this.setFinalLocationAndDate(this.state.final_date_id, this.state.final_location_id)

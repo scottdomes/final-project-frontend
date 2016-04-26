@@ -6,9 +6,22 @@ var TransitionContainer = require('react-page-transitions');
 
 
 var VotingPhaseSplitter = React.createClass({
+  getInitialState: function () {
+    return {
+      loading: false
+    }
+  },
   componentWillMount: function () {
     console.log("Voting phase splitter calling load event");
     this.props.loadEvent();
+    this.setState({
+      loading: true
+    });
+  },
+  componentWillReceiveProps: function () {
+    this.setState({
+      loading: false
+    });
   },
   render: function () {
     // console.log('Voting Phase Splitter Rendering');
@@ -16,7 +29,7 @@ var VotingPhaseSplitter = React.createClass({
     var component = this.props.currentEventDetails.voting_phase 
                     ? <VotingContainer/>
                     : <EventDetailsContainer/>;
-    var actual = React.cloneElement(component, Object.assign({}, this.props));
+    var actual = this.state.loading? <div id="loading-screen"></div> : React.cloneElement(component, Object.assign({}, this.props));
     return (
           actual
 
