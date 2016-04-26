@@ -536,6 +536,9 @@ var Main = React.createClass({
         }
     });
   },
+  handleCarpoolSignUp: function (user_id) {
+    console.log(user_id);
+  },
   render: function () {
     var children = React.cloneElement(
       //refactor to put all states uptop and function references below
@@ -583,6 +586,7 @@ var Main = React.createClass({
               onNewLocation: this.handleNewLocation,
               onNewDateRange: this.handleNewDateRange,
               onRegisterCar: this.handleRegisterCar,
+              onCarpoolSignUp: this.handleCarpoolSignUp,
 
               onVoteEnd: this.handleVoteEnd,
               finalDate: this.state.final_date,

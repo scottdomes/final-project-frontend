@@ -8,6 +8,9 @@ var UserInfoList = React.createClass({
   handleOnClick: function () {
 
   },
+  handleCarpoolSignUp: function (car_id) {
+    this.props.onCarpoolSignUp(car_id);
+  },
   render: function (){
 
     var users = this.props.userList.map((user, index) => {
@@ -24,7 +27,8 @@ var UserInfoList = React.createClass({
         carpool={true}
         isCurrentUser={isCurrentUser}
         onRegisterCar={this.handleRegisterCar}
-        car={car}/>
+        car={car}
+        onCarpoolSignUp={this.handleCarpoolSignUp}/>
     });
 
     return (

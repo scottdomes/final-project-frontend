@@ -12,6 +12,10 @@ function UserInfoItem(props) {
 
   }
 
+  function handleCarpoolSignUp(car_id) {
+    props.onCarpoolSignUp(car_id);
+  }
+
   return(
     <div className={classNames({"user-profile-info": true})}
     onClick={handleOnClick}>
@@ -27,7 +31,8 @@ function UserInfoItem(props) {
       <CarpoolForm
         onRegisterCar={handleRegisterCar}
         car={props.car[0]}
-        isCurrentUser={props.isCurrentUser}/>
+        isCurrentUser={props.isCurrentUser}
+        onCarpoolSignUp={handleCarpoolSignUp}/>
 
     <hr />
     </div>
