@@ -54,8 +54,8 @@ var ProcessContainer = React.createClass({
   callEventLoad: function () {
     this.props.loadEvent();
   },
-  handleAddOrRemoveVote: function (action, category, id) {
-    this.props.onAddOrRemoveVote(action, category, id);
+  handleVote: function (id, category) {
+    this.props.onVote(id, category);
   },
   handleNewLocation: function (name) {
     this.props.onNewLocation(name);
@@ -92,7 +92,8 @@ var ProcessContainer = React.createClass({
               loadEvent: this.callEventLoad,
               dateVotingAllowed: this.props.dateVotingAllowed,
               locationVotingAllowed: this.props.locationVotingAllowed,
-              onAddOrRemoveVote: this.handleAddOrRemoveVote,
+
+              onVote: this.handleVote,
 
               currentUserVotedDate: this.props.currentUserVotedDate,
               currentUserVotedLocation: this.props.currentUserVotedLocation,

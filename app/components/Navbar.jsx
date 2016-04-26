@@ -9,13 +9,12 @@ var Navbar = React.createClass({
   render: function () {
     return (
       <div>
-        <Link className="sidebar-home-link"
-          to={'/'}>
-            <i className="fa fa-home" aria-hidden="true"></i>
-        </Link>
         <div className="login-header">
           { this.props.loggedin ?
-          <div className="loggedin-container"><p id="loggedin-indicator">Welcome back, <span>{this.props.userName}</span></p>
+          <div className="loggedin-container"><Link className="sidebar-home-link"
+          to={'/'}>
+            <i className="fa fa-home" aria-hidden="true"></i>
+        </Link><span id="loggedin-indicator">Welcome, <span>{this.props.userName}</span></span>
           <button className="button tiny" onClick={this.handleLogout}>Logout</button></div> : <span></span> }
         </div>
         <div className="events-sidebar">

@@ -2,12 +2,33 @@ var React = require('react');
 var UserInfoItem = require('./UserInfoItem.jsx');
 
 var UserInfoList = React.createClass({
-  handleOnClick: function (){
+  handleRegisterCar: function (capacity){
+    this.props.onRegisterCar(capacity);
+  },
+  handleOnClick: function () {
+
+  },
+  handleCarpoolSignUp: function (car_id) {
+    this.props.onCarpoolSignUp(car_id);
   },
   render: function (){
 
     var users = this.props.userList.map((user, index) => {
-      return <UserInfoItem onClick={this.handleOnClick.bind(this, index)} key={index} userInfo={user} carpool={true}/>
+      var isCurrentUser = this.props.currentUserName === user.name 
+                    ? true
+                    : false;
+      var car = this.props.cars.filter(function (car) {
+        return car.user_id === user.id
+      });
+      return <UserInfoItem 
+        onClick={this.handleOnClick.bind(this, index)} 
+        key={index} 
+        userInfo={user} 
+        carpool={true}
+        isCurrentUser={isCurrentUser}
+        onRegisterCar={this.handleRegisterCar}
+        car={car}
+        onCarpoolSignUp={this.handleCarpoolSignUp}/>
     });
 
     return (

@@ -1,13 +1,21 @@
 var React = require('react');
 var classNames = require('classnames');
-
-
+var CarpoolForm = require('./CarpoolForm.jsx');
 
 function UserInfoItem(props) {
 
-  function handleOnClick(e){
+  function handleRegisterCar(capacity){
+    props.onRegisterCar(capacity);
+  }
+
+  function handleOnClick() {
 
   }
+
+  function handleCarpoolSignUp(car_id) {
+    props.onCarpoolSignUp(car_id);
+  }
+
   return(
     <div className={classNames({"user-profile-info": true})}
     onClick={handleOnClick}>
@@ -20,9 +28,12 @@ function UserInfoItem(props) {
       <div className='user-profile-name'>
           {props.userInfo.name}
       </div>
-      <div>
-          {props.carpool && <a href="#" className="button tiny carpool-button"><b>Carpool</b></a>}
-      </div>
+      <CarpoolForm
+        onRegisterCar={handleRegisterCar}
+        car={props.car[0]}
+        isCurrentUser={props.isCurrentUser}
+        onCarpoolSignUp={handleCarpoolSignUp}/>
+
     <hr />
     </div>
   )

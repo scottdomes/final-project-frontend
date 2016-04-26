@@ -26,7 +26,7 @@ var Main = React.createClass({
       },
       final_location: {campsite: {id: 0, name:'Test Campsite Name'}},
       final_date: {dateRange: {id: 0, start_date: 'Test Start Date', end_date: 'Test End Date'}},
-
+      currentEventCars: [],
 
       user_name: 'Test User',
       user_id: 0,
@@ -182,6 +182,7 @@ var Main = React.createClass({
       console.log('load event called');
       this.setState({
         currentEventDetails: data.details,
+        currentEventCars: data.cars,
         currentEventCreator: data.creator,
         eventName: data.details.name,
         event_id: data.details.id,
@@ -352,19 +353,19 @@ var Main = React.createClass({
       }
     })
   },
-  handleAddOrRemoveVote: function (action, category, id) {
+  handleVote: function (id, category) {
     // Category is a string, either "campsite" or "date"
     var vote = {
       user_id: this.state.user_id,
-      id: id
+      id: id,
+      event_id: this.state.currentEventDetails.id
     };
     var thisComponent = this;
-    var url = this.constructVoteURL(action, category);
-    var action = action.add ? "POST" : "DELETE";
+    var url = this.constructVoteURL(category);
 
     $.ajax({
         url: url,
-        type: action,
+        type: "POST",
         data: vote,
         success: function (res) {
           console.log(res);
@@ -375,15 +376,11 @@ var Main = React.createClass({
         }
     });
   },
-  constructVoteURL: function (action, category) {
-    if (category === "campsite" && action.add) {
+  constructVoteURL: function (category) {
+    if (category === "campsite") {
       return "http://localhost:3000/api/campsite_votes/";
-    } else if (category === "date" && action.add) {
+    } else if (category === "date") {
       return "http://localhost:3000/api/date_votes/";
-    } else if (category === "campsite" && !action.add) {
-      return "http://localhost:3000/api/campsite_votes/" + this.state.locationVoteID;
-    } else if (category === "date" && !action.add) {
-      return "http://localhost:3000/api/date_votes/" + this.state.dateVoteID;
     }
   },
   setVoteID: function (id, category) {
@@ -523,10 +520,45 @@ var Main = React.createClass({
     return final_date;
   },
   handleExpandSidebar: function () {
-    console.log("OPEN SIDEBAR");
     isOpen = this.state.isOpen ? false : true;
     this.setState({
       isOpen: isOpen
+    });
+  },
+  handleRegisterCar: function (capacity) {
+    var thisComponent = this;
+    $.ajax({
+        url: "http://localhost:3000/api/cars/",
+        type: "POST",
+        data: {
+          event_id: thisComponent.state.event_id,
+          user_id: thisComponent.state.user_id,
+          passenger_capacity: capacity
+        },
+        success: function (res) {
+          console.log(res);
+          thisComponent.loadEvent();
+        },
+        error: function (res) {
+          console.log(res);
+        }
+    });
+  },
+  handleCarpoolSignUp: function (car_id) {
+    var thisComponent = this;
+    $.ajax({
+        url: "http://localhost:3000/api/rides/",
+        type: "POST",
+        data: {
+          car_id: car_id,
+          user_id: thisComponent.state.user_id
+        },
+        success: function (res) {
+          console.log(res);
+        },
+        error: function (res) {
+          console.log(res);
+        }
     });
   },
   render: function () {
@@ -542,6 +574,7 @@ var Main = React.createClass({
               currentEventDetails: this.state.currentEventDetails,
               dateRanges: this.state.dateRanges,
               eventParticipants: this.state.eventParticipants,
+              currentEventCars: this.state.currentEventCars,
 
               locations: this.state.locations,
               loggedin: this.state.loggedin,
@@ -560,7 +593,7 @@ var Main = React.createClass({
               locationVotingAllowed: this.state.vote_on_location,
               onEnterNewItem: this.handleEnterNewItem,
               onUserPacksItem: this.handleUserPacksItem,
-              onAddOrRemoveVote: this.handleAddOrRemoveVote,
+              onVote: this.handleVote,
               currentUserVotedDate: this.state.currentUserVotedDate,
               currentUserVotedLocation: this.state.currentUserVotedLocation,
               onNewLocation: this.handleNewLocation,
@@ -574,6 +607,8 @@ var Main = React.createClass({
 
               onNewLocation: this.handleNewLocation,
               onNewDateRange: this.handleNewDateRange,
+              onRegisterCar: this.handleRegisterCar,
+              onCarpoolSignUp: this.handleCarpoolSignUp,
 
               onVoteEnd: this.handleVoteEnd,
               finalDate: this.state.final_date,
@@ -615,11 +650,11 @@ var Main = React.createClass({
                 userName={this.state.user_name}
                 onLogout={this.handleLogout}/>
             </Menu>
-             <button id="open-sidebar-button" 
-                className="button success" 
-                onClick={this.handleExpandSidebar}>
-                  Open Sidebar
-            </button>        
+            <div className="site-logo"><img src="//localhost:3000/img/nature.png" /><span>Camplight</span></div>
+            <div style={{height: "40px", width: "28px", right: "35px", top: "25px", position: "absolute", cursor: "pointer"}} onClick={this.handleExpandSidebar}>
+               <span id="open-sidebar-button">
+              </span>
+            </div>        
             {children}
           </ReactCSSTransitionGroup>
         </div>

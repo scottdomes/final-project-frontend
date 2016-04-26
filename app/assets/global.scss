@@ -5,6 +5,7 @@ body{
   h2,h3,h4,h5,h6{
     font-family: Raleway, sans-serif;
   }
+
 }
 
 form input{
@@ -15,7 +16,6 @@ form input{
 h1{
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
-  letter-spacing: 0.5px;
 }
 
 h2{
@@ -59,10 +59,15 @@ header img{
   background-color: white;
 
   #progress-indicator-wrapper {
-    padding-top: 78px;
-    padding-bottom: 61px;
+    padding-top: 120px;
+    padding-bottom: 93px;
     background-image: url('http://localhost:3000/img/tent1.jpg');
     background-size: cover;
+    background-position: center center;
+  }
+
+  #progress-indicator{
+    text-align: center;
   }
 
   .outline-circle{
@@ -70,13 +75,20 @@ header img{
     border: 2px solid white;
     padding: 10px;
     border-radius: 50%;
+    display: inline-block;
+  }
+
+  .outline-circle.active{
+    background-color: #2199e8;
+    border-color: #2199e8;
   }
 
   #process-body-container{
     padding-top: 50px;
     min-height: 450px;
     h4{
-      margin-bottom: 15px;
+      margin-bottom: 18px;
+      
     }
   }
 
@@ -93,6 +105,28 @@ header img{
 }
 
 .DateRangePicker__Month{
-  margin-right: 40px !important;
+    width: 244px;
+    margin-left: 21px;
 }
 
+//site logo
+
+.site-logo{
+  position: absolute;
+  left: 35px;
+  top: 15px;
+  img{
+    width: 45px;
+  }
+  span{
+    vertical-align: bottom;
+    padding-left: 13px;
+    color: white;
+    font-weight: 600;
+    font-family: 'Rock Salt', cursive;
+    letter-spacing: 2px;
+    display: inline-block;
+    padding-top: 14px;
+    float: right;
+  }
+}

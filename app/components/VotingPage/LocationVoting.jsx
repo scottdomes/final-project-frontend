@@ -2,8 +2,8 @@ var React = require('react');
 var LocationOption = require('./LocationOption.jsx');
 
 var LocationVoting = React.createClass({
-  handleAddOrRemoveVote: function (optionID, action) {
-    this.props.onAddOrRemoveVote(optionID, action, "campsite");
+  handleVote: function (optionID) {
+    this.props.onVote(optionID, "campsite");
   },
   generateLocations: function () {
     var locationList = [];
@@ -15,8 +15,7 @@ var LocationVoting = React.createClass({
           key={index}
           id={location.campsite.id} 
           votes={location.votes.length}
-          hideVoteButton={thisComponent.props.hideVoteButton}
-          onAddOrRemoveVote={thisComponent.handleAddOrRemoveVote}/>
+          onVote={thisComponent.handleVote}/>
       });
     } else {
       locationList = this.props.locations.map(function (location, index) {
