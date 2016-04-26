@@ -567,6 +567,7 @@ var Main = React.createClass({
               dateRanges: this.state.dateRanges,
               eventParticipants: this.state.eventParticipants,
               currentEventCars: this.state.currentEventCars,
+              currentUserID: this.state.user_id,
 
               locations: this.state.locations,
               loggedin: this.state.loggedin,

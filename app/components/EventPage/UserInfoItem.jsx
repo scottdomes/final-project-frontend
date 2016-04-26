@@ -30,8 +30,10 @@ function UserInfoItem(props) {
       </div>
       <CarpoolForm
         onRegisterCar={handleRegisterCar}
-        car={props.car[0]}
+        car={props.car}
+        rides={props.rides}
         isCurrentUser={props.isCurrentUser}
+        currentUserID={props.currentUserID}
         onCarpoolSignUp={handleCarpoolSignUp}/>
 
     <hr />

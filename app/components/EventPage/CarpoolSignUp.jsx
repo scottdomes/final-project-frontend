@@ -6,6 +6,7 @@ var CarpoolSignUp = React.createClass({
     this.props.onClick();
   },
   render: function () {
+    var buttonText = this.props.currentUserHasRide ? "Leave Car" : "Join Car";
     return (
       <div>
         <p>Can take {this.props.capacity} more</p>
@@ -14,7 +15,7 @@ var CarpoolSignUp = React.createClass({
           : <button 
               className="button success tiny"
               onClick={this.handleClick}>
-                Join Car
+                {buttonText}
             </button>
         }        
       </div>

@@ -18,8 +18,11 @@ var UserInfoList = React.createClass({
                     ? true
                     : false;
       var car = this.props.cars.filter(function (car) {
-        return car.user_id === user.id
+        return car.car.user_id === user.id
       });
+      var rides = car[0].rides.filter(function (ride) {
+        return ride.user_id === this.props.currentUserID
+      }.bind(this));
       return <UserInfoItem 
         onClick={this.handleOnClick.bind(this, index)} 
         key={index} 
@@ -27,8 +30,10 @@ var UserInfoList = React.createClass({
         carpool={true}
         isCurrentUser={isCurrentUser}
         onRegisterCar={this.handleRegisterCar}
-        car={car}
-        onCarpoolSignUp={this.handleCarpoolSignUp}/>
+        car={car[0].car}
+        rides={rides}
+        onCarpoolSignUp={this.handleCarpoolSignUp}
+        currentUserID={this.props.currentUserID}/>
     });
 
     return (
