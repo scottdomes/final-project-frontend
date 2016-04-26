@@ -10,12 +10,12 @@ var CarpoolForm = React.createClass({
       displayButton: true,
       carpoolCapacityInput: carCapacity,
       registeredCar: carCapacity > 0,
-      currentUserHasRide: this.props.rides.length > 0
+      currentUserHasRide: this.props.rides && this.props.rides.length > 0
     }
   },
   componentWillReceiveProps: function () {
     this.setState({
-      currentUserHasRide: this.props.rides.length > 0
+      currentUserHasRide: this.props.rides && this.props.rides.length > 0
     });
   },
   handleClick: function () {
