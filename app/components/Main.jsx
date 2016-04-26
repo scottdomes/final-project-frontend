@@ -591,6 +591,10 @@ var Main = React.createClass({
     return (
       <div id="background">
         <div id="background-overlay">
+        <ReactCSSTransitionGroup
+            transitionName="appear"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={500}>
           <Menu 
             isOpen={this.state.isOpen}
             width={300}
@@ -608,10 +612,7 @@ var Main = React.createClass({
                 Open Sidebar
           </button>
             
-            <ReactCSSTransitionGroup
-            transitionName="appear"
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={500}>
+            
               {children}
             </ReactCSSTransitionGroup>
         </div>

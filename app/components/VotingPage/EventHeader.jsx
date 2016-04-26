@@ -14,7 +14,7 @@ var EventHeader = React.createClass({
         </div>
         <div id="event-header-right">
           <img id="event-creator-pic" src={this.props.currentEventCreator.picture_path}/>
-          <p>Created by {this.props.userName}</p>
+          <p>Created by {this.props.currentEventCreator.name}</p>
           <button 
             className="button alert"
             onClick={this.handleVoteEnd}
