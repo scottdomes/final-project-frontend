@@ -1,19 +1,13 @@
 var React = require('react');
 
 var LocationOption = React.createClass({
-  handleAddVote: function (e) {
+  handleVote: function (e) {
     e.stopPropagation();
-    this.props.onAddOrRemoveVote(this.props.id, {add: true});
-  },
-  handleRemoveVote: function (e) {
-    e.stopPropagation();
-    this.props.onAddOrRemoveVote(this.props.id, {add: false})
+    this.props.onVote(this.props.id);
   },
   render: function () {
     var voteDisplay = this.props.votingDisallowed ? {'display': 'none'} : {'display': 'block'};
     var centeredEventIfOnly = this.props.votingDisallowed ? "large-4 large-centered columns" : "large-4 columns end"; 
-    var hiddenVoteButton = this.props.hideVoteButton ? {'display': 'none'} : {'display': 'block'};
-    var showChangeVoteButton = !this.props.hideVoteButton ? {'display': 'none'} : {'display': 'inline-block'};
     return (
       <div className={centeredEventIfOnly}>
         <div className="location-option-wrapper card">
@@ -24,15 +18,8 @@ var LocationOption = React.createClass({
             <div className="vote-container" style={voteDisplay}>
               <button 
                 className="location-vote-button button success"
-                onClick={this.handleAddVote}
-                style={hiddenVoteButton}>
+                onClick={this.handleVote}>
                   Vote
-              </button>
-              <button 
-                className="location-vote-button button success wide"
-                onClick={this.handleRemoveVote}
-                style={showChangeVoteButton}>
-                  Change Vote
               </button>
             </div>
           </div>

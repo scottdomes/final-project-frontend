@@ -344,19 +344,18 @@ var Main = React.createClass({
       }
     })
   },
-  handleAddOrRemoveVote: function (action, category, id) {
+  handleVote: function (id, category) {
     // Category is a string, either "campsite" or "date"
     var vote = {
       user_id: this.state.user_id,
       id: id
     };
     var thisComponent = this;
-    var url = this.constructVoteURL(action, category);
-    var action = action.add ? "POST" : "DELETE";
+    var url = this.constructVoteURL(category);
 
     $.ajax({
         url: url,
-        type: action,
+        type: "POST",
         data: vote,
         success: function (res) {
           console.log(res);
@@ -367,15 +366,11 @@ var Main = React.createClass({
         }
     });
   },
-  constructVoteURL: function (action, category) {
-    if (category === "campsite" && action.add) {
+  constructVoteURL: function (category) {
+    if (category === "campsite") {
       return "http://localhost:3000/api/campsite_votes/";
-    } else if (category === "date" && action.add) {
+    } else if (category === "date") {
       return "http://localhost:3000/api/date_votes/";
-    } else if (category === "campsite" && !action.add) {
-      return "http://localhost:3000/api/campsite_votes/" + this.state.locationVoteID;
-    } else if (category === "date" && !action.add) {
-      return "http://localhost:3000/api/date_votes/" + this.state.dateVoteID;
     }
   },
   setVoteID: function (id, category) {
@@ -552,7 +547,7 @@ var Main = React.createClass({
               locationVotingAllowed: this.state.vote_on_location,
               onEnterNewItem: this.handleEnterNewItem,
               onUserPacksItem: this.handleUserPacksItem,
-              onAddOrRemoveVote: this.handleAddOrRemoveVote,
+              onVote: this.handleVote,
               currentUserVotedDate: this.state.currentUserVotedDate,
               currentUserVotedLocation: this.state.currentUserVotedLocation,
               onNewLocation: this.handleNewLocation,

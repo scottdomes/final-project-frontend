@@ -38,38 +38,18 @@ var VotingContainer = React.createClass({
       addLocationInput: input
     });
   },
-  handleAddOrRemoveVote: function (optionID, action, category) {
-    if (action.add && category === "date") {
-      this.addDateVote(optionID);
-    } else if (!action.add && category === "date") {
-      this.removeDateVote(optionID);
-    } else if (action.add && category === "campsite") {
-      this.addLocationVote(optionID);
-    } else if (!action.add && category === "campsite") {
-      this.removeLocationVote(optionID);
-    }
+  handleVote: function (optionID, category) {
+    // if (action.add && category === "date") {
+    //   this.addDateVote(optionID);
+    // } else if (!action.add && category === "date") {
+    //   this.removeDateVote(optionID);
+    // } else if (action.add && category === "campsite") {
+    //   this.addLocationVote(optionID);
+    // } else if (!action.add && category === "campsite") {
+    //   this.removeLocationVote(optionID);
+    // }
 
-    this.props.onAddOrRemoveVote(action, category, optionID);
-  },
-  addLocationVote: function (optionID) {
-    this.setState({
-      currentUserVotedLocation: true
-    });
-  },
-  removeLocationVote: function (optionID) {
-    this.setState({
-      currentUserVotedLocation: false
-    });
-  },
-  addDateVote: function (optionID) {
-    this.setState({
-      currentUserVotedDate: true
-    });
-  },
-  removeDateVote: function (optionID) {
-    this.setState({
-      currentUserVotedDate: false
-    });
+    this.props.onVote(optionID, category);
   },
   handleVoteEnd: function () {
     this.props.onVoteEnd();
@@ -97,8 +77,7 @@ var VotingContainer = React.createClass({
             onVoteEnd={this.handleVoteEnd}/>
           <LocationVoting 
             locations={this.props.locations}
-            onAddOrRemoveVote={this.handleAddOrRemoveVote}
-            hideVoteButton={this.props.currentUserVotedLocation}
+            onVote={this.handleVote}
             votingAllowed={this.props.locationVotingAllowed}/>
           <div className="row">
             <div className="large-12 large columns text-center">
@@ -108,8 +87,7 @@ var VotingContainer = React.createClass({
           <DateVoting
             dateRanges={this.props.dateRanges}
             votingAllowed={this.props.dateVotingAllowed}
-            hideVoteButton={this.props.currentUserVotedDate}
-            onAddOrRemoveVote={this.handleAddOrRemoveVote}
+            onVote={this.handleVote}
             currentUserAddedDate={this.props.currentUserAddedDate} />
           <AddDateOrLocation
             onLocationSubmit={this.handleNewLocationSubmit} 
