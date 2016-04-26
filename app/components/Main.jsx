@@ -350,13 +350,27 @@ var Main = React.createClass({
       user_id: this.state.user_id,
       id: id
     };
-    var thisComponent = this;
     var url = this.constructVoteURL(action, category);
     var action = action.add ? "POST" : "DELETE";
 
+    if (this.state.currentUserAddedDate && category === "date") {
+      this.sendVotePostOrDelete("DELETE", url, vote);
+      vote.id = undefined;
+      this.sendVotePostOrDelete("POST", url, vote);
+    } else if (this.state.currentUserVotedLocation && category === "campsite") {
+      this.sendVotePostOrDelete("DELETE", url, vote);
+      vote.id = undefined;
+      this.sendVotePostOrDelete("POST", url, vote);
+    } else {
+      this.sendVotePostOrDelete("POST", url, vote);
+    }
+    
+  },
+  sendVotePostOrDelete: function (method, url, vote) {
+    var thisComponent = this;
     $.ajax({
         url: url,
-        type: action,
+        type: method,
         data: vote,
         success: function (res) {
           console.log(res);
