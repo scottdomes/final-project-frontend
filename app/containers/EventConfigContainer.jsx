@@ -24,12 +24,19 @@ var EventConfigContainer = React.createClass({
     e.preventDefault();
     console.log('Event Config Props')
     console.log(this.props)
-    eventDetails = {
-      eventName: this.state.eventName,
-      vote_on_date: this.props.dateVotingAllowed,
-      vote_on_location: this.props.locationVotingAllowed
+    if (document.getElementById("event-name-input").value==""){
+      document.getElementById("event-name-input").focus();
+      document.getElementById("event-name-input").setAttribute('style', 'border-color:red;');
     }
-    this.props.onSubmitEvent(eventDetails);
+    else{
+      eventDetails = {
+        eventName: this.state.eventName,
+        vote_on_date: this.props.dateVotingAllowed,
+        vote_on_location: this.props.locationVotingAllowed
+      }
+      this.props.onSubmitEvent(eventDetails);
+    }
+
   },
   handleVoteActivatorChange: function (selectionStatus, label) {
     console.log('clicked a selection');
@@ -37,7 +44,7 @@ var EventConfigContainer = React.createClass({
   },
   handleEventNameSubmit: function (input) {
     this.setState({
-      eventName: input
+      eventName: input,
     });
   },
   render: function () {
@@ -45,14 +52,13 @@ var EventConfigContainer = React.createClass({
       <div>
         <div className="row">
           <div className="large-6 large-centered columns">
-            <h3>{this.state.eventName}</h3>
             <h4 id="event-details-header">Set up your trip to {this.props.locationInput}</h4>
           </div>
           <div className="large-6 columns large-centered text-center" style={{float: "none"}}>
             <EventNameInput onEventNameSubmit={this.handleEventNameSubmit} />
           </div>
         </div>
-          
+
         <DatePickerWrapper>
           <DatePicker  onNewSelection={this.handleNewDate}/>
         </DatePickerWrapper>

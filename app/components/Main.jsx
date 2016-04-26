@@ -125,7 +125,7 @@ var Main = React.createClass({
     //change eventname to event details and pull name
     //then fix up
     var votingPhase = eventDetails.vote_on_location || eventDetails.vote_on_date
-   
+
     var eventDetails = {
       name: eventDetails.eventName,
       campsite_name: this.state.locationInput,
@@ -213,7 +213,7 @@ var Main = React.createClass({
         packingList: data,
       });
     }.bind(this));
-    
+
     ////!!!!
     ///OLD LOAD EVENT BELOW
     //OLD IMPLEMENTATION
@@ -243,7 +243,7 @@ var Main = React.createClass({
     //   });
     //   this.isUserCreator();
     //   this.setFinalLocationAndDate(this.state.final_date_id, this.state.final_location_id)
-    
+
     //   $.getJSON('http://localhost:3000/api/items/' + this.state.event_id, function (data) {
     //     console.log('in api item call')
     //     console.log('event id is')
@@ -674,7 +674,7 @@ var Main = React.createClass({
                 eventDetails={event}
                 key={index}/>
     });
-     var sidebarContent = <Navbar 
+     var sidebarContent = <Navbar
               loggedin={this.state.loggedin}
               eventsCreated={eventsCreated}
               eventsAttended={eventsAttended}
@@ -687,11 +687,11 @@ var Main = React.createClass({
               transitionName="appear"
               transitionEnterTimeout={500}
               transitionLeaveTimeout={500}>
-            <Menu 
+            <Menu
               isOpen={this.state.isOpen}
               width={300}
               noOverlay>
-              <Navbar 
+              <Navbar
                 loggedin={this.state.loggedin}
                 eventsCreated={eventsCreated}
                 eventsAttended={eventsAttended}
@@ -704,7 +704,7 @@ var Main = React.createClass({
             <div style={{height: "40px", width: "28px", right: "35px", top: "25px", position: "absolute", cursor: "pointer"}} onClick={this.handleExpandSidebar}>
                <span id="open-sidebar-button">
               </span>
-            </div>        
+            </div>
             {children}
           </ReactCSSTransitionGroup>
         </div>
