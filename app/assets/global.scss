@@ -1,6 +1,10 @@
 
 body{
   font-family: Raleway, sans-serif;
+  
+  h2,h3,h4,h5,h6{
+    font-family: Raleway, sans-serif;
+  }
 }
 
 form input{
@@ -65,10 +69,7 @@ header img{
 }
 
 #process-container {
-  width: 100%;
-  height: 100%;
   background-color: white;
-  margin: 0 auto;
 
   #progress-indicator-wrapper {
     padding-top: 78px;
@@ -84,23 +85,32 @@ header img{
     border-radius: 50%;
   }
 
+  #process-body-container{
+    padding-top: 50px;
+    min-height: 450px;
+    h4{
+      margin-bottom: 15px;
+    }
+  }
+
 }
 
-#back-button-container {
-  
-  position: absolute;
-  cursor: pointer;
-  margin-top: 18px;
-  
-  .fa-chevron-left{
-    padding-right: 8px;
-    color: white;
-  }
+//calendar styles
 
-  h3 {
-    font-size: 18px;
-    display: inline-block;
-    color: white;
-  }
+.DateRangePicker .DateRangePicker__PaginationArrowIcon--next {
+    border-left-color: #888 !important;
+}
+
+.DateRangePicker .DateRangePicker__PaginationArrowIcon--previous{
+    border-right-color: #888 !important;
+}
+
+.DateRangePicker__Month{
+  margin-right: 40px !important;
+}
+// TEMPERRARY
+
+.events-sidebar{
+  display: none;
 }
 

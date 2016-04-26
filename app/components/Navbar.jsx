@@ -16,7 +16,7 @@ var Navbar = React.createClass({
               {this.props.eventsAttended}
             </div>
           </div>
-          <div className="column large-4 large-offset-4 text-right">
+          <div className="column large-6 large-offset-2 text-right">
             { this.props.loggedin ?
             <div className="loggedin-container"><p id="loggedin-indicator">Welcome back, <span>{this.props.userName}</span></p>
             <button className="button tiny secondary" onClick={this.handleLogout}>Logout</button></div> : <span></span> }

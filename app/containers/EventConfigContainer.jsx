@@ -43,22 +43,21 @@ var EventConfigContainer = React.createClass({
     return (
       <div>
         <div className="row">
-          <div className="large-6 large-centered large columns text-center">
-            <h4 id="event-details-header">Details for your trip to {this.props.locationInput}</h4>
+          <div className="large-7 large-centered columns">
+            <h4 id="event-details-header">Set up your trip to {this.props.locationInput}</h4>
           </div>
-        </div>
-        <div className="row">
-          <div className="large-6 large columns large-centered text-center">
+          <div className="large-7 columns large-centered text-center" style={{float: "none"}}>
             <EventNameInput onEventNameSubmit={this.handleEventNameSubmit} />
           </div>
         </div>
+          
         <DatePickerWrapper>
           <DatePicker  onNewSelection={this.handleNewDate}/>
         </DatePickerWrapper>
         <VoteActivator onClick={this.handleVoteActivatorChange} />
-        <div className="row" id="button-eventconfig-done">
+        <div className="row" id="button-eventconfig-done" style={{marginTop: "35px"}}>
           <div className="large-6 large-centered columns text-center">
-            <button className="button success wide" onClick={this.handleDone}>Done</button>
+            <button className="button success wide" onClick={this.handleDone}>Invite Friends</button>
           </div>
         </div>
       </div>

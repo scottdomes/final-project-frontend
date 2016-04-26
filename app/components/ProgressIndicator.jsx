@@ -1,14 +1,10 @@
 var React = require('react');
-var BackButton = require('../components/BackButton.jsx');
 
 
 var ProgressIndicator = React.createClass({
   render: function () {
     return (
       <div id="progress-indicator-wrapper">
-        <div className="row">
-        
-          <BackButton onClick={this.props.onClick} />
           <div className="row" id="progress-indicator" data-page={this.props.page}>
             <div className="large-2 custom-offset large columns">
               <div id="location-circle" className="outline-circle">
@@ -46,7 +42,6 @@ var ProgressIndicator = React.createClass({
               </div>
             </div>
           </div>
-        </div>
       </div>
     )
   }

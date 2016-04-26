@@ -542,30 +542,13 @@ var Main = React.createClass({
     return (
       <div id="background">
         <div id="background-overlay">
-          <div className="login-header">
-            <div className="row">
-              <div className="column large-4">
-                <div className="events-sidebar">
-                  <span>Events Created</span>
-                  {eventsCreated}
-                  <span>Events Attending</span>
-                  {eventsAttended}
-                </div>
-              </div>
-              <div className="column large-6 large-offset-2 text-right">
-                { this.state.loggedin ?
-                <div className="loggedin-container"><p id="loggedin-indicator">Welcome back, <span>{this.state.user_name}</span></p>
-                <button className="button tiny secondary" onClick={this.handleLogout}>Logout</button></div> : <span></span> }
-              </div> 
-            </div>
-          </div>
           <Navbar 
             loggedin={this.state.loggedin}
             eventsCreated={eventsCreated}
             eventsAttended={eventsAttended}
             userName={this.state.user_name}
             onLogout={this.handleLogout}/>
-            
+
           <ReactCSSTransitionGroup
           transitionName="appear"
           transitionEnterTimeout={500}

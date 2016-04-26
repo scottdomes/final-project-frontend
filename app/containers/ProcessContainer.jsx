@@ -102,7 +102,7 @@ var ProcessContainer = React.createClass({
         );
     return (
       <div id="process-container">
-        <ProgressIndicator page={this.state.pages[this.state.current_page]} onClick={this.handleBackButtonClick}/>
+        <ProgressIndicator page={this.state.pages[this.state.current_page]}/>
         <div id="process-body-container">
           <ReactCSSTransitionGroup
           transitionName="appear"

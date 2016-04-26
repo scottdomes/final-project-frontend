@@ -29,11 +29,6 @@
       }
     }
 
-    #enter-location {
-      margin-top: 5px;
-      text-align: center;
-    }
-
     #fb-login {
       margin-top: 30px;
       text-align: center;
@@ -64,17 +59,11 @@
     }
 
     #vote-activator {
-      width: 30%;
-
-      .columns {
-        padding: 0;
-      }
 
       button {
         background-color: transparent;
         border: 2px solid #3adb76;
         width: 100%;
-        font-size: 1em;
         color: black;
       }
       button.active {
@@ -85,7 +74,6 @@
 
     #event-details-header {
       color: black;
-      margin: 0;
       margin-top: 20px;
     }
 
