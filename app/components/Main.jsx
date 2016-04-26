@@ -536,8 +536,22 @@ var Main = React.createClass({
         }
     });
   },
-  handleCarpoolSignUp: function (user_id) {
-    console.log(user_id);
+  handleCarpoolSignUp: function (car_id) {
+    var thisComponent = this;
+    $.ajax({
+        url: "http://localhost:3000/api/rides/",
+        type: "POST",
+        data: {
+          car_id: car_id,
+          user_id: thisComponent.state.user_id
+        },
+        success: function (res) {
+          console.log(res);
+        },
+        error: function (res) {
+          console.log(res);
+        }
+    });
   },
   render: function () {
     var children = React.cloneElement(
