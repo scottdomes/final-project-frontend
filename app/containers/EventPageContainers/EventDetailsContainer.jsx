@@ -18,7 +18,6 @@ var EventDetails = React.createClass({
     this.props.onGetAllUsers();
   },
   render: function (){
-    console.log(this.props.packingList);
     var creatorPicture = this.props.userIsCreator ? this.props.picturePath : '';
     var creatorName = this.props.userIsCreator ? this.props.userName : 'No creator found!';
     var allEventUsers = this.props.eventParticipants.concat(this.props.currentEventCreator);

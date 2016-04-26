@@ -311,9 +311,15 @@ var Main = React.createClass({
       success: function (res) {
         var newItem = res;
         var currentPackingList = this.state.packingList;
-        var newPackingList = currentPackingList.concat(newItem);
+        if (res.list_type === 'public') {
+          var newPublicPackingList = currentPackingList.publicPackingList.concat(newItem);
+          currentPackingList.publicPackingList = newPublicPackingList;
+        } else {
+          var newPrivatePackingList = currentPackingList.privatePackingList.concat(newItem);
+          currentPackingList.privatePackingList = newPrivatePackingList;
+        }
         this.setState({
-           packingList: newPackingList
+           packingList: currentPackingList
         });
       }.bind(this),
       error: function (res) {

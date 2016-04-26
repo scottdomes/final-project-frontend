@@ -6,7 +6,6 @@ var AddMorePackingItemsForm = require('./AddMorePackingItemsForm.jsx');
 
 var PackingListContainer = React.createClass({
   getInitialState: function() {
-    console.log(this.props.packingList)
       return {
         newPublicPackingItem: 'Add More',
         newPrivatePackingItem: 'Add More'
@@ -15,24 +14,14 @@ var PackingListContainer = React.createClass({
   handleUserPacksItem: function (key, e, itemLabel, listType){
     e.preventDefault();
     e.stopPropagation();
-    console.log('handle user packs item called')
-    console.log(key)
-    console.log(itemLabel)
-    console.log(this.props.packingList)
-
     if (listType === 'public') {
       var currentItem = this.props.packingList.publicPackingList[key];
     } else {
       var currentItem = this.props.packingList.privatePackingList[key];
     }
-    // var currentItem = this.props.packingList[key];
-    console.log(currentItem);
     this.props.onUserPacksItem(currentItem, key);
   },
   handleNewPackingItemChange: function (value, listType){
-    console.log('handle item form change')
-    console.log(value)
-    console.log(listType)
     if (listType === 'public'){
       this.setState({
         newPublicPackingItem: value
@@ -44,9 +33,6 @@ var PackingListContainer = React.createClass({
     }
   },
   handleEnterNewItem: function (value, listType){
-    console.log('handle Enter new item')
-    console.log(value)
-    console.log(listType)
     this.props.onEnterNewItem(value, listType);
   },
   getPackingListType: function (listType, indexStart){
@@ -57,7 +43,6 @@ var PackingListContainer = React.createClass({
 
     //OLD IMPLEMENTATION OF GETTING LIST ITEMS
 
-    console.log('start');
     if (this.props.packingList){
 
       var filteredPackingList = this.props.packingList.filter(function (item){
@@ -87,13 +72,9 @@ var PackingListContainer = React.createClass({
   },
   getPackingListItems: function (packingList, listType){
 
-    // console.log('start');
-    if (packingList){
-      // console.log(listType);
-      //creates an array of components to display
+    if (packingList){ 
       var PackingItems = packingList.map((item, index) => {
       
-        //if the item has a user id, goes through user list and gets the packer which is a user item (public only)
         var packer = null;
         if (listType === 'public'){
           if (item.user_id){
@@ -102,8 +83,6 @@ var PackingListContainer = React.createClass({
             });
           }
         }
-        // var keyValue = index + indexStart;
-        // console.log(item.label + ' ' + keyValue)
         return <PackingListItem packer={packer} listType={listType} onUserPacksItem={this.handleUserPacksItem.bind(this, index)} key={index} item={item} />
       });
     }
@@ -111,9 +90,6 @@ var PackingListContainer = React.createClass({
     return PackingItems;
   },
   handleFormBlur: function (value, listType){
-    console.log('handle Form Blur')
-    console.log(value)
-    console.log(listType)
     if (listType === 'public' && value === ''){
       this.setState({
         newPublicPackingItem: 'Add More'
