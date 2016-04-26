@@ -9,12 +9,12 @@ var VoteActivator = React.createClass({
     return (
       <div className="row" style={{marginTop: "35px"}}>
         <div id="vote-activator-heading">
-          <div className="large-7 large-centered columns" style={{float: "none"}}>
+          <div className="large-6 large-centered columns" style={{float: "none"}}>
             <h4>Allow your friends to vote on:</h4>
           </div>
         </div>
 
-        <div className="large-7 large-centered columns" style={{float: "none"}}> 
+        <div className="large-6 large-centered columns" style={{float: "none"}}> 
           <div id="vote-activator" className="row">
             <p className="large-8 columns">Date of event: </p>
             <div className="large-4 columns text-center">
