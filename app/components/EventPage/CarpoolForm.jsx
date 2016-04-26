@@ -33,12 +33,17 @@ var CarpoolForm = React.createClass({
       <div>
         { this.state.registeredCar 
           ? <CarpoolSignUp
-              capacity={this.state.carpoolCapacityInput}/>
-          : <CarpoolButton
+              capacity={this.state.carpoolCapacityInput}
+              isCurrentUser={this.props.isCurrentUser}/>
+          : <div></div>
+        }
+        { !this.state.registeredCar && this.props.isCurrentUser
+          ? <CarpoolButton
               onClick={this.handleClick}
               displayButton={this.state.displayButton}
               onInputChange={this.handleInputChange}
               onFormSubmit={this.handleFormSubmit}/>
+          : <div></div>
         }
       </div>
     )

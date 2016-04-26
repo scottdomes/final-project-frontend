@@ -5,10 +5,13 @@ var CarpoolSignUp = React.createClass({
     return (
       <div>
         <p>Can take {this.props.capacity} more</p>
-        <button 
-          className="button success tiny">
-            Join Car
-        </button>
+        { this.props.isCurrentUser 
+          ? <div></div>
+          : <button 
+              className="button success tiny">
+                Join Car
+            </button>
+        }        
       </div>
     )
   }

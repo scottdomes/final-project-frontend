@@ -24,14 +24,10 @@ function UserInfoItem(props) {
       <div className='user-profile-name'>
           {props.userInfo.name}
       </div>
-      { props.isCurrentUser 
-          ?
-            <CarpoolForm
-              onRegisterCar={handleRegisterCar}
-              car={props.car[0]}/>
-          :
-            <div></div>
-      }
+      <CarpoolForm
+        onRegisterCar={handleRegisterCar}
+        car={props.car[0]}
+        isCurrentUser={props.isCurrentUser}/>
 
     <hr />
     </div>
