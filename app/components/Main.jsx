@@ -5,6 +5,8 @@ var EventLink = require('../components/EventLink.jsx');
 var Navbar = require('../components/Navbar.jsx');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var TransitionContainer = require('react-page-transitions');
+var Link = require('react-router').Link
+
 
 var ReactRouter = require('react-router');
 var browserHistory = ReactRouter.browserHistory;
@@ -642,7 +644,9 @@ var Main = React.createClass({
                 userName={this.state.user_name}
                 onLogout={this.handleLogout}/>
             </Menu>
+            <Link to="/">
             <div className="site-logo"><img src="//localhost:3000/img/nature.png" /><span>Camplight</span></div>
+            </Link>
             <div style={{height: "40px", width: "28px", right: "35px", top: "25px", position: "absolute", cursor: "pointer"}} onClick={this.handleExpandSidebar}>
                <span id="open-sidebar-button">
               </span>
