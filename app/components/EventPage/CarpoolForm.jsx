@@ -14,7 +14,9 @@ var CarpoolForm = React.createClass({
     }
   },
   componentWillReceiveProps: function () {
+    var carCapacity = this.props.car !== undefined ? this.props.car.passenger_capacity : 0;
     this.setState({
+      carpoolCapacityInput: carCapacity,
       currentUserHasRide: this.props.rides && this.props.rides.length > 0
     });
   },

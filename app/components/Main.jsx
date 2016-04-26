@@ -543,7 +543,8 @@ var Main = React.createClass({
         type: "POST",
         data: {
           car_id: car_id,
-          user_id: thisComponent.state.user_id
+          user_id: thisComponent.state.user_id,
+          event_id: thisComponent.state.currentEventDetails.id
         },
         success: function (res) {
           console.log(res);
