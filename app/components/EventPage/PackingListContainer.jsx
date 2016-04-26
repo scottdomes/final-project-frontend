@@ -77,8 +77,8 @@ var PackingListContainer = React.createClass({
     // });
     // }
 
-    PackingItems = this.getPackingListType('public');
-
+    publicPackingItems = this.getPackingListType('public');
+    privatePackingItems = this.getPackingListType('private');
     return (
       <div id="packing-list-container">
         
@@ -91,7 +91,7 @@ var PackingListContainer = React.createClass({
             <h5>Group Packing List</h5>
           </div>
           <div>
-            {PackingItems}
+            {publicPackingItems}
           </div>
           <AddMorePackingItemsForm 
             packingType='public'
@@ -104,7 +104,7 @@ var PackingListContainer = React.createClass({
             <h5>My Packing List</h5>
           </div>
           <div>
-            {PackingItems}
+            {privatePackingItems}
           </div>
           <AddMorePackingItemsForm 
             packingType='private'
