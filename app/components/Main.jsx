@@ -565,6 +565,7 @@ var Main = React.createClass({
           thisComponent.setState({
             currentUserCar: car_id
           });
+          thisComponent.loadEvent();
           console.log(res);
         },
         error: function (res) {
@@ -587,6 +588,7 @@ var Main = React.createClass({
           thisComponent.setState({
             currentUserCar: 0
           });
+          thisComponent.loadEvent();
           console.log(res);
         },
         error: function (res) {
