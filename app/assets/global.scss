@@ -30,11 +30,7 @@ p, span{
   height: 100%;
 }
 
-.login-header{
-    position: absolute;
-    width: 100%;
-    z-index: 10000;
-}
+
 
 .landing-page *, .login-header *{
   color: white;
@@ -98,10 +94,5 @@ header img{
 
 .DateRangePicker__Month{
   margin-right: 40px !important;
-}
-// TEMPERRARY
-
-.events-sidebar{
-  display: none;
 }
 
