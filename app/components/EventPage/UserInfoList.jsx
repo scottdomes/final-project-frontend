@@ -46,7 +46,8 @@ var UserInfoList = React.createClass({
         onCarpoolSignUp={this.handleCarpoolSignUp}
         onLeaveCar={this.handleLeaveCar}
         currentUserID={this.props.currentUserID}
-        isCurrentUserCar={isCurrentUserCar}/>
+        isCurrentUserCar={isCurrentUserCar}
+        userList={this.props.userList}/>
     });
 
     return (
