@@ -603,9 +603,10 @@ var Main = React.createClass({
                 userName={this.state.user_name}
                 onLogout={this.handleLogout}/>
             </Menu>
-             <span id="open-sidebar-button" 
-                onClick={this.handleExpandSidebar}>
-            </span>        
+            <div style={{height: "40px", width: "28px", right: "35px", top: "25px", position: "absolute"}} onClick={this.handleExpandSidebar}>
+               <span id="open-sidebar-button">
+              </span>
+            </div>        
             {children}
           </ReactCSSTransitionGroup>
         </div>
