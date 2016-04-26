@@ -27,7 +27,8 @@ function UserInfoItem(props) {
       { props.isCurrentUser 
           ?
             <CarpoolForm
-              onRegisterCar={handleRegisterCar}/>
+              onRegisterCar={handleRegisterCar}
+              car={props.car[0]}/>
           :
             <div></div>
       }

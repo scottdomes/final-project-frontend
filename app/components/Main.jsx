@@ -26,7 +26,7 @@ var Main = React.createClass({
       },
       final_location: {campsite: {id: 0, name:'Test Campsite Name'}},
       final_date: {dateRange: {id: 0, start_date: 'Test Start Date', end_date: 'Test End Date'}},
-
+      currentEventCars: [],
 
       user_name: 'Test User',
       user_id: 0,
@@ -182,6 +182,7 @@ var Main = React.createClass({
       console.log('load event called');
       this.setState({
         currentEventDetails: data.details,
+        currentEventCars: data.cars,
         currentEventCreator: data.creator,
         eventName: data.details.name,
         event_id: data.details.id,
@@ -528,6 +529,7 @@ var Main = React.createClass({
         },
         success: function (res) {
           console.log(res);
+          thisComponent.loadEvent();
         },
         error: function (res) {
           console.log(res);
@@ -547,6 +549,7 @@ var Main = React.createClass({
               currentEventDetails: this.state.currentEventDetails,
               dateRanges: this.state.dateRanges,
               eventParticipants: this.state.eventParticipants,
+              currentEventCars: this.state.currentEventCars,
 
               locations: this.state.locations,
               loggedin: this.state.loggedin,

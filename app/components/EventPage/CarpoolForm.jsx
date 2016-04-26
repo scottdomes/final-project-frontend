@@ -5,10 +5,11 @@ var CarpoolSignUp = require('./CarpoolSignUp.jsx');
 
 var CarpoolForm = React.createClass({
   getInitialState: function () {
+    var carCapacity = this.props.car ? this.props.car.passenger_capacity : 0;
     return {
       displayButton: true,
-      carpoolCapacityInput: 0,
-      registeredCar: false
+      carpoolCapacityInput: carCapacity,
+      registeredCar: this.props.car !== undefined
     }
   },
   handleClick: function () {

@@ -37,7 +37,8 @@ var EventDetails = React.createClass({
           <UserInfoList 
             userList={this.props.eventParticipants}
             currentUserName={this.props.userName}
-            onRegisterCar={this.handleRegisterCar}/>
+            onRegisterCar={this.handleRegisterCar}
+            cars={this.props.currentEventCars}/>
 
         </div>
         <div className='large-6 columns' id="event-right-column">

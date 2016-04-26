@@ -14,13 +14,17 @@ var UserInfoList = React.createClass({
       var isCurrentUser = this.props.currentUserName === user.name 
                     ? true
                     : false;
+      var car = this.props.cars.filter(function (car) {
+        return car.user_id === user.id
+      });
       return <UserInfoItem 
         onClick={this.handleOnClick.bind(this, index)} 
         key={index} 
         userInfo={user} 
         carpool={true}
         isCurrentUser={isCurrentUser}
-        onRegisterCar={this.handleRegisterCar}/>
+        onRegisterCar={this.handleRegisterCar}
+        car={car}/>
     });
 
     return (
