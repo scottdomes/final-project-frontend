@@ -6,19 +6,26 @@ var AddMorePackingItemsForm = require('./AddMorePackingItemsForm.jsx');
 
 var PackingListContainer = React.createClass({
   getInitialState: function() {
+    console.log(this.props.packingList)
       return {
         newPublicPackingItem: 'Add More',
         newPrivatePackingItem: 'Add More'
       }
   },
-  handleUserPacksItem: function (key, e, itemLabel){
+  handleUserPacksItem: function (key, e, itemLabel, listType){
     e.preventDefault();
     e.stopPropagation();
     console.log('handle user packs item called')
     console.log(key)
     console.log(itemLabel)
-    var currentItem = this.props.packingList[key];
     console.log(this.props.packingList)
+
+    if (listType === 'public') {
+      var currentItem = this.props.packingList.publicPackingList[key];
+    } else {
+      var currentItem = this.props.packingList.privatePackingList[key];
+    }
+    // var currentItem = this.props.packingList[key];
     console.log(currentItem);
     this.props.onUserPacksItem(currentItem, key);
   },
@@ -47,6 +54,9 @@ var PackingListContainer = React.createClass({
     //Do an initial filter for public or private
     //then map to create a packingListItem array
     //have a filter if public to check get the users
+
+    //OLD IMPLEMENTATION OF GETTING LIST ITEMS
+
     console.log('start');
     if (this.props.packingList){
 
@@ -75,6 +85,31 @@ var PackingListContainer = React.createClass({
     return PackingItems;
   
   },
+  getPackingListItems: function (packingList, listType){
+
+    // console.log('start');
+    if (packingList){
+      // console.log(listType);
+      //creates an array of components to display
+      var PackingItems = packingList.map((item, index) => {
+      
+        //if the item has a user id, goes through user list and gets the packer which is a user item (public only)
+        var packer = null;
+        if (listType === 'public'){
+          if (item.user_id){
+            packer = this.props.userList.filter(function(user){
+              return item.user_id == user.id ? true : false;
+            });
+          }
+        }
+        // var keyValue = index + indexStart;
+        // console.log(item.label + ' ' + keyValue)
+        return <PackingListItem packer={packer} listType={listType} onUserPacksItem={this.handleUserPacksItem.bind(this, index)} key={index} item={item} />
+      });
+    }
+
+    return PackingItems;
+  },
   handleFormBlur: function (value, listType){
     console.log('handle Form Blur')
     console.log(value)
@@ -92,16 +127,23 @@ var PackingListContainer = React.createClass({
   render: function () {
     const {newPublicPackingItem, newPrivatePackingItem} = this.state
 
-    publicPackingItems = this.getPackingListType('public', 0);
-    // console.log('public length is ')
-    // console.log(this.props.packingList.length);
-    var privateIndexStart = 0;
-     this.props.packingList.forEach(function(listItem){
-      listItem.list_type === 'public' ? privateIndexStart++ : false;
-    });
-    console.log('private index start is : ' + privateIndexStart);
-    //this does not work, woooh!
-    privatePackingItems = this.getPackingListType('private', privateIndexStart);
+    ///OLD IMPLEMENATION
+    // publicPackingItems = this.getPackingListType('public', 0);
+    // // console.log('public length is ')
+    // // console.log(this.props.packingList.length);
+    // var privateIndexStart = 0;
+    //  this.props.packingList.forEach(function(listItem){
+    //   listItem.list_type === 'public' ? privateIndexStart++ : false;
+    // });
+    // console.log('private index start is : ' + privateIndexStart);
+    // //this does not work, woooh!
+    // privatePackingItems = this.getPackingListType('private', privateIndexStart);
+
+    //NEW IMPLEMENATION
+
+    publicPackingItems = this.getPackingListItems(this.props.packingList.publicPackingList, 'public');
+    privatePackingItems = this.getPackingListItems(this.props.packingList.privatePackingList, 'private');
+
     return (
       <div id="packing-list-container">
         

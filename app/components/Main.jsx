@@ -205,7 +205,7 @@ var Main = React.createClass({
     }.bind(this))
     .then(function (data) {
       this.setState({
-        packingList: data.items,
+        packingList: data,
       });
     }.bind(this));
     
@@ -332,7 +332,11 @@ var Main = React.createClass({
       success: function (res) {
         var newItem = res;
         var currentPackingList = this.state.packingList;
-        currentPackingList[key] = newItem;
+        if (res.list_type === 'public') {
+          currentPackingList.publicPackingList[key] = newItem;
+        } else {
+          currentPackingList.privatePackingList[key] = newItem;
+        }
         this.setState({
           packingList: currentPackingList
         });
