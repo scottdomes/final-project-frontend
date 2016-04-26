@@ -65,11 +65,16 @@ header img{
     background-size: cover;
   }
 
+  #progress-indicator{
+    text-align: center;
+  }
+
   .outline-circle{
     max-width: 55px;
     border: 2px solid white;
     padding: 10px;
     border-radius: 50%;
+    display: inline-block;
   }
 
   #process-body-container{
