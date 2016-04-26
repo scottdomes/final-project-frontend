@@ -40,7 +40,8 @@ function UserInfoItem(props) {
         isCurrentUserCar={props.isCurrentUserCar}
         currentUserID={props.currentUserID}
         onCarpoolSignUp={handleCarpoolSignUp}
-        onLeaveCar={handleLeaveCar}/>
+        onLeaveCar={handleLeaveCar}
+        userList={props.userList}/>
 
     <hr />
     </div>

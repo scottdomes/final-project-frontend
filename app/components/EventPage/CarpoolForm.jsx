@@ -47,15 +47,28 @@ var CarpoolForm = React.createClass({
     this.props.onLeaveCar(this.props.car.id);
   },
   render: function () {
+    var usersInCar = [];
+    for (var i = 0; i < this.props.rides.length; i++) {
+      var ride = this.props.rides[0];
+      usersInCar = this.props.userList.filter(function (user) {
+        return user.id === ride.user_id
+      })
+    }
+    var userNamesInCar = usersInCar.map(function (user) {
+      return user.name
+    }) 
     return (
-      <div>
+      <div>  
         { this.state.registeredCar 
-          ? <CarpoolSignUp
-              capacity={this.state.carpoolCapacityInput}
-              isCurrentUser={this.props.isCurrentUser}
-              onJoinCar={this.handleCarpoolSignup}
-              onLeaveCar={this.handleLeaveCar}
-              isCurrentUserCar={this.props.isCurrentUserCar}/>
+          ? <div>
+              <p>Taking: {userNamesInCar.join(', ')}</p>
+              <CarpoolSignUp
+                capacity={this.state.carpoolCapacityInput}
+                isCurrentUser={this.props.isCurrentUser}
+                onJoinCar={this.handleCarpoolSignup}
+                onLeaveCar={this.handleLeaveCar}
+                isCurrentUserCar={this.props.isCurrentUserCar}/>
+            </div>
           : <div></div>
         }
         { !this.state.registeredCar && this.props.isCurrentUser
