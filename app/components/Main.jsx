@@ -651,7 +651,7 @@ var Main = React.createClass({
               currentUserCar: this.state.currentUserCar,
 
               event_id: this.state.event_id,
-
+              eventName: this.state.eventName,
               onNewLocation: this.handleNewLocation,
               onNewDateRange: this.handleNewDateRange,
               onRegisterCar: this.handleRegisterCar,
