@@ -7,7 +7,15 @@ var UserInfoList = React.createClass({
   render: function (){
 
     var users = this.props.userList.map((user, index) => {
-      return <UserInfoItem onClick={this.handleOnClick.bind(this, index)} key={index} userInfo={user} carpool={true}/>
+      var isCurrentUser = this.props.currentUserName === user.name 
+                    ? true
+                    : false;
+      return <UserInfoItem 
+        onClick={this.handleOnClick.bind(this, index)} 
+        key={index} 
+        userInfo={user} 
+        carpool={true}
+        isCurrentUser={isCurrentUser}/>
     });
 
     return (

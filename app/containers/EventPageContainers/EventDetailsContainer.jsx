@@ -30,7 +30,9 @@ var EventDetails = React.createClass({
             finalDate={this.props.finalDate}
             creator={this.props.currentEventCreator}/>
           <hr />
-          <UserInfoList userList={this.props.eventParticipants}/>
+          <UserInfoList 
+            userList={this.props.eventParticipants}
+            currentUserName={this.props.userName}/>
 
         </div>
         <div className='large-6 columns' id="event-right-column">
