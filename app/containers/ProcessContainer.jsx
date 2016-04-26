@@ -2,7 +2,8 @@ var React = require('react');
 var ProgressIndicator = require('../components/ProgressIndicator.jsx');
 var BackButton = require('../components/BackButton.jsx');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
-
+var ReactRouter = require('react-router');
+var browserHistory = ReactRouter.browserHistory;
 
 var ProcessContainer = React.createClass({
   getInitialState: function () {
@@ -13,6 +14,13 @@ var ProcessContainer = React.createClass({
   },
   contextTypes: {
     router: React.PropTypes.object.isRequired
+  },
+  componentWillMount: function () {
+    if (this.props.locationInput === "Test Location") {
+      browserHistory.replace({
+        pathname: '/'
+      })
+    }
   },
   handleBackButtonClick: function () {
     var pageNumber = this.state.current_page - 1

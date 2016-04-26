@@ -120,11 +120,7 @@ var Main = React.createClass({
   handleSubmitEvent: function (eventDetails) {
     //change eventname to event details and pull name
     //then fix up
-    console.log('Main Props')
-    console.log(eventDetails);
     var votingPhase = eventDetails.vote_on_location || eventDetails.vote_on_date
-    console.log('setting up votePhase');
-    console.log(votingPhase)
    
     var eventDetails = {
       name: eventDetails.eventName,
@@ -135,7 +131,6 @@ var Main = React.createClass({
       voting_phase: votingPhase,
       user_id: this.state.user_id
     }
-    console.log(eventDetails);
     // var current_event_details = {
     //   name: eventDetails.name,
     //   vote_on_location: eventDetails.vote_on_location,
@@ -148,8 +143,6 @@ var Main = React.createClass({
         type: "POST",
         data: eventDetails,
         success: function (res) {
-          console.log('posting voting shit here');
-          console.log(res);
           thisComponent.setState({
             event_id: res.id,
             eventName: eventDetails.name,
@@ -184,9 +177,6 @@ var Main = React.createClass({
     var path = 'http://localhost:3000/api/events/' + eventID;
     $.getJSON(path, function (data) {
       console.log('load event called');
-      console.log(data);
-      console.log('event id is')
-      console.log(event_id);
       this.setState({
         currentEventDetails: data.details,
         currentEventCreator: data.creator,
@@ -209,11 +199,6 @@ var Main = React.createClass({
     }.bind(this));
 
     $.getJSON('http://localhost:3000/api/items/' + event_id, function (data) {
-      console.log('in api item call')
-      console.log('event id is')
-      console.log(event_id);
-      console.log('data is ')
-      console.log(data)
       this.setState({
         packingList: data.items,
       });
@@ -253,8 +238,6 @@ var Main = React.createClass({
   },
   handleEnterNewItem: function (value){
     //!!! Edit to provide Item info, name, quantity, event_id
-    console.log('Main handleEnterNewItem');
-    console.log(value);
     $.ajax({
       url: 'http://localhost:3000/api/items',
       method: 'POST',
@@ -263,8 +246,6 @@ var Main = React.createClass({
         event_id: this.state.event_id
       },
       success: function (res) {
-        console.log('Successfully created an Item');
-        console.log(res);
 
          // var newItem = {label: value, user_id: this.state.user_id}
          var newItem = res;
@@ -275,13 +256,11 @@ var Main = React.createClass({
         });
       }.bind(this),
       error: function (res) {
-        console.log('Failure no Item Created');
         console.log(res);
       }
     });
   },
   handleUserPacksItem: function (item, key){
-    console.log('Main handleUserPacksItem');
     var packedBy = item.user_id ? null : this.state.user_id;
     $.ajax({
       url: 'http://localhost:3000/api/items/' + item.id,
@@ -290,8 +269,6 @@ var Main = React.createClass({
         user_id: packedBy
       },
       success: function (res) {
-        console.log('Item successfully packed!');
-        console.log(res);
         var newItem = res;
         var currentPackingList = this.state.packingList;
         currentPackingList[key] = newItem;

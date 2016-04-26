@@ -23,7 +23,6 @@ var PackingListContainer = React.createClass({
     this.props.onEnterNewItem(value);
   },
   render: function () {
-    // console.log('PackingListContainer')
     const {newPackingItem} = this.state
     var PackingList = [];
     if (this.props.packingList){

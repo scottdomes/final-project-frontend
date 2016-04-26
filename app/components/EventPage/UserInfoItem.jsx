@@ -4,14 +4,10 @@ var classNames = require('classnames');
 
 
 function UserInfoItem(props) {
-  // const {packingList, onClick} = props;
 
   function handleOnClick(e){
-    // console.log('click');
 
   }
-  // console.log('hurrr');
-  // console.log(props);
   return(
     <div className={classNames({"user-profile-info": true})}
     onClick={handleOnClick}>

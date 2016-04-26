@@ -21,6 +21,7 @@
     font-size: 1.2em;
     margin: 5px 0;
     margin-top: 10px;
+    display: block;
   }
 
 }
@@ -37,6 +38,10 @@
   background: #373a47;
   padding: 2em 1.5em 0;
   font-size: 1.15em;
+}
+
+.bm-burger-bars {
+  display: none;
 }
 
 .bm-cross {

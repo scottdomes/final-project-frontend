@@ -3,7 +3,6 @@ var UserInfoItem = require('./UserInfoItem.jsx');
 
 var UserInfoList = React.createClass({
   handleOnClick: function (){
-    console.log('User Info List click');
   },
   render: function (){
 
