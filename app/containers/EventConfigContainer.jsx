@@ -13,6 +13,7 @@ var EventConfigContainer = React.createClass({
       vote_on_date: false,
       vote_on_location: false,
       eventName: '',
+
     }
   },
   handleNewDate: function (range) {
@@ -43,10 +44,11 @@ var EventConfigContainer = React.createClass({
     return (
       <div>
         <div className="row">
-          <div className="large-7 large-centered columns">
+          <div className="large-6 large-centered columns">
+            <h3>{this.state.eventName}</h3>
             <h4 id="event-details-header">Set up your trip to {this.props.locationInput}</h4>
           </div>
-          <div className="large-7 columns large-centered text-center" style={{float: "none"}}>
+          <div className="large-6 columns large-centered text-center" style={{float: "none"}}>
             <EventNameInput onEventNameSubmit={this.handleEventNameSubmit} />
           </div>
         </div>

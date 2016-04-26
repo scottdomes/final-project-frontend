@@ -4,7 +4,7 @@ var classNames = require('classnames');
 
 function PackingListItem(props) {
   function handleUserPacksItem(e){
-    props.onUserPacksItem(e, props.item.label);
+    props.onUserPacksItem(e, props.item.label, props.listType);
   }
   return(
     <div>
@@ -16,7 +16,6 @@ function PackingListItem(props) {
         {props.packer && <span className="packer-name">Packed By: {props.packer[0].name.split(' ')[0]}</span>}
         </div>
         {props.packer && <img className='packer-image' src={props.packer[0].picture_path} />}
-
       </div>
     </div>
   )

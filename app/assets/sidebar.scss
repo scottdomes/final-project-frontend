@@ -1,7 +1,3 @@
-#open-sidebar-button {
-  right: 40px;
-  top: 38px;
-}
 
 #open-sidebar-button, #open-sidebar-button::before, #open-sidebar-button::after{
     position: absolute;
@@ -18,7 +14,7 @@
 
 #open-sidebar-button::before {
     content: "";
-    bottom: 8px;
+    bottom: -16px;
 }
 
 #open-sidebar-button::after {
@@ -59,7 +55,7 @@
 
 .bm-item-list {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 40px;
 
   i {
     font-size: 1.5em;
@@ -72,6 +68,9 @@
   font-size: 1.15em;
 }
 
+.bm-menu-wrap{
+  top: 0;
+}
 .bm-burger-bars {
   display: none;
 }
@@ -103,5 +102,13 @@
 .bm-menu{
   overflow: scroll;
   position: relative;
+}
+
+.sidebar-home-link .fa-home{
+  padding-right: 7px;
+  display: inline-block;
+  vertical-align: top;
+  color: #2199e8;
+  font-size: 1.3em;
 }
 

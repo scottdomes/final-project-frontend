@@ -4,8 +4,8 @@ var EventInfoContainer = require('../../components/EventPage/EventInfoContainer.
 var UserInfoList = require('../../components/EventPage/UserInfoList.jsx');
 
 var EventDetails = React.createClass({
-  handleEnterNewItem: function (value){
-    this.props.onEnterNewItem(value);
+  handleEnterNewItem: function (value, listType){
+    this.props.onEnterNewItem(value, listType);
   },
   handleUserPacksItem: function (item, key){
     this.props.onUserPacksItem(item, key);

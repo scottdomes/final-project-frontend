@@ -4,6 +4,8 @@ body {
   background-repeat: no-repeat;
   background-position: 0px -100px, center;
 
+  
+
   #body-overlay {
     background-color: white;
     width: 100%;
@@ -83,9 +85,19 @@ body {
   #packing-list-container {
     float: right;
     width: 50%;
-    height: 600px;
-    max-height: 60px;
+    background-color: #F9F9F9;
+    font-family: 'Montserrat', sans-serif;
+
     /*background-color: #FFFFFF;*/
+  }
+
+  .packing-list-section-heading {
+    background-color: #F9F9F9;
+    padding: 2px 0;
+    text-align: center;
+    font-size: 2em;
+    margin: 0;
+    border-bottom: 1px solid #eaeaea; 
   }
 
   #packing-list-add-more-form{
@@ -93,15 +105,19 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     text-align: center;  
+    margin-bottom: 0;
     border: 1px none #cacaca;
+    border-bottom: 1px solid #cacaca;
   }
 
   #packing-list-header {
-    background-color: #F9F9F9;
+    /*background-color: #F9F9F9;*/
+    background-color: #3ADB76;
+    color: white;
     padding: 10px 0;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
-    font-size: 2em;
+    font-size: 1em;
     margin: 0;
     border-bottom: 1px solid #eaeaea;
   }
@@ -122,7 +138,8 @@ body {
   }
 
   .list-item.item-packed {
-    background-color: #3ABFB4;
+    /*background-color: #3ABFB4;*/
+    background-color: #3ADB76;
   }
 
   ol, ul {

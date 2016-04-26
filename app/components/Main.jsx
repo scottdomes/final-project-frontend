@@ -5,6 +5,8 @@ var EventLink = require('../components/EventLink.jsx');
 var Navbar = require('../components/Navbar.jsx');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var TransitionContainer = require('react-page-transitions');
+var Link = require('react-router').Link
+
 
 var ReactRouter = require('react-router');
 var browserHistory = ReactRouter.browserHistory;
@@ -208,7 +210,7 @@ var Main = React.createClass({
     }.bind(this))
     .then(function (data) {
       this.setState({
-        packingList: data.items,
+        packingList: data,
       });
     }.bind(this));
     
@@ -314,23 +316,27 @@ var Main = React.createClass({
       }
     }
   },
-  handleEnterNewItem: function (value){
-    //!!! Edit to provide Item info, name, quantity, event_id
+  handleEnterNewItem: function (value, listType){
     $.ajax({
       url: 'http://localhost:3000/api/items',
       method: 'POST',
       data: {
         label: value,
-        event_id: this.state.event_id
+        event_id: this.state.event_id,
+        list_type: listType
       },
       success: function (res) {
-
-         // var newItem = {label: value, user_id: this.state.user_id}
-         var newItem = res;
-         var currentPackingList = this.state.packingList;
-         var newPackingList = currentPackingList.concat(newItem);
+        var newItem = res;
+        var currentPackingList = this.state.packingList;
+        if (res.list_type === 'public') {
+          var newPublicPackingList = currentPackingList.publicPackingList.concat(newItem);
+          currentPackingList.publicPackingList = newPublicPackingList;
+        } else {
+          var newPrivatePackingList = currentPackingList.privatePackingList.concat(newItem);
+          currentPackingList.privatePackingList = newPrivatePackingList;
+        }
         this.setState({
-           packingList: newPackingList
+           packingList: currentPackingList
         });
       }.bind(this),
       error: function (res) {
@@ -349,7 +355,11 @@ var Main = React.createClass({
       success: function (res) {
         var newItem = res;
         var currentPackingList = this.state.packingList;
-        currentPackingList[key] = newItem;
+        if (res.list_type === 'public') {
+          currentPackingList.publicPackingList[key] = newItem;
+        } else {
+          currentPackingList.privatePackingList[key] = newItem;
+        }
         this.setState({
           packingList: currentPackingList
         });
@@ -688,9 +698,13 @@ var Main = React.createClass({
                 userName={this.state.user_name}
                 onLogout={this.handleLogout}/>
             </Menu>
-             <span id="open-sidebar-button" 
-                onClick={this.handleExpandSidebar}>
-            </span>        
+            <Link to="/">
+            <div className="site-logo"><img src="//localhost:3000/img/nature.png" /><span>Camplight</span></div>
+            </Link>
+            <div style={{height: "40px", width: "28px", right: "35px", top: "25px", position: "absolute", cursor: "pointer"}} onClick={this.handleExpandSidebar}>
+               <span id="open-sidebar-button">
+              </span>
+            </div>        
             {children}
           </ReactCSSTransitionGroup>
         </div>

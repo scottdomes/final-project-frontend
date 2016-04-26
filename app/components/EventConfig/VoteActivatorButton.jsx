@@ -23,7 +23,7 @@ var VoteActivatorButton = React.createClass({
       style = {};
     }
     return (
-      <button className="button vote-activator" 
+      <button className="button vote-activator radius" 
         style={style} 
         onClick={this.handleClick}>
           {this.props.label}
