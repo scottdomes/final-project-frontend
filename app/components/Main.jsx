@@ -511,10 +511,27 @@ var Main = React.createClass({
     return final_date;
   },
   handleExpandSidebar: function () {
-    console.log("OPEN SIDEBAR");
     isOpen = this.state.isOpen ? false : true;
     this.setState({
       isOpen: isOpen
+    });
+  },
+  handleRegisterCar: function (capacity) {
+    var thisComponent = this;
+    $.ajax({
+        url: "http://localhost:3000/api/cars/",
+        type: "POST",
+        data: {
+          event_id: thisComponent.state.event_id,
+          user_id: thisComponent.state.user_id,
+          passenger_capacity: capacity
+        },
+        success: function (res) {
+          console.log(res);
+        },
+        error: function (res) {
+          console.log(res);
+        }
     });
   },
   render: function () {
@@ -562,6 +579,7 @@ var Main = React.createClass({
 
               onNewLocation: this.handleNewLocation,
               onNewDateRange: this.handleNewDateRange,
+              onRegisterCar: this.handleRegisterCar,
 
               onVoteEnd: this.handleVoteEnd,
               finalDate: this.state.final_date,

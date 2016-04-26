@@ -17,6 +17,10 @@ var EventDetails = React.createClass({
   handleGetAllUsers: function (){
     this.props.onGetAllUsers();
   },
+  handleRegisterCar: function (capacity) {
+    console.log(capacity);
+    this.props.onRegisterCar(capacity);
+  },
   render: function (){
     var creatorPicture = this.props.userIsCreator ? this.props.picturePath : '';
     var creatorName = this.props.userIsCreator ? this.props.userName : 'No creator found!';
@@ -32,7 +36,8 @@ var EventDetails = React.createClass({
           <hr />
           <UserInfoList 
             userList={this.props.eventParticipants}
-            currentUserName={this.props.userName}/>
+            currentUserName={this.props.userName}
+            onRegisterCar={this.handleRegisterCar}/>
 
         </div>
         <div className='large-6 columns' id="event-right-column">

@@ -22,6 +22,7 @@ var CarpoolForm = React.createClass({
     });
   },
   handleFormSubmit: function () {
+    this.props.onRegisterCar(this.state.carpoolCapacityInput);
     this.setState({
       registeredCar: true
     });

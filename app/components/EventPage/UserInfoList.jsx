@@ -2,7 +2,11 @@ var React = require('react');
 var UserInfoItem = require('./UserInfoItem.jsx');
 
 var UserInfoList = React.createClass({
-  handleOnClick: function (){
+  handleRegisterCar: function (capacity){
+    this.props.onRegisterCar(capacity);
+  },
+  handleOnClick: function () {
+
   },
   render: function (){
 
@@ -15,7 +19,8 @@ var UserInfoList = React.createClass({
         key={index} 
         userInfo={user} 
         carpool={true}
-        isCurrentUser={isCurrentUser}/>
+        isCurrentUser={isCurrentUser}
+        onRegisterCar={this.handleRegisterCar}/>
     });
 
     return (

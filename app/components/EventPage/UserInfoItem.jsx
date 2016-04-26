@@ -4,7 +4,11 @@ var CarpoolForm = require('./CarpoolForm.jsx');
 
 function UserInfoItem(props) {
 
-  function handleOnClick(e){
+  function handleRegisterCar(capacity){
+    props.onRegisterCar(capacity);
+  }
+
+  function handleOnClick() {
 
   }
 
@@ -22,7 +26,8 @@ function UserInfoItem(props) {
       </div>
       { props.isCurrentUser 
           ?
-            <CarpoolForm/>
+            <CarpoolForm
+              onRegisterCar={handleRegisterCar}/>
           :
             <div></div>
       }
