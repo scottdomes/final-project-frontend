@@ -11,12 +11,16 @@ var AddMorePackingItemsForm = React.createClass({
       event.target.placeholder = 'Add More'
     }
   },
+  handleFormBlur: function (event) {
+    this.props.onBlur(event.target.value, this.props.packingType);
+  },
   render: function(){
     return (
         <input 
         id='packing-list-add-more-form' 
         type="text" 
         name="text" 
+        onBlur={this.handleFormBlur}
         placeholder={this.props.itemDescription} 
         onChange={this.handleChange}
         onKeyDown={this.handleEnterNewItem}/>

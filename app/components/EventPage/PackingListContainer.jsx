@@ -12,10 +12,18 @@ var PackingListContainer = React.createClass({
       }
   },
   handleUserPacksItem: function (key, e, itemLabel){
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('handle user packs item called')
+    console.log(key)
+    console.log(itemLabel)
     var currentItem = this.props.packingList[key];
     this.props.onUserPacksItem(currentItem, key);
   },
   handleNewPackingItemChange: function (value, listType){
+    console.log('handle item form change')
+    console.log(value)
+    console.log(listType)
     if (listType === 'public'){
       this.setState({
         newPublicPackingItem: value
@@ -27,21 +35,22 @@ var PackingListContainer = React.createClass({
     }
   },
   handleEnterNewItem: function (value, listType){
+    console.log('handle Enter new item')
+    console.log(value)
+    console.log(listType)
     this.props.onEnterNewItem(value, listType);
   },
-  getPackingListType: function (listType){
+  getPackingListType: function (listType, indexStart){
 
     //Do an initial filter for public or private
     //then map to create a packingListItem array
     //have a filter if public to check get the users
-
     if (this.props.packingList){
 
       var filteredPackingList = this.props.packingList.filter(function (item){
         return item.list_type === listType ? true : false;
       });
 
-      // var ItemList = this.props.packingList;
       //creates an array of components to display
       var PackingItems = filteredPackingList.map((item, index) => {
       
@@ -54,6 +63,7 @@ var PackingListContainer = React.createClass({
             });
           }
         }
+        var keyValue = index + indexStart;
         return <PackingListItem packer={packer} onUserPacksItem={this.handleUserPacksItem.bind(this, index)} key={index} item={item} />
       });
     }
@@ -61,24 +71,28 @@ var PackingListContainer = React.createClass({
     return PackingItems;
   
   },
+  handleFormBlur: function (value, listType){
+    console.log('handle Form Blur')
+    console.log(value)
+    console.log(listType)
+    if (listType === 'public' && value === ''){
+      this.setState({
+        newPublicPackingItem: 'Add More'
+      });
+    } else if (listType === 'private'  && value === '') {
+      this.setState({
+        newPrivatePackingItem: 'Add More'
+      });
+    }
+  },
   render: function () {
     const {newPublicPackingItem, newPrivatePackingItem} = this.state
-    // var PackingList = [];
-    // if (this.props.packingList){
-    //   var ItemList = this.props.packingList;
-    //   var PackingItems = ItemList.map((item, index) => {
-      
-    //   if (item.user_id){
-    //     var packer = this.props.userList.filter(function(user){
-    //       return item.user_id == user.id ? true : false;
-    //     });
-    //   }
-    //   return <PackingListItem packer={packer} onUserPacksItem={this.handleUserPacksItem.bind(this, index)} key={index} item={item} />
-    // });
-    // }
 
-    publicPackingItems = this.getPackingListType('public');
-    privatePackingItems = this.getPackingListType('private');
+    publicPackingItems = this.getPackingListType('public', 0);
+    // console.log('public length is ')
+    // console.log(this.props.packingList.length);
+    // var privateIndexStart = this.props.packingList.length;
+    privatePackingItems = this.getPackingListType('private', 1);
     return (
       <div id="packing-list-container">
         
@@ -95,6 +109,7 @@ var PackingListContainer = React.createClass({
           </div>
           <AddMorePackingItemsForm 
             packingType='public'
+            onBlur={this.handleFormBlur}
             itemDescription={newPublicPackingItem} 
             onChange={this.handleNewPackingItemChange}
             onKeyDown={this.handleEnterNewItem}/>
@@ -108,6 +123,7 @@ var PackingListContainer = React.createClass({
           </div>
           <AddMorePackingItemsForm 
             packingType='private'
+            onBlur={this.handleFormBlur}
             itemDescription={newPrivatePackingItem} 
             onChange={this.handleNewPackingItemChange}
             onKeyDown={this.handleEnterNewItem}/>

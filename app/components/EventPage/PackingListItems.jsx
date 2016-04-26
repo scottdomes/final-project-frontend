@@ -4,6 +4,7 @@ var classNames = require('classnames');
 
 function PackingListItem(props) {
   function handleUserPacksItem(e){
+    console.log("I am getting called here")
     props.onUserPacksItem(e, props.item.label);
   }
   return(
