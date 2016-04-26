@@ -14,7 +14,9 @@ var CarpoolForm = React.createClass({
     }
   },
   componentWillReceiveProps: function () {
-    var carCapacity = this.props.car !== undefined ? this.props.car.passenger_capacity : 0;
+    var carCapacity = this.props.car !== undefined 
+                      ? this.props.car.passenger_capacity - this.props.rides.length
+                       : 0;
     this.setState({
       carpoolCapacityInput: carCapacity,
       currentUserHasRide: this.props.rides && this.props.rides.length > 0
@@ -39,6 +41,9 @@ var CarpoolForm = React.createClass({
   handleCarpoolSignup: function () {
     this.props.onCarpoolSignUp(this.props.car.id);
   },
+  handleLeaveCar: function () {
+    this.props.onLeaveCar(this.props.car.id);
+  },
   render: function () {
     return (
       <div>
@@ -46,8 +51,9 @@ var CarpoolForm = React.createClass({
           ? <CarpoolSignUp
               capacity={this.state.carpoolCapacityInput}
               isCurrentUser={this.props.isCurrentUser}
-              onClick={this.handleCarpoolSignup}
-              currentUserHasRide={this.state.currentUserHasRide}/>
+              onJoinCar={this.handleCarpoolSignup}
+              onLeaveCar={this.handleLeaveCar}
+              isCurrentUserCar={this.props.isCurrentUserCar}/>
           : <div></div>
         }
         { !this.state.registeredCar && this.props.isCurrentUser

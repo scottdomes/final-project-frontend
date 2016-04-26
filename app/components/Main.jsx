@@ -27,6 +27,7 @@ var Main = React.createClass({
       final_location: {campsite: {id: 0, name:'Test Campsite Name'}},
       final_date: {dateRange: {id: 0, start_date: 'Test Start Date', end_date: 'Test End Date'}},
       currentEventCars: [],
+      currentUserCar: 0,
 
       user_name: 'Test User',
       user_id: 0,
@@ -70,6 +71,7 @@ var Main = React.createClass({
       userCreatedEvents: events,
       userAttendedEvents: attendances
     });
+    this.setUserCar();
   },
   setName: function (name) {
     this.setState({
@@ -274,6 +276,23 @@ var Main = React.createClass({
     //     packingList: data.items,
     //   });
     // }.bind(this));
+  },
+  setUserCar: function () {
+    console.log("Set user car called");
+    for (var i =0; i < this.state.currentEventCars.length; i++) {
+      var car = this.state.currentEventCars[i];
+      console.log(car);
+      for (var j = 0; j < car.rides.length; j++) {
+        console.log(car.rides[j]);
+        console.log(car.rides[j].user_id);
+          console.log(this.state.user_id);
+        if (car.rides[j].user_id === this.state.user_id) {
+          this.setState({
+            currentUserCar: car.car.id
+          });
+        }
+      }
+    }
   },
   loadUserData: function () {
     this.setState({
@@ -542,11 +561,37 @@ var Main = React.createClass({
         url: "http://localhost:3000/api/rides/",
         type: "POST",
         data: {
+          deleteOnly: false,
           car_id: car_id,
           user_id: thisComponent.state.user_id,
           event_id: thisComponent.state.currentEventDetails.id
         },
         success: function (res) {
+          thisComponent.setState({
+            currentUserCar: car_id
+          });
+          console.log(res);
+        },
+        error: function (res) {
+          console.log(res);
+        }
+    });
+  },
+  handleLeaveCar: function (car_id) {
+    var thisComponent = this;
+    $.ajax({
+        url: "http://localhost:3000/api/rides/",
+        type: "POST",
+        data: {
+          deleteOnly: true,
+          car_id: car_id,
+          user_id: thisComponent.state.user_id,
+          event_id: thisComponent.state.currentEventDetails.id
+        },
+        success: function (res) {
+          thisComponent.setState({
+            currentUserCar: 0
+          });
           console.log(res);
         },
         error: function (res) {
@@ -596,6 +641,7 @@ var Main = React.createClass({
               userIsCreator: this.state.userIsCreator,
               eventCreatorID: this.state.eventCreatorID,
               currentEventCreator: this.state.currentEventCreator,
+              currentUserCar: this.state.currentUserCar,
 
               event_id: this.state.event_id,
 
@@ -603,6 +649,7 @@ var Main = React.createClass({
               onNewDateRange: this.handleNewDateRange,
               onRegisterCar: this.handleRegisterCar,
               onCarpoolSignUp: this.handleCarpoolSignUp,
+              onLeaveCar: this.handleLeaveCar,
 
               onVoteEnd: this.handleVoteEnd,
               finalDate: this.state.final_date,
