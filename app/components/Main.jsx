@@ -299,21 +299,19 @@ var Main = React.createClass({
       }
     }
   },
-  handleEnterNewItem: function (value){
-    //!!! Edit to provide Item info, name, quantity, event_id
+  handleEnterNewItem: function (value, listType){
     $.ajax({
       url: 'http://localhost:3000/api/items',
       method: 'POST',
       data: {
         label: value,
-        event_id: this.state.event_id
+        event_id: this.state.event_id,
+        list_type: listType
       },
       success: function (res) {
-
-         // var newItem = {label: value, user_id: this.state.user_id}
-         var newItem = res;
-         var currentPackingList = this.state.packingList;
-         var newPackingList = currentPackingList.concat(newItem);
+        var newItem = res;
+        var currentPackingList = this.state.packingList;
+        var newPackingList = currentPackingList.concat(newItem);
         this.setState({
            packingList: newPackingList
         });

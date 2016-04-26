@@ -91,7 +91,7 @@ body {
     /*background-color: #FFFFFF;*/
   }
 
-  #public-packing-list {
+  .packing-list-section-heading {
     background-color: #F9F9F9;
     padding: 2px 0;
     text-align: center;
@@ -107,6 +107,7 @@ body {
     text-align: center;  
     margin-bottom: 0;
     border: 1px none #cacaca;
+    border-bottom: 1px solid #cacaca;
   }
 
   #packing-list-header {

@@ -2,11 +2,11 @@ var React = require('react');
 
 var AddMorePackingItemsForm = React.createClass({
   handleChange (event){
-    this.props.onChange(event.target.value);
+    this.props.onChange(event.target.value, this.props.packingType);
   },
   handleEnterNewItem (event) {
     if(event.keyCode == 13){ //Enter key clicked
-      this.props.onKeyDown(event.target.value);  
+      this.props.onKeyDown(event.target.value, this.props.packingType);  
       event.target.value = ''
       event.target.placeholder = 'Add More'
     }

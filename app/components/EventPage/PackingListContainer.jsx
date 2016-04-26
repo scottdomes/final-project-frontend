@@ -7,47 +7,62 @@ var AddMorePackingItemsForm = require('./AddMorePackingItemsForm.jsx');
 var PackingListContainer = React.createClass({
   getInitialState: function() {
       return {
-        newPackingItem: 'Add More'
+        newPublicPackingItem: 'Add More',
+        newPrivatePackingItem: 'Add More'
       }
   },
   handleUserPacksItem: function (key, e, itemLabel){
     var currentItem = this.props.packingList[key];
     this.props.onUserPacksItem(currentItem, key);
   },
-  handleNewPackingItemChange: function (value){
-    this.setState({
-      newPackingItem: value
-    })
+  handleNewPackingItemChange: function (value, listType){
+    if (listType === 'public'){
+      this.setState({
+        newPublicPackingItem: value
+      });
+    } else if (listType === 'private') {
+      this.setState({
+        newPrivatePackingItem: value
+      });
+    }
   },
-  handleEnterNewItem: function (value){
-    this.props.onEnterNewItem(value);
+  handleEnterNewItem: function (value, listType){
+    this.props.onEnterNewItem(value, listType);
   },
   getPackingListType: function (listType){
 
+    //Do an initial filter for public or private
+    //then map to create a packingListItem array
+    //have a filter if public to check get the users
 
-    if (listType === 'public'){
-      if (this.props.packingList){
-        var ItemList = this.props.packingList;
-        //creates an array of components to display
-        var PackingItems = ItemList.map((item, index) => {
-        
+    if (this.props.packingList){
+
+      var filteredPackingList = this.props.packingList.filter(function (item){
+        return item.list_type === listType ? true : false;
+      });
+
+      // var ItemList = this.props.packingList;
+      //creates an array of components to display
+      var PackingItems = filteredPackingList.map((item, index) => {
+      
         //if the item has a user id, goes through user list and gets the packer which is a user item (public only)
-        if (item.user_id){
-          var packer = this.props.userList.filter(function(user){
-            return item.user_id == user.id ? true : false;
-          });
+        var packer = null;
+        if (listType === 'public'){
+          if (item.user_id){
+            packer = this.props.userList.filter(function(user){
+              return item.user_id == user.id ? true : false;
+            });
+          }
         }
-
         return <PackingListItem packer={packer} onUserPacksItem={this.handleUserPacksItem.bind(this, index)} key={index} item={item} />
       });
-      }
     }
 
     return PackingItems;
   
   },
   render: function () {
-    const {newPackingItem} = this.state
+    const {newPublicPackingItem, newPrivatePackingItem} = this.state
     // var PackingList = [];
     // if (this.props.packingList){
     //   var ItemList = this.props.packingList;
@@ -66,19 +81,39 @@ var PackingListContainer = React.createClass({
 
     return (
       <div id="packing-list-container">
+        
         <div>
-          <h2 id="packing-list-header">Packing List</h2>
-        </div>
-        <div id="public-packing-list">
-          <h5>My Packing List</h5>
+          <div>
+            <h2 id="packing-list-header">Packing List</h2>
+          </div>
+
+          <div className="packing-list-section-heading">
+            <h5>Group Packing List</h5>
+          </div>
+          <div>
+            {PackingItems}
+          </div>
+          <AddMorePackingItemsForm 
+            packingType='public'
+            itemDescription={newPublicPackingItem} 
+            onChange={this.handleNewPackingItemChange}
+            onKeyDown={this.handleEnterNewItem}/>
         </div>
         <div>
-          {PackingItems}
+          <div className="packing-list-section-heading">
+            <h5>My Packing List</h5>
+          </div>
+          <div>
+            {PackingItems}
+          </div>
+          <AddMorePackingItemsForm 
+            packingType='private'
+            itemDescription={newPrivatePackingItem} 
+            onChange={this.handleNewPackingItemChange}
+            onKeyDown={this.handleEnterNewItem}/>
         </div>
-        <AddMorePackingItemsForm 
-          itemDescription={newPackingItem} 
-          onChange={this.handleNewPackingItemChange}
-          onKeyDown={this.handleEnterNewItem}/>
+
+
       </div>
 
 
