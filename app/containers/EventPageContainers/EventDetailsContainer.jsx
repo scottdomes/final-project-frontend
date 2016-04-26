@@ -16,7 +16,7 @@ var EventDetails = React.createClass({
       // console.log("WAHT THE FUCKING HELL")
       console.log(this.props);
       console.log(this.props.event_id);
-      this.props.loadEvent(this.props.event_id);
+      this.props.loadEvent();
     // }
   },
   handleGetAllUsers: function (){
