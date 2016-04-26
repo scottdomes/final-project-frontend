@@ -6,7 +6,6 @@ function PackingListItem(props) {
   function handleUserPacksItem(e){
     props.onUserPacksItem(e, props.item.label);
   }
-  console.log(props.packer)
   return(
     <div>
       <div 

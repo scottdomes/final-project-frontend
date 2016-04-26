@@ -27,8 +27,6 @@ var Facebook = {
 
   statusChangeCallback: function (response, component)  {
     component.setState({loading: false});
-    console.log('statusChangeCallback');
-    console.log(response);
     if (response.status === 'connected') {
       component.setLoginStatus(true);
       Facebook.fetchUserName(component);
@@ -41,7 +39,6 @@ var Facebook = {
 
   fetchUserName: function (component) {
     FB.api('/me?fields=email,name,gender,picture', function(response) {
-      console.log(response);
       component.setName(response.name);
       $.ajax({
         url: "http://localhost:3000/api/users",
@@ -49,7 +46,6 @@ var Facebook = {
         // data: { fb_id: response.id },
         data: { fb_id: 123 },  // For working with seed file!
         success: function (res) {
-          console.log(res);
           component.setUserDetails(
             res.user.name, 
             res.user.id, 

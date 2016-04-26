@@ -3,13 +3,10 @@ var ReactRouter = require('react-router');
 var Link = ReactRouter.Link;
 
 var EventLink = React.createClass({
-  handleClick: function () {
-    this.props.onClick(this.props.eventDetails.id);
-  },
   render: function () {
     var path = "/event/" + this.props.eventDetails.id;
     return (
-      <Link to={path} onClick={this.handleClick} >
+      <Link to={path} >
         {this.props.eventDetails.name}
       </Link>
     )

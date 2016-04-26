@@ -20,9 +20,6 @@ var VotingContainer = React.createClass({
       dateRanges: this.props.dateRanges
     }
   },
-  componentWillMount: function () {
-    this.props.loadEvent();
-  },
   handleDone: function (e) {
     e.stopPropagation();
     this.context.router.push({
