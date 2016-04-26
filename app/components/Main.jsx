@@ -642,7 +642,7 @@ var Main = React.createClass({
                 userName={this.state.user_name}
                 onLogout={this.handleLogout}/>
             </Menu>
-            <div style={{height: "40px", width: "28px", right: "35px", top: "25px", position: "absolute"}} onClick={this.handleExpandSidebar}>
+            <div style={{height: "40px", width: "28px", right: "35px", top: "25px", position: "absolute", cursor: "pointer"}} onClick={this.handleExpandSidebar}>
                <span id="open-sidebar-button">
               </span>
             </div>        

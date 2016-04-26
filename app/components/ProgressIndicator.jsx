@@ -7,7 +7,7 @@ var ProgressIndicator = React.createClass({
       <div id="progress-indicator-wrapper">
           <div className="row" id="progress-indicator" data-page={this.props.page}>
             <div className="large-2 custom-offset large columns">
-              <div id="location-circle" className="outline-circle">
+              <div id="location-circle" className="outline-circle active">
                 <img src="//localhost:3000/img/location.png" />
               </div>
             </div>

@@ -78,6 +78,11 @@ header img{
     display: inline-block;
   }
 
+  .outline-circle.active{
+    background-color: #2199e8;
+    border-color: #2199e8;
+  }
+
   #process-body-container{
     padding-top: 50px;
     min-height: 450px;
