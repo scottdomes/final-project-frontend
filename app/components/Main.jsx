@@ -182,7 +182,11 @@ var Main = React.createClass({
     $.getJSON(path)
     .then(function (data) {
       console.log('load event called');
+      var allParticipants = [].concat(data.users,data.creator);
       this.setState({
+        allEventParticipants: allParticipants,
+        dateVotes: data.date_votes,
+        campsiteVotes: data.campsite_votes,
         currentEventDetails: data.details,
         currentEventCars: data.cars,
         currentEventCreator: data.creator,
@@ -568,6 +572,10 @@ var Main = React.createClass({
       //refactor to put all states uptop and function references below
             this.props.children,
             {
+
+              allEventParticipants: this.state.allEventParticipants,
+              dateVotes: this.state.dateVotes,
+              campsiteVotes: this.state.campsiteVotes,
               onNewInput: this.handleNewInput,
               onNewDate: this.handleNewDate,
               loading: this.state.loading,

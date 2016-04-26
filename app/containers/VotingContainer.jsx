@@ -61,6 +61,8 @@ var VotingContainer = React.createClass({
     });
   },
   render: function () {
+    console.log('look here ');
+    console.log(this.props);
     return (
       <div className={this.state.fadeInClass}>
         <div id="voting-page-heading" className="row">
