@@ -26,32 +26,42 @@ var EventDetails = React.createClass({
     var creatorName = this.props.userIsCreator ? this.props.userName : 'No creator found!';
     var allEventUsers = this.props.eventParticipants.concat(this.props.currentEventCreator);
     return (
-      <div className='row'>
-        <div className='large-6 columns left-column-event' id="event-left-column">
-          <EventInfoContainer 
-            currentEventDetails={this.props.currentEventDetails}
-            finalLocation={this.props.finalLocation}
-            finalDate={this.props.finalDate}
-            creator={this.props.currentEventCreator}/>
-          <hr />
-          <UserInfoList 
-            userList={this.props.eventParticipants}
-            currentUserName={this.props.userName}
-            onRegisterCar={this.handleRegisterCar}
-            cars={this.props.currentEventCars}
-            onCarpoolSignUp={this.props.onCarpoolSignUp}
-            onLeaveCar={this.props.onLeaveCar}
-            currentUserID={this.props.currentUserID}
-            currentEventDetails={this.props.currentEventDetails}
-            currentUserCar={this.props.currentUserCar}/>
-
+      <div id="event-details-wrapper">
+        <div className='row event-details-image-row'>
+          <div className='large-6 columns event-details-image-left event-details-image'>
+            <h1>{this.props.currentEventDetails.name}</h1>
+            <p>{this.props.finalDate.dateRange.start_date} to {this.props.finalDate.dateRange.end_date}</p>
+          </div>
+          <div className='large-6 columns event-details-image-right event-details-image'>
+            <h1>{this.props.finalLocation.campsite.name}</h1>
+          </div>
         </div>
-        <div className='large-6 columns' id="event-right-column">
-          <PackingListContainer
-            packingList={this.props.packingList} 
-            onUserPacksItem={this.handleUserPacksItem}
-            onEnterNewItem={this.handleEnterNewItem}
-            userList={allEventUsers} />
+        <div className='row'>
+          <div className='large-8 columns left-column-event' id="event-left-column">
+            <UserInfoList 
+              userList={this.props.eventParticipants}
+              currentUserName={this.props.userName}
+              onRegisterCar={this.handleRegisterCar}
+              cars={this.props.currentEventCars}
+              onCarpoolSignUp={this.props.onCarpoolSignUp}
+              onLeaveCar={this.props.onLeaveCar}
+              currentUserID={this.props.currentUserID}
+              currentEventDetails={this.props.currentEventDetails}
+              currentUserCar={this.props.currentUserCar}/>
+              <hr />
+              <EventInfoContainer 
+              currentEventDetails={this.props.currentEventDetails}
+              finalLocation={this.props.finalLocation}
+              finalDate={this.props.finalDate}
+              creator={this.props.currentEventCreator}/>
+          </div>
+          <div className='large-4 columns' id="event-right-column">
+            <PackingListContainer
+              packingList={this.props.packingList} 
+              onUserPacksItem={this.handleUserPacksItem}
+              onEnterNewItem={this.handleEnterNewItem}
+              userList={allEventUsers} />
+          </div>
         </div>
       </div>
     )
