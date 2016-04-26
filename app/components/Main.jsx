@@ -26,7 +26,7 @@ var Main = React.createClass({
       },
       final_location: {campsite: {id: 0, name:'Test Campsite Name'}},
       final_date: {dateRange: {id: 0, start_date: 'Test Start Date', end_date: 'Test End Date'}},
-
+      currentEventCars: [],
 
       user_name: 'Test User',
       user_id: 0,
@@ -182,6 +182,7 @@ var Main = React.createClass({
       console.log('load event called');
       this.setState({
         currentEventDetails: data.details,
+        currentEventCars: data.cars,
         currentEventCreator: data.creator,
         eventName: data.details.name,
         event_id: data.details.id,
@@ -511,10 +512,45 @@ var Main = React.createClass({
     return final_date;
   },
   handleExpandSidebar: function () {
-    console.log("OPEN SIDEBAR");
     isOpen = this.state.isOpen ? false : true;
     this.setState({
       isOpen: isOpen
+    });
+  },
+  handleRegisterCar: function (capacity) {
+    var thisComponent = this;
+    $.ajax({
+        url: "http://localhost:3000/api/cars/",
+        type: "POST",
+        data: {
+          event_id: thisComponent.state.event_id,
+          user_id: thisComponent.state.user_id,
+          passenger_capacity: capacity
+        },
+        success: function (res) {
+          console.log(res);
+          thisComponent.loadEvent();
+        },
+        error: function (res) {
+          console.log(res);
+        }
+    });
+  },
+  handleCarpoolSignUp: function (car_id) {
+    var thisComponent = this;
+    $.ajax({
+        url: "http://localhost:3000/api/rides/",
+        type: "POST",
+        data: {
+          car_id: car_id,
+          user_id: thisComponent.state.user_id
+        },
+        success: function (res) {
+          console.log(res);
+        },
+        error: function (res) {
+          console.log(res);
+        }
     });
   },
   render: function () {
@@ -530,6 +566,7 @@ var Main = React.createClass({
               currentEventDetails: this.state.currentEventDetails,
               dateRanges: this.state.dateRanges,
               eventParticipants: this.state.eventParticipants,
+              currentEventCars: this.state.currentEventCars,
 
               locations: this.state.locations,
               loggedin: this.state.loggedin,
@@ -562,6 +599,8 @@ var Main = React.createClass({
 
               onNewLocation: this.handleNewLocation,
               onNewDateRange: this.handleNewDateRange,
+              onRegisterCar: this.handleRegisterCar,
+              onCarpoolSignUp: this.handleCarpoolSignUp,
 
               onVoteEnd: this.handleVoteEnd,
               finalDate: this.state.final_date,
