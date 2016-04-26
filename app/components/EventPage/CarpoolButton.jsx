@@ -7,7 +7,7 @@ var CarpoolButton = React.createClass({
   },
   handleSubmit: function (e) {
     e.preventDefault();
-    this.onFormSubmit();
+    this.props.onFormSubmit();
   },
   handleInputChange: function (e) {
     this.props.onInputChange(e.target.value)

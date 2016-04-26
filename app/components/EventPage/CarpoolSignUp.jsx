@@ -3,7 +3,13 @@ var React = require('react');
 var CarpoolSignUp = React.createClass({
   render: function () {
     return (
-      <h1>Hello World! I'm a component!</h1>
+      <div>
+        <p>Can take {this.props.capacity} more</p>
+        <button 
+          className="button success tiny">
+            Join Car
+        </button>
+      </div>
     )
   }
 });

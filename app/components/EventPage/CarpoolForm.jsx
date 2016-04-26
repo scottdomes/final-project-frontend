@@ -1,5 +1,7 @@
 var React = require('react');
 var CarpoolButton = require('./CarpoolButton.jsx');
+var CarpoolSignUp = require('./CarpoolSignUp.jsx');
+
 
 var CarpoolForm = React.createClass({
   getInitialState: function () {
@@ -20,15 +22,23 @@ var CarpoolForm = React.createClass({
     });
   },
   handleFormSubmit: function () {
-
+    this.setState({
+      registeredCar: true
+    });
   },
   render: function () {
     return (
-      <CarpoolButton
-        onClick={this.handleClick}
-        displayButton={this.state.displayButton}
-        onInputChange={this.handleInputChange}
-        onFormSubmit={this.handleFormSubmit}/>
+      <div>
+        { this.state.registeredCar 
+          ? <CarpoolSignUp
+              capacity={this.state.carpoolCapacityInput}/>
+          : <CarpoolButton
+              onClick={this.handleClick}
+              displayButton={this.state.displayButton}
+              onInputChange={this.handleInputChange}
+              onFormSubmit={this.handleFormSubmit}/>
+        }
+      </div>
     )
   }
 });
