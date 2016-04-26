@@ -592,30 +592,28 @@ var Main = React.createClass({
     return (
       <div id="background">
         <div id="background-overlay">
-        <ReactCSSTransitionGroup
-            transitionName="appear"
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={500}>
-          <Menu 
-            isOpen={this.state.isOpen}
-            width={300}
-            noOverlay>
-            <Navbar 
-              loggedin={this.state.loggedin}
-              eventsCreated={eventsCreated}
-              eventsAttended={eventsAttended}
-              userName={this.state.user_name}
-              onLogout={this.handleLogout}/>
-          </Menu>
-           <button id="open-sidebar-button" 
-              className="button success" 
-              onClick={this.handleExpandSidebar}>
-                Open Sidebar
-          </button>
-            
-            
-              {children}
-            </ReactCSSTransitionGroup>
+          <ReactCSSTransitionGroup
+              transitionName="appear"
+              transitionEnterTimeout={500}
+              transitionLeaveTimeout={500}>
+            <Menu 
+              isOpen={this.state.isOpen}
+              width={300}
+              noOverlay>
+              <Navbar 
+                loggedin={this.state.loggedin}
+                eventsCreated={eventsCreated}
+                eventsAttended={eventsAttended}
+                userName={this.state.user_name}
+                onLogout={this.handleLogout}/>
+            </Menu>
+             <button id="open-sidebar-button" 
+                className="button success" 
+                onClick={this.handleExpandSidebar}>
+                  Open Sidebar
+            </button>        
+            {children}
+          </ReactCSSTransitionGroup>
         </div>
       </div>
     )

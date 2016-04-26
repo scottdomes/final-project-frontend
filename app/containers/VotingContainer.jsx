@@ -17,7 +17,8 @@ var VotingContainer = React.createClass({
       addLocationInput: '',
       locations: this.props.locations,
       name: '',
-      dateRanges: this.props.dateRanges
+      dateRanges: this.props.dateRanges,
+      fadeInClass: 'appear-enter'
     }
   },
   handleDone: function (e) {
@@ -73,9 +74,15 @@ var VotingContainer = React.createClass({
   handleVoteEnd: function () {
     this.props.onVoteEnd();
   },
+  componentDidMount: function () {
+    console.log("Component did mount!");
+    this.setState({
+      fadeInClass: "appear-enter appear-enter-active"
+    });
+  },
   render: function () {
     return (
-      <div>
+      <div className={this.state.fadeInClass}>
         <div id="voting-page-heading" className="row">
           <div className="large-12 large columns text-center">
             <h3>Choose Your Destination</h3>
