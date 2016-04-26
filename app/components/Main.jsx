@@ -278,14 +278,9 @@ var Main = React.createClass({
     // }.bind(this));
   },
   setUserCar: function () {
-    console.log("Set user car called");
     for (var i =0; i < this.state.currentEventCars.length; i++) {
       var car = this.state.currentEventCars[i];
-      console.log(car);
       for (var j = 0; j < car.rides.length; j++) {
-        console.log(car.rides[j]);
-        console.log(car.rides[j].user_id);
-          console.log(this.state.user_id);
         if (car.rides[j].user_id === this.state.user_id) {
           this.setState({
             currentUserCar: car.car.id
