@@ -1,6 +1,8 @@
 var React = require('react');
 var VotingContainer = require('./VotingContainer.jsx');
 var EventDetailsContainer = require('./EventPageContainers/EventDetailsContainer.jsx');
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+var TransitionContainer = require('react-page-transitions');
 
 
 var VotingPhaseSplitter = React.createClass({
@@ -16,7 +18,8 @@ var VotingPhaseSplitter = React.createClass({
                     : <EventDetailsContainer/>;
     var actual = React.cloneElement(component, Object.assign({}, this.props));
     return (
-      actual
+          actual
+
     )
   }
 });

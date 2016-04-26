@@ -4,7 +4,7 @@
 
 #background {
   width: 100%;
-  height: 100%;
+  height: 102%;
   background-image: url('//localhost:3000/img/tent1.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -295,7 +295,7 @@ body.page2 {
 
 .appear-enter.appear-enter-active {
   opacity: 1;
-  transition: opacity 200ms ease-in;
+  transition: opacity 500ms ease-in;
 }
 
 .appear-leave {
@@ -304,5 +304,5 @@ body.page2 {
 
 .appear-leave.appear-leave-active {
   opacity: 0.01;
-  transition: opacity 200ms ease-in;
+  // transition: opacity 100ms ease-in;
 }
