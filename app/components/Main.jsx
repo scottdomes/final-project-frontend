@@ -348,7 +348,8 @@ var Main = React.createClass({
     // Category is a string, either "campsite" or "date"
     var vote = {
       user_id: this.state.user_id,
-      id: id
+      id: id,
+      event_id: this.state.currentEventDetails.id
     };
     var thisComponent = this;
     var url = this.constructVoteURL(category);
