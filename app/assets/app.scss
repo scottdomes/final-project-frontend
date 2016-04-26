@@ -29,11 +29,6 @@
       }
     }
 
-    #enter-location {
-      margin-top: 5px;
-      text-align: center;
-    }
-
     #fb-login {
       margin-top: 30px;
       text-align: center;
@@ -64,17 +59,11 @@
     }
 
     #vote-activator {
-      width: 30%;
-
-      .columns {
-        padding: 0;
-      }
 
       button {
         background-color: transparent;
         border: 2px solid #3adb76;
         width: 100%;
-        font-size: 1em;
         color: black;
       }
       button.active {
@@ -85,7 +74,6 @@
 
     #event-details-header {
       color: black;
-      margin: 0;
       margin-top: 20px;
     }
 
@@ -154,81 +142,7 @@
   }
 }
 
-#process-container {
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  margin: 0 auto;
 
-  #progress-indicator-wrapper {
-    padding-top: 20px;
-    padding-bottom: 120px;
-    background-color: black;
-    background-image: none;
-    background-image: url('http://localhost:3000/img/tent1.jpg');
-    background-size: cover;
-
-     #progress-indicator {
-      width: 80%;
-      min-width: 680px;
-
-      .outline-circle {
-        padding: 15px;
-        border: 3px solid #3adb76;
-        border-radius: 50%;
-        max-width: 70px;
-        margin: 0 auto;
-        background-color: #e6e6e6;
-
-        img {
-          max-width: 100%;
-        }
-      }
-      
-    }
-
-    #progress-indicator[data-page="event/addfriends"], #progress-indicator[data-page="event/eventconfig"] {
-      #location-circle {
-        background-color: #3adb76;
-      }
-    }
-
-    #progress-indicator[data-page="event/vote"]  {
-      #location-circle, #friends-circle {
-        background-color: #3adb76;
-      }
-    }
-  }
-
-  #process-body-container {
-    width: 80%;
-    margin: 0 auto;
-    background-color: white;
-    margin-top: -100px;
-    border: 1px solid #e5e5e5;
-    border-radius: 2px;
-  }
-}
-
-#back-button-container {
-  position: absolute;
-  left: 20px;
-  top: 35px;
-  height: 43px;
-  cursor: pointer;
-
-  .fa-chevron-left{
-    padding-right: 8px;
-    color: white;
-  }
-
-  h3 {
-    margin: 0;
-    font-size: 22px;
-    display: inline-block;
-    color: white;
-  }
-}
 
 body.page2 {
   background-image: url('/img/tent3.jpg');
