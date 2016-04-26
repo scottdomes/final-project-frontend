@@ -642,6 +642,7 @@ var Main = React.createClass({
                 userName={this.state.user_name}
                 onLogout={this.handleLogout}/>
             </Menu>
+            <div className="site-logo"><img src="//localhost:3000/img/nature.png" /><span>Camplight</span></div>
             <div style={{height: "40px", width: "28px", right: "35px", top: "25px", position: "absolute", cursor: "pointer"}} onClick={this.handleExpandSidebar}>
                <span id="open-sidebar-button">
               </span>

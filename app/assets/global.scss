@@ -59,7 +59,7 @@ header img{
   background-color: white;
 
   #progress-indicator-wrapper {
-    padding-top: 100px;
+    padding-top: 120px;
     padding-bottom: 93px;
     background-image: url('http://localhost:3000/img/tent1.jpg');
     background-size: cover;
@@ -109,3 +109,24 @@ header img{
     margin-left: 21px;
 }
 
+//site logo
+
+.site-logo{
+  position: absolute;
+  left: 35px;
+  top: 15px;
+  img{
+    width: 45px;
+  }
+  span{
+    vertical-align: bottom;
+    padding-left: 13px;
+    color: white;
+    font-weight: 600;
+    font-family: 'Rock Salt', cursive;
+    letter-spacing: 2px;
+    display: inline-block;
+    padding-top: 14px;
+    float: right;
+  }
+}
