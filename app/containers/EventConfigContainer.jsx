@@ -65,7 +65,7 @@ var EventConfigContainer = React.createClass({
         <VoteActivator onClick={this.handleVoteActivatorChange} />
         <div className="row" id="button-eventconfig-done" style={{marginTop: "35px"}}>
           <div className="large-6 large-centered columns text-center">
-            <button className="button success wide" onClick={this.handleDone}>Invite Friends</button>
+            <button className="button success wide" onClick={this.handleDone} style={{backgroundColor: "#2199e8"}}>Invite Friends</button>
           </div>
         </div>
       </div>

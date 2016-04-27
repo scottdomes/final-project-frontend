@@ -30,7 +30,7 @@ var FriendsContainer = React.createClass({
           </div>
           <div className="row" id="button-friends-done">
             <div className="large-6 large-centered columns text-center">
-              <button className="button success wide" onClick={this.handleInviteClick}>Invite Friends</button>
+              <button className="button success wide" onClick={this.handleInviteClick} style={{backgroundColor: "#2199e8"}}>Invite Friends</button>
             </div>
           </div>
           <div className="row" id="button-friends-done">
