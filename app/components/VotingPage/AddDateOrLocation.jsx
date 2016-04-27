@@ -21,7 +21,8 @@ var AddDateOrLocation = React.createClass({
           <AddLocation 
             onSubmit={this.handleNewLocationSubmit} 
             onChange={this.handleLocationInputChange}
-            buttonDisplay={this.props.locationButtonDisplay}/>
+            buttonDisplay={this.props.locationButtonDisplay}
+            locationVotingAllowed={this.props.locationVotingAllowed}/>
         </div>
         <div className='large-4 columns'>
           <AddDate

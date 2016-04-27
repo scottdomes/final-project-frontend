@@ -24,12 +24,13 @@ var AddLocation = React.createClass({
   render: function () {
     var formDisplay = this.state.displayForm ? {"display": "block"} : {"display": "none"};
     var buttonText = this.state.displayForm ? "Close" : "Add";
+    var buttonDisplay = this.props.locationVotingAllowed ? this.props.buttonDisplay : {"display": "none"};
     return (
       <div>
         <button 
           className="button success add-location-button tiny"
           onClick={this.handleExpandOrCloseForm}
-          style={this.props.buttonDisplay}>
+          style={buttonDisplay}>
             {buttonText}
         </button>
         <form onSubmit={this.handleSubmit} style={formDisplay}>
