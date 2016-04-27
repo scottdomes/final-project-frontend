@@ -24,7 +24,7 @@ var AddLocation = React.createClass({
   render: function () {
     var formDisplay = this.state.displayForm ? {"display": "block"} : {"display": "none"};
     var buttonText = this.state.displayForm ? "Close" : "Add";
-    var buttonDisplay = this.props.locationVotingAllowed ? this.props.buttonDisplay : {"display": "none"};
+    var buttonDisplay = this.props.locationVotingAllowed ? this.props.buttonDisplay : {"visibility": "hidden"};
     return (
       <div>
         <button 
