@@ -184,7 +184,16 @@ var Main = React.createClass({
     $.getJSON(path)
     .then(function (data) {
       console.log('load event called');
-      var allParticipants = [].concat(data.users,data.creator);
+      // var allParticipants = [].concat(data.users,data.creator);
+      var allParticipants = data.users.sort(function(a,b){
+          if (a.id > b.id) {
+            return 1;
+          }
+          if (a.id < b.id) {
+            return -1;
+          }
+          return 0;
+      });
       this.setState({
         allEventParticipants: allParticipants,
         dateVotes: data.date_votes,

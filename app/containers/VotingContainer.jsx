@@ -4,8 +4,6 @@ var DateVoting = require('../components/VotingPage/DateVoting.jsx');
 var EventHeader = require('../components/VotingPage/EventHeader.jsx');
 var AddDateOrLocation = require('../components/VotingPage/AddDateOrLocation.jsx');
 
-
-
 var $ = require('jquery');
 
 var VotingContainer = React.createClass({
@@ -61,8 +59,6 @@ var VotingContainer = React.createClass({
     });
   },
   render: function () {
-    console.log('look here ');
-    console.log(this.props);
     return (
       <div className={this.state.fadeInClass}>
         <div id="voting-page-heading" className="row">
@@ -80,7 +76,9 @@ var VotingContainer = React.createClass({
           <LocationVoting 
             locations={this.props.locations}
             onVote={this.handleVote}
-            votingAllowed={this.props.locationVotingAllowed}/>
+            votingAllowed={this.props.locationVotingAllowed}
+            campsiteVotes={this.props.campsiteVotes}
+            allEventParticipants={this.props.allEventParticipants}/>
           <div className="row">
             <div className="large-12 large columns text-center">
               <h5>{ this.props.dateVotingAllowed ? "Potential Dates:" : "Date:" }</h5>
