@@ -49,11 +49,6 @@ var EventDetails = React.createClass({
               currentEventDetails={this.props.currentEventDetails}
               currentUserCar={this.props.currentUserCar}/>
               <hr />
-              <EventInfoContainer 
-              currentEventDetails={this.props.currentEventDetails}
-              finalLocation={this.props.finalLocation}
-              finalDate={this.props.finalDate}
-              creator={this.props.currentEventCreator}/>
           </div>
           <div className='large-4 columns' id="event-right-column">
             <PackingListContainer

@@ -52,7 +52,9 @@ var UserInfoList = React.createClass({
 
     return (
       <div id="user-scroll-section" style={{'overflowX': 'hidden', 'overflowY': 'auto'}}>
-        {users}
+        <div className="row">
+          {users}
+        </div>
       </div>
     )
   }

@@ -21,29 +21,29 @@ function UserInfoItem(props) {
   }
 
   return(
-    <div className={classNames({"user-profile-info": true})}
-    onClick={handleOnClick}>
-      <div className='user-profile-image'>
-        { props.userInfo.picture_path === ''
-          ? <img className='user-profile-image' src='https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/user-male-circle-blue-128.png' />
-          : <img className='user-profile-image' src={props.userInfo.picture_path}/>
-        }
+    <div className='large-4 columns'>
+      <div className={classNames({"user-profile-info": true})}
+      onClick={handleOnClick}>
+        <div className='user-profile-image'>
+          { props.userInfo.picture_path === ''
+            ? <img className='user-profile-image' src='https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/user-male-circle-blue-128.png' />
+            : <img className='user-profile-image' src={props.userInfo.picture_path}/>
+          }
+        </div>
+        <div className='user-profile-name'>
+            {props.userInfo.name}
+        </div>
+        <CarpoolForm
+          onRegisterCar={handleRegisterCar}
+          car={props.car}
+          rides={props.rides}
+          isCurrentUser={props.isCurrentUser}
+          isCurrentUserCar={props.isCurrentUserCar}
+          currentUserID={props.currentUserID}
+          onCarpoolSignUp={handleCarpoolSignUp}
+          onLeaveCar={handleLeaveCar}
+          userList={props.userList}/>
       </div>
-      <div className='user-profile-name'>
-          {props.userInfo.name}
-      </div>
-      <CarpoolForm
-        onRegisterCar={handleRegisterCar}
-        car={props.car}
-        rides={props.rides}
-        isCurrentUser={props.isCurrentUser}
-        isCurrentUserCar={props.isCurrentUserCar}
-        currentUserID={props.currentUserID}
-        onCarpoolSignUp={handleCarpoolSignUp}
-        onLeaveCar={handleLeaveCar}
-        userList={props.userList}/>
-
-    <hr />
     </div>
   )
 

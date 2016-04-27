@@ -606,6 +606,9 @@ var Main = React.createClass({
         }
     });
   },
+  handleCloseMenu: function () {
+    console.log("HEY");
+  },
   render: function () {
     var children = React.cloneElement(
       //refactor to put all states uptop and function references below
@@ -690,7 +693,8 @@ var Main = React.createClass({
             <Menu
               isOpen={this.state.isOpen}
               width={300}
-              noOverlay>
+              noOverlay
+              onClick={this.handleCloseMenu}>
               <Navbar
                 loggedin={this.state.loggedin}
                 eventsCreated={eventsCreated}
