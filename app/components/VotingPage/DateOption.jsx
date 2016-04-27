@@ -18,9 +18,8 @@ var DateOption = React.createClass({
   },
   render: function () {
     var voteDisplayStyle = this.props.votingDisallowed ? {'display': 'none'} : {'display': 'block'};
-    var centeredEventIfOnly = this.props.votingDisallowed ? "large-4 large-centered columns" : "large-4 columns end"; 
     var dateVotePictures = this.getUserProfileImages(this.props.dateVotes, this.props.allEventParticipants);
-
+    var centeredEventIfOnly = this.props.votingDisallowed ? "large-12 large-centered columns" : "large-12 columns end"; 
     return (
       <div className={centeredEventIfOnly}>
         <div className="date-option-wrapper card">

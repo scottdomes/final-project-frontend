@@ -1,6 +1,11 @@
 var React = require('react');
 
 var AddLocation = React.createClass({
+  getInitialState: function () {
+    return {
+      displayForm: false
+    }
+  },
   handleSubmit: function (e) {
     e.preventDefault();
     this.props.onSubmit();
@@ -9,15 +14,29 @@ var AddLocation = React.createClass({
     e.stopPropagation();
     this.props.onChange(e.target.value);
   },
+  handleExpandOrCloseForm: function (e) {
+    e.stopPropagation();
+    var boolean = this.state.displayForm ? false : true;
+    this.setState({
+      displayForm: boolean
+    });
+  },
   render: function () {
+    var formDisplay = this.state.displayForm ? {"display": "block"} : {"display": "none"};
+    var buttonText = this.state.displayForm ? "Close" : "Add";
+    var buttonDisplay = this.props.locationVotingAllowed ? this.props.buttonDisplay : {"display": "none"};
     return (
-      <div id="add-location" className="row">
-        <div className="large-4 large-centered large columns text-center">
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" placeholder="Add location..." onChange={this.handleInputChange} />
-            <button className="button success">Add</button>
-          </form>
-        </div>
+      <div>
+        <button 
+          className="button success add-location-button tiny"
+          onClick={this.handleExpandOrCloseForm}
+          style={buttonDisplay}>
+            {buttonText}
+        </button>
+        <form onSubmit={this.handleSubmit} style={formDisplay}>
+          <input type="text" placeholder="Add location..." onChange={this.handleInputChange} />
+          <button className="button success">Add</button>
+        </form>
       </div>
     )
   }

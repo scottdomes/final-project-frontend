@@ -152,6 +152,10 @@ body {
     background-color: #3ADB76;
   }
 
+  .list-item:hover {
+    cursor: pointer;
+  }
+
   ol, ul {
     margin-left: 0%;
   }

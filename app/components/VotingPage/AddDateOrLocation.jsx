@@ -16,13 +16,20 @@ var AddDateOrLocation = React.createClass({
   },
   render: function () {
     return (
-      <div>
-        <AddLocation 
-          onSubmit={this.handleNewLocationSubmit} 
-          onChange={this.handleLocationInputChange}/>
-        <AddDate
-          onSubmit={this.handleNewDateSubmit}
-          votingAllowed={this.props.dateVotingAllowed}/>
+      <div className='row'>
+        <div className='large-8 columns text-center'>
+          <AddLocation 
+            onSubmit={this.handleNewLocationSubmit} 
+            onChange={this.handleLocationInputChange}
+            buttonDisplay={this.props.locationButtonDisplay}
+            locationVotingAllowed={this.props.locationVotingAllowed}/>
+        </div>
+        <div className='large-4 columns'>
+          <AddDate
+            onSubmit={this.handleNewDateSubmit}
+            votingAllowed={this.props.dateVotingAllowed}
+            onDisplayCalendar={this.props.onDisplayCalendar}/>
+        </div>
       </div>
     )
   }
