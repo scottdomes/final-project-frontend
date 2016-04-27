@@ -5,38 +5,24 @@ var LocationVoting = React.createClass({
   handleVote: function (optionID) {
     this.props.onVote(optionID, "campsite");
   },
-  getLocationVotes: function (campsiteVotes, location){
-    return campsiteVotes.filter(function (vote){
-      return vote.camp_site_id === location.id ? true : false;
-    });
-  },
-  getUserVoteList: function (locationVotes, userList){
-    console.log('getUserVoteList')
-    console.log(locationVotes)
-    console.log(userList)
-    //location votes can be multiple
-    //userlist can be multiple
-    // looop through location votes, and do an inner loop on userlist
-    //if location vote.user_id == user.id then add it to the 
-  },
+  // getLocationVotes: function (campsiteVotes, location){
+  //   return campsiteVotes.filter(function (vote){
+  //     return vote.camp_site_id === location.id ? true : false;
+  //   });
+  // },
   generateLocations: function () {
     var locationList = [];
     var thisComponent = this;
-    // console.log('look here ');
-    // console.log(this.props);
     if (this.props.votingAllowed) {
       locationList = this.props.locations.map(function (location, index) {
-        var locationVotes = thisComponent.getLocationVotes(thisComponent.props.campsiteVotes, location.campsite);
-        // var userVoteList = thisComponent.getUserVoteList(locationVotes, thisComponent.props.allEventParticipants);
-        // console.log('locaiton votes');
-        // console.log(locationVotes);
+        // var locationVotes = thisComponent.getLocationVotes(thisComponent.props.campsiteVotes, location.campsite);
         return <LocationOption 
           name={location.campsite.name} 
           key={index}
           id={location.campsite.id} 
           votes={location.votes.length}
           onVote={thisComponent.handleVote}
-          campsiteVotes={locationVotes}
+          campsiteVotes={location.votes}
           allEventParticipants={thisComponent.props.allEventParticipants}/>
       });
     } else {

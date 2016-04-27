@@ -88,6 +88,8 @@ var VotingContainer = React.createClass({
             dateRanges={this.props.dateRanges}
             votingAllowed={this.props.dateVotingAllowed}
             onVote={this.handleVote}
+            dateVotes={this.props.dateVotes}
+            allEventParticipants={this.props.allEventParticipants}
             currentUserAddedDate={this.props.currentUserAddedDate} />
           <AddDateOrLocation
             onLocationSubmit={this.handleNewLocationSubmit} 
