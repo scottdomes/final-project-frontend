@@ -54,10 +54,18 @@ body {
     max-height: 300px;
     overflow-x: hidden;
     overflow-y: auto;
+
+    .columns {
+      min-height: 200px;
+    }
   }
 
   .user-profile-info {
-    display: inline-block;    
+    display: inline-block;  
+
+    p {
+      margin: 0;
+    }  
   }
 
   .carpool-button {
