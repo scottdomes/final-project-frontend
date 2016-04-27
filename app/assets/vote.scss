@@ -52,11 +52,34 @@
 #add-date {
   .DateRangePicker {
     width: 200%;
-    margin-left: -120%;
+    margin-left: -245%;
   }
 
   .add-date-button {
     display: block;
-    margin-left: -100px;
+    margin-left: -300px;
   }
+}
+
+.add-location-button, .expand-calendar {
+  float: right;
+  margin-top: -40px;
+}
+
+.add-location-button {
+  margin-right: 20px;
+}
+
+.expand-calendar {
+  margin-right: -10px;
+}
+
+.expand-calendar.button.tiny,.add-location-button.tiny {
+  font-size: 1.2em;
+  height: 40px;
+  padding: .5em .5em;
+}
+
+#voting-page-heading-row {
+  margin-top: 20px;
 }

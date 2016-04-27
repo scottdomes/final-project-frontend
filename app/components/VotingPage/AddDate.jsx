@@ -29,6 +29,7 @@ var AddDate = React.createClass({
   },
   handleDisplayCalendarClick: function (e) {
     e.stopPropagation();
+    this.props.onDisplayCalendar();
     var boolean = this.state.displayCalendar ? false : true;
     this.setState({
       displayCalendar: boolean
@@ -38,12 +39,12 @@ var AddDate = React.createClass({
     var displayCalendar = this.state.displayCalendar ? {"display": "block"} : {"display": "none"};
     var hideAddDateButton = this.state.hideAddDateButton ? {"display": "none"} : {"display": "inline-block"} ;
     var hiddenIfDateVotingDisallowed = this.props.votingAllowed ? {} : {"display": "none"}; 
-    var buttonText = this.state.displayCalendar ? "Close" : "Add Date";   
+    var buttonText = this.state.displayCalendar ? "Close" : "Add";   
     return (
       <div id="add-date" className="row">
         <div className="large-10 large-centered large columns text-center">
           <button 
-            className="button success expand-calendar wide"
+            className="button success expand-calendar tiny"
             style={hiddenIfDateVotingDisallowed}
             onClick={this.handleDisplayCalendarClick}>
               {buttonText}

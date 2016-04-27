@@ -18,7 +18,8 @@ var VotingContainer = React.createClass({
       locations: this.props.locations,
       name: '',
       dateRanges: this.props.dateRanges,
-      fadeInClass: 'appear-enter'
+      fadeInClass: 'appear-enter',
+      hideHeaders: false
     }
   },
   handleDone: function (e) {
@@ -50,7 +51,14 @@ var VotingContainer = React.createClass({
       fadeInClass: "appear-enter appear-enter-active"
     });
   },
+  hideHeaders: function () {
+    var boolean = this.state.hideHeaders ? false : true;
+    this.setState({
+      hideHeaders: boolean
+    });
+  },
   render: function () {
+    var headerDisplay = this.state.hideHeaders ? {"visibility": "hidden"} : {"visibility": "visible"}
     return (
       <div className={this.state.fadeInClass}>
         <div id="voting-page-heading" className="row">
@@ -65,29 +73,31 @@ var VotingContainer = React.createClass({
             currentEventDetails={this.props.currentEventDetails}
             userIsCreator={this.props.userIsCreator}
             onVoteEnd={this.handleVoteEnd}/>
+          <div id="voting-page-heading-row" className="row" style={headerDisplay}>
+            <div className="large-8 large columns text-center">
+              <h5>{ this.props.locationVotingAllowed ? "Potential Locations:" : "Location:" }</h5>
+            </div>
+            <div className="large-4 large columns text-center">
+              <h5>{ this.props.dateVotingAllowed ? "Potential Dates:" : "Date:" }</h5>
+            </div>
+          </div>
+
           <AddDateOrLocation
             onLocationSubmit={this.handleNewLocationSubmit} 
             onChange={this.handleLocationInputChange}
             onDateSubmit={this.handleNewDateSubmit}
-            dateVotingAllowed={this.props.dateVotingAllowed}/>
+            dateVotingAllowed={this.props.dateVotingAllowed}
+            onDisplayCalendar={this.hideHeaders}
+            locationButtonDisplay={headerDisplay}/>
+
           <div className="row">
             <div className="large-8 columns">
-              <div className="row">
-                <div className="large-12 large columns text-center">
-                  <h5>{ this.props.locationVotingAllowed ? "Potential Locations:" : "Location:" }</h5>
-                </div>
-              </div>
               <LocationVoting 
                 locations={this.props.locations}
                 onVote={this.handleVote}
                 votingAllowed={this.props.locationVotingAllowed}/>
             </div>
             <div className="large-4 columns">
-             <div className="row">
-                <div className="large-12 large columns text-center">
-                  <h5>{ this.props.dateVotingAllowed ? "Potential Dates:" : "Date:" }</h5>
-                </div>
-              </div>
               <DateVoting
                 dateRanges={this.props.dateRanges}
                 votingAllowed={this.props.dateVotingAllowed}
