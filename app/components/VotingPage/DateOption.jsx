@@ -5,8 +5,20 @@ var DateOption = React.createClass({
     e.stopPropagation();
     this.props.onVote(this.props.id);
   },
+  getUserProfileImages: function (voteList, userList){
+    return voteList.map((vote, index) => {
+      // console.log('profile image is');
+      // console.log(userList[vote.user_id].picture_path);
+      if (userList[vote.user_id - 1].picture_path){
+        return <img src={userList[vote.user_id - 1].picture_path} key={vote.user_id} className="vote-user-picture" />
+      } else {
+        return <img src='https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR0Nn66fyQBiklzI5EQbDh269jHQss2HQk6zgyRroyY6PkkmOHK' key={vote.user_id} className="vote-user-picture" />
+      }
+    });
+  },
   render: function () {
     var voteDisplayStyle = this.props.votingDisallowed ? {'display': 'none'} : {'display': 'block'};
+    var dateVotePictures = this.getUserProfileImages(this.props.dateVotes, this.props.allEventParticipants);
     var centeredEventIfOnly = this.props.votingDisallowed ? "large-12 large-centered columns" : "large-12 columns end"; 
     return (
       <div className={centeredEventIfOnly}>
@@ -15,6 +27,9 @@ var DateOption = React.createClass({
             <p className="date-option-range">{this.props.start_date} to {this.props.end_date}</p>
             <div className="vote-container" style={voteDisplayStyle}>
               <h4>Votes: {this.props.votes}</h4>
+              <div className='date-vote-row'>
+                {dateVotePictures}
+              </div>
               <button 
                 className="date-vote-button button success wide"
                 onClick={this.handleVote}>

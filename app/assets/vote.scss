@@ -11,6 +11,21 @@
 //   display: none;
 // }
 
+.vote-user-picture {
+  border-radius: 50%;
+  max-width: 40px;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border: 2px solid white;
+  margin-bottom: 3px;
+}
+
+.date-vote-row {
+  height: 40px;
+  position: relative;
+}
 
 #voting-page-heading h3 {
   color: white;
@@ -47,39 +62,4 @@
 
 #voting-page-wrapper {
   background-color: white;
-}
-
-#add-date {
-  .DateRangePicker {
-    width: 200%;
-    margin-left: -245%;
-  }
-
-  .add-date-button {
-    display: block;
-    margin-left: -300px;
-  }
-}
-
-.add-location-button, .expand-calendar {
-  float: right;
-  margin-top: -40px;
-}
-
-.add-location-button {
-  margin-right: 20px;
-}
-
-.expand-calendar {
-  margin-right: -10px;
-}
-
-.expand-calendar.button.tiny,.add-location-button.tiny {
-  font-size: 1.2em;
-  height: 40px;
-  padding: .5em .5em;
-}
-
-#voting-page-heading-row {
-  margin-top: 20px;
 }
