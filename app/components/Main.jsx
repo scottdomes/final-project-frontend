@@ -619,6 +619,23 @@ var Main = React.createClass({
         }
     });
   },
+  handleDeleteEvent: function () {
+    console.log(this.state.currentEventDetails.id);
+    var thisComponent = this;
+    $.ajax({
+        url: "http://localhost:3000/api/events/" + thisComponent.state.currentEventDetails.id,
+        type: "DELETE",
+        success: function (res) {
+          Facebook.fetchUserName(thisComponent);
+          browserHistory.replace({
+            pathname: '/'
+          })
+        },
+        error: function (res) {
+          console.log(res);
+        }
+    });
+  },
   render: function () {
     var children = React.cloneElement(
       //refactor to put all states uptop and function references below
@@ -674,6 +691,8 @@ var Main = React.createClass({
               onRegisterCar: this.handleRegisterCar,
               onCarpoolSignUp: this.handleCarpoolSignUp,
               onLeaveCar: this.handleLeaveCar,
+
+              onDeleteEvent: this.handleDeleteEvent,
 
               onVoteEnd: this.handleVoteEnd,
               finalDate: this.state.final_date,

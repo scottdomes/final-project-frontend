@@ -60,7 +60,6 @@ var CarpoolForm = React.createClass({
         usersInCar.push(matchingUser);
       }
     }
-    console.log(usersInCar);
     if (usersInCar.length > 0) {
       userNamesInCar = usersInCar.map(function (user) {
         return user.name
