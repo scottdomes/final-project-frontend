@@ -4,8 +4,6 @@ var DateVoting = require('../components/VotingPage/DateVoting.jsx');
 var EventHeader = require('../components/VotingPage/EventHeader.jsx');
 var AddDateOrLocation = require('../components/VotingPage/AddDateOrLocation.jsx');
 
-
-
 var $ = require('jquery');
 
 var VotingContainer = React.createClass({
@@ -73,6 +71,7 @@ var VotingContainer = React.createClass({
             currentEventDetails={this.props.currentEventDetails}
             userIsCreator={this.props.userIsCreator}
             onVoteEnd={this.handleVoteEnd}/>
+
           <div id="voting-page-heading-row" className="row" style={headerDisplay}>
             <div className="large-8 large columns text-center">
               <h5>{ this.props.locationVotingAllowed ? "Potential Locations:" : "Location:" }</h5>
@@ -96,14 +95,18 @@ var VotingContainer = React.createClass({
               <LocationVoting 
                 locations={this.props.locations}
                 onVote={this.handleVote}
-                votingAllowed={this.props.locationVotingAllowed}/>
+                votingAllowed={this.props.locationVotingAllowed}
+                campsiteVotes={this.props.campsiteVotes}
+                allEventParticipants={this.props.allEventParticipants}/>
             </div>
             <div className="large-4 columns">
               <DateVoting
                 dateRanges={this.props.dateRanges}
                 votingAllowed={this.props.dateVotingAllowed}
                 onVote={this.handleVote}
-                currentUserAddedDate={this.props.currentUserAddedDate} />
+                currentUserAddedDate={this.props.currentUserAddedDate}
+                dateVotes={this.props.dateVotes}
+                allEventParticipants={this.props.allEventParticipants} />
             </div>
           </div>
         </div>

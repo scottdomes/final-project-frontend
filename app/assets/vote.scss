@@ -11,6 +11,25 @@
 //   display: none;
 // }
 
+.user-profile-vote-list{
+  margin-bottom: 3px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.vote-user-picture {
+  border-radius: 50%;
+  max-width: 40px;
+  display: inline-block;
+  border: 2px solid white;
+  
+}
+
+.date-vote-row {
+  height: 40px;
+  position: relative;
+}
 
 #voting-page-heading h3 {
   color: white;
@@ -48,6 +67,8 @@
 #voting-page-wrapper {
   background-color: white;
 }
+
+
 
 #add-date {
   .DateRangePicker {

@@ -21,6 +21,10 @@ var EventDetails = React.createClass({
     console.log(capacity);
     this.props.onRegisterCar(capacity);
   },
+  handleDeleteEvent: function (e) {
+    e.stopPropagation();
+    this.props.onDeleteEvent();
+  },
   render: function (){
     var creatorPicture = this.props.userIsCreator ? this.props.picturePath : '';
     var creatorName = this.props.userIsCreator ? this.props.userName : 'No creator found!';
@@ -33,6 +37,15 @@ var EventDetails = React.createClass({
             <p>{this.props.finalDate.dateRange.start_date} to {this.props.finalDate.dateRange.end_date}</p>
           </div>
           <div className='large-6 columns event-details-image-right event-details-image'>
+            { this.props.eventCreatorID === this.props.currentUserID 
+              ? <button 
+                  className='button alert tiny' 
+                  style={{"float": "right"}}
+                  onClick={this.handleDeleteEvent}>
+                    Delete Event
+                </button>
+              : <div></div> 
+            }
             <h1>{this.props.finalLocation.campsite.name}</h1>
           </div>
         </div>
