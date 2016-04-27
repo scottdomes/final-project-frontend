@@ -13,10 +13,12 @@ var LocationVoting = React.createClass({
   generateLocations: function () {
     var locationList = [];
     var thisComponent = this;
+    var classNames = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
     if (this.props.votingAllowed) {
       locationList = this.props.locations.map(function (location, index) {
         // var locationVotes = thisComponent.getLocationVotes(thisComponent.props.campsiteVotes, location.campsite);
         return <LocationOption 
+          classEnumerator={classNames[index]}
           name={location.campsite.name} 
           key={index}
           id={location.campsite.id} 
@@ -28,6 +30,7 @@ var LocationVoting = React.createClass({
     } else {
       locationList = this.props.locations.map(function (location, index) {
         return <LocationOption 
+          classEnumerator={classNames[index]}
           name={location.campsite.name} 
           key={index}
           id={location.campsite.id} 

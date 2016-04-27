@@ -1,15 +1,45 @@
-// #background {
-//   background-image: none;
-//   height: auto;
+$imgKey: random(2);
 
-//   #background-overlay {
-//     background-color: white;
-//     height: auto;
-//   }
-// }
-// .login-header {
-//   display: none;
-// }
+$list: tent4, night;
+$nth: nth($list, $imgKey);
+
+
+.location-image {
+  background-image: url("//localhost:3000/img/tent3.jpg");
+  background-size: cover;
+  height: 200px;
+  position: relative;
+}
+
+.location-image.one {
+  background-image: url("//localhost:3000/img/tent3.jpg");
+}
+
+.location-image.two {
+  background-image: url("//localhost:3000/img/night.jpg");
+}
+
+.location-image.three {
+  background-image: url("//localhost:3000/img/tent4.jpg");
+}
+
+.location-image.four {
+  background-image: url("//localhost:3000/img/tent5.jpg");
+}
+
+.location-image.five {
+  background-image: url("//localhost:3000/img/tent6.jpg");
+}
+
+.location-image.six {
+  background-image: url("//localhost:3000/img/tent7.jpg");
+}
+
+.location-image.seven {
+  background-image: url("//localhost:3000/img/tent8.jpg");
+}
+
+
 
 .user-profile-vote-list{
   margin-bottom: 3px;
@@ -104,3 +134,4 @@
 #voting-page-heading-row {
   margin-top: 20px;
 }
+
