@@ -9,6 +9,18 @@ body{
 
 }
 
+button{
+  font-weight: 600 !important;
+}
+
+.button.success:focus{
+  background-color: #3adb76;
+}
+
+input[type="text"]{
+  font-weight: 600;
+}
+
 form input{
   font-family: 'Open Sans', sans-serif;
   color: #333 !important;
@@ -60,8 +72,8 @@ header img{
   background-color: white;
 
   #progress-indicator-wrapper {
-    padding-top: 120px;
-    padding-bottom: 93px;
+    padding-top: 100px;
+    padding-bottom: 54px;
     background-image: url('http://localhost:3000/img/tent1.jpg');
     background-size: cover;
     background-position: center center;
@@ -77,9 +89,9 @@ header img{
   }
 
   .outline-circle{
-    max-width: 55px;
+    max-width: 45px;
     border: 2px solid white;
-    padding: 10px;
+    padding: 9px;
     border-radius: 50%;
     display: inline-block;
   }

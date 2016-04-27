@@ -17,12 +17,14 @@ var LocationOption = React.createClass({
   render: function () {
 
     var voteDisplay = this.props.votingDisallowed ? {'display': 'none'} : {'display': 'block'};
-    var locationVotePictures = this.getUserProfileImages(this.props.campsiteVotes, this.props.allEventParticipants);
+    if (!this.props.votingDisallowed && !(this.props.votingDisallowed === false)){
+      var locationVotePictures = this.getUserProfileImages(this.props.campsiteVotes, this.props.allEventParticipants);
+    }
     var centeredEventIfOnly = this.props.votingDisallowed ? "large-6 large-centered columns" : "large-6 columns end"; 
     return (
       <div className={centeredEventIfOnly}>
         <div className="location-option-wrapper card">
-          <div className="location-image"><div className='user-profile-vote-list'>{locationVotePictures}</div></div>
+          <div className="location-image"><div className='user-profile-vote-list'>{locationVotePictures && locationVotePictures}</div></div>
           <div className="location-info card-section">
             <h3>{this.props.name}</h3>
             <h4>Votes: {this.props.votes}</h4>
