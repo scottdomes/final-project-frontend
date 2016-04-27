@@ -28,8 +28,7 @@
 }
 
 .events-sidebar {
-  text-align: left;
-  margin-left: 46px;
+  text-align: center;
   line-height: 1.55;
   padding-bottom: 40px;
 
@@ -37,8 +36,8 @@
     width: 100%;
     font-size: 14px;
     color: white;
-    display: list-item;
     line-height: 2.2;
+    display: block;
   }
 
   span {
@@ -55,7 +54,7 @@
 
 .bm-item-list {
   text-align: center;
-  margin-top: 40px;
+  padding: 3em 1em 0;
 
   i {
     font-size: 1.5em;
@@ -64,7 +63,6 @@
 
 .bm-menu {
   background: #373a47;
-  padding: 2em 1.5em 0;
   font-size: 1.15em;
 }
 
@@ -100,15 +98,28 @@
 }
 
 .bm-menu{
-  overflow: scroll;
   position: relative;
 }
 
 .sidebar-home-link .fa-home{
   padding-right: 7px;
-  display: inline-block;
+  display: block;
   vertical-align: top;
   color: #2199e8;
   font-size: 1.3em;
 }
 
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: absolute;
+  width: 36px;
+  height: 30px;
+  right: 36px;
+  top: 25px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: white;
+  display: inline-block;
+}

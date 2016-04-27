@@ -538,7 +538,7 @@ var Main = React.createClass({
   handleExpandSidebar: function () {
     isOpen = this.state.isOpen ? false : true;
     this.setState({
-      isOpen: isOpen
+      isOpen: true
     });
   },
   handleRegisterCar: function (capacity) {
@@ -605,9 +605,6 @@ var Main = React.createClass({
           console.log(res);
         }
     });
-  },
-  handleCloseMenu: function () {
-    console.log("HEY");
   },
   render: function () {
     var children = React.cloneElement(
@@ -693,8 +690,7 @@ var Main = React.createClass({
             <Menu
               isOpen={this.state.isOpen}
               width={300}
-              noOverlay
-              onClick={this.handleCloseMenu}>
+              noOverlay>
               <Navbar
                 loggedin={this.state.loggedin}
                 eventsCreated={eventsCreated}
@@ -705,10 +701,6 @@ var Main = React.createClass({
             <Link to="/">
             <div className="site-logo"><img src="//localhost:3000/img/nature.png" /><span>Camplight</span></div>
             </Link>
-            <div style={{height: "40px", width: "28px", right: "35px", top: "25px", position: "absolute", cursor: "pointer"}} onClick={this.handleExpandSidebar}>
-               <span id="open-sidebar-button">
-              </span>
-            </div>
             {children}
           </ReactCSSTransitionGroup>
         </div>
