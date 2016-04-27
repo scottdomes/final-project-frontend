@@ -723,17 +723,20 @@ var Main = React.createClass({
               transitionName="appear"
               transitionEnterTimeout={500}
               transitionLeaveTimeout={500}>
-            <Menu
-              isOpen={this.state.isOpen}
-              width={300}
-              noOverlay>
-              <Navbar
-                loggedin={this.state.loggedin}
-                eventsCreated={eventsCreated}
-                eventsAttended={eventsAttended}
-                userName={this.state.user_name}
-                onLogout={this.handleLogout}/>
-            </Menu>
+            { this.state.loggedin 
+              ? <Menu
+                  isOpen={this.state.isOpen}
+                  width={300}
+                  noOverlay>
+                  <Navbar
+                    loggedin={this.state.loggedin}
+                    eventsCreated={eventsCreated}
+                    eventsAttended={eventsAttended}
+                    userName={this.state.user_name}
+                    onLogout={this.handleLogout}/>
+                </Menu>
+              : <div></div> }
+
             <Link to="/">
               <div className="site-logo"><img src="//localhost:3000/img/nature.png" /><span>Camplight</span></div>
             </Link>

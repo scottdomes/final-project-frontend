@@ -71,7 +71,8 @@ var Facebook = {
   logout: function (component) {
     FB.logout(function(response) {
       component.setState({
-        loggedin: false
+        loggedin: false,
+        user_id: 0
       })
     })
   }

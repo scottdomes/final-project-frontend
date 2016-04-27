@@ -24,7 +24,7 @@ var AddLocation = React.createClass({
   render: function () {
     var formDisplay = this.state.displayForm ? {"display": "block"} : {"display": "none"};
     var buttonText = this.state.displayForm ? "Close" : "Add";
-    var buttonDisplay = this.props.locationVotingAllowed ? this.props.buttonDisplay : {"display": "none"};
+    var buttonDisplay = this.props.locationVotingAllowed ? this.props.buttonDisplay : {"visibility": "hidden"};
     return (
       <div>
         <button 
@@ -34,8 +34,15 @@ var AddLocation = React.createClass({
             {buttonText}
         </button>
         <form onSubmit={this.handleSubmit} style={formDisplay}>
-          <input type="text" placeholder="Add location..." onChange={this.handleInputChange} />
-          <button className="button success">Add</button>
+          <input type="text" 
+            placeholder="Add location..." 
+            onChange={this.handleInputChange}
+            style={buttonDisplay} />
+          <button 
+            className="button success"
+            style={buttonDisplay}>
+              Add
+          </button>
         </form>
       </div>
     )

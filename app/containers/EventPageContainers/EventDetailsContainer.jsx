@@ -40,7 +40,6 @@ var EventDetails = React.createClass({
             { this.props.eventCreatorID === this.props.currentUserID 
               ? <button 
                   className='button alert tiny' 
-                  style={{"float": "right"}}
                   onClick={this.handleDeleteEvent}>
                     Delete Event
                 </button>
@@ -49,7 +48,7 @@ var EventDetails = React.createClass({
             <h1>{this.props.finalLocation.campsite.name}</h1>
           </div>
         </div>
-        <div className='row'>
+        <div className='row event-details-text-row'>
           <div className='large-8 columns left-column-event' id="event-left-column">
             <UserInfoList 
               userList={this.props.eventParticipants}
