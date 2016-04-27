@@ -13,7 +13,7 @@ var ProgressIndicator = React.createClass({
             </div>
 
             <div className="small-1 columns text-center">
-              <img src="//localhost:3000/img/arrows.png" className="arrow" />
+              <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
             </div>
 
             <div className="small-2 columns">
@@ -23,7 +23,7 @@ var ProgressIndicator = React.createClass({
             </div>
 
             <div className="small-1 columns text-center">
-              <img src="//localhost:3000/img/arrows.png" className="arrow" />
+              <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
             </div>
 
             <div id="vote-circle" className="small-2 columns">
@@ -33,7 +33,7 @@ var ProgressIndicator = React.createClass({
             </div>
 
             <div className="small-1 columns text-center">
-              <img src="//localhost:3000/img/arrows.png" className="arrow" />
+              <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
             </div>
 
             <div className="small-2 end columns">
