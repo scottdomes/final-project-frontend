@@ -4,7 +4,9 @@ body {
   background-repeat: no-repeat;
   background-position: 0px -100px, center;
 
-  
+  .columns:last-child:not(:first-child) {
+    float: left;
+  }
 
   #body-overlay {
     background-color: white;
@@ -61,7 +63,8 @@ body {
   }
 
   .user-profile-info {
-    display: inline-block;  
+    display: inline-block;
+    height: 150px;  
 
     p {
       margin: 0;
@@ -97,7 +100,7 @@ body {
     margin-top: -100px;
     z-index: 999;
     position: relative;
-
+    box-shadow: .75px .75px 2px #888888;
     /*background-color: #FFFFFF;*/
   }
 
@@ -169,39 +172,55 @@ body {
 .event-details-image {
   background-size: cover;
   max-width: 100%;
-  height: 400px;
+  height: 340px;
   color: white;
   position: relative;
 
   h1 {
     position: absolute;
     bottom: 40px;
-    left: 20px;
+    left: 40px;
   }
 
   p {
     position: absolute;
     bottom: 10px;
-    left: 20px;
+    left: 42px;
     font-size: 1.2em;
   }
 }
 
 .event-details-image-left {
-  background-image: url('http://localhost:3000/img/tent2.jpg');
+  // background-image: url('http://localhost:3000/img/tent2.jpg');
 }
 
 .event-details-image-right {
-  background-image: url('http://localhost:3000/img/tent3.jpg');
+  // background-image: url('http://localhost:3000/img/tent3.jpg');
+  position: relative;
+
+  button {
+    position: absolute;
+    right: 20px;
+    bottom:0;
+  }
 }
 
 .event-details-image-row {
   max-width: 100%;
-  margin-top: 80px;
+  padding-top: 80px;
+  // background-image:  url('http://localhost:3000/img/tent4.jpg');
+  // background-size: cover;
+  // background-position: 1px;
+}
+
+.event-details-text-row {
+  background-color: white;
+  max-width: 100%;
+  padding: 0 5%;
 }
 
 #event-details-wrapper {
-  background-color: white;
+  background-color: transparent;
 }
 
 #event-title-daterange {
