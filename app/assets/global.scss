@@ -1,6 +1,7 @@
 
 body{
   font-family: Raleway, sans-serif;
+  // color: #565a5c;
   
   h2,h3,h4,h5,h6{
     font-family: Raleway, sans-serif;
@@ -68,6 +69,11 @@ header img{
 
   #progress-indicator{
     text-align: center;
+    .fa.fa-long-arrow-right{
+      color: white;
+      font-size: 28px;
+      margin-top: 11px;
+    }
   }
 
   .outline-circle{

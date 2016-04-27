@@ -651,7 +651,7 @@ var Main = React.createClass({
               currentUserCar: this.state.currentUserCar,
 
               event_id: this.state.event_id,
-
+              eventName: this.state.eventName,
               onNewLocation: this.handleNewLocation,
               onNewDateRange: this.handleNewDateRange,
               onRegisterCar: this.handleRegisterCar,
@@ -699,7 +699,7 @@ var Main = React.createClass({
                 onLogout={this.handleLogout}/>
             </Menu>
             <Link to="/">
-            <div className="site-logo"><img src="//localhost:3000/img/nature.png" /><span>Camplight</span></div>
+              <div className="site-logo"><img src="//localhost:3000/img/nature.png" /><span>Camplight</span></div>
             </Link>
             {children}
           </ReactCSSTransitionGroup>
