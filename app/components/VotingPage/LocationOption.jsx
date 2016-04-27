@@ -22,7 +22,7 @@ var LocationOption = React.createClass({
     return (
       <div className={centeredEventIfOnly}>
         <div className="location-option-wrapper card">
-          <div className="location-image">{locationVotePictures}</div>
+          <div className="location-image"><div className='user-profile-vote-list'>{locationVotePictures}</div></div>
           <div className="location-info card-section">
             <h3>{this.props.name}</h3>
             <h4>Votes: {this.props.votes}</h4>
