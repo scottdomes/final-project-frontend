@@ -4,7 +4,9 @@ body {
   background-repeat: no-repeat;
   background-position: 0px -100px, center;
 
-  
+  .columns:last-child:not(:first-child) {
+    float: left;
+  }
 
   #body-overlay {
     background-color: white;
@@ -61,7 +63,8 @@ body {
   }
 
   .user-profile-info {
-    display: inline-block;  
+    display: inline-block;
+    height: 150px;  
 
     p {
       margin: 0;
