@@ -7,7 +7,7 @@ var LandingHeader = React.createClass({
         <div className="row" id="front-page-heading">
           <div className="large-6 large-centered columns">
             <h1>Plan less. Camp more.</h1>
-            <h2>Social trip planning for campers.</h2>
+            <h2>Social trip planning for campers</h2>
           </div>
         </div>
 

@@ -29,6 +29,7 @@ var Main = React.createClass({
       final_location: {campsite: {id: 0, name:'Test Campsite Name'}},
       final_date: {dateRange: {id: 0, start_date: 'Test Start Date', end_date: 'Test End Date'}},
       currentEventCars: [],
+      currentUserCar: 0,
 
       user_name: 'Test User',
       user_id: 0,
@@ -72,6 +73,7 @@ var Main = React.createClass({
       userCreatedEvents: events,
       userAttendedEvents: attendances
     });
+    this.setUserCar();
   },
   setName: function (name) {
     this.setState({
@@ -123,7 +125,7 @@ var Main = React.createClass({
     //change eventname to event details and pull name
     //then fix up
     var votingPhase = eventDetails.vote_on_location || eventDetails.vote_on_date
-   
+
     var eventDetails = {
       name: eventDetails.eventName,
       campsite_name: this.state.locationInput,
@@ -215,7 +217,7 @@ var Main = React.createClass({
         packingList: data,
       });
     }.bind(this));
-    
+
     ////!!!!
     ///OLD LOAD EVENT BELOW
     //OLD IMPLEMENTATION
@@ -245,7 +247,7 @@ var Main = React.createClass({
     //   });
     //   this.isUserCreator();
     //   this.setFinalLocationAndDate(this.state.final_date_id, this.state.final_location_id)
-    
+
     //   $.getJSON('http://localhost:3000/api/items/' + this.state.event_id, function (data) {
     //     console.log('in api item call')
     //     console.log('event id is')
@@ -280,6 +282,18 @@ var Main = React.createClass({
     //     packingList: data.items,
     //   });
     // }.bind(this));
+  },
+  setUserCar: function () {
+    for (var i =0; i < this.state.currentEventCars.length; i++) {
+      var car = this.state.currentEventCars[i];
+      for (var j = 0; j < car.rides.length; j++) {
+        if (car.rides[j].user_id === this.state.user_id) {
+          this.setState({
+            currentUserCar: car.car.id
+          });
+        }
+      }
+    }
   },
   loadUserData: function () {
     this.setState({
@@ -556,10 +570,39 @@ var Main = React.createClass({
         url: "http://localhost:3000/api/rides/",
         type: "POST",
         data: {
+          deleteOnly: false,
           car_id: car_id,
-          user_id: thisComponent.state.user_id
+          user_id: thisComponent.state.user_id,
+          event_id: thisComponent.state.currentEventDetails.id
         },
         success: function (res) {
+          thisComponent.setState({
+            currentUserCar: car_id
+          });
+          thisComponent.loadEvent();
+          console.log(res);
+        },
+        error: function (res) {
+          console.log(res);
+        }
+    });
+  },
+  handleLeaveCar: function (car_id) {
+    var thisComponent = this;
+    $.ajax({
+        url: "http://localhost:3000/api/rides/",
+        type: "POST",
+        data: {
+          deleteOnly: true,
+          car_id: car_id,
+          user_id: thisComponent.state.user_id,
+          event_id: thisComponent.state.currentEventDetails.id
+        },
+        success: function (res) {
+          thisComponent.setState({
+            currentUserCar: 0
+          });
+          thisComponent.loadEvent();
           console.log(res);
         },
         error: function (res) {
@@ -585,6 +628,7 @@ var Main = React.createClass({
               dateRanges: this.state.dateRanges,
               eventParticipants: this.state.eventParticipants,
               currentEventCars: this.state.currentEventCars,
+              currentUserID: this.state.user_id,
 
               locations: this.state.locations,
               loggedin: this.state.loggedin,
@@ -612,13 +656,15 @@ var Main = React.createClass({
               userIsCreator: this.state.userIsCreator,
               eventCreatorID: this.state.eventCreatorID,
               currentEventCreator: this.state.currentEventCreator,
+              currentUserCar: this.state.currentUserCar,
 
               event_id: this.state.event_id,
-
+              eventName: this.state.eventName,
               onNewLocation: this.handleNewLocation,
               onNewDateRange: this.handleNewDateRange,
               onRegisterCar: this.handleRegisterCar,
               onCarpoolSignUp: this.handleCarpoolSignUp,
+              onLeaveCar: this.handleLeaveCar,
 
               onVoteEnd: this.handleVoteEnd,
               finalDate: this.state.final_date,
@@ -636,7 +682,7 @@ var Main = React.createClass({
                 eventDetails={event}
                 key={index}/>
     });
-     var sidebarContent = <Navbar 
+     var sidebarContent = <Navbar
               loggedin={this.state.loggedin}
               eventsCreated={eventsCreated}
               eventsAttended={eventsAttended}
@@ -649,11 +695,11 @@ var Main = React.createClass({
               transitionName="appear"
               transitionEnterTimeout={500}
               transitionLeaveTimeout={500}>
-            <Menu 
+            <Menu
               isOpen={this.state.isOpen}
               width={300}
               noOverlay>
-              <Navbar 
+              <Navbar
                 loggedin={this.state.loggedin}
                 eventsCreated={eventsCreated}
                 eventsAttended={eventsAttended}
@@ -661,12 +707,12 @@ var Main = React.createClass({
                 onLogout={this.handleLogout}/>
             </Menu>
             <Link to="/">
-            <div className="site-logo"><img src="//localhost:3000/img/nature.png" /><span>Camplight</span></div>
+              <div className="site-logo"><img src="//localhost:3000/img/nature.png" /><span>Camplight</span></div>
             </Link>
             <div style={{height: "40px", width: "28px", right: "35px", top: "25px", position: "absolute", cursor: "pointer"}} onClick={this.handleExpandSidebar}>
                <span id="open-sidebar-button">
               </span>
-            </div>        
+            </div>
             {children}
           </ReactCSSTransitionGroup>
         </div>

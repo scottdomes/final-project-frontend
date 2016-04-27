@@ -5,9 +5,9 @@ var DatePickerWrapper = React.createClass({
     return (
       <div className="row" id="enter-location" style={{marginTop: "35px"}}>
         <div className="large-6 large-centered columns">
-          <h4>Select start and end dates</h4>
-          {this.props.children} 
-        </div> 
+          <h4>When do you want to take this trip with friends?</h4>
+          {this.props.children}
+        </div>
       </div>
     )
   }

@@ -1,4 +1,5 @@
 var React = require('react');
+var generateName = require('sillyname')();
 
 var EventNameInput = React.createClass({
   handleSubmit: function (e) {
@@ -11,10 +12,11 @@ var EventNameInput = React.createClass({
   render: function () {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input id="event-name-input" type="text" placeholder="Enter a name for your trip..." onChange={this.handleEventTitle}/>
+        <input id="event-name-input" type="text" placeholder="Give your trip a name ..." onChange={this.handleEventTitle} required />
+        <em>May we suggest you call it? </em><strong>{generateName}</strong>
       </form>
     )
   }
 });
-
+/*function (){ return generateName();}()*/
 module.exports = EventNameInput;
