@@ -18,7 +18,9 @@ var DateOption = React.createClass({
   },
   render: function () {
     var voteDisplayStyle = this.props.votingDisallowed ? {'display': 'none'} : {'display': 'block'};
-    var dateVotePictures = this.getUserProfileImages(this.props.dateVotes, this.props.allEventParticipants);
+    if (!this.props.votingDisallowed && !(this.props.votingDisallowed === false)){
+      var dateVotePictures = this.getUserProfileImages(this.props.dateVotes, this.props.allEventParticipants);
+    }
     var centeredEventIfOnly = this.props.votingDisallowed ? "large-12 large-centered columns" : "large-12 columns end"; 
     return (
       <div className={centeredEventIfOnly}>
@@ -28,7 +30,7 @@ var DateOption = React.createClass({
             <div className="vote-container" style={voteDisplayStyle}>
               <h4>Votes: {this.props.votes}</h4>
               <div className='date-vote-row'>
-                {dateVotePictures}
+                {dateVotePictures && dateVotePictures}
               </div>
               <button 
                 className="date-vote-button button success wide"
