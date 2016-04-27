@@ -34,8 +34,15 @@ var AddLocation = React.createClass({
             {buttonText}
         </button>
         <form onSubmit={this.handleSubmit} style={formDisplay}>
-          <input type="text" placeholder="Add location..." onChange={this.handleInputChange} />
-          <button className="button success">Add</button>
+          <input type="text" 
+            placeholder="Add location..." 
+            onChange={this.handleInputChange}
+            style={buttonDisplay} />
+          <button 
+            className="button success"
+            style={buttonDisplay}>
+              Add
+          </button>
         </form>
       </div>
     )

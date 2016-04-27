@@ -22,8 +22,8 @@ var FriendsContainer = React.createClass({
           <div className="row" style={{marginBottom: "50px"}}>
             <div className="large-6 large-centered columns text-center">
               <h4>
-                Invite your friends to <br/><span>{this.props.eventName.toUpperCase()}</span>
-                <br/>from <span>2016/4/20</span> to <span>2016/4/25</span><br/>
+                Invite your friends to <br/><span>{this.props.eventName}</span>
+                <br/>from <span>{this.props.currentEventDetails.dateRange.start_date}</span> to <span>{this.props.currentEventDetails.dateRange.end_date}</span><br/>
                 at <span>{this.props.locationInput}</span>
               </h4>
             </div>
