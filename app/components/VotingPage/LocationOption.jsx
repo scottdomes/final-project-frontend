@@ -6,7 +6,6 @@ var LocationOption = React.createClass({
     this.props.onVote(this.props.id);
   },
   getUserProfileImages: function (voteList, userList){
-    console.log('top of participants');
     return voteList.map((vote, index) => {
       if (userList[vote.user_id - 1].picture_path){
         return <img src={userList[vote.user_id - 1].picture_path} key={vote.user_id} className="vote-user-picture" />
@@ -18,12 +17,8 @@ var LocationOption = React.createClass({
   render: function () {
 
     var voteDisplay = this.props.votingDisallowed ? {'display': 'none'} : {'display': 'block'};
-<<<<<<< HEAD
-    var centeredEventIfOnly = this.props.votingDisallowed ? "large-4 large-centered columns" : "large-4 columns end"; 
     var locationVotePictures = this.getUserProfileImages(this.props.campsiteVotes, this.props.allEventParticipants);
-=======
     var centeredEventIfOnly = this.props.votingDisallowed ? "large-6 large-centered columns" : "large-6 columns end"; 
->>>>>>> 18ae8cb656e3c4257002fa3b605cbf487a84c408
     return (
       <div className={centeredEventIfOnly}>
         <div className="location-option-wrapper card">

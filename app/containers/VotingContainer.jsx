@@ -71,26 +71,7 @@ var VotingContainer = React.createClass({
             currentEventDetails={this.props.currentEventDetails}
             userIsCreator={this.props.userIsCreator}
             onVoteEnd={this.handleVoteEnd}/>
-<<<<<<< HEAD
-          <LocationVoting 
-            locations={this.props.locations}
-            onVote={this.handleVote}
-            votingAllowed={this.props.locationVotingAllowed}
-            campsiteVotes={this.props.campsiteVotes}
-            allEventParticipants={this.props.allEventParticipants}/>
-          <div className="row">
-            <div className="large-12 large columns text-center">
-              <h5>{ this.props.dateVotingAllowed ? "Potential Dates:" : "Date:" }</h5>
-            </div>
-          </div>
-          <DateVoting
-            dateRanges={this.props.dateRanges}
-            votingAllowed={this.props.dateVotingAllowed}
-            onVote={this.handleVote}
-            dateVotes={this.props.dateVotes}
-            allEventParticipants={this.props.allEventParticipants}
-            currentUserAddedDate={this.props.currentUserAddedDate} />
-=======
+
           <div id="voting-page-heading-row" className="row" style={headerDisplay}>
             <div className="large-8 large columns text-center">
               <h5>{ this.props.locationVotingAllowed ? "Potential Locations:" : "Location:" }</h5>
@@ -100,7 +81,6 @@ var VotingContainer = React.createClass({
             </div>
           </div>
 
->>>>>>> 18ae8cb656e3c4257002fa3b605cbf487a84c408
           <AddDateOrLocation
             onLocationSubmit={this.handleNewLocationSubmit} 
             onChange={this.handleLocationInputChange}
@@ -115,14 +95,18 @@ var VotingContainer = React.createClass({
               <LocationVoting 
                 locations={this.props.locations}
                 onVote={this.handleVote}
-                votingAllowed={this.props.locationVotingAllowed}/>
+                votingAllowed={this.props.locationVotingAllowed}
+                campsiteVotes={this.props.campsiteVotes}
+                allEventParticipants={this.props.allEventParticipants}/>
             </div>
             <div className="large-4 columns">
               <DateVoting
                 dateRanges={this.props.dateRanges}
                 votingAllowed={this.props.dateVotingAllowed}
                 onVote={this.handleVote}
-                currentUserAddedDate={this.props.currentUserAddedDate} />
+                currentUserAddedDate={this.props.currentUserAddedDate}
+                dateVotes={this.props.dateVotes}
+                allEventParticipants={this.props.allEventParticipants} />
             </div>
           </div>
         </div>
