@@ -87,6 +87,7 @@ var VotingContainer = React.createClass({
             onChange={this.handleLocationInputChange}
             onDateSubmit={this.handleNewDateSubmit}
             dateVotingAllowed={this.props.dateVotingAllowed}
+            locationVotingAllowed={this.props.locationVotingAllowed}
             onDisplayCalendar={this.hideHeaders}
             locationButtonDisplay={headerDisplay}/>
 
