@@ -40,7 +40,6 @@ var EventDetails = React.createClass({
             { this.props.eventCreatorID === this.props.currentUserID 
               ? <button 
                   className='button alert tiny' 
-                  style={{"float": "right"}}
                   onClick={this.handleDeleteEvent}>
                     Delete Event
                 </button>
