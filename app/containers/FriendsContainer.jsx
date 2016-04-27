@@ -18,7 +18,7 @@ var FriendsContainer = React.createClass({
   },
   render: function () {
     return (
-        <div>
+        <div className="the-process-body">
           <div className="row" style={{marginBottom: "50px"}}>
             <div className="large-6 large-centered columns text-center">
               <h4>
