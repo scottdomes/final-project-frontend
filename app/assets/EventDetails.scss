@@ -43,7 +43,7 @@ body {
   }
 
   #event-left-column {
-    margin-top: 50px;
+    padding-top: 20px;
   }
 
   #event-right-column {
@@ -54,10 +54,18 @@ body {
     max-height: 300px;
     overflow-x: hidden;
     overflow-y: auto;
+
+    .columns {
+      min-height: 200px;
+    }
   }
 
   .user-profile-info {
-    display: block;    
+    display: inline-block;  
+
+    p {
+      margin: 0;
+    }  
   }
 
   .carpool-button {
@@ -83,10 +91,12 @@ body {
   }
 
   #packing-list-container {
-    float: right;
-    width: 50%;
+    width: 80%;
     background-color: #F9F9F9;
     font-family: 'Montserrat', sans-serif;
+    margin-top: -100px;
+    z-index: 999;
+    position: relative;
 
     /*background-color: #FFFFFF;*/
   }
@@ -152,3 +162,44 @@ body {
   display: inline-block;
 }
 
+.event-details-image {
+  background-size: cover;
+  max-width: 100%;
+  height: 400px;
+  color: white;
+  position: relative;
+
+  h1 {
+    position: absolute;
+    bottom: 40px;
+    left: 20px;
+  }
+
+  p {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    font-size: 1.2em;
+  }
+}
+
+.event-details-image-left {
+  background-image: url('http://localhost:3000/img/tent2.jpg');
+}
+
+.event-details-image-right {
+  background-image: url('http://localhost:3000/img/tent3.jpg');
+}
+
+.event-details-image-row {
+  max-width: 100%;
+  margin-top: 80px;
+}
+
+#event-details-wrapper {
+  background-color: white;
+}
+
+#event-title-daterange {
+  margin-top: 20px;
+}

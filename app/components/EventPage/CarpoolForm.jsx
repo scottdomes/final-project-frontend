@@ -1,3 +1,4 @@
+
 var React = require('react');
 var CarpoolButton = require('./CarpoolButton.jsx');
 var CarpoolSignUp = require('./CarpoolSignUp.jsx');
@@ -48,15 +49,23 @@ var CarpoolForm = React.createClass({
   },
   render: function () {
     var usersInCar = [];
+    var userNamesInCar = [];
+
     for (var i = 0; i < this.props.rides.length; i++) {
-      var ride = this.props.rides[0];
-      usersInCar = this.props.userList.filter(function (user) {
+      var ride = this.props.rides[i];
+      matchingUser = this.props.userList.find(function (user) {
         return user.id === ride.user_id
       })
+      if (matchingUser) {
+        usersInCar.push(matchingUser);
+      }
     }
-    var userNamesInCar = usersInCar.map(function (user) {
-      return user.name
-    }) 
+    console.log(usersInCar);
+    if (usersInCar.length > 0) {
+      userNamesInCar = usersInCar.map(function (user) {
+        return user.name
+      }) 
+    }
     return (
       <div>  
         { this.state.registeredCar 
