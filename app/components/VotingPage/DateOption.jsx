@@ -9,7 +9,11 @@ var DateOption = React.createClass({
     return voteList.map((vote, index) => {
       // console.log('profile image is');
       // console.log(userList[vote.user_id].picture_path);
-      return <img src={userList[vote.user_id].picture_path} key={vote.user_id} className="vote-user-picture" />
+      if (userList[vote.user_id - 1].picture_path){
+        return <img src={userList[vote.user_id - 1].picture_path} key={vote.user_id} className="vote-user-picture" />
+      } else {
+        return <img src='https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR0Nn66fyQBiklzI5EQbDh269jHQss2HQk6zgyRroyY6PkkmOHK' key={vote.user_id} className="vote-user-picture" />
+      }
     });
   },
   render: function () {

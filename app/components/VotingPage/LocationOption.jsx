@@ -6,17 +6,20 @@ var LocationOption = React.createClass({
     this.props.onVote(this.props.id);
   },
   getUserProfileImages: function (voteList, userList){
+    console.log('top of participants');
     return voteList.map((vote, index) => {
-      // console.log('profile image is');
-      // console.log(userList[vote.user_id].picture_path);
-      return <img src={userList[vote.user_id].picture_path} key={vote.user_id} className="vote-user-picture" />
+      if (userList[vote.user_id - 1].picture_path){
+        return <img src={userList[vote.user_id - 1].picture_path} key={vote.user_id} className="vote-user-picture" />
+      } else {
+        return <img src='https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR0Nn66fyQBiklzI5EQbDh269jHQss2HQk6zgyRroyY6PkkmOHK' key={vote.user_id} className="vote-user-picture" />
+      }
     });
   },
   render: function () {
 
     var voteDisplay = this.props.votingDisallowed ? {'display': 'none'} : {'display': 'block'};
     var centeredEventIfOnly = this.props.votingDisallowed ? "large-4 large-centered columns" : "large-4 columns end"; 
-    var locationVotePictures = this.getUserProfileImages(this.props.campsiteVotes,this.props.allEventParticipants);
+    var locationVotePictures = this.getUserProfileImages(this.props.campsiteVotes, this.props.allEventParticipants);
     return (
       <div className={centeredEventIfOnly}>
         <div className="location-option-wrapper card">

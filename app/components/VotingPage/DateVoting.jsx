@@ -17,8 +17,6 @@ var DateVoting = React.createClass({
   generateDateRanges: function () {
     var dateRangeList = [];
     var thisComponent = this;
-    console.log('look here ');
-    console.log(this.props);
     if (this.props.votingAllowed) {
       dateRangeList = this.props.dateRanges.map(function (range, index) {
         // var dateVotes = thisComponent.getDateVotes(thisComponent.props.dateVotes, location.campsite);
