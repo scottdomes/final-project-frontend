@@ -115,14 +115,17 @@
             display: inline-block;
           }
 
-          h4 {
-            margin-left: 40px;
-          }
-
           button {
             width: 100%;
             margin: 0 auto;
             display: block;
+          }
+        }
+
+        .location-info {
+
+          h4 {
+            margin-left: 20px;
           }
         }
 

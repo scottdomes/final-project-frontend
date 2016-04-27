@@ -70,20 +70,31 @@ var VotingContainer = React.createClass({
             onChange={this.handleLocationInputChange}
             onDateSubmit={this.handleNewDateSubmit}
             dateVotingAllowed={this.props.dateVotingAllowed}/>
-          <LocationVoting 
-            locations={this.props.locations}
-            onVote={this.handleVote}
-            votingAllowed={this.props.locationVotingAllowed}/>
           <div className="row">
-            <div className="large-12 large columns text-center">
-              <h5>{ this.props.dateVotingAllowed ? "Potential Dates:" : "Date:" }</h5>
+            <div className="large-8 columns">
+              <div className="row">
+                <div className="large-12 large columns text-center">
+                  <h5>{ this.props.locationVotingAllowed ? "Potential Locations:" : "Location:" }</h5>
+                </div>
+              </div>
+              <LocationVoting 
+                locations={this.props.locations}
+                onVote={this.handleVote}
+                votingAllowed={this.props.locationVotingAllowed}/>
+            </div>
+            <div className="large-4 columns">
+             <div className="row">
+                <div className="large-12 large columns text-center">
+                  <h5>{ this.props.dateVotingAllowed ? "Potential Dates:" : "Date:" }</h5>
+                </div>
+              </div>
+              <DateVoting
+                dateRanges={this.props.dateRanges}
+                votingAllowed={this.props.dateVotingAllowed}
+                onVote={this.handleVote}
+                currentUserAddedDate={this.props.currentUserAddedDate} />
             </div>
           </div>
-          <DateVoting
-            dateRanges={this.props.dateRanges}
-            votingAllowed={this.props.dateVotingAllowed}
-            onVote={this.handleVote}
-            currentUserAddedDate={this.props.currentUserAddedDate} />
         </div>
       </div>
     )

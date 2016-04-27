@@ -7,7 +7,7 @@ var LocationOption = React.createClass({
   },
   render: function () {
     var voteDisplay = this.props.votingDisallowed ? {'display': 'none'} : {'display': 'block'};
-    var centeredEventIfOnly = this.props.votingDisallowed ? "large-4 large-centered columns" : "large-4 columns end"; 
+    var centeredEventIfOnly = this.props.votingDisallowed ? "large-6 large-centered columns" : "large-6 columns end"; 
     return (
       <div className={centeredEventIfOnly}>
         <div className="location-option-wrapper card">
