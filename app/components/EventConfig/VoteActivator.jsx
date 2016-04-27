@@ -10,25 +10,25 @@ var VoteActivator = React.createClass({
       <div className="row" style={{marginTop: "35px"}}>
         <div id="vote-activator-heading">
           <div className="large-6 large-centered columns" style={{float: "none"}}>
-            <h4>Allow your friends to vote on:</h4>
+            <h4>Do you want your friends to vote on:</h4>
           </div>
         </div>
 
-        <div className="large-6 large-centered columns" style={{float: "none"}}> 
+        <div className="large-6 large-centered columns" style={{float: "none"}}>
           <div id="vote-activator" className="row">
-            <p className="large-8 columns">Date of event: </p>
+            <p className="large-8 columns">Date of event? </p>
             <div className="large-4 columns text-center">
-                <VoteActivatorButton 
+                <VoteActivatorButton
                   label='Date'
                   onClick={this.handleButtonClick} />
             </div>
-            <p className="large-8 columns">Location of event: </p>
+            <p className="large-8 columns">Location of event? </p>
             <div className="large-4 columns text-center">
-              <VoteActivatorButton 
+              <VoteActivatorButton
                 label='Location'
                 onClick={this.handleButtonClick} />
-            </div> 
-          </div> 
+            </div>
+          </div>
         </div>
       </div>
     )

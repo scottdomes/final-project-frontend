@@ -11,15 +11,29 @@ var UserInfoList = React.createClass({
   handleCarpoolSignUp: function (car_id) {
     this.props.onCarpoolSignUp(car_id);
   },
+  handleLeaveCar: function (car_id) {
+    this.props.onLeaveCar(car_id);
+  },
   render: function (){
-
     var users = this.props.userList.map((user, index) => {
+      var carDetails = {};
+      var rides = [];
+      var isCurrentUserCar = false;
       var isCurrentUser = this.props.currentUserName === user.name 
                     ? true
                     : false;
       var car = this.props.cars.filter(function (car) {
-        return car.user_id === user.id
-      });
+        return car.car.user_id === user.id
+      })[0];
+
+      if (car) {
+        carDetails = car.car;
+        rides = car.rides;
+
+        if (this.props.currentUserCar === carDetails.id) {
+          isCurrentUserCar = true;
+        }          
+      }
       return <UserInfoItem 
         onClick={this.handleOnClick.bind(this, index)} 
         key={index} 
@@ -27,8 +41,13 @@ var UserInfoList = React.createClass({
         carpool={true}
         isCurrentUser={isCurrentUser}
         onRegisterCar={this.handleRegisterCar}
-        car={car}
-        onCarpoolSignUp={this.handleCarpoolSignUp}/>
+        car={carDetails}
+        rides={rides}
+        onCarpoolSignUp={this.handleCarpoolSignUp}
+        onLeaveCar={this.handleLeaveCar}
+        currentUserID={this.props.currentUserID}
+        isCurrentUserCar={isCurrentUserCar}
+        userList={this.props.userList}/>
     });
 
     return (
