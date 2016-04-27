@@ -32,7 +32,7 @@ var LandingContainer = React.createClass({
     return (
       <div className="landing-page text-center">
         <LandingHeader />
-        { this.props.loading ? <p></p> : (this.props.loggedin ? 
+        { this.props.loading ? <p style={{marginTop: "40px", fontWeight: "600"}}>Loading...</p> : (this.props.loggedin ? 
           <LandingForm 
             onNewInput={this.handleNewInput} 
             onSubmit={this.handleSubmit} 

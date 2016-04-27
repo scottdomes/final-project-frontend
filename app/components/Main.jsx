@@ -18,7 +18,7 @@ var Main = React.createClass({
   },
   getInitialState: function () {
     return {
-      loading: false,
+      loading: true,
       loggedin: false,
       currentEventDetails: {
         name: 'Loading...',
