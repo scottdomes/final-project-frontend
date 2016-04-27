@@ -39,16 +39,6 @@ var VotingContainer = React.createClass({
     });
   },
   handleVote: function (optionID, category) {
-    // if (action.add && category === "date") {
-    //   this.addDateVote(optionID);
-    // } else if (!action.add && category === "date") {
-    //   this.removeDateVote(optionID);
-    // } else if (action.add && category === "campsite") {
-    //   this.addLocationVote(optionID);
-    // } else if (!action.add && category === "campsite") {
-    //   this.removeLocationVote(optionID);
-    // }
-
     this.props.onVote(optionID, category);
   },
   handleVoteEnd: function () {
@@ -75,6 +65,11 @@ var VotingContainer = React.createClass({
             currentEventDetails={this.props.currentEventDetails}
             userIsCreator={this.props.userIsCreator}
             onVoteEnd={this.handleVoteEnd}/>
+          <AddDateOrLocation
+            onLocationSubmit={this.handleNewLocationSubmit} 
+            onChange={this.handleLocationInputChange}
+            onDateSubmit={this.handleNewDateSubmit}
+            dateVotingAllowed={this.props.dateVotingAllowed}/>
           <LocationVoting 
             locations={this.props.locations}
             onVote={this.handleVote}
@@ -89,11 +84,6 @@ var VotingContainer = React.createClass({
             votingAllowed={this.props.dateVotingAllowed}
             onVote={this.handleVote}
             currentUserAddedDate={this.props.currentUserAddedDate} />
-          <AddDateOrLocation
-            onLocationSubmit={this.handleNewLocationSubmit} 
-            onChange={this.handleLocationInputChange}
-            onDateSubmit={this.handleNewDateSubmit}
-            dateVotingAllowed={this.props.dateVotingAllowed}/>
         </div>
       </div>
     )

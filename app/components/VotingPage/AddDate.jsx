@@ -29,15 +29,16 @@ var AddDate = React.createClass({
   },
   handleDisplayCalendarClick: function (e) {
     e.stopPropagation();
+    var boolean = this.state.displayCalendar ? false : true;
     this.setState({
-      hideAddDateButton: true,
-      displayCalendar: true
+      displayCalendar: boolean
     })
   },
   render: function () {
     var displayCalendar = this.state.displayCalendar ? {"display": "block"} : {"display": "none"};
     var hideAddDateButton = this.state.hideAddDateButton ? {"display": "none"} : {"display": "inline-block"} ;
-    var hiddenIfDateVotingDisallowed = this.props.votingAllowed ? {} : {"display": "none"};    
+    var hiddenIfDateVotingDisallowed = this.props.votingAllowed ? {} : {"display": "none"}; 
+    var buttonText = this.state.displayCalendar ? "Close" : "Add Date";   
     return (
       <div id="add-date" className="row">
         <div className="large-10 large-centered large columns text-center">
@@ -45,15 +46,15 @@ var AddDate = React.createClass({
             className="button success expand-calendar wide"
             style={hiddenIfDateVotingDisallowed}
             onClick={this.handleDisplayCalendarClick}>
-              Add Date
+              {buttonText}
           </button>
           <div style={displayCalendar}>
             <DatePicker  
               onNewSelection={this.handleNewDate}/>
             <button 
-              className="button success"
+              className="button success add-date-button"
               onClick={this.handleNewDateSubmission}>
-                Add
+                Submit Date
             </button>
           </div>
         </div>

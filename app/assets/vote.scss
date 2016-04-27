@@ -48,3 +48,15 @@
 #voting-page-wrapper {
   background-color: white;
 }
+
+#add-date {
+  .DateRangePicker {
+    width: 200%;
+    margin-left: -120%;
+  }
+
+  .add-date-button {
+    display: block;
+    margin-left: -100px;
+  }
+}
