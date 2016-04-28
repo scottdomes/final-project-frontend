@@ -18,6 +18,7 @@ var EventConfigContainer = React.createClass({
   },
   handleNewDate: function (range) {
     this.props.onNewDate(range);
+    document.getElementById("date-selection-header").setAttribute('style', 'border-bottom: white');
   },
   handleDone: function (e) {
     e.stopPropagation();
@@ -28,10 +29,7 @@ var EventConfigContainer = React.createClass({
       document.getElementById("event-name-input").focus();
       document.getElementById("event-name-input").setAttribute('style', 'border-color:red;');
     } else if (this.props.eventConfigDateRange == null) {
-      console.log('wtf'); 
       var que = document.getElementById("date-selection-header");
-      console.log(que);
-      // document.getElementById("date-selection-header").focus();
       document.getElementById("event-name-input").focus();
       document.getElementById("date-selection-header").setAttribute('style', 'border-bottom: 2px solid red;');
     } else{
@@ -51,12 +49,12 @@ var EventConfigContainer = React.createClass({
     this.props.onVoteActivatorChange(selectionStatus, label);
   },
   handleEventNameSubmit: function (input) {
+    document.getElementById("event-name-input").setAttribute('style', 'border-color:gray;');
     this.setState({
       eventName: input
     });
   },
   render: function () {
-    console.log('hey arnold')
     console.log(this.props.eventConfigDateRange);
     return (
       <div>
