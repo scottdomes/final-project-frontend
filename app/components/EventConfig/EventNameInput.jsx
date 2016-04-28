@@ -7,6 +7,7 @@ var EventNameInput = React.createClass({
   },
   handleEventTitle: function(e){
     var input = document.getElementById("event-name-input").value;
+    document.getElementById("event-name-holder").innerHTML = input;
     this.props.onEventNameSubmit(input);
   },
   render: function () {
