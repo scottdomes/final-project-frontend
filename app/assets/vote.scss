@@ -1,15 +1,29 @@
-// #background {
-//   background-image: none;
-//   height: auto;
+.location-image {
+  background-image: url("//localhost:3000/img/tent3.jpg");
+  background-size: cover;
+  height: 200px;
+  position: relative;
+}
 
-//   #background-overlay {
-//     background-color: white;
-//     height: auto;
-//   }
-// }
-// .login-header {
-//   display: none;
-// }
+.location-image-columns:nth-child(2) .location-image {
+    background-image: url("//localhost:3000/img/night.jpg");
+}
+
+.location-image-columns:nth-child(3) .location-image {
+    background-image: url("//localhost:3000/img/tent8.jpg");
+}
+.location-image-columns:nth-child(4) .location-image {
+    background-image: url("//localhost:3000/img/tent4.jpg");
+}
+.location-image-columns:nth-child(5) .location-image {
+    background-image: url("//localhost:3000/img/tent5.jpg");
+}
+.location-image-columns:nth-child(6) .location-image {
+    background-image: url("//localhost:3000/img/tent6.jpg");
+}
+.location-image-columns:nth-child(7) .location-image {
+    background-image: url("//localhost:3000/img/tent7.jpg");
+}
 
 .user-profile-vote-list{
   margin-bottom: 3px;
@@ -104,3 +118,4 @@
 #voting-page-heading-row {
   margin-top: 20px;
 }
+
