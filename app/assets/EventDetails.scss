@@ -46,20 +46,14 @@ body {
 
   #event-left-column {
     padding-top: 20px;
-  }
-
-  #event-right-column {
-    margin-top: 50px;
-  }
-
-  #user-scroll-section{
-    max-height: 300px;
-    overflow-x: hidden;
-    overflow-y: auto;
 
     .columns {
       min-height: 200px;
     }
+  }
+
+  #event-right-column {
+    margin-top: 50px;
   }
 
   .user-profile-info {

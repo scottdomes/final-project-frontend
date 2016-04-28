@@ -17,6 +17,10 @@ var LandingContainer = React.createClass({
       input: ''
     }
   },
+  componentWillMount: function (){
+    console.log("I am getting called");
+    this.props.resetState();
+  },
   handleNewInput: function(newInput) {
     this.props.onNewInput(newInput);
   },
