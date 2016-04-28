@@ -73,7 +73,7 @@ var Main = React.createClass({
       userCreatedEvents: events,
       userAttendedEvents: attendances
     });
-    this.setUserCar();
+    this.setUserCar(id);
   },
   setName: function (name) {
     this.setState({
@@ -215,6 +215,7 @@ var Main = React.createClass({
         currentUserVotedLocation: this.checkIfVoted(data.campsites, "campsite"),
         currentUserAddedDate: this.checkIfAddedDate(data.dates),
       });
+      this.setUserCar(this.state.user_id);
       this.isUserCreator();
       this.setFinalLocationAndDate(this.state.final_date_id, this.state.final_location_id)
 
@@ -292,11 +293,12 @@ var Main = React.createClass({
     //   });
     // }.bind(this));
   },
-  setUserCar: function () {
+  setUserCar: function (user_id) {
+    console.log("Set user car called with " + user_id);
     for (var i =0; i < this.state.currentEventCars.length; i++) {
       var car = this.state.currentEventCars[i];
       for (var j = 0; j < car.rides.length; j++) {
-        if (car.rides[j].user_id === this.state.user_id) {
+        if (car.rides[j].user_id === user_id) {
           this.setState({
             currentUserCar: car.car.id
           });
