@@ -9,7 +9,7 @@ var FriendsContainer = React.createClass({
     FB.ui({
       app_id: '238732356487269',
       method: 'send',
-      link: "http://camplight.herokuapp.com/event/"+this.props.event_id
+      link: "http://camplight.herokuapp.com"//+this.props.event_id
     });
   },
   handleDoneClick: function (e) {
