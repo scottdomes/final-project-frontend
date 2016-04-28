@@ -638,6 +638,15 @@ var Main = React.createClass({
         }
     });
   },
+  resetState: function (){
+    this.setState({
+      eventConfigDateRange: null,
+      locationInput: 'Test Location',
+      dateRanges: [],
+      vote_on_date: false,
+      vote_on_location: false
+    });
+  },
   render: function () {
     var children = React.cloneElement(
       //refactor to put all states uptop and function references below
@@ -700,7 +709,9 @@ var Main = React.createClass({
               onVoteEnd: this.handleVoteEnd,
               finalDate: this.state.final_date,
               finalLocation: this.state.final_location,
-              key: this.props.location.pathname
+              key: this.props.location.pathname,
+
+              resetState: this.resetState
             }
         );
     var eventsCreated = this.state.userCreatedEvents.map((event, index) => {
