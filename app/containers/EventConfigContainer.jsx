@@ -51,10 +51,6 @@ var EventConfigContainer = React.createClass({
     });
   },
   render: function () {
-<<<<<<< HEAD
-    console.log(this.props.eventConfigDateRange);
-=======
->>>>>>> 1fa13c5b4ee85fc0880202e6c4cd9f8e4415f4f3
     return (
       <div>
         <div className="row">
