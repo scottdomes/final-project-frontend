@@ -22,21 +22,15 @@ var EventConfigContainer = React.createClass({
   handleDone: function (e) {
     e.stopPropagation();
     e.preventDefault();
-    console.log('Event Config Props')
-    console.log(this.props)
     if (document.getElementById("event-name-input").value==""){
       document.getElementById("event-name-input").focus();
       document.getElementById("event-name-input").setAttribute('style', 'border-color:red;');
     } else if (this.props.eventConfigDateRange == null) {
-      console.log('wtf'); 
       var que = document.getElementById("date-selection-header");
-      console.log(que);
       // document.getElementById("date-selection-header").focus();
       document.getElementById("event-name-input").focus();
       document.getElementById("date-selection-header").setAttribute('style', 'border-bottom: 2px solid red;');
     } else{
-            console.log('omg please stop');
-
       eventDetails = {
         eventName: this.state.eventName,
         vote_on_date: this.props.dateVotingAllowed,
@@ -56,8 +50,6 @@ var EventConfigContainer = React.createClass({
     });
   },
   render: function () {
-    console.log('hey arnold')
-    console.log(this.props.eventConfigDateRange);
     return (
       <div>
         <div className="row">
