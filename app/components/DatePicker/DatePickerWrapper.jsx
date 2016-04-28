@@ -5,7 +5,7 @@ var DatePickerWrapper = React.createClass({
     return (
       <div className="row" id="enter-location" style={{marginTop: "35px"}}>
         <div className="large-6 large-centered medium-8 medium-centered columns">
-          <h4>When do you want to take this trip with friends?</h4>
+          <h4 id="date-selection-header">When do you want to take this trip with friends?</h4>
           {this.props.children}
         </div>
       </div>

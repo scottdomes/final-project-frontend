@@ -651,6 +651,7 @@ var Main = React.createClass({
               locationInput: this.state.locationInput,
 
               currentEventDetails: this.state.currentEventDetails,
+              eventConfigDateRange: this.state.dateRange,
               dateRanges: this.state.dateRanges,
               eventParticipants: this.state.eventParticipants,
               currentEventCars: this.state.currentEventCars,
