@@ -20,7 +20,7 @@ var Facebook = {
         });
 
       FB.getLoginStatus(function(response) {
-          Facebook.statusChangeCallback(response, component);
+        Facebook.statusChangeCallback(response, component);
       });
     }
   },
@@ -39,6 +39,7 @@ var Facebook = {
 
   fetchUserName: function (component) {
     FB.api('/me?fields=email,name,gender,picture', function(response) {
+      console.log(response);
       component.setName(response.name);
       $.ajax({
         url: "http://localhost:3000/api/users",
