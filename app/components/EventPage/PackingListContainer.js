@@ -4,7 +4,7 @@ var PackingListItem = require('./PackingListItems');
 var classNames = require('classnames');
 var AddMorePackingItemsForm = require('./AddMorePackingItemsForm');
 
-// import PackingListTitle from './PackingListTitle' //not sure if this is right import
+import PackingListTitle from './PackingListTitle' //not sure if this is right import
 
 var PackingListContainer = React.createClass({
   getInitialState: function() {
@@ -77,9 +77,7 @@ var PackingListContainer = React.createClass({
       <div id="packing-list-container">
         
         <div>
-          <div>
-            <h2 id="packing-list-header">Packing List</h2>
-          </div>
+          <PackingListTitle title="Group Packing List"/>
 
           <div className="packing-list-section-heading">
             <h5>Group Packing List</h5>
