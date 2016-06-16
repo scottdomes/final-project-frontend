@@ -1,3 +1,6 @@
+import { createStore } from 'redux'
+import testReducer from '../redux/reducers/test'
+let store = createStore(testReducer)
 var React = require('react');
 var Facebook = require('../components/Facebook.jsx');
 var $ = require('jquery');

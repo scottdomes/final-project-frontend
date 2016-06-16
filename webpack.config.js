@@ -1,3 +1,5 @@
+var path = require('path');
+
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
@@ -16,10 +18,13 @@ module.exports = {
     path: __dirname + '/',
     filename: '/bundle.js'
   },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   module: {
     loaders: [
       { test: /\.css$/, loader: 'style!css' },
-      { test: /\.jsx$/, loaders: ['jsx-loader', 'react-hot'] }
+      {test: /\.jsx?$/, loaders: ['babel'], include: path.join(__dirname, 'app')},
     ]
     
   },
