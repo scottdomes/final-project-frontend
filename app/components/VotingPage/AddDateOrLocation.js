@@ -1,7 +1,7 @@
 var React = require('react');
-var AddLocation = require('./AddLocation.jsx');
-var AddDate = require('./AddDate.jsx');
-var VoteActivatorButton = require('../EventConfig/VoteActivatorButton.jsx');
+var AddLocation = require('./AddLocation');
+var AddDate = require('./AddDate');
+var VoteActivatorButton = require('../EventConfig/VoteActivatorButton');
 
 
 var AddDateOrLocation = React.createClass({

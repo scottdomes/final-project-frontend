@@ -1,5 +1,5 @@
 var React = require('react');
-var VoteActivatorButton = require('../EventConfig/VoteActivatorButton.jsx');
+var VoteActivatorButton = require('../EventConfig/VoteActivatorButton');
 
 var VoteActivator = React.createClass({
   handleButtonClick: function (selectionStatus, label) {

@@ -11,7 +11,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:3001', // WebpackDevServer host and port
     'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
-    './app/app.jsx'],
+    './app/app.js'],
   output: {
     path: __dirname + '/',
     filename: '/bundle.js'
@@ -19,8 +19,8 @@ module.exports = {
   module: {
     loaders: [
       {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader", query: { presets: ['es2015', 'react'] }},
-      { test: /\.css$/, loader: 'style!css' },
-      { test: /\.jsx$/, loaders: ['jsx-loader', 'react-hot'] }
+      {test: /\.css$/, loader: "style-loader!css-loader"},
+      { test: /\.js$/, exclude: /node_modules/, loaders: ['react-hot'] }
     ]
     
   },

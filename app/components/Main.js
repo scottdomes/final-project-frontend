@@ -1,8 +1,8 @@
 var React = require('react');
-var Facebook = require('../components/Facebook.jsx');
+var Facebook = require('../components/Facebook');
 var $ = require('jquery');
-var EventLink = require('../components/EventLink.jsx');
-var Navbar = require('../components/Navbar.jsx');
+var EventLink = require('../components/EventLink');
+var Navbar = require('../components/Navbar');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var TransitionContainer = require('react-page-transitions');
 var Link = require('react-router').Link
@@ -320,7 +320,7 @@ var Main = React.createClass({
     var userVote;
     for (var i = 0; i < array.length; i++) {
       for (var j = 0; j < array[i].votes.length; j++) {
-        vote = array[i].votes[j];
+        var vote = array[i].votes[j];
         if (vote.user_id === thisComponent.state.user_id) {
           thisComponent.setVoteID(vote.id, category);
           userVote = vote

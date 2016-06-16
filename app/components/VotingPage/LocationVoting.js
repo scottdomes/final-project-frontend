@@ -1,5 +1,5 @@
 var React = require('react');
-var LocationOption = require('./LocationOption.jsx');
+var LocationOption = require('./LocationOption');
 
 var LocationVoting = React.createClass({
   handleVote: function (optionID) {

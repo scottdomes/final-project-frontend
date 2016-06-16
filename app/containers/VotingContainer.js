@@ -1,8 +1,8 @@
 var React = require('react');
-var LocationVoting = require('../components/VotingPage/LocationVoting.jsx');
-var DateVoting = require('../components/VotingPage/DateVoting.jsx');
-var EventHeader = require('../components/VotingPage/EventHeader.jsx');
-var AddDateOrLocation = require('../components/VotingPage/AddDateOrLocation.jsx');
+var LocationVoting = require('../components/VotingPage/LocationVoting');
+var DateVoting = require('../components/VotingPage/DateVoting');
+var EventHeader = require('../components/VotingPage/EventHeader');
+var AddDateOrLocation = require('../components/VotingPage/AddDateOrLocation');
 
 var $ = require('jquery');
 

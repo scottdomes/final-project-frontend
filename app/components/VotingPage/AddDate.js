@@ -1,6 +1,6 @@
 var React = require('react');
-var DatePickerWrapper = require('../DatePicker/DatePickerWrapper.jsx');
-var DatePicker = require('../DatePicker/DatePicker.jsx');
+var DatePickerWrapper = require('../DatePicker/DatePickerWrapper');
+var DatePicker = require('../DatePicker/DatePicker');
 
 
 var AddDate = React.createClass({

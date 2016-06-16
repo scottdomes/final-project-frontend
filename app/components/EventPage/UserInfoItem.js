@@ -1,6 +1,6 @@
 var React = require('react');
 var classNames = require('classnames');
-var CarpoolForm = require('./CarpoolForm.jsx');
+var CarpoolForm = require('./CarpoolForm');
 
 function UserInfoItem(props) {
 

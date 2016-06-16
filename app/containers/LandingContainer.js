@@ -1,8 +1,8 @@
 var React = require('react');
-var LandingHeader = require('../components/LandingPage/LandingHeader.jsx');
-var LandingForm = require('../components/LandingPage/LandingForm.jsx');
-var LandingFBLogin = require('../components/LandingPage/LandingFBLogin.jsx');
-var Facebook = require('../components/Facebook.jsx');
+var LandingHeader = require('../components/LandingPage/LandingHeader');
+var LandingForm = require('../components/LandingPage/LandingForm');
+var LandingFBLogin = require('../components/LandingPage/LandingFBLogin');
+var Facebook = require('../components/Facebook');
 
 var ReactRouter = require('react-router');
 var browserHistory = ReactRouter.browserHistory;

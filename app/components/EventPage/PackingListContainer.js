@@ -1,8 +1,10 @@
 var React = require('react');
-var transparentBg = require('../../styles/index.jsx').transparentBg;
-var PackingListItem = require('./PackingListItems.jsx');
+var transparentBg = require('../../styles/index').transparentBg;
+var PackingListItem = require('./PackingListItems');
 var classNames = require('classnames');
-var AddMorePackingItemsForm = require('./AddMorePackingItemsForm.jsx');
+var AddMorePackingItemsForm = require('./AddMorePackingItemsForm');
+
+// import PackingListTitle from './PackingListTitle' //not sure if this is right import
 
 var PackingListContainer = React.createClass({
   getInitialState: function() {
@@ -66,10 +68,10 @@ var PackingListContainer = React.createClass({
     }
   },
   render: function () {
-    const {newPublicPackingItem, newPrivatePackingItem} = this.state
+    var {newPublicPackingItem, newPrivatePackingItem} = this.state
 
-    publicPackingItems = this.getPackingListItems(this.props.packingList.publicPackingList, 'public');
-    privatePackingItems = this.getPackingListItems(this.props.packingList.privatePackingList, 'private');
+    var publicPackingItems = this.getPackingListItems(this.props.packingList.publicPackingList, 'public');
+    var privatePackingItems = this.getPackingListItems(this.props.packingList.privatePackingList, 'private');
 
     return (
       <div id="packing-list-container">

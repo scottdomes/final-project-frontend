@@ -1,5 +1,5 @@
 var React = require('react');
-var ProgressIndicator = require('../components/ProgressIndicator.jsx');
+var ProgressIndicator = require('../components/ProgressIndicator');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var ReactRouter = require('react-router');
 var browserHistory = ReactRouter.browserHistory;

@@ -1,5 +1,5 @@
 var React = require('react');
-var UserInfoItem = require('./UserInfoItem.jsx');
+var UserInfoItem = require('./UserInfoItem');
 
 var UserInfoList = React.createClass({
   handleRegisterCar: function (capacity){

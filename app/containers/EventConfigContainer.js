@@ -1,8 +1,8 @@
 var React = require('react');
-var DatePickerWrapper = require('../components/DatePicker/DatePickerWrapper.jsx');
-var DatePicker = require('../components/DatePicker/DatePicker.jsx');
-var VoteActivator = require('../components/EventConfig/VoteActivator.jsx');
-var EventNameInput = require('../components/EventConfig/EventNameInput.jsx');
+var DatePickerWrapper = require('../components/DatePicker/DatePickerWrapper');
+var DatePicker = require('../components/DatePicker/DatePicker');
+var VoteActivator = require('../components/EventConfig/VoteActivator');
+var EventNameInput = require('../components/EventConfig/EventNameInput');
 
 var EventConfigContainer = React.createClass({
   contextTypes: {
@@ -23,6 +23,7 @@ var EventConfigContainer = React.createClass({
   handleDone: function (e) {
     e.stopPropagation();
     e.preventDefault();
+    console.log('hey');
     if (document.getElementById("event-name-input").value==""){
       document.getElementById("event-name-input").focus();
       document.getElementById("event-name-input").setAttribute('style', 'border-color:red;');
@@ -31,7 +32,7 @@ var EventConfigContainer = React.createClass({
       document.getElementById("event-name-input").focus();
       document.getElementById("date-selection-header").setAttribute('style', 'border-bottom: 2px solid red;');
     } else{
-      eventDetails = {
+      var eventDetails = {
         eventName: this.state.eventName,
         vote_on_date: this.props.dateVotingAllowed,
         vote_on_location: this.props.locationVotingAllowed

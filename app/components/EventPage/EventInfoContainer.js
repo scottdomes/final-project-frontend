@@ -1,5 +1,5 @@
 var React = require('react');
-var EventTitle = require('./EventTitle.jsx');
+var EventTitle = require('./EventTitle');
 
 var EventInfoContainer = React.createClass({
   render: function (){

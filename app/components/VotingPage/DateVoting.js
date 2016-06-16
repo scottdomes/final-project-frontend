@@ -1,5 +1,5 @@
 var React = require('react');
-var DateOption = require('./DateOption.jsx');
+var DateOption = require('./DateOption');
 
 var DateVoting = React.createClass({
   handleSubmit: function (e) {
