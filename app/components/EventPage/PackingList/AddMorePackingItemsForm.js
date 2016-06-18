@@ -20,9 +20,7 @@ export default class AddMorePackingItemsForm extends Component {
       id='packing-list-add-more-form' 
       type="text" 
       name="text" 
-      onBlur={this.handleFormBlur}
       placeholder={"Add More"} 
-      // onChange={this.handleChange}
       onKeyDown={this.handleEnterNewItem}/>
     )
 

@@ -3,8 +3,8 @@ import React, {Component, PropTypes} from 'react';
 const PackingListTitle = (props) => {
   
   return (
-    <div>
-      <h2 id="packing-list-header">{props.title}</h2>
+    <div className="packing-list-section-heading">
+      <h5>{props.title}</h5>
     </div>
   );
 }

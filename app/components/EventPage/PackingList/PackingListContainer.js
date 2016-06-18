@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import PackingListTitle from './PackingListTitle';
 import PackingListItem from './PackingListItems';
 import AddMorePackingItemsForm from './AddMorePackingItemsForm';
+import PackingListContainerTitle from './PackingListContainerTitle';
 
 export default class PackingListContainer extends Component {
 
@@ -54,11 +55,8 @@ export default class PackingListContainer extends Component {
       <div id="packing-list-container">
         
         <div>
-          <PackingListTitle title="Group Packing List"/>
-
-          <div className="packing-list-section-heading">
-            <h5>Group Packing List</h5>
-          </div>
+          <PackingListContainerTitle title=" Packing List" />
+          <PackingListTitle title="Group Packing List" />
           <div>
             {publicPackingItems}
           </div>
@@ -67,9 +65,7 @@ export default class PackingListContainer extends Component {
             onKeyDown={this.handleEnterNewItem}/>
         </div>
         <div>
-          <div className="packing-list-section-heading">
-            <h5>My Packing List</h5>
-          </div>
+          <PackingListTitle title="My Packing List" />
           <div>
             {privatePackingItems}
           </div>
