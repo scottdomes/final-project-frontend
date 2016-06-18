@@ -1,10 +1,11 @@
 var React = require('react');
 // var PackingListItem = require('./PackingListItems');
 var classNames = require('classnames');
-var AddMorePackingItemsForm = require('./AddMorePackingItemsForm');
+// var AddMorePackingItemsForm = require('./AddMorePackingItemsForm');
 
 import PackingListTitle from './PackingListTitle'; //not sure if this is right import
 import PackingListItem from './PackingListItems';
+import AddMorePackingItemsForm from './AddMorePackingItemsForm';
 
 var PackingListContainer = React.createClass({
   getInitialState: function() {
