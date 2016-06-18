@@ -1,5 +1,7 @@
 var React = require('react');
 
+
+
 var AddMorePackingItemsForm = React.createClass({
   handleChange (event){
     this.props.onChange(event.target.value, this.props.packingType);
