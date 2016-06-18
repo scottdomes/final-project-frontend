@@ -1,5 +1,4 @@
 var React = require('react');
-var transparentBg = require('../../styles/index').transparentBg;
 var PackingListItem = require('./PackingListItems');
 var classNames = require('classnames');
 var AddMorePackingItemsForm = require('./AddMorePackingItemsForm');

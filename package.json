@@ -39,8 +39,10 @@
     "react-daterange-picker": "^1.0.0",
     "react-dom": "^15.0.1",
     "react-page-transitions": "^1.2.0",
+    "react-redux": "^4.4.5",
     "react-router": "^2.2.4",
     "react-sidebar": "^2.1.1",
+    "redux": "^3.5.2",
     "reqwest": "^1.1.5",
     "sillyname": "^0.1.0",
     "style-loader": "^0.8.3"

@@ -1,7 +1,6 @@
 var React = require('react');
 var classNames = require('classnames');
 
-
 function PackingListItem(props) {
   function handleUserPacksItem(e){
     props.onUserPacksItem(e, props.item.label, props.listType);

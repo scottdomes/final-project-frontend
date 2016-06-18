@@ -1,7 +1,7 @@
 var React = require('react');
-var PackingListContainer = require('../../components/EventPage/PackingListContainer')
-var EventInfoContainer = require('../../components/EventPage/EventInfoContainer');
-var UserInfoList = require('../../components/EventPage/UserInfoList');
+var PackingListContainer = require('../../components/EventPage/PackingList/PackingListContainer')
+var EventInfoContainer = require('../../components/EventPage/EventInfo/EventInfoContainer');
+var UserInfoList = require('../../components/EventPage/UserInfo/UserInfoList');
 
 var EventDetails = React.createClass({
   handleEnterNewItem: function (value, listType){
