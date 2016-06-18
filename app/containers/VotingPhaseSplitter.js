@@ -4,6 +4,9 @@ var EventDetailsContainer = require('./EventPageContainers/EventDetailsContainer
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var TransitionContainer = require('react-page-transitions');
 
+// import {connect} from 'react-redux';
+// import actions from '../actions/PackingListActions';
+
 
 var VotingPhaseSplitter = React.createClass({
   getInitialState: function () {

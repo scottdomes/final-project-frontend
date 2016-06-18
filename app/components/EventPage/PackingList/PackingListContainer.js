@@ -9,6 +9,9 @@ export default class PackingListContainer extends Component {
 
   constructor (props) {
     super(props);
+
+      console.log("Filip we are here");
+      console.log(this.props);
   }
 
  handleUserPacksItem = (key, e, itemLabel, listType) => {

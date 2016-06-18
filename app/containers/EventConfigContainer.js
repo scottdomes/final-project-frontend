@@ -4,6 +4,8 @@ var DatePicker = require('../components/DatePicker/DatePicker');
 var VoteActivator = require('../components/EventConfig/VoteActivator');
 var EventNameInput = require('../components/EventConfig/EventNameInput');
 
+import EventConfigHelpers from '../utils/EventConfigHelpers';
+
 var EventConfigContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
@@ -23,7 +25,6 @@ var EventConfigContainer = React.createClass({
   handleDone: function (e) {
     e.stopPropagation();
     e.preventDefault();
-    console.log('hey');
     if (document.getElementById("event-name-input").value==""){
       document.getElementById("event-name-input").focus();
       document.getElementById("event-name-input").setAttribute('style', 'border-color:red;');
@@ -32,6 +33,10 @@ var EventConfigContainer = React.createClass({
       document.getElementById("event-name-input").focus();
       document.getElementById("date-selection-header").setAttribute('style', 'border-bottom: 2px solid red;');
     } else{
+
+      //!!! Setup helper call here, helper will have actions that call reducer and do api calls
+      // EventConfigHelpers.storeEventId();
+
       var eventDetails = {
         eventName: this.state.eventName,
         vote_on_date: this.props.dateVotingAllowed,

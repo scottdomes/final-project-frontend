@@ -13,6 +13,7 @@ var EventDetails = React.createClass({
   componentWillMount: function() {
       // console.log("Event details calling load event");
       // this.props.loadEvent();
+   
   },
   handleGetAllUsers: function (){
     this.props.onGetAllUsers();
