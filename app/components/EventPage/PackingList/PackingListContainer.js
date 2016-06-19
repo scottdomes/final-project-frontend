@@ -5,7 +5,9 @@ import PackingListItem from './PackingListItems';
 import AddMorePackingItemsForm from './AddMorePackingItemsForm';
 import PackingListContainerTitle from './PackingListContainerTitle';
 
-export default class PackingListContainer extends Component {
+import { connect } from 'react-redux';
+
+class PackingListContainer extends Component {
 
   constructor (props) {
     super(props);
@@ -82,7 +84,13 @@ export default class PackingListContainer extends Component {
 
 }
 
-module.exports = PackingListContainer;
+const mapStateToProps = (state, props) => {
+  return {
+    eventId: state.eventId
+  }
+}
+
+module.exports = connect(mapStateToProps)(PackingListContainer);
 
 
 

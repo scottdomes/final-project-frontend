@@ -1,4 +1,4 @@
-const PublicPackingListReducer = (state = {}, action) => {
+const PackingListReducer = (state = {}, action) => {
   switch(action.type) {
 
     case "ADD ITEM":
@@ -6,6 +6,10 @@ const PublicPackingListReducer = (state = {}, action) => {
         item: action.value
       });
 
+    case "GET PACKING LIST":
+    return Object.assign({}, state, {
+      
+    });
     // case "UPDATE PACKER":
     // return {
       
@@ -13,7 +17,7 @@ const PublicPackingListReducer = (state = {}, action) => {
   }
 }
 
-export default PublicPackingListReducer;
+export default PackingListReducer;
 
 // var reducer = function(state = {}, action){
 //   // console.log('reducer was called with state', state, 'and action', action)

@@ -13,6 +13,7 @@ var browserHistory = ReactRouter.browserHistory;
 var Menu = require('react-burger-menu').slide;
 
 import EventConfigHelpers from '../utils/EventConfigHelpers';
+import { connect } from 'react-redux';
 
 var Main = React.createClass({
   contextTypes: {
@@ -703,4 +704,13 @@ var Main = React.createClass({
   }
 });
 
-module.exports = Main;
+const mapStateToProps = (state, props) => {
+  return {
+    eventId: state.eventId
+  }
+}
+
+//convert to es6
+module.exports = connect(mapStateToProps)(Main);
+
+// module.exports = Main;

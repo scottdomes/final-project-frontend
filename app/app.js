@@ -16,9 +16,6 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var routes = require('./config/routes');
 
-// var store = require('./store/store');
-// var Provider = require('react-redux').Provider;
-
 import store from './store/store';
 import { Provider } from 'react-redux';
 
