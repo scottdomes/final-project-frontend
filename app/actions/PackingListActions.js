@@ -1,8 +1,9 @@
 const PackingListActions = {
-  getPackingList: function(eventId) {
+  getPackingList: function(packingList) {
     return {
       type: 'GET PACKING LIST',
-      eventId: eventId
+      publicPackingList: packingList.publicPackingList,
+      privatePackingList: packingList.privatePackingList
     }
   }
 }

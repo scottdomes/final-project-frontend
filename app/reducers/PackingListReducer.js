@@ -8,7 +8,8 @@ const PackingListReducer = (state = {}, action) => {
 
     case "GET PACKING LIST":
     return Object.assign({}, state, {
-      
+      publicPackingList: action.publicPackingList,
+      privatePackingList: action.privatePackingList
     });
     // case "UPDATE PACKER":
     // return {

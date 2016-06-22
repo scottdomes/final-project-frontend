@@ -4,8 +4,9 @@ import PackingListTitle from './PackingListTitle';
 import PackingListItem from './PackingListItems';
 import AddMorePackingItemsForm from './AddMorePackingItemsForm';
 import PackingListContainerTitle from './PackingListContainerTitle';
-
 import { connect } from 'react-redux';
+
+import PackingListHelpers from '../../../utils/PackingListHelpers';
 
 class PackingListContainer extends Component {
 
@@ -13,9 +14,9 @@ class PackingListContainer extends Component {
     super(props);
 
     //do api call to get the packing items
-
       console.log("Filip we are here");
       console.log(this.props);
+      PackingListHelpers.getPackingList(this.props.eventId);
   }
 
  handleUserPacksItem = (key, e, itemLabel, listType) => {
@@ -54,9 +55,12 @@ class PackingListContainer extends Component {
   }
 
   render () {
+    // var publicPackingItems = this.getPackingListItems(this.props.packingList.publicPackingList, 'public');
+    // var privatePackingItems = this.getPackingListItems(this.props.packingList.privatePackingList, 'private');
 
-    var publicPackingItems = this.getPackingListItems(this.props.packingList.publicPackingList, 'public');
-    var privatePackingItems = this.getPackingListItems(this.props.packingList.privatePackingList, 'private');
+    var publicPackingItems = this.getPackingListItems(this.props.publicPackingList, 'public');
+    var privatePackingItems = this.getPackingListItems(this.props.privatePackingList, 'private');
+
 
     return (
       <div id="packing-list-container">
@@ -88,7 +92,9 @@ class PackingListContainer extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    eventId: state.EventConfigReducer.eventId
+    eventId: state.EventConfigReducer.eventId,
+    publicPackingList: state.PackingListReducer.publicPackingList,
+    privatePackingList: state.PackingListReducer.privatePackingList
   }
 }
 
