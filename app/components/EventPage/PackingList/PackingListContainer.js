@@ -11,6 +11,9 @@ class PackingListContainer extends Component {
 
   constructor (props) {
     super(props);
+
+    //do api call to get the packing items
+
       console.log("Filip we are here");
       console.log(this.props);
   }

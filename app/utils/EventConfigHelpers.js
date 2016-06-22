@@ -8,7 +8,7 @@ import actions from '../actions/EventConfigActions'
 
 const EventConfigHelpers = {
   storeEventId: function(eventId) {
-    return store.dispatch(actions.updateEventId(eventId));
+    store.dispatch(actions.updateEventId(eventId));
   }
 }
 

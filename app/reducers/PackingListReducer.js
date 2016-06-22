@@ -14,6 +14,8 @@ const PackingListReducer = (state = {}, action) => {
     // return {
       
     // }
+    default:
+      return state;
   }
 }
 
