@@ -158,8 +158,7 @@ var Main = React.createClass({
             currentEventDetails: eventDetails
           });
 
-          //!!! Remove this later, should be in event config container, test to see if it works
-          EventConfigHelpers.storeEventId(res.id);
+
 
           browserHistory.replace({
             pathname: '/event/addfriends'
@@ -201,6 +200,13 @@ var Main = React.createClass({
           }
           return 0;
       });
+
+      //!!! Remove this later, should be in event config container, test to see if it works
+          console.log('check here');
+          console.log(data);
+          EventConfigHelpers.storeEventId(data.details.id);
+
+
       this.setState({
         allEventParticipants: allParticipants,
         dateVotes: data.date_votes,
@@ -704,13 +710,13 @@ var Main = React.createClass({
   }
 });
 
-const mapStateToProps = (state, props) => {
-  return {
-    eventId: state.eventId
-  }
-}
+// const mapStateToProps = (state, props) => {
+//   return {
+//     eventId: state.EventConfigReducer.eventId
+//   }
+// }
 
 //convert to es6
-module.exports = connect(mapStateToProps)(Main);
+module.exports = connect()(Main);
 
 // module.exports = Main;

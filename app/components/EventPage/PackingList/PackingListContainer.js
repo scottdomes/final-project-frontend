@@ -11,7 +11,6 @@ class PackingListContainer extends Component {
 
   constructor (props) {
     super(props);
-
       console.log("Filip we are here");
       console.log(this.props);
   }
@@ -86,7 +85,7 @@ class PackingListContainer extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    eventId: state.eventId
+    eventId: state.EventConfigReducer.eventId
   }
 }
 

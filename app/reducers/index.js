@@ -3,5 +3,5 @@ import { combineReducers } from 'redux'
 import EventConfigReducer from './EventConfigReducer';
 
 export default combineReducers({
-  EventConfigReducer
+  EventConfigReducer, 
 })
