@@ -1,12 +1,16 @@
+const GET_PACKING_LIST = 'GET PACKING LIST';
+const ADD_ITEM = 'ADD ITEM';
+
 const PackingListReducer = (state = {}, action) => {
   switch(action.type) {
 
-    case "ADD ITEM":
+    case ADD_ITEM:
+    var newPublicPackingList = state.publicPackingList.concat(action.item);
     return Object.assign({}, state, {
-        item: action.value
+        publicPackingList: newPublicPackingList
       });
 
-    case "GET PACKING LIST":
+    case GET_PACKING_LIST:
     return Object.assign({}, state, {
       publicPackingList: action.publicPackingList,
       privatePackingList: action.privatePackingList

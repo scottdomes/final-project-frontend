@@ -19,7 +19,39 @@ const PackingListHelpers = {
       return null;
     })
     // store.dispatch(actions.getPackingList(eventId));
+  },
+  packItem: function (item, packingListType, eventId){
+
+    // $.ajax({
+    //   url: 'http://localhost:3000/api/items',
+    //   method: 'POST',
+    //   data: {
+    //     label: value,
+    //     event_id: this.state.event_id,
+    //     list_type: listType
+    //   }
+
+    return axios.post('http://localhost:3000/api/items', 
+      {
+          label: item,
+          event_id: eventId,
+          list_type: packingListType
+        })
+      .then(function (item) {
+        console.log("YAHOOO");
+        console.log(item);
+        store.dispatch(actions.packItem(item.data))
+        //update the state here
+      })
+      .catch(function (error) {
+        console.log("Error, item was not successfully added")
+        //error here
+      })
+      //Make an axios call to the end point
+      // store.dispatch(actions.packItem(item));
   }
+
+
 }
 
 export default PackingListHelpers;

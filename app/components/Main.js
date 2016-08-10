@@ -201,10 +201,14 @@ var Main = React.createClass({
           return 0;
       });
 
+
       //!!! Remove this later, should be in event config container, test to see if it works
           console.log('check here');
           console.log(data);
+          //Event Id Stored
           EventConfigHelpers.storeEventId(data.details.id);
+
+
 
 
       this.setState({

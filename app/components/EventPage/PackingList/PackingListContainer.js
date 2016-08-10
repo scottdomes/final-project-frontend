@@ -17,6 +17,7 @@ class PackingListContainer extends Component {
       console.log("Filip we are here");
       console.log(this.props);
       PackingListHelpers.getPackingList(this.props.eventId);
+      //Do Api call to get the users? Or move to container?
   }
 
  handleUserPacksItem = (key, e, itemLabel, listType) => {
@@ -31,7 +32,8 @@ class PackingListContainer extends Component {
   }
 
   handleEnterNewItem = (value, listType) => {
-    this.props.onEnterNewItem(value, listType);
+    PackingListHelpers.packItem(value, listType, this.props.eventId);
+    // this.props.onEnterNewItem(value, listType);
   }
 
   getPackingListItems = (packingList, listType) => {
@@ -60,7 +62,6 @@ class PackingListContainer extends Component {
 
     var publicPackingItems = this.getPackingListItems(this.props.publicPackingList, 'public');
     var privatePackingItems = this.getPackingListItems(this.props.privatePackingList, 'private');
-
 
     return (
       <div id="packing-list-container">
@@ -91,6 +92,8 @@ class PackingListContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => {
+  console.log('hey');
+  console.log(props);
   return {
     eventId: state.EventConfigReducer.eventId,
     publicPackingList: state.PackingListReducer.publicPackingList,
